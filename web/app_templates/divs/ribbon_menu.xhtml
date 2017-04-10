@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <h:form id="ribbon_menu"             
+            style="direction:#{langBean.dir}; width:100%">           
+        <p:ribbon activeIndex="#{param.i}">
+            <p:tab title="#{msgs.car_pooling}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.car_pooling}#{' 1'}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="/car_pooling/car_pooling.xhtml">
+                        <f:param name="i" value="0" />
+                    </p:commandButton>
+                    <p:commandButton  value="#{msgs.car_pooling}#{' 2'}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="/car_pooling/car_pooling.xhtml">
+                        <f:param name="i" value="0" />
+                    </p:commandButton>
+                </p:ribbonGroup>                
+            </p:tab>
+
+            <p:tab title="#{msgs.bus_reservation}"> 
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.bus_reservation}" 
+                                      styleClass="ribbonButton"  
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/bus_reservation/bus_reservation.xhtml">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>
+                </p:ribbonGroup>                
+            </p:tab>
+
+            <p:tab title="#{msgs.tutoring}" >  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.tutoring}" 
+                                      styleClass="ribbonButton"  
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/tutoring/tutoring.xhtml"> 
+                        <f:param name="i" value="2" />
+                    </p:commandButton>
+                </p:ribbonGroup>                 
+            </p:tab>
+
+            <p:tab title="#{msgs.library}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.library}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/library/library.xhtml"> 
+                        <f:param name="i" value="3" />
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
+        </p:ribbon>
+    </h:form>
+</ui:composition>
+    
