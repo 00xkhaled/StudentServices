@@ -51,7 +51,7 @@ public class SessionBean implements Serializable {
         if(success){
             navigate("/car_pooling/car_pooling");
         } 
-    }    
+    }      
     
     public void logout() throws Exception {
         try {
@@ -74,5 +74,5 @@ public class SessionBean implements Serializable {
             NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
             navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
         }
-    } 
+    }         
 }

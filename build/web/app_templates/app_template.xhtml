@@ -5,7 +5,6 @@
     <f:view locale="#{langBean.locale}">
         <div id="app_container" >
             <h:outputStylesheet library="css" name="app_style.css"/>                    
-
             <div  id="app_header">
                 <ui:insert name="app_header">
                     <ui:include src="/app_templates/divs/app_header.xhtml"/>
@@ -26,12 +25,10 @@
                     <ui:include src="/app_templates/divs/ribbon_menu.xhtml"/>
                 </ui:insert>   
             </div>
-
             <div id="app_content"                 
-                 style="float:#{langBean.styleFloat}">            
+                 style="width:100%; float:#{langBean.styleFloat}">            
                 <ui:insert/>
             </div>
-
             <div id="app_footer" >                                              
                 <ui:insert name="app_footer">
                     <ui:include src="/app_templates/divs/app_footer.xhtml"/>

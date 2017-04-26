@@ -59,6 +59,18 @@
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
+            
+            <p:tab title="#{msgs.manage_events}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.manage_events}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/events/manage_events.xhtml"> 
+                        <f:param name="i" value="4" />
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>
         </p:ribbon>
     </h:form>
 </ui:composition>

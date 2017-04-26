@@ -103,3 +103,36 @@
     height:40px;
     margin-top:10px;
 }
+
+.dataTable{
+    border-style:  solid;
+    border-color: #cccccc;
+    border-width:  thin;
+    border-bottom: none !important;
+    clear:both;
+    font-size:10pt;
+    width:99.8%;
+    margin-top:10px;
+    margin-bottom:15px;     
+}
+
+.commandButton{ 
+    margin-top:5px;
+    margin-bottom:15px;
+    margin-right:5px;
+    margin-left:5px;
+    font-size:10pt;
+    width:120px;
+    height:30px;        
+}
+
+.errorMsg{
+    color:red;
+    font-weight:bold;
+    width: 500px;
+    margin-left: 30px;
+}
+
+.ui-outputlabel-rfi{
+    color: red;
+}
