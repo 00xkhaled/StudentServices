@@ -24,11 +24,11 @@ public class EventsBean implements Serializable {
         
         for(int i = 1; i <= 3; i++){
             switch(i){
-                case 1: eventTypes.add(new EventType(i, "Sport", "رياضة"));
+                case 1: eventTypes.add(new EventType(i, "Match", "مباراة"));
                     break;
-                case 2: eventTypes.add(new EventType(i, "Music", "موسيقى"));
+                case 2: eventTypes.add(new EventType(i, "Wedding", "عرس"));
                     break;
-                case 3: eventTypes.add(new EventType(i, "Science", "علم"));
+                case 3: eventTypes.add(new EventType(i, "Other", "غير ذلك"));
                     break;
             }
         }        

@@ -12,37 +12,39 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="manage_events_form">
+                <!--
                 <fieldset style="margin-top:10px;">
                     <legend align="#{langBean.styleFloat}">
                         #{msgs.filtering_criteria}
                     </legend>  
                 </fieldset>
+                !-->
 
                 <p:dataTable id="manage_events_tbl"
-                    class="dataTable"
-                    value="#{manageEventsBean.filteredEvents}"                    
-                    selection="#{manageEventsBean.selectedEvent}"
-                    rowKey="#{event.eventId}"                    
-                    var="event"   
-                    rows="2"     
-                    rowsPerPageTemplate="1,2,3"
-                    dir="#{langBean.dir}"
-                    emptyMessage="#{msgs.no_events}"
-                    paginator="true"
-                    paginatorPosition="top" 
-                    paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                    >
-                    
+                             class="dataTable"
+                             value="#{manageEventsBean.events}"                    
+                             selection="#{manageEventsBean.selectedEvent}"
+                             rowKey="#{event.eventId}"                    
+                             var="event"   
+                             rows="2"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="#{msgs.no_events}"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
                     <p:ajax event="rowSelectRadio"
                             update=":manage_events_form:manage_events_tbl"/>
-                    
+
                     <f:facet name="header" id="header">
                         #{msgs.events}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
-                    
-                    <p:column headerText="#{msgs.event_name}"
+
+                    <p:column headerText="#{msgs.name}"
                               style="width:20%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
@@ -50,14 +52,18 @@
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.event_type}"
+                    <p:column headerText="#{msgs.type}"
                               style="width:10%"
+                              filterBy="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"
+                              filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.place}"
                               style="width:20%"
+                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>  
                     </p:column>
@@ -70,36 +76,43 @@
 
                     <p:column headerText="#{msgs.capacity}"
                               style="width:15%"
+                              filterBy="#{event.capacity}"
+                              filterMatchMode="contains"
                               sortBy="#{event.capacity}">                    
                         <h:outputText value="#{event.capacity}"/>  
                     </p:column>
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                 <p:commandButton value="#{msgs.delete}"
-                                 icon="ui-icon-minus"                                  
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}"
-                                 update="msgs"
-                                 ajax="false"
-                                 disabled="#{manageEventsBean.selectedEvent==null}"
-                                 onclick="return confirm('#{msgs.confirm_delete_event}?');"
-                                 actionListener="#{manageEventsBean.deleteSelected()}"
-                                 action="manage_events" />
+                                <p:commandButton value="#{msgs.delete}"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{manageEventsBean.selectedEvent==null}"
+                                                 onclick="return confirm('#{msgs.confirm_delete_event}?');"
+                                                 actionListener="#{manageEventsBean.deleteSelectedEvent()}"
+                                                 action="manage_events" />
+                                <p:commandButton value="#{msgs.edit}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{manageEventsBean.selectedEvent==null}"                                                 
+                                                 actionListener="#{manageEventsBean.saveSelectedItemId()}"
+                                                 action="add_edit_event" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
 
                 <p:commandButton value="#{msgs.add}"
-                                 icon="ui-icon-plus"
-                                 ajax="false" 
+                                 icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}"
-                                 update="msgs"
-                                 action="add_event" />                
+                                 style="float:#{langBean.styleFloat}" 
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                 action="add_edit_event" />                
             </h:form>
         </ui:decorate>
     </h:body>
