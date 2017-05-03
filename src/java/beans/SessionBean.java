@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.sql.Connection;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
@@ -15,10 +16,14 @@ import javax.inject.Named;
 @SessionScoped
 public class SessionBean implements Serializable {
     private String username;
-    private String password;          
+    private String password;  
     
-    public SessionBean() {        
-    }
+    // Session attributes
+    private Connection connection; 
+    private int selectedItemId;    
+    
+    public SessionBean() {          
+    }         
 
     public String getUsername() {
         return username;
@@ -34,8 +39,24 @@ public class SessionBean implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }   
+    } 
 
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public int getSelectedItemId() {
+        return selectedItemId;
+    }
+
+    public void setSelectedItemId(int selectedItemId) {
+        this.selectedItemId = selectedItemId;
+    }   
+        
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         boolean success = true;
@@ -48,14 +69,23 @@ public class SessionBean implements Serializable {
               
         }      
         
-        if(success){
-            navigate("/car_pooling/car_pooling");
+        if(success){           
+            navigate("/events/manage_events");
         } 
     }      
     
     public void logout() throws Exception {
         try {
-            // Release and close database resources and connections                         
+            // Release and close database resources and connections 
+            if(connection != null){
+                if(!connection.getAutoCommit()){
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                }
+                
+                connection.close();
+                connection = null;
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {            
