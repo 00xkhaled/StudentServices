@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  *
  * @author Firas.Alhawari
- * 
+ * this is a model
  */
 public class Event implements Serializable{
     private int eventId;
