@@ -3,7 +3,9 @@ package beans;
 import daos.EventTypesDao;
 import daos.EventsDao;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -11,6 +13,7 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import models.Event;
+import models.EventType;
 
 /**
  *
@@ -34,7 +37,7 @@ public class ManageEventsBean implements Serializable{
     @PostConstruct
     public void init(){
         try {            
-            events = eventsDao.buildEvents(eventTypesDao.buildEventTypesMap());
+            events = eventsDao.buildEvents(eventTypesDao.buildEventTypesMap());            
         } catch (Exception ex) {
             Logger.getLogger(ManageEventsBean.class.getName()).log(Level.SEVERE, null, ex);
         }

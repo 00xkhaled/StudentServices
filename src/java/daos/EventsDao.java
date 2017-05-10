@@ -17,7 +17,8 @@ import models.EventType;
  * 
  */
 public class EventsDao extends ConnectionDao {     
-    public ArrayList<Event> buildEvents(HashMap<Integer, EventType> eventTypes) throws Exception {
+    public ArrayList<Event> buildEvents(HashMap<Integer, EventType> eventTypes) 
+            throws Exception {
         ArrayList<Event> list = new ArrayList<>();        
         
         try {   
@@ -31,7 +32,7 @@ public class EventsDao extends ConnectionDao {
             while (rs.next()) {
                 list.add(populateEventWithType(rs, eventTypes));
             }
-
+            
             rs.close();
             ps.close();
             
@@ -41,7 +42,8 @@ public class EventsDao extends ConnectionDao {
         }
     }
 
-    private Event populateEventWithType(ResultSet rs, HashMap<Integer, EventType> eventTypes) throws SQLException {
+    private Event populateEventWithType(ResultSet rs, HashMap<Integer, EventType> eventTypes) 
+            throws SQLException {
         Event event = new Event();
         
         event.setEventId(rs.getInt("EVENT_ID"));
@@ -80,19 +82,15 @@ public class EventsDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
             
-            String sql = "INSERT INTO EVENTS "
-                    + " ("
-                    + " EVENT_ID,"
+            String sql = "INSERT INTO EVENTS (EVENT_ID,"
                     + " NAME_AR,"
                     + " NAME_EN,"
                     + " PLACE_AR,"
                     + " PLACE_EN,"
                     + " EVENT_DATE,"
                     + " CAPACITY,"
-                    + " EVENT_TYPE_ID"
-                    + " )"
-                    + " VALUES"
-                    + " ((select max(EVENT_ID) from EVENTS)+1,?,?,?,?,?,?,?)";
+                    + " EVENT_TYPE_ID)"
+                    + " VALUES ((select max(EVENT_ID) from EVENTS)+1,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
             ps.setString(1, event.getNameAr());
@@ -115,9 +113,7 @@ public class EventsDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE EVENTS"
-                    + " SET"
-                    + " NAME_AR=?,"
+            String sql = "UPDATE EVENTS SET NAME_AR=?,"
                     + " NAME_EN=?,"
                     + " PLACE_AR=?,"
                     + " PLACE_EN=?,"
@@ -133,8 +129,7 @@ public class EventsDao extends ConnectionDao {
             ps.setString(4, event.getPlaceEn());
             ps.setTimestamp(5, event.getDate());
             ps.setInt(6, event.getCapacity());
-            ps.setInt(7, event.getType().getTypeId());
-            
+            ps.setInt(7, event.getType().getTypeId());            
             ps.setInt(8, event.getEventId());
 
             ps.executeUpdate();

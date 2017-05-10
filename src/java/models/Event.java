@@ -2,12 +2,11 @@ package models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  *
  * @author Firas.Alhawari
- * this is a model
+ * 
  */
 public class Event implements Serializable{
     private int eventId;

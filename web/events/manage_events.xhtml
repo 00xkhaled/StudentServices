@@ -11,15 +11,7 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="manage_events_form">
-                <!--
-                <fieldset style="margin-top:10px;">
-                    <legend align="#{langBean.styleFloat}">
-                        #{msgs.filtering_criteria}
-                    </legend>  
-                </fieldset>
-                !-->
-
+            <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable"
                              value="#{manageEventsBean.events}"                    

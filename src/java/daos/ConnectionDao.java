@@ -26,13 +26,15 @@ public class ConnectionDao implements Serializable {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
         if (!useConnectionPool) {
-            oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
+            //oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
+            oracleUrl = "jdbc:oracle:thin:@192.168.120.213:1521:xe";
             databaseUsername = "STD_SRVCS";
             databasePassword = "CE471_second_2017";
         }
 
         FacesContext context = FacesContext.getCurrentInstance();
-        sessionBean = (SessionBean) context.getELContext().getELResolver().getValue(context.getELContext(), null, "sessionBean");
+        sessionBean = (SessionBean) context.getELContext().getELResolver().getValue(
+                                         context.getELContext(), null, "sessionBean");
     }
 
     public Connection getConnection() throws Exception {
@@ -69,8 +71,10 @@ public class ConnectionDao implements Serializable {
                 dataSource = (DataSource) new InitialContext().lookup("jdbc/student_services");
                 connection = dataSource.getConnection();
             } else {
-                Class.forName(this.oracleDriver).newInstance();
-                connection = DriverManager.getConnection(this.oracleUrl, databaseUsername, databasePassword);
+                Class.forName(oracleDriver).newInstance();
+                connection = DriverManager.getConnection(oracleUrl, 
+                                                         databaseUsername, 
+                                                         databasePassword);
             }
         }
 
