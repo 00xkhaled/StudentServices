@@ -33,11 +33,29 @@
             <p:tab title="#{msgs.bus_reservation}"> 
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.bus_reservation}" 
+                    <p:commandButton  value="#{msgs.st}" 
                                       styleClass="ribbonButton"  
                                       style="float:#{langBean.styleFloat};"
                                       action="/bus_reservation/bus_reservation.xhtml">
-                        <f:param name="i" value="2" />
+                        <f:param name="i" value="1" />
+                    </p:commandButton>
+                </p:ribbonGroup>
+                    <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                       <p:commandButton  value="#{msgs.dr}" 
+                                         styleClass="ribbonButton"  
+                                         style="float:#{langBean.styleFloat};"
+                                         action="/bus_reservation/bus_reservation.xhtml" >
+                                         <f:param name="i" value="2" />
+                        </p:commandButton>
+</p:ribbonGroup>
+                    <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                        <p:commandButton  value="#{msgs.ad}" 
+                                      styleClass="ribbonButton"  
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/bus_reservation/bus_reservation.xhtml">
+                        <f:param name="i" value="3" />
                     </p:commandButton>
                 </p:ribbonGroup>                
             </p:tab>
