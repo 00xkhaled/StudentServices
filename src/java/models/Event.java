@@ -1,7 +1,7 @@
 package models;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Event implements Serializable{
     private int capacity;
     private String placeEn;
     private String placeAr;
-    private Date date;
+    private Timestamp date;
 
     public int getEventId() {
         return eventId;
@@ -74,11 +74,11 @@ public class Event implements Serializable{
         this.placeAr = placeAr;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }            
 }

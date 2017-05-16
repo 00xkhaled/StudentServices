@@ -12,6 +12,8 @@ public class EventType implements Serializable{
     private String nameEn;
     private String nameAr;
 
+    public EventType(){}
+    
     public EventType(int typeId, String nameEn, String nameAr) {
         this.typeId = typeId;
         this.nameEn = nameEn;
