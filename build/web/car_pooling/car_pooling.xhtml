@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"       
-          
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 
     <h:head>
        <h:outputStylesheet library="css" name="carpooling.css"/>    
@@ -18,13 +18,15 @@
     </h:head>
     
     
-    <!-- TODO: CONVERT TO JSF -->
+
     
     <h:body>
+
+        <ui:decorate template="/app_templates/app_template.xhtml">                                          
+            <h:outputText value="#{msgs.car_pooling}"/>  
         <ui:decorate template="/app_templates/app_template.xhtml">  
             
-  <p:outputPanel id="section" class="img" style="background-image: url(https://unsplash.it/1920/1080?random=4);">
-          
+            <p:outputPanel id="section" class="img" style="background-image: url(https://unsplash.it/1920/1080?random=4)"/>
       
       <h:panelGroup layout="block" class="overlay">
 
@@ -132,6 +134,11 @@
             
             
             <h:outputText value="#{msgs.car_pooling}"/>      
+
+        <ui:decorate template="/app_templates/app_template.xhtml">                                          
+            <h:outputText value="#{msgs.pick_up}"/>
+            <h:outputText value="#{msgs.name}"/>
+
         </ui:decorate>
     </h:body>
     

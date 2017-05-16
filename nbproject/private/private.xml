@@ -5,14 +5,22 @@
         <group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1b4d2236a6865b20aa0f3efcfc5dcdc670ead07e
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/events/add_event.xhtml</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/car_pooling/find_ride.xhtml</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/car_pooling/check_information.xhtml</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/resources/js/carpooling_map.js</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/resources/css/carpooling.css</file>
 =======
+<<<<<<< HEAD
 >>>>>>> 1ec6abf0a7b05077ff1ac079c40ba6b43b2ab21b
+=======
+=======
+>>>>>>> f067d44ba597b28fd4635f976b84d056d37559a2
+>>>>>>> 1b4d2236a6865b20aa0f3efcfc5dcdc670ead07e
             <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/app_footer.xhtml</file>
             <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/AddEditEventBean.java</file>
             <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/upper_left.xhtml</file>
@@ -44,6 +52,11 @@
             <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/models/EventType.java</file>
             <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/ribbon_menu.xhtml</file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 042221317c06a11b3534456db3b228ae2af4aa22
+=======
+>>>>>>> 1b4d2236a6865b20aa0f3efcfc5dcdc670ead07e
 =======
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/events/add_event.xhtml</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/car_pooling/find_ride.xhtml</file>
@@ -51,9 +64,13 @@
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/resources/js/carpooling_map.js</file>
             <file>file:/Users/EvilOpeth/Desktop/carpooling/StudentServices/web/resources/css/carpooling.css</file>
 >>>>>>> origin/carpooling
+<<<<<<< HEAD
 =======
 >>>>>>> 042221317c06a11b3534456db3b228ae2af4aa22
 >>>>>>> 1ec6abf0a7b05077ff1ac079c40ba6b43b2ab21b
+=======
+>>>>>>> f067d44ba597b28fd4635f976b84d056d37559a2
+>>>>>>> 1b4d2236a6865b20aa0f3efcfc5dcdc670ead07e
         </group>
     </open-files>
 </project-private>
