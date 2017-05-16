@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"       
- >
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
        <h:outputStylesheet library="css" name="carpooling.css"/>    
-              <h:outputStylesheet library="css" name="font-awesome.css"/>    
+       <h:outputStylesheet library="css" name="font-awesome.css"/>    
 
 
         <title>#{msgs.app_title}</title>
@@ -19,100 +18,11 @@
     
     <!-- TODO: CONVERT TO JSF -->
     <h:body>
-        <ui:decorate template="/app_templates/app_template.xhtml">  
-            
-  <section class="img" style="background-image: url(https://unsplash.it/1920/1080?random=4);">
-          
-     <div class="overlay">
-               
-            <h1>#{msgs.carpooling_title} </h1>
-             <h3 id="cp_desc">#{msgs.carpooling_desc} </h3>
-
-    
-    
-    <button  onclick="window.location.href='/StudentServices/faces/car_pooling/find_ride.xhtml'; return false;" id="main_button" type="submit" class="btn btn-success">#{msgs.find_ride}</button>
- 
-    <button id="main_button" type="submit" class="btn btn-success">#{msgs.post_ride}</button>
-
-     </div>
-      
-</section>
-            
-            
-
-   <div class="featurettes" id="learn-more">
-         
-       
-    <div class="featurette">
-        <div class="container">
-            <span class="fa fa-road"></span>
-                <h3>Share Rides</h3>
-                <p>
-                 You travel by car daily to the University?
-                 Share your ride and give the chance
-                 to other people interested in the 
-                 same type of path to reach you.
-                </p>
-        </div>
-    </div>
-           
-    <div class="featurette">
-        <div class="container">
-            <span class="fa fa-group"></span>
-            <h3>Make New Friends</h3>
-            <p>
-                The trip will be more fun with friends from 
-                the university We will help you to find traveling companions 
-                more compatible with your interests.
-            </p>
-        </div>
-    </div>
-       
-    <div class="featurette">
-        <div class="container">
-            <span class="fa fa-money"></span>
-            <h3>Save Money</h3>
-            <p>
-                Travels are getting more and more expensive? 
-                Share costs with your new friends.
-            </p>
-        </div>
-    </div>
-       
-       
-    <div class="featurette">
-        <div class="container"><span class="fa fa-magic"></span>
-            <h3>It's Very Easy</h3>
-            <p>The simplicity of Google Maps and the
-                wizard process allow anyone to share 
-                a path in a few minutes.</p>
-        </div>
-    </div>
-       
-       
-    <div class="featurette">
-        <div class="container">
-            <span class="fa fa-leaf"></span>
-            <h3>Eco-friendly</h3>
-            <p>Less cars, less traffic, less stress 
-                and new companions of adventures!
-                Make your travel more enjoyable 
-                and help the environment at the same time.
-            </p>
-        </div>
-    </div>
-       
-       
-</div>
-            
-         
-            
-            
-            
+        <ui:decorate template="/app_templates/app_template.xhtml">        
             <h:outputText value="#{msgs.car_pooling}"/>      
         </ui:decorate>
     </h:body>
-    
+     
 <script src="https://use.fontawesome.com/e69fe8f165.js"></script>
     
 </html>
