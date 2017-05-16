@@ -3,36 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/app_footer.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/AddEditEventBean.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/upper_left.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/tutoring/tutoring.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/messages/msgs_ar.properties</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/bus_reservation/bus_reservation.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/daos/EventTypesDao.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/app_header.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/resources/css/app_style.css</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/models/Event.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/events/add_edit_event.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/EventsBean.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/LangBean.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/SessionBean.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/login_template.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/events/manage_events.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/app_template.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/library/library.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/index.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/messages/msgs.properties</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/test_servlets.html</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/daos/ConnectionDao.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/upper_right.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/car_pooling/car_pooling.xhtml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/beans/ManageEventsBean.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/daos/EventsDao.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/src/java/models/EventType.java</file>
-            <file>file:/C:/Users/Firas.Alhawari/Documents/NetBeansProjects/StudentServices/web/app_templates/divs/ribbon_menu.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/resources/images/road_map.png</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/find_ride.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/app_header.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/EventTypesDao.java</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/messages/msgs.properties</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/beans/SessionBean.java</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/car_pooling.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/messages/msgs_ar.properties</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/app_template.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/ribbon_menu.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/upper_left.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/ConnectionDao.java</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/bus_reservation.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/EventsDao.java</file>
         </group>
     </open-files>
 </project-private>
