@@ -47,9 +47,9 @@ p {
   color: black;
 }
 
-section {
+#section {
   width: 100%;
-  padding: 60px 0;
+  padding: 0em 0em;
   background: white;
 }
 
@@ -319,3 +319,21 @@ p
     color: #ffffff;
     
 }
+
+
+
+#map-canvas 
+{
+    width:100%;
+ height:800px;
+ margin: 0 auto;
+ padding: 0px;
+}
+#panel 
+{
+        position: absolute;
+        z-index:5;
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #999;
+    }
