@@ -1,4 +1,5 @@
 build/
+build/web/WEB-INF/classes/beans/
 web/WEB-INF/.LCKweb.xml~
 dist/
 nbproject/private/private.xml
