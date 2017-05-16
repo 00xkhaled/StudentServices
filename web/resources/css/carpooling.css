@@ -324,16 +324,26 @@ p
 
 #map-canvas 
 {
-    width:100%;
- height:800px;
- margin: 0 auto;
- padding: 0px;
+    width: 39em;
+    height: 24em;
+    padding: 0px;
+    float: right;
 }
 #panel 
 {
+        
         position: absolute;
         z-index:5;
         background-color: #fff;
         padding: 15px;
         border: 1px solid #999;
+        float: right;
+    }
+    
+    #map_panel{
+        float:right;
+    }
+    
+    #add_ride{
+        margin: auto;
     }

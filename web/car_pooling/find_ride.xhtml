@@ -11,7 +11,8 @@
         
     
        <h:outputStylesheet library="css" name="carpooling.css"/>    
-              <h:outputStylesheet library="css" name="font-awesome.css"/>   
+       <h:outputStylesheet library="css" name="app_style.css"/>    
+       <h:outputStylesheet library="css" name="font-awesome.css"/>   
      </h:head>
     
     
@@ -20,25 +21,36 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">  
             
-
-
-<div id="panel">
+            <div id="map_panel">
+        <h:panelGroup layout="block" class="overlay">
+            <div id="panel">
 		<b>Start:&nbsp;</b>
-		<input type="text" id="start" value="mumbai" placeholder="Start"/>
+		<input type="text" id="start" value="Amman" placeholder="Start"/>
 		<b>End:&nbsp;</b>
-		<input type="text" id="end" value="pune" placeholder="End"/>
+		<input type="text" id="end" value="Madaba" placeholder="End"/>
 		<input type="button" id="submit" value="Find Route" />
-</div>
+            </div>
             
 	<div id="map-canvas">
 	</div>            
 
- 
-         
+        </h:panelGroup>
+            </div>
+            <div id="">
+        <h:panelGroup layout="block" >  
+            <h:outputText value="#{msgs.name}"/>       
+            <p:inputText value=""/><br/>   
+            <h:outputText value="#{msgs.location}"/> 
+            <p:inputText value=""/><br/>
+            <h:outputText value="#{msgs.phone}"/> 
+            <p:inputText value=""/><br/>
+            <h:outputText value="#{msgs.departure_time}"/> 
+            <p:inputText value=""/><br/>
+        </h:panelGroup>
             
+            </div>
             
-            
-            <h:outputText value="#{msgs.car_pooling}"/>      
+                
         </ui:decorate>
     </h:body>
    
