@@ -21,28 +21,28 @@
             <p:tab title="#{msgs.car_pooling}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.car_pooling}" 
+                    <p:commandButton  value="#{msgs.post_ride}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/find_ride.xhtml">
+                                      action="/car_pooling/post_ride.xhtml">
                         <f:param name="i" value="1" />
                     </p:commandButton>
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.car_pooling}" 
+                    <p:commandButton  value="#{msgs.find_ride}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
                                       action="/car_pooling/find_ride.xhtml">
-                        <f:param name="i" value="2" />
+                        <f:param name="i" value="1" />
                     </p:commandButton> 
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.car_pooling}" 
+                    <p:commandButton  value="#{msgs.check_information}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/find_ride.xhtml">
+                                      action="/car_pooling/check_information.xhtml">
                         <f:param name="i" value="1" />
                     </p:commandButton> 
                 </p:ribbonGroup>                
@@ -59,8 +59,9 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
                                       action="/bus_reservation/student_pages/road_map.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
+                                     <f:param name="i" value="2" />
+                                    </p:commandButton>                    
+                               </p:menuitem>
                         <p:separator/>
 			 <p:menuitem>
                                    <p:commandButton  value="#{msgs.seat_reservation}" 
