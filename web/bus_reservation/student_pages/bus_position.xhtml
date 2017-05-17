@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>GJU Map</title>
+        
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
+        <script type="text/javascript" src="http://rawgit.com/HPNeo/gmaps/master/gmaps.js"></script>
+    </h:head>
+   
+    <h:body>
+    <ui:decorate template="/app_templates/app_template.xhtml"> 
+    <p:gmap center="31.777067, 35.802555"
+       zoom="15"
+       type="hybrid"
+       style="width:600px;height:400px"
+       model="#{MapBean.model}"/>
+    </ui:decorate>
+    </h:body>
 </html>
