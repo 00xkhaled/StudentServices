@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/road_map.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/check_in.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/find_ride.xhtml</file>
@@ -13,6 +14,24 @@
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/check_information.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/bus_reservation.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/car_pooling.xhtml</file>
+=======
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/messages/msgs_ar.properties</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/daos/EventTypesDao.java</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/divs/upper_left.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/messages/msgs.properties</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/events/add_edit_event.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/app_template.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/beans/AddEditEventBean.java</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/divs/app_footer.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/library/library.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/daos/EventsDao.java</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/login_template.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/daos/ConnectionDao.java</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/divs/app_header.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/events/manage_events.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/divs/upper_right.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/app_templates/divs/ribbon_menu.xhtml</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
