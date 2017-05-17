@@ -1,58 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-         <style>
-       #map {
-        height: 700px;
-        width: 100%;
-       }
-    </style>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        
-          <div id="map"></div>
-        <div>TODO write content</div>
-    </body>
-    
-    
-      <script>
-      function initMap() {
-        var uluru = {lat: 32.002940,lng:35.863895};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 3,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script>
-     var time = new Date().getTime();
-     $(document.body).bind("mousemove keypress", function(e) {
-         time = new Date().getTime();
-     });
+<script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(-34.397, 150.644)
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
 
-     function refresh() {
-         if(new Date().getTime() - time >= 6000) 
-             window.location.reload(true);
-         else 
-             setTimeout(refresh, 1000);
-     }
-
-     setTimeout(refresh, 1000);
+google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9ZJqQE6bKtGfmWiSFPgrcZRQodl9VvAA">
-    </script>
+ <div id="map-canvas" style="height:300px; width:500px"></div>
+</body>
 </html>

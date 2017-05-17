@@ -3,21 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Desktop/Services/web/resources/images/road_map.png</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/road_map.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/check_in.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/find_ride.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/app_header.xhtml</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/EventTypesDao.java</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/messages/msgs.properties</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/beans/SessionBean.java</file>
-            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/car_pooling.xhtml</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/messages/msgs_ar.properties</file>
-            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/app_template.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/bus_position.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/ribbon_menu.xhtml</file>
-            <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/upper_left.xhtml</file>
-            <file>file:/C:/Users/user/Desktop/Services/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/ConnectionDao.java</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/post_ride.xhtml</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/check_information.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/bus_reservation.xhtml</file>
-            <file>file:/C:/Users/user/Desktop/Services/src/java/daos/EventsDao.java</file>
+            <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/car_pooling.xhtml</file>
         </group>
     </open-files>
 </project-private>
