@@ -9,10 +9,10 @@
             <p:tab title="#{msgs.car_pooling}">  
                  <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.available_rides}" 
+                    <p:commandButton  value="#{msgs.view_rides}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/available_rides.xhtml">
+                                      action="/car_pooling/view_rides.xhtml">
                         <f:param name="i" value="0" />
                     </p:commandButton> 
                 </p:ribbonGroup>   
@@ -21,7 +21,7 @@
                     <p:commandButton  value="#{msgs.post_ride}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/post_ride.xhtml">
+                                      action="/car_pooling/add_ride.xhtml">
                         <f:param name="i" value="0" />
                     </p:commandButton>
                 </p:ribbonGroup>
