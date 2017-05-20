@@ -7,6 +7,15 @@
             style="direction:#{langBean.dir}; width:100%">           
         <p:ribbon activeIndex="#{param.i}">                        
             <p:tab title="#{msgs.car_pooling}">  
+                 <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.available_rides}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="/car_pooling/available_rides.xhtml">
+                        <f:param name="i" value="0" />
+                    </p:commandButton> 
+                </p:ribbonGroup>   
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
                     <p:commandButton  value="#{msgs.post_ride}" 
