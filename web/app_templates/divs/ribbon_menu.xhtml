@@ -5,19 +5,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:form id="ribbon_menu"             
             style="direction:#{langBean.dir}; width:100%">           
-        <p:ribbon activeIndex="#{param.i}">
-            <p:tab title="#{msgs.manage_events}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.manage_events}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      action="/events/manage_events.xhtml"> 
-                        <f:param name="i" value="0" />
-                    </p:commandButton>
-                </p:ribbonGroup>               
-            </p:tab>
-            
+        <p:ribbon activeIndex="#{param.i}">                        
             <p:tab title="#{msgs.car_pooling}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
@@ -25,7 +13,7 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
                                       action="/car_pooling/post_ride.xhtml">
-                        <f:param name="i" value="1" />
+                        <f:param name="i" value="0" />
                     </p:commandButton>
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
@@ -34,7 +22,7 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
                                       action="/car_pooling/find_ride.xhtml">
-                        <f:param name="i" value="1" />
+                        <f:param name="i" value="0" />
                     </p:commandButton> 
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
@@ -43,7 +31,7 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
                                       action="/car_pooling/check_information.xhtml">
-                        <f:param name="i" value="1" />
+                        <f:param name="i" value="0" />
                     </p:commandButton> 
                 </p:ribbonGroup>                
             </p:tab>
@@ -51,102 +39,98 @@
             <p:tab title="#{msgs.bus_reservation}"> 
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                            
-                   <p:menubar>
-                           <p:submenu label="#{msgs.student}">
-                               <p:menuitem>
-                                   <p:commandButton  value="#{msgs.bus_road_map}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/student_pages/road_map.xhtml">
-                                     <f:param name="i" value="2" />
-                                    </p:commandButton>                    
-                               </p:menuitem>
-                        <p:separator/>
-			 <p:menuitem>
-                                   <p:commandButton  value="#{msgs.seat_reservation}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/student_pages/seat_reservation.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-			<p:separator/>
-			 <p:menuitem>
-                                   <p:commandButton  value="#{msgs.bus_position}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/student_pages/bus_position.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                        <p:separator/>
-                         <p:menuitem>
-                                   <p:commandButton  value="#{msgs.check_in}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/student_pages/check_in.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                           </p:submenu>
-                       </p:menubar>
-                        <f:param name="i" value="2" />
-         
-                  
-                    
+                    <p:menubar>
+                        <p:submenu label="#{msgs.student}">
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.bus_road_map}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/student_pages/road_map.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    
+                            </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.seat_reservation}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/road_map.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.bus_position}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/student_pages/bus_position.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.check_in}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/road_map.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                        </p:submenu>
+                    </p:menubar>
+                    <f:param name="i" value="1" />
                 </p:ribbonGroup>
-                    <p:ribbonGroup styleClass="ribbonGroup"
+                <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                        <p:menubar>                  
+                    <p:menubar>                  
                         <p:submenu label="#{msgs.driver}">
-                                <p:menuitem>
-                                   <p:commandButton  value="#{msgs.bus_status}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/driver_pages/bus_status.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                           </p:submenu>
-                       </p:menubar>
-                                         <f:param name="i" value="2" />
-                       
-</p:ribbonGroup>
-                    <p:ribbonGroup styleClass="ribbonGroup"
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.bus_status}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/road_map.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                        </p:submenu>
+                    </p:menubar>
+                    <f:param name="i" value="1" />
+
+                </p:ribbonGroup>
+                <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                       <p:menubar>
-                           <p:submenu label="#{msgs.admin}">
-                               <p:menuitem>
-                                   <p:commandButton  value="#{msgs.student_info}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/admin_pages/student_info.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                        <p:separator/>
-			 <p:menuitem>
-                                   <p:commandButton  value="#{msgs.bus_info}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/admin_pages/bus_info.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-			<p:separator/>
-			 <p:menuitem>
-                                   <p:commandButton  value="#{msgs.driver_info}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/admin_pages/driver_info.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                        <p:separator/>
-                         <p:menuitem>
-                                   <p:commandButton  value="#{msgs.bus_position}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/bus_reservation/admin_pages/bus_position.xhtml">
-                        <f:param name="i" value="2" />
-                    </p:commandButton>                    </p:menuitem>
-                           </p:submenu>
-                       </p:menubar>
-                        <f:param name="i" value="2" />
+                    <p:menubar>
+                        <p:submenu label="#{msgs.admin}">
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.student_info}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/admin_pages/student_info.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.bus_info}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/admin_pages/bus_info.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.driver_info}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/admin_pages/driver_info.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                            <p:separator/>
+                            <p:menuitem>
+                                <p:commandButton  value="#{msgs.bus_position}" 
+                                                  styleClass="ribbonButton" 
+                                                  style="float:#{langBean.styleFloat};"                                      
+                                                  action="/bus_reservation/admin_pages/bus_position.xhtml">
+                                    <f:param name="i" value="1" />
+                                </p:commandButton>                    </p:menuitem>
+                        </p:submenu>
+                    </p:menubar>
+                    <f:param name="i" value="1" />
                 </p:ribbonGroup>                
             </p:tab>
 
@@ -157,7 +141,7 @@
                                       styleClass="ribbonButton"  
                                       style="float:#{langBean.styleFloat};"
                                       action="/tutoring/tutoring.xhtml"> 
-                        <f:param name="i" value="3" />
+                        <f:param name="i" value="2" />
                     </p:commandButton>
                 </p:ribbonGroup>                 
             </p:tab>
@@ -169,11 +153,22 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       action="/library/library.xhtml"> 
+                        <f:param name="i" value="3" />
+                    </p:commandButton>
+                </p:ribbonGroup>               
+            </p:tab>    
+
+            <p:tab title="#{msgs.manage_events}">  
+                <p:ribbonGroup styleClass="ribbonGroup"
+                               style="float:#{langBean.styleFloat};">
+                    <p:commandButton  value="#{msgs.manage_events}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      action="/events/manage_events.xhtml"> 
                         <f:param name="i" value="4" />
                     </p:commandButton>
                 </p:ribbonGroup>               
-            </p:tab>                       
+            </p:tab>
         </p:ribbon>
     </h:form>
 </ui:composition>
-    

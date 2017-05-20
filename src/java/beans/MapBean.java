@@ -18,7 +18,7 @@ public class MapBean implements Serializable {
     private double lng;  
 private MapModel model = new DefaultMapModel();
 public MapBean() {
-model.addOverlay(new Marker(new LatLng(31.777067, 35.802555), "GJU"));
+model.addOverlay(new Marker(new LatLng(31.777067, 35.802555), "GJU","http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
 }
 public MapModel getModel() {
 return this.model;
