@@ -70,7 +70,7 @@ public class SessionBean implements Serializable {
         }      
         
         if(success){           
-            navigate("/events/manage_events");
+            navigate("/car_pooling/post_ride");
         } 
     }      
     
