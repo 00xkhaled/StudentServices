@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/find_ride.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/app_templates/divs/app_header.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/bus_position.xhtml</file>
@@ -19,6 +20,18 @@
             <file>file:/C:/Users/user/Desktop/Services/web/resources/js/gmaps.js</file>
             <file>file:/C:/Users/user/Desktop/Services/web/car_pooling/check_information.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/bus_reservation.xhtml</file>
+=======
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/student_pages/bus_position.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/student_pages/road_map.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/student_pages/check_in.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/app_templates/divs/ribbon_menu.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/admin_pages/bus_info.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/tutoring/tutoring.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/driver_pages/bus_status.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/student_pages/seat_reservation.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/admin_pages/student_info.xhtml</file>
+            <file>file:/Users/hamzaomar/Desktop/StudentServices/web/bus_reservation/admin_pages/bus_position.xhtml</file>
+>>>>>>> cdc65cb96bd09137ece6861db60d4ea7386f8ff6
         </group>
     </open-files>
 </project-private>
