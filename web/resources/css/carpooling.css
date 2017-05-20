@@ -329,21 +329,18 @@ p
     padding: 0px;
     float: right;
 }
-#panel 
-{
-        
-        position: absolute;
-        z-index:5;
-        background-color: #fff;
-        padding: 15px;
-        border: 1px solid #999;
-        float: right;
-    }
-    
-    #map_panel{
-        float:right;
-    }
-    
-    #add_ride{
+
+#add_ride{
         margin: auto;
+    }
+    
+    #panel{
+        
+        float: right
+    }
+    #under_construction{
+        font-size: 3em;
+        color: blue;
+        text-align: center;
+        
     }
