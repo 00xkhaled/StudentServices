@@ -8,90 +8,96 @@
     <h:head>
         <title>#{msgs.app_title}</title>
     </h:head>
-    <h:body> <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form>
-                 <p:dataTable 
-                             class="dataTable"
-                             
-                             rowKey="#{msgs.student}"                    
-                             var="student"   
-                             rows="2"     
-                             rowsPerPageTemplate="1,2,3"
-                             dir="#{langBean.dir}"
-                             emptyMessage="no student name found"
-                             paginator="true"
-                             paginatorPosition="top" 
-                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                             >
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml">                                            
+        <h:form id="manage_events_form">
+            <p:dataTable id="manage_events_tbl"
+                         class="dataTable"
+                         value="#{StudentInformationBean.list}"
+                         selection="#{StudentInformationBean.selectedStudent}"
+                         rowKey="#{list.studentID}"                    
+                         var="list"   
+                         rows="4"     
+                         rowsPerPageTemplate="1,2,3"
+                         dir="#{langBean.dir}"
+                         emptyMessage="no student name found"
+                         paginator="true"
+                         paginatorPosition="top" 
+                         paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                         >
 
-                    <p:ajax event="rowSelectRadio"/>
+                <p:ajax event="rowSelectRadio"
+                        update=":manage_events_form:manage_events_tbl"/>
+                <f:facet name="header" id="header">
+                    #{msgs.student_info}
+                </f:facet>
 
-                    <f:facet name="header" id="header">
-                        #{msgs.student_info}
-                    </f:facet>
+                <p:column selectionMode="single" style="width:5%"/>
+                <p:column headerText="#{msgs.student_name}"
+                          style="width:10%"
+                          filterBy="#{student.studentName}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.studentName}"> 
+                    <h:outputText value="#{list.studentName}"/>
+                </p:column>
 
-                    <p:column selectionMode="single" style="width:5%"/>
-
-                    <p:column headerText="#{msgs.student_name}"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?student_info.student_name.nameEn:student_info.student_name.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?student_info.student_name.nameEn:student_info.student_name.nameAr}">                    
-                    </p:column>
-
-                    <p:column headerText="#{msgs.student_id}"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?student_info.student_id.nameEn:student_info.student_id.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?student_info.student_id.nameEn:student_info.student_id.nameAr}">                    
-                        
-                    </p:column>
+                <p:column headerText="#{msgs.student_id}"
+                          style="width:10%"
+                          filterBy="#{student.studentID}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.studentID}"> 
+                    <h:outputText value="#{list.studentID}"/>  
+                </p:column>
                     
-                    <p:column headerText="#{msgs.phone}"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?student_info.phone.nameEn:student_info.phone.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?student_info.phone.nameEn:student_info.phone.nameAr}">                    
-                        
-                    </p:column>
+                <p:column headerText="#{msgs.phone}"
+                          style="width:10%"
+                          filterBy="#{list.phone}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.phone}">  
+                    <h:outputText value="#{list.phone}"/>  
+                </p:column>
                     
-                    <p:column headerText="#{msgs.seats_pre_res}"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?student_info.seats_pre_res.nameEn:student_info.seats_pre_res.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?student_info.seats_pre_res.nameEn:student_info.seats_pre_res.nameAr}">                    
-                        
-                    </p:column>
+                <p:column headerText="#{msgs.seats_pre_res}"
+                          style="width:10%"
+                          filterBy="#{list.seatPreRes}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.seatPreRes}"> 
+                    <h:outputText value="#{list.seatPreRes}"/>  
+                </p:column>
 
-           <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.delete}"
-                                                 icon="ui-icon-minus"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                 
-                                                 action="manage_student" />
-                                <p:commandButton value="#{msgs.edit}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                                                                  
-
-                                                 />
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
+            <f:facet name="footer">
+                    <p:toolbar style="border: none">
+                        <p:toolbarGroup align="#{languageBean.screenLeft}">
+                            <p:commandButton value="#{msgs.delete}"
+                                             icon="ui-icon-minus"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{manageEventsBean.selectedEvent==null}"
+                                             onclick="return confirm('#{msgs.confirm_delete_event}?');"
+                                             actionListener="#{manageEventsBean.deleteSelectedEvent()}"
+                                             action="manage_student" />
+                            <p:commandButton value="#{msgs.edit}"
+                                             icon="ui-icon-pencil"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{manageEventsBean.selectedEvent==null}"
+                                             actionListener="#{manageEventsBean.saveSelectedItemId()}"
+                                             action="add_edit_student"
+                                                />
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </f:facet>
                 </p:dataTable>
+            
                 <p:commandButton value="#{msgs.add}"
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                  action="add_edit_student"/>      
-            </h:form>        
+                                 action="add_edit_student"/>      
+        </h:form>        
         </ui:decorate>
 
     </h:body>

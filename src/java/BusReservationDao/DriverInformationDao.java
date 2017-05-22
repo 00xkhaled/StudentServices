@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusReservationBean;
+package BusReservationDao;
 
 /**
  *
  * @author Kamal Jabari
  */
-public class AddDriverBean {
+public class DriverInformationDao {
     
 }
