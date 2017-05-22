@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>#{msgs.app_title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+        <h1>#{langBean.isEnglish?
+            contentPastMaterialOverviewBean.lecture.lectureName:
+            contentPastMaterialOverviewBean.lecture.lectureNameAr}</h1>
+        <div>
+            <c:forEach items="#{contentPastMaterialOverviewBean.lecture.lecturers}" var="lec">
+                <a href="url">#{langBean.isEnglish? lec.firstName: lec.firstNameAr} 
+                    #{langBean.isEnglish? lec.lastName: lec.lastNameAr}</a>
+            <br/>
+            </c:forEach>
+        </div>
+        </ui:decorate>
+    </h:body>
+</html>
