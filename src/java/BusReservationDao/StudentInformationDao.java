@@ -10,7 +10,7 @@ import static java.util.Collections.list;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import BusReservationModel.StudentInformation;
-import daos.ConnectionDao;
+import BusReservationDao.BusConnectionDao;
 
 
 /**
@@ -18,7 +18,7 @@ import daos.ConnectionDao;
  * @author Kamal Jabari
  * 
  */
-public class StudentInformationDao extends ConnectionDao { 
+public class StudentInformationDao extends BusConnectionDao { 
     
     public ArrayList<StudentInformation> buildEvents() throws Exception {
                 
@@ -26,7 +26,7 @@ public class StudentInformationDao extends ConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT * FROM STUDENT_INFO";                        
+            String sql = "SELECT * FROM STUDENTS";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
@@ -51,8 +51,8 @@ public class StudentInformationDao extends ConnectionDao {
         
          event.setStudentID(rs.getInt("STUDENT_ID"));
         event.setStudentName(rs.getString("STUDENT_NAME"));
-        event.setPhone(rs.getString("STUDENT_PHONE"));
-        event.setSeatPreRes(rs.getString("SEAT_PRE_RES"));
+        event.setPhone(rs.getString("STUDENT_PHONE_NUMBER"));
+        event.setSeatPreRes(rs.getString("SEATS_PREVIOUSLY_RESERVED"));
         
         return event;
     }
@@ -61,12 +61,12 @@ public class StudentInformationDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
             
-            String sql = "INSERT INTO STUDENT_INFO "
+            String sql = "INSERT INTO STUDENTS "
                     + "( STUDENT_ID,"
                     + " STUDENT_NAME,"
-                    + " STUDENT_PHONE,"
-                    + " SEAT_PRE_RES,"
-                    + " VALUES ((select max(STUDENT_ID) from STUDENT_INFO)+1,?,?,?)";
+                    + " STUDENT_PHONE_NUMBER,"
+                    + " SEATS_PREVIOUSLY_RESERVED,"
+                    + " VALUES ((select max(STUDENT_ID) from STUDENT)+1,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
             ps.setString(1, event.getStudentName());
@@ -86,10 +86,10 @@ public class StudentInformationDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE STUDENT_INFO SET "
+            String sql = "UPDATE STUDENTS SET "
                     + "(STUDENT_NAME=?,"
-                    + " STUDENT_PHONE=?,"
-                    + " SEAT_PRE_RES=?,"
+                    + " STUDENT_PHONE_NUMBER=?,"
+                    + " SEATS_PREVIOUSLY_RESERVED=?,"
                     + " WHERE STUDENT_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
@@ -110,7 +110,7 @@ public class StudentInformationDao extends ConnectionDao {
         Connection conn = getConnection();
         
         try {
-            String sql = "DELETE FROM STUDENT_INFO WHERE STUDENT_ID=?";                               
+            String sql = "DELETE FROM STUDENTS WHERE STUDENT_ID=?";                               
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, student_id);
             
