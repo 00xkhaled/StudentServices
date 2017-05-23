@@ -11,12 +11,15 @@ xmlns:p="http://primefaces.org/ui">
    
     <h:body>
     <ui:decorate template="/app_templates/app_template.xhtml"> 
-    <p:gmap center="31.777067, 35.802555"
+    <p:gmap 
+       id="gmap1"    
+       center="31.777067, 35.802555"
        zoom="15"
        type="hybrid"
        style="width:600px;height:400px"
-       model="#{MapBean.model}"/>
-    
+       model="#{mapBean.model}">
+     <p:poll interval="5" listener="#{mapBean.update}" update="gmap1" />
+     </p:gmap>
     </ui:decorate>
     </h:body>
 </html>
