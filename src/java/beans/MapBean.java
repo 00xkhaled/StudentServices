@@ -23,4 +23,5 @@ model.addOverlay(new Marker(new LatLng(31.777067, 35.802555), "GJU","http://maps
 public MapModel getModel() {
 return this.model;
 }
+
 }

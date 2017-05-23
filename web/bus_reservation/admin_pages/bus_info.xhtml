@@ -18,7 +18,7 @@
                              rows="2"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
-                             emptyMessage="no student name found"
+                             emptyMessage="no bus  name found"
                              paginator="true"
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
@@ -27,7 +27,7 @@
                     <p:ajax event="rowSelectRadio"/>
 
                     <f:facet name="header" id="header">
-                        #{msgs.student_info}
+                        #{msgs.bus_info}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
@@ -87,6 +87,7 @@
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
+                                 action="add_bus"
                                   />      
             </h:form>        
         </ui:decorate>
