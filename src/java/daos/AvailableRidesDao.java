@@ -16,7 +16,7 @@ import models.EventType;
 
 /**
  *
- * @author Dr. Firas Al-Hawari
+ * @author OthmanKurdi
  * 
  */
 public class AvailableRidesDao extends ConnectionDao {     

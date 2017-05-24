@@ -22,42 +22,62 @@
         <ui:decorate template="/app_templates/app_template.xhtml">  
             
             
-        
+                <p:panel header="#{msgs.add_ride}"                            
+                         style="min-height:400px; 
+                         direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                 <div id="panel">
 		<b>Start:&nbsp;</b>
-		<input type="text" id="start" value="Amman" placeholder="Start"/>
+                <p:inputText type="text" id="start" value="#{availableRidesBean.rideFrom}" placeholder="Start">
+                <p:watermark for="start" value="#{msgs.amman}"/> 
+                </p:inputText>
 		<b>End:&nbsp;</b>
-		<input type="text" id="end" value="Madaba" placeholder="End"/>
+                <p:inputText type="text" id="end" value="#{availableRidesBean.rideTo}" placeholder="End">
+                <p:watermark for="end" value="#{msgs.gju}"/> 
+                </p:inputText>
 		<input type="button" id="submit" value="Find Route" />
-                </div>
-            
-	          
-            
-                 <div id="map-canvas"></div>
-            
-        
-            
-            <br/><br/>
-         
-            <h:panelGrid id="post_ride"
-                                 style="float: #{langBean.styleFloat};" 
-                                 columns="3"                              
-                                 dir="#{langBean.dir}">
                 
-            <h:outputText value="#{msgs.name}"/>       
-            <p:inputText value=""/><br/>   
+                <!-- <div id="map-canvas"></div> -->
+                <p:gmap center="31.777067, 35.802555"
+                        zoom="15"
+                        type="hybrid"
+                        style="width:600px;height:330px"
+                        model="#{mapBean.model}"/>
+                <br/><br/>
+         </div>
+             
+            <h:panelGrid id="post_ride"
+                         style="float: #{langBean.styleFloat};" 
+                         columns="2"                              
+                         dir="#{langBean.dir}">
+                
+           
+           
+            <h:outputText value="#{msgs.driver_name}"/>       
+            <p:inputText value="#{availableRidesBean.name}"/>
+            
+            <h:outputText value=""/> 
+            <h:outputText value=""/>
             <h:outputText value="#{msgs.location}"/> 
-            <p:inputText value=""/><br/>
+            <p:inputText value=""/>
+             
+            <h:outputText value=""/>
+            <h:outputText value=""/>
             <h:outputText value="#{msgs.phone}"/> 
-            <p:inputText value=""/><br/>
+            <p:inputText value="#{availableRidesBean.phone}"/>
+             
+            <h:outputText value=""/>
+            <h:outputText value=""/>
             <h:outputText value="#{msgs.departure_time}"/> 
-            <p:inputText value=""/><br/>
-            <p:commandButton value="#{msgs.add}"
+            <p:inputText value="#{availableRidesBean.departureTime}"/>
+             
+            <h:outputText value=""/>
+            <h:outputText value=""/>
+            <p:commandButton value="#{msgs.save}"
                                  styleClass="commandButton"
                                  icon="ui-icon-disk"
                                  iconPos=""
                                  style=""                                                                   
-                                 actionListener="view_ride" />
+                                 actionListener="#{availableRidesBean.addRide()}"/>
             <p:commandButton value="#{msgs.cancel}"
                                  styleClass="commandButton"
                                  icon="ui-icon-cancel"
@@ -66,7 +86,7 @@
                                  actionListener="view_ride" />
             </h:panelGrid>
         
-            
+            </p:panel>
             
             
                 
