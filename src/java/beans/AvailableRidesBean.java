@@ -20,7 +20,7 @@ public class AvailableRidesBean implements Serializable {
     
     
     
-    private String ride_id;
+    private int ride_id;
     private String ride_from;
     private String ride_to;
     private String name;
@@ -28,6 +28,7 @@ public class AvailableRidesBean implements Serializable {
     private String departure_time;
     
     private AvailableRides selectedRide;
+    
     private final AvailableRidesDao ridesdao=new AvailableRidesDao();
     private ArrayList<AvailableRides> list;
     
@@ -41,28 +42,51 @@ public class AvailableRidesBean implements Serializable {
     
      @PostConstruct
     public void init(){
-        try {            
+      
+       try {            
             list = ridesdao.buildEvents();            
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    /**
+     *
+     */
+    public void addRide(){
+         try { 
+        AvailableRides insertRide = new AvailableRides();
+        
+        insertRide.setRideFrom(ride_from);
+        insertRide.setRideTo(ride_to);
+        insertRide.setName(name);
+        insertRide.setPhone(phone);
+        insertRide.setDepartureTime(departure_time);
+                  System.out.print("reachecd AAvailableRideBean.rideDao()");
+            ridesdao.insertRide(insertRide);            
+        } catch (Exception ex) {
+            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sessionBean.navigate("view_rides");
+       //return "success";
+    }
+    
     public String getRideID(){
-        return this.ride_id;
+        return Integer.toString(this.ride_id);
     }
     public void setRideID(String ride_id){
-        this.ride_id=ride_id;
+        this.ride_id=Integer.parseInt(ride_id);
     }
-     public AvailableRides getSelectedRide() {
+    public AvailableRides getSelectedRide() {
         return selectedRide;
     }
     public void setSelectedRide(AvailableRides selectedRides) {
         this.selectedRide = selectedRides;
     } 
     // hay hee elee ma3molelha call bl page
-    public ArrayList<AvailableRides> getAvailableRides() {
-        return list;
-    }
+    
+    
      public String getRideFrom(){
         return this.ride_from;
     }
@@ -112,3 +136,4 @@ public class AvailableRidesBean implements Serializable {
     
     
 }
+
