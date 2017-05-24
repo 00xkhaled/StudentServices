@@ -1,6 +1,5 @@
 package BusReservationDao;
-
-import static java.nio.file.Files.list;
+  
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,10 +48,15 @@ public class StudentInformationDao extends BusConnectionDao {
     private StudentInformation populateEvent(ResultSet rs) throws SQLException {
         StudentInformation event = new StudentInformation();
         
-         event.setStudentID(rs.getInt("STUDENT_ID"));
-        event.setStudentName(rs.getString("STUDENT_NAME"));
-        event.setPhone(rs.getString("STUDENT_PHONE_NUMBER"));
-        event.setSeatPreRes(rs.getString("SEATS_PREVIOUSLY_RESERVED"));
+        event.setStudentID(rs.getInt("STUDENT_ID"));
+        event.setStudentFNameEn(rs.getString("STUDENT_FIRST_NAME_EN"));
+        event.setStudentLNameEn(rs.getString("STUDENT_LAST_NAME_EN"));
+        event.setStudentFNameAr(rs.getString("STUDENT_FIRST_NAME_AR"));
+        event.setStudentLNameAr(rs.getString("STUDENT_LAST_NAME_AR"));
+        event.setPhone(rs.getInt("STUDENT_PHONE_NUMBER"));
+        event.setStudentAddressEn(rs.getString("STUDENT_ADDRESS_EN"));
+        event.setStudentAddressAr(rs.getString("STUDENT_ADDRESS_AR"));
+        event.setSeatPreRes(rs.getInt("SEATS_PREVIOUSLY_RESERVED"));
         
         return event;
     }
@@ -63,16 +67,26 @@ public class StudentInformationDao extends BusConnectionDao {
             
             String sql = "INSERT INTO STUDENTS "
                     + "( STUDENT_ID,"
-                    + " STUDENT_NAME,"
+                    + " STUDENT_FNAME_EN,"
+                    + " STUDENT_FNAME_AR,"                    
+                    + " STUDENT_LNAME_EN,"
+                    + " STUDENT_LNAME_AR,"
                     + " STUDENT_PHONE_NUMBER,"
                     + " SEATS_PREVIOUSLY_RESERVED,"
-                    + " VALUES ((select max(STUDENT_ID) from STUDENT)+1,?,?,?)";
+                    + " STUDENT_ADDRESS_EN,"
+                    + " STUDENT_ADDRESS_AR,"
+                    + " VALUES ((select max(STUDENT_ID) from STUDENTS)+1,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
-            ps.setString(1, event.getStudentName());
-            ps.setString(2, event.getPhone());
-            ps.setString(3, event.getSeatPreRes());
-            
+            ps.setString(1, event.getStudentFNameEn());
+            ps.setString(2, event.getStudentFNameAr());
+            ps.setString(3, event.getStudentLNameEn());
+            ps.setString(4, event.getStudentLNameAr()); 
+            ps.setInt(5 ,   event.getPhone());
+            ps.setInt(6 ,   event.getSeatPreRes());
+            ps.setString(7, event.getStudentAddressEn());
+            ps.setString(8, event.getStudentAddressAr());
+                        
             
             ps.executeUpdate();
             
@@ -87,16 +101,26 @@ public class StudentInformationDao extends BusConnectionDao {
             Connection conn = getConnection();
 
             String sql = "UPDATE STUDENTS SET "
-                    + "(STUDENT_NAME=?,"
-                    + " STUDENT_PHONE_NUMBER=?,"
-                    + " SEATS_PREVIOUSLY_RESERVED=?,"
+                    + " STUDENT_FNAME_EN,"
+                    + " STUDENT_FNAME_AR,"                    
+                    + " STUDENT_LNAME_EN,"
+                    + " STUDENT_LNAME_AR,"
+                    + " STUDENT_PHONE_NUMBER,"
+                    + " SEATS_PREVIOUSLY_RESERVED,"
+                    + " STUDENT_ADDRESS_EN,"
+                    + " STUDENT_ADDRESS_AR,"
                     + " WHERE STUDENT_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setString(1, event.getStudentName());
-            ps.setString(2, event.getPhone());
-            ps.setString(3, event.getSeatPreRes());            
-            ps.setInt(4, event.getStudentID());
+            ps.setString(1, event.getStudentFNameEn());
+            ps.setString(2, event.getStudentFNameAr());
+            ps.setString(3, event.getStudentLNameEn());
+            ps.setString(4, event.getStudentLNameAr()); 
+            ps.setInt(5 ,   event.getPhone());
+            ps.setInt(6 ,   event.getSeatPreRes());
+            ps.setString(7, event.getStudentAddressEn());
+            ps.setString(8, event.getStudentAddressAr());            
+            ps.setInt(9, event.getStudentID());
 
             ps.executeUpdate();
             
