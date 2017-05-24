@@ -1,6 +1,5 @@
 package BusReservationDao;
   
-import static java.nio.file.Files.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,7 +75,7 @@ public class StudentInformationDao extends BusConnectionDao {
                     + " SEATS_PREVIOUSLY_RESERVED,"
                     + " STUDENT_ADDRESS_EN,"
                     + " STUDENT_ADDRESS_AR,"
-                    + " VALUES ((select max(STUDENT_ID) from STUDENT)+1,?,?,?,?,?,?,?,?)";
+                    + " VALUES ((select max(STUDENT_ID) from STUDENTS)+1,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
             ps.setString(1, event.getStudentFNameEn());

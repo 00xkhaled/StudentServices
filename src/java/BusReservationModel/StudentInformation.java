@@ -18,7 +18,6 @@ public class StudentInformation implements Serializable{
     private String address_ar;
     private String address_en;
     
-    private String Kamal;
    
     
     
@@ -56,7 +55,7 @@ public class StudentInformation implements Serializable{
         return this.student_lname_ar;
     }
     
-    public void setStudentLNameAr(String student_fname_ar){
+    public void setStudentLNameAr(String student_lname_ar){
         this.student_lname_ar=student_lname_ar;
     }
     

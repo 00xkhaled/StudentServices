@@ -28,6 +28,7 @@
 
                 <p:ajax event="rowSelectRadio"
                         update=":manage_events_form:manage_events_tbl"/>
+                
                 <f:facet name="header" id="header">
                     #{msgs.student_info}
                 </f:facet>
@@ -35,7 +36,7 @@
                 <p:column selectionMode="single" style="width:5%"/>
                 <p:column headerText="#{msgs.student_name}"
                           style="width:10%"
-                          filterBy="#{student.studentName}"
+                          filterBy="#{list.studentFNameEn}"
                           filterMatchMode="contains"
                           sortBy="#{list.studentFNameEn}"> 
                     <h:outputText value="#{list.studentFNameEn}"/>
@@ -43,7 +44,7 @@
 
                 <p:column headerText="#{msgs.student_id}"
                           style="width:10%"
-                          filterBy="#{student.studentID}"
+                          filterBy="#{list.studentID}"
                           filterMatchMode="contains"
                           sortBy="#{list.studentID}"> 
                     <h:outputText value="#{list.studentID}"/>  

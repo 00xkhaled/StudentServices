@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * Author: Dr. Kamal Jabari
+ * Author:Kamal Jabari
  *
  */
 public class BusConnectionDao implements Serializable {
