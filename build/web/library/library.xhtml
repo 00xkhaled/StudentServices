@@ -6,13 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.app_title}</title>
+        <title>#{msgs.library}</title>
     </h:head>
     <h:body>
 
-            <ui:decorate template="/app_templates/app_template.xhtml"> 
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="library">
-                 <p:dataTable id="library_tbl"
+                <p:dataTable id="library_tbl"
                              class="dataTable"
                              value="#{manageBookBean.events}"                    
                              selection="#{manageBookBean.selectedEvent}"
@@ -26,13 +26,13 @@
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
                              >
-                      <p:ajax event="rowSelectRadio"
+                    <p:ajax event="rowSelectRadio"
                             />
-                       <f:facet name="header" id="header">
+                    <f:facet name="header" id="header">
                         #{msgs.books}
                     </f:facet>
-                <p:column selectionMode="single" style="width:2em"/>
-                <p:column headerText="#{msgs.book_Id}"
+                    <p:column selectionMode="single" style="width:2em"/>
+                    <p:column headerText="#{msgs.book_Id}"
                               style="width:5%"
                               filterStyle="width=16px"
                               filterBy="#{langBean.isEnglish?library.book_Id.nameEn:library.book_Id.nameAr}"
@@ -40,73 +40,76 @@
                               sortBy="#{langBean.isEnglish?library.book_Id.nameEn:library.book_Id.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?book_Id.nameEn:book_Id.nameAr}"/>  
                     </p:column>
-                <p:column headerText="#{msgs.book_title}"
+                    <p:column headerText="#{msgs.book_title}"
                               style="width:5%"
                               filterBy="#{langBean.isEnglish?library.book_title.nameEn:library.book_title.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?library.book_title.nameEn:library.book_title.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?book_title.nameEn:book_title.nameAr}"/>  
                     </p:column>
-                 <p:column headerText="#{msgs.authors_name}"
+                    <p:column headerText="#{msgs.authors_name}"
                               style="width:5%"
                               filterBy="#{langBean.isEnglish?library.authors_name.nameEn:library.authors_name.nameAr}"
                               filterMatchMode="contains"
-                               sortBy="#{langBean.isEnglish?authors_name.nameEn:authors_name.nameAr}">
+                              sortBy="#{langBean.isEnglish?authors_name.nameEn:authors_name.nameAr}">
+                        <h:outputText value="#{langBean.isEnglish?authors_name.nameEn:authors_name.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.genre}"
+                    <p:column headerText="#{msgs.genre}"
                               style="width:5%"
                               filterBy="#{langBean.isEnglish?library.genre.nameEn:library.genre.nameAr}"
                               filterMatchMode="contains"
-                               sortBy="#{langBean.isEnglish?library.genre.nameEn:library.genre.nameAr}">
+                              sortBy="#{langBean.isEnglish?library.genre.nameEn:library.genre.nameAr}">
+                        <h:outputText value="#{langBean.isEnglish?genre.nameEn:genre.nameAr}"/>
+
                     </p:column>
-                 <p:column headerText="#{msgs.publish_year}"
+                    <p:column headerText="#{msgs.publish_year}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?library.publish_year.nameEn:library.publish_year.nameEn}"
+                              filterBy="#{langBean.isEnglish?library.publish_year.nameEn:library.publish_year.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.genre.nameEn:library.genre.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?genre.nameEn:genre.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.version}"
+                    <p:column headerText="#{msgs.version}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.version.nameEn:library.version.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.version.nameEn:library.version.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?version.nameEn:version.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.page_no}"
+                    <p:column headerText="#{msgs.page_no}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.page_no.nameEn:library.page_no.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.page_no.nameEn:library.page_no.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?page_no.nameEn:page_no.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.price}"
+                    <p:column headerText="#{msgs.price}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.price.nameEn:library.price.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.price.nameEn:library.price.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?price.nameEn:price.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.price_day}"
+                    <p:column headerText="#{msgs.price_day}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.price_day.nameEn:library.price_day.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.price_day.nameEn:library.price_day.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?price_day.nameEn:price_day.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.status}"
+                    <p:column headerText="#{msgs.status}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.status.nameEn:library.status.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.status.nameEn:library.status.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?status.nameEn:status.nameAr}"/>
                     </p:column>
-                <p:column headerText="#{msgs.owner_name}"
+                    <p:column headerText="#{msgs.owner_name}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterBy="#{langBean.isEnglish?library.owner_name.nameEn:library.owner_name.nameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>
+                              sortBy="#{langBean.isEnglish?library.owner_name.nameEn:library.owner_name.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?owner_name.nameEn:owner_name.nameAr}"/>
                     </p:column> 
                 </p:dataTable>
                 <p:commandButton value="#{msgs.add_book}"
@@ -114,27 +117,25 @@
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action="addbook" /> 
+                                 ajax="false"
+                                 action ="library/addbook" /> 
                 <p:commandButton value="#{msgs.buy_book}"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action="buybook" /> 
                 <p:commandButton value="#{msgs.borrow_book}"
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action="borrowbook" /> 
-                 <p:commandButton value="#{msgs.view_transactions}"
+                <p:commandButton value="#{msgs.view_transactions}"
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action="viewtransactions" /> 
+                                 action ="viewtransactions" /> 
             </h:form>
+<<<<<<< Updated upstream
             </ui:decorate>
 
                 </h:body>               
@@ -149,6 +150,10 @@
         <ui:decorate template="/app_templates/app_template.xhtml">                                         
             <h:outputText value="#{msgs.library}"/>           
         </ui:decorate>
+=======
+        </ui:decorate>
+    </h:body>     
+>>>>>>> Stashed changes
 
 </html>
 

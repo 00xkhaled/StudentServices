@@ -4,13 +4,149 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add a Book</title>
+    </h:head>
     <body>
-        <div>TODO write content</div>
+        <ui:decorate template="/app_templates/app_template.xhtml">
+             <h:form id="add_book">
+                 <p:messages id="books" closable="true" globalOnly="true"/>
+                  <p:panel header="#{msgs.book_info}"                            
+                         style="min-height:650px; 
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                      <h:panelGrid id="add"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="1"                              
+                                 dir="#{langBean.dir}">
+                           <p:outputLabel value="#{msgs.book_title_en}:" for="book_title_en"/>
+                        <p:inputText id="book_title_en"
+                                     style="width:400px"
+                                     value="#{addEditEventBean.nameEn}"                                      
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.book_title_ar}:" for="book_title_ar"/>
+                        <p:inputText id="book_title_ar"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:400px"
+                                     dir="rtl"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.authors_name_en}:" for="authors_name_en"/>
+                        <p:inputText id="authors_name_en"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:400px"
+                                     
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.authors_name_ar}:" for="authors_name_ar"/>
+                        <p:inputText id="authors_name_ar"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:400px"
+                                     dir="rtl"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.genre}:" for="genre"/>
+                        <p:inputText id="genre"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                                    
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.publish_year}:" for="publish_year"/>
+                        <p:inputText id="publish_year"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                                    
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                            <p:outputLabel value="#{msgs.version}:" for="version"/>
+                        <p:inputText id="version"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                                     
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                             <p:outputLabel value="#{msgs.page_no}:" for="page_no"/>
+                        <p:inputText id="page_no"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                                     
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                             <p:outputLabel value="#{msgs.price}:" for="price"/>
+                        <p:inputText id="price"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                                    
+                                     maxlength="512">
+                        </p:inputText>
+                           
+                               <p:outputLabel value="#{msgs.price_day}:" for="price_day"/>
+                        <p:inputText id="price_day"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:100px"
+                               
+                                     maxlength="512">
+                        </p:inputText>
+                               <p:outputLabel value="#{msgs.status}:" for="status"/>
+                              <p:selectOneMenu value="#{addEditEventBean.eventTypeId}"
+                                         id="status"
+                                         required="true"                                                                                  
+                                         requiredMessage=" #{msgs.required_msg}">
+                            <f:selectItem itemLabel="#{msgs.select_one}"
+                                          itemValue=""/>
+                            <f:selectItems var="type"
+                                           value="#{addEditEventBean.eventTypes}" 
+                                           itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
+                                           itemValue="#{type.typeId}"/>  
+                            <f:selectItems var="type"
+                                           value="#{addEditEventBean.eventTypes}" 
+                                           itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
+                                           itemValue="#{type.typeId}"/> 
+                       
+                              </p:selectOneMenu>
+                              <p:outputLabel value="#{msgs.owner_name}:" for="owner_name"/>
+                        <p:inputText id="owner_name"
+                                     value="#{addEditEventBean.nameAr}"
+                                     style="width:600px"
+                                   
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                              </h:panelGrid>
+                      </p:panel>
+                
+                              <p:commandButton value="#{msgs.save}"
+                                 styleClass="commandButton"
+                                 icon="ui-icon-disk"
+                                 iconPos="#{langBean.styleFloat}"
+                                 style="float:#{langBean.styleFloat}"                                                                   
+                                 actionListener="#{addEditEventBean.saveEvent()}" />
+                              <p:commandButton value="#{msgs.cancel}"
+                                 icon="ui-icon-cancel"  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 immediate="true" 
+                                 style="float:#{langBean.styleFloat}"                                 
+                                 action="library"  />   
+                                </h:form>
+        </ui:decorate>
+        
     </body>
 </html>
