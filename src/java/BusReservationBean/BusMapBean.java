@@ -46,7 +46,3 @@ model.addOverlay(new Marker(new LatLng(x, y), "GJU"));
         model.addOverlay(polygon);
        }
 }
-<<<<<<< HEAD
-}
-=======
->>>>>>> 9d0278579c664acd62ab75011ac5d15b84c4db80
