@@ -139,3 +139,8 @@
 .ui-outputlabel-rfi{
     color: red;
 }
+
+
+.ui-button-text-only .ui-button-text {
+    padding: 0.3em 0em !important;
+}

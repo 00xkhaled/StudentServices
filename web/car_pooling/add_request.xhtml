@@ -25,16 +25,22 @@
                 <p:panel header="#{msgs.add_ride}"                            
                   style="min-height:400px; 
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                    
+                    
+                    
                 <div id="panel">
 		<b>Start:&nbsp;</b>
-                <p:inputText type="text" id="start" value="#{availableRidesBean.rideFrom}" placeholder="Start">
+                <p:inputText type="text" id="start" value="#{availableRequestsBean.requestFrom}" placeholder="Start">
                 <p:watermark for="start" value="#{msgs.amman}"/> 
                 </p:inputText>
 		<b>End:&nbsp;</b>
-                <p:inputText type="text" id="end" value="#{availableRidesBean.rideTo}" placeholder="End">
+                <p:inputText type="text" id="end" value="#{availableRequestsBean.requestTo}" placeholder="End">
                 <p:watermark for="end" value="#{msgs.gju}"/> 
                 </p:inputText>
 		<input type="button" id="submit" value="Find Route" />
+                
+                
+                
                 
                 <!-- <div id="map-canvas"></div> -->
                 <p:gmap center="31.777067, 35.802555"
@@ -52,38 +58,36 @@
                 
            
            
-            <h:outputText value="#{msgs.driver_name}"/>       
-            <p:inputText value="#{availableRidesBean.name}"/>
+            <h:outputText value="#{msgs.passenger_name}"/>       
+            <p:inputText value="#{availableRequestsBean.name}"/>
             
-            <h:outputText value=""/> 
-            <h:outputText value=""/>
+ 
             <h:outputText value="#{msgs.location}"/> 
             <p:inputText value=""/>
+      
+            <h:outputText value="#{msgs.passenger_phone}"/> 
+            <p:inputText value="#{availableRequestsBean.phone}"/>
              
-            <h:outputText value=""/>
-            <h:outputText value=""/>
-            <h:outputText value="#{msgs.phone}"/> 
-            <p:inputText value="#{availableRidesBean.phone}"/>
-             
-            <h:outputText value=""/>
-            <h:outputText value=""/>
+      
             <h:outputText value="#{msgs.departure_time}"/> 
-            <p:inputText value="#{availableRidesBean.departureTime}"/>
-             
-            <h:outputText value=""/>
-            <h:outputText value=""/>
+            <p:inputText value="#{availableRequestsBean.phone}"/>
+    
+            
+            
+            
             <p:commandButton value="#{msgs.save}"
                                  styleClass="commandButton"
                                  icon="ui-icon-disk"
                                  iconPos=""
                                  style=""                                                                   
-                                 actionListener="#{availableRidesBean.AddRide()}"/>
+                                 actionListener="#{availableRequestsBean.add_request()}"/>
+            
             <p:commandButton value="#{msgs.cancel}"
                                  styleClass="commandButton"
                                  icon="ui-icon-cancel"
                                  iconPos=""
                                  style=""                                                                   
-                                 actionListener="view_ride" />
+                                 actionListener="view_request" />
             </h:panelGrid>
         
             </p:panel>

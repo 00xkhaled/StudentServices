@@ -16,10 +16,11 @@ import models.EventType;
 
 /**
  *
- * @author Dr. Firas Al-Hawari
+ * @author Othman Kurdi
  * 
  */
-public class AvailableRidesDao extends ConnectionDao {     
+public class AvailableRidesDao extends ConnectionDao {    
+    
     public ArrayList<AvailableRides> buildEvents() throws Exception {
                 
         ArrayList<AvailableRides> list = new ArrayList<>();
@@ -58,7 +59,8 @@ public class AvailableRidesDao extends ConnectionDao {
         return event;
     }
     
-    public void insertRide(AvailableRides event) throws Exception {                
+    public void insertRide(AvailableRides ride) throws Exception {                
+        System.out.println("reached dao...");
         try {
             Connection conn = getConnection();
             
@@ -72,11 +74,11 @@ public class AvailableRidesDao extends ConnectionDao {
                     + " VALUES ((select max(RIDE_ID) from AVAILABLE_RIDES)+1,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
-            ps.setString(1, event.getRideFrom());
-            ps.setString(2, event.getRideTo());
-            ps.setString(3, event.getName());
-            ps.setString(4, event.getPhone());
-            ps.setString(5, event.getDepartureTime());
+            ps.setString(1, ride.getRideFrom());
+            ps.setString(2, ride.getRideTo());
+            ps.setString(3, ride.getName());
+            ps.setString(4, ride.getPhone());
+            ps.setString(5, ride.getDepartureTime());
             
             ps.executeUpdate();
             
