@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.rent_transactions}</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <h:form id="rent_transaction_form">               
+                <p:dataTable id="rent_transaction_tbl"
+                             class="dataTable"
+                             value="#{manageEventsBean.events}"                    
+                             selection="#{manageEventsBean.selectedEvent}"
+                             rowKey="#{rent_transaction.rent_transactionId}"                    
+                             var="rent_transaction"   
+                             rows="2"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="#{msgs.no_transactions}"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
+                    <p:ajax event="rowSelectRadio"
+                            />
+
+                    <f:facet name="header" id="header">
+                        #{msgs.rent_transactions}
+                    </f:facet>
+
+                    <p:column selectionMode="single" style="width:5%"/>
+
+                    <p:column headerText="#{msgs.transaction_id}"
+                              style="width:20%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+
+                    <p:column headerText="#{msgs.book_Id}"
+                              style="width:20%"
+                              filterBy="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"/>  
+                    </p:column>
+
+                    <p:column headerText="#{msgs.date_of_transaction}"
+                              style="width:20%"
+                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>  
+                    </p:column>
+                    <p:column headerText="#{msgs.tenant_name}"
+                              style="width:20%"
+                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.placeEn:event.placeAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>  
+                    </p:column>
+
+                    <p:column headerText="#{msgs.price_day}"
+                              style="width:15%"
+                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{event.date}">                    
+                        <h:outputText value="#{event.date}"/>  
+                    </p:column>
+
+                    <p:column headerText="#{msgs.retrieval_date}"
+                              style="width:15%"
+                              filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{event.capacity}">                    
+                        <h:outputText value="#{event.capacity}"/>  
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
+                </p:dataTable>
+ 
+                               
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+

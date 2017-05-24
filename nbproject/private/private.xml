@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/user/Desktop/Services/web/bus_reservation/student_pages/bus_position.xhtml</file>
             <file>file:/C:/Users/user/Desktop/Services/src/java/BusReservationBean/BusMapBean.java</file>
             <file>file:/C:/Users/user/Desktop/Services/src/java/beans/SessionBean.java</file>
+=======
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/library/purchasetransactions.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/messages/msgs.properties</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/library/rentingtransactions.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/daos/BooksDao.java</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/library/library.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/web/library/viewtransactions.xhtml</file>
+            <file>file:/Users/tarekashi/Desktop/StudentServices/src/java/daos/EventsDao.java</file>
+>>>>>>> 9a2d1e1682a169cdb2e96a1419f5df9e21bc356a
         </group>
     </open-files>
 </project-private>
