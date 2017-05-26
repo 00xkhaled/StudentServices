@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -16,7 +17,7 @@ import models.AvailableRides;
  */
 @Named(value = "addEditRidesBean")
 @ViewScoped
-public class AddEditAvailableRidesBean implements Serializable
+public class AddEditRidesBean implements Serializable
 {
 
     private String ride_id;
@@ -33,10 +34,19 @@ public class AddEditAvailableRidesBean implements Serializable
    @Inject
     private SessionBean sessionBean;
    
-    public AddEditAvailableRidesBean() {
+    public AddEditRidesBean() {
     }
     
-    public void AddRide(){
+     @PostConstruct
+    public void init(){
+      
+       try {
+           addRide();
+        } catch (Exception ex) {
+            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addRide(){
          try { 
         AvailableRides insertRide = new AvailableRides();
         
@@ -45,15 +55,21 @@ public class AddEditAvailableRidesBean implements Serializable
         insertRide.setName(name);
         insertRide.setPhone(phone);
         insertRide.setDepartureTime(departure_time);
-                  System.out.println("beans.AddEditAvailableRidesBean.AddRide()");
+        System.out.println("beans.AddEditAvailableRidesBean.AddRide()");
             ridesdao.insertRide(insertRide);            
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        sessionBean.navigate("view_rides");
+        sessionBean.navigate("available_rides");
        
     }
     
+    public AvailableRides getSelectedRide() {
+        return selectedRide;
+    }
+    public void setSelectedRide(AvailableRides selectedRides) {
+        this.selectedRide = selectedRides;
+    } 
     public String getRideID(){
         return this.ride_id;
     }

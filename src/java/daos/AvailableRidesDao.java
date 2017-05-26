@@ -1,17 +1,13 @@
 package daos;
 
-import static java.nio.file.Files.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.AvailableRides;
-import models.EventType;
 
 
 /**
@@ -21,7 +17,7 @@ import models.EventType;
  */
 public class AvailableRidesDao extends ConnectionDao {    
     
-    public ArrayList<AvailableRides> buildEvents() throws Exception {
+    public ArrayList<AvailableRides> getRides() throws Exception {
                 
         ArrayList<AvailableRides> list = new ArrayList<>();
         try {   
@@ -33,7 +29,7 @@ public class AvailableRidesDao extends ConnectionDao {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateEvent(rs));
+                list.add(populateRide(rs));
             }
             
             rs.close();
@@ -47,16 +43,16 @@ public class AvailableRidesDao extends ConnectionDao {
 
    
     
-    private AvailableRides populateEvent(ResultSet rs) throws SQLException {
-        AvailableRides event = new AvailableRides();
+    private AvailableRides populateRide(ResultSet rs) throws SQLException {
+        AvailableRides ride = new AvailableRides();
         
-         event.setRideID(rs.getInt("RIDE_ID"));
-        event.setRideFrom(rs.getString("RIDE_FROM"));
-        event.setRideTo(rs.getString("RIDE_TO"));
-        event.setName(rs.getString("DRIVER_NAME"));
-        event.setPhone(rs.getString("DRIVER_PHONE"));
-        event.setDepartureTime(rs.getString("DEPARTURE_TIME"));
-        return event;
+         ride.setRideID(rs.getInt("RIDE_ID"));
+        ride.setRideFrom(rs.getString("RIDE_FROM"));
+        ride.setRideTo(rs.getString("RIDE_TO"));
+        ride.setName(rs.getString("DRIVER_NAME"));
+        ride.setPhone(rs.getString("DRIVER_PHONE"));
+        ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
+        return ride;
     }
     
     public void insertRide(AvailableRides ride) throws Exception {                
@@ -88,7 +84,7 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
     
-    public void updateEvent(AvailableRides event) throws Exception {
+    public void updateRide(AvailableRides ride) throws Exception {
         try {
             Connection conn = getConnection();
 
@@ -101,12 +97,12 @@ public class AvailableRidesDao extends ConnectionDao {
                     + " WHERE RIDE_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-           ps.setString(1, event.getRideFrom());
-            ps.setString(2, event.getRideTo());
-            ps.setString(3, event.getName());
-            ps.setString(4, event.getPhone());
-            ps.setString(5, event.getDepartureTime());            
-            ps.setInt(6, event.getRideID());
+           ps.setString(1, ride.getRideFrom());
+            ps.setString(2, ride.getRideTo());
+            ps.setString(3, ride.getName());
+            ps.setString(4, ride.getPhone());
+            ps.setString(5, ride.getDepartureTime());            
+            ps.setInt(6, ride.getRideID());
 
             ps.executeUpdate();
             
@@ -116,7 +112,7 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
     
-    public void deleteEvent(int RideID) throws Exception {
+    public void deleteRide(int RideID) throws Exception {
         Connection conn = getConnection();
         
         try {
@@ -134,7 +130,7 @@ public class AvailableRidesDao extends ConnectionDao {
     /*
     public AvailableRides getEvent(int RideId) throws Exception {
         try {   
-            AvailableRides event = null;
+            AvailableRides ride = null;
             Connection conn = getConnection();
             
             String sql = "SELECT AVAILABLE_RIDES.*, "
@@ -149,15 +145,15 @@ public class AvailableRidesDao extends ConnectionDao {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                event = populateEvent(rs);
-                event.getType().setNameEn(rs.getString("TYPE_EN"));
-                event.getType().setNameAr(rs.getString("TYPE_AR"));
+                ride = populateRide(rs);
+                ride.getType().setNameEn(rs.getString("TYPE_EN"));
+                ride.getType().setNameAr(rs.getString("TYPE_AR"));
             }
 
             rs.close();
             ps.close();
             
-            return event;            
+            return ride;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
