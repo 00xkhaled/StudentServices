@@ -12,25 +12,17 @@
                     <p:commandButton  value="#{msgs.view_rides}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/view_rides.xhtml">
+                                      action="/car_pooling/available_rides.xhtml">
                         <f:param name="i" value="0" />
                     </p:commandButton> 
                 </p:ribbonGroup>   
+                
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.post_ride}" 
+                    <p:commandButton  value="#{msgs.show_requests}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/add_ride.xhtml">
-                        <f:param name="i" value="0" />
-                    </p:commandButton>
-                </p:ribbonGroup>
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.find_ride}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/car_pooling/find_ride.xhtml">
+                                      action="/car_pooling/view_equests.xhtml">
                         <f:param name="i" value="0" />
                     </p:commandButton> 
                 </p:ribbonGroup>
