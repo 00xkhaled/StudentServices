@@ -55,7 +55,7 @@ public class AvailableRidesBean implements Serializable {
         System.out.println("addRide();");
          try { 
         AvailableRides insertRide = new AvailableRides();
-        
+        insertRide.setRideID(ride_id);
         insertRide.setRideFrom(ride_from);
         insertRide.setRideTo(ride_to);
         insertRide.setName(name);
@@ -131,6 +131,12 @@ public class AvailableRidesBean implements Serializable {
     public void setList(ArrayList<AvailableRides> list) {
         this.list = list;
     }
-    
+     public void deleteSelectedRide(){
+        try {
+            ridesdao.deleteRide(selectedRide.getRideID());
+        } catch (Exception ex) {
+            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
