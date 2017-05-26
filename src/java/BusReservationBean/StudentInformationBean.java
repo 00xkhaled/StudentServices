@@ -48,7 +48,7 @@ public class StudentInformationBean implements Serializable {
      @PostConstruct
     public void init(){
         try {            
-            list = std_inf_dao.buildEvents();            
+            list = std_inf_dao.buildStudent();            
         } catch (Exception ex) {
             Logger.getLogger(StudentInformationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,7 +67,7 @@ public class StudentInformationBean implements Serializable {
     } 
     
     // hay hee elee ma3molelha call bl page
-    public ArrayList<StudentInformation> getAvailableRides() {
+    public ArrayList<StudentInformation> getStudent() {
         return list;
     }
     

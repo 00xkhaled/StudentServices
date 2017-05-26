@@ -5,11 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import BusReservationModel.StudentInformation;
-import BusReservationDao.BusConnectionDao;
 
 
 /**
@@ -19,7 +17,7 @@ import BusReservationDao.BusConnectionDao;
  */
 public class StudentInformationDao extends BusConnectionDao { 
     
-    public ArrayList<StudentInformation> buildEvents() throws Exception {
+    public ArrayList<StudentInformation> buildStudent() throws Exception {
                 
         ArrayList<StudentInformation> list = new ArrayList<>();
         try {   
@@ -96,7 +94,7 @@ public class StudentInformationDao extends BusConnectionDao {
         }
     }
     
-    public void updateEvent(StudentInformation event) throws Exception {
+    public void updateStudent(StudentInformation event) throws Exception {
         try {
             Connection conn = getConnection();
 
@@ -130,7 +128,7 @@ public class StudentInformationDao extends BusConnectionDao {
         }
     }
     
-    public void deleteEvent(int student_id) throws Exception {
+    public void deleteStudent(int student_id) throws Exception {
         Connection conn = getConnection();
         
         try {
