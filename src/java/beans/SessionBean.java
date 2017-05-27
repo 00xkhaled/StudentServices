@@ -95,39 +95,50 @@ public class SessionBean implements Serializable {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.getExternalContext().invalidateSession();
         }
-    }    
-    public void bus_position(){
+    }
+
+    public void bus_position() {
         navigate("/bus_reservation/student_pages/bus_position.xhtml");
     }
-    public void bus_roadmap(){
+
+    public void bus_roadmap() {
         navigate("/bus_reservation/student_pages/road_map.xhtml");
-    }public void bus_seatRes(){
+    }
+
+    public void bus_seatRes() {
         navigate("/bus_reservation/student_pages/seat_reservation.xhtml");
     }
-    public void bus_checkin(){
+
+    public void bus_checkin() {
         navigate("/bus_reservation/student_pages/check_in.xhtml");
     }
-    public void bus_status(){
+
+    public void bus_status() {
         navigate("/bus_reservation/driver_pages/bus_status.xhtml");
     }
-    public void bus_std_info(){
+
+    public void bus_std_info() {
         navigate("/bus_reservation/admin_pages/student_info.xhtml");
     }
-    public void bus_info(){
-                navigate("/bus_reservation/admin_pages/bus_info.xhtml");
+
+    public void bus_info() {
+        navigate("/bus_reservation/admin_pages/bus_info.xhtml");
     }
-    public void bus_driver_info(){
-                        navigate("/bus_reservation/admin_pages/driver_info.xhtml");
+
+    public void bus_driver_info() {
+        navigate("/bus_reservation/admin_pages/driver_info.xhtml");
     }
-    public void bus_admin_position(){
-                    navigate("/bus_reservation/admin_pages/bus_position.xhtml");
+
+    public void bus_admin_position() {
+        navigate("/bus_reservation/admin_pages/bus_position.xhtml");
     }
+
     public void navigate(String url) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-         
+
         if (facesContext != null) {
             NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
             navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
         }
-    }         
+    }
 }
