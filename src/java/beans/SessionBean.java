@@ -16,11 +16,12 @@ import javax.inject.Named;
 @SessionScoped
 public class SessionBean implements Serializable {
     private String username;
-    private String password;  
+    private String password;          
     
     // Session attributes
     private Connection connection; 
-    private int selectedItemId;    
+    private int selectedItemId;  
+    private int menuIndex = 0;
     
     public SessionBean() {          
     }         
@@ -55,7 +56,15 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    }   
+    } 
+
+    public int getMenuIndex() {
+        return menuIndex;
+    }
+
+    public void setMenuIndex(int menuIndex) {
+        this.menuIndex = menuIndex;
+    }        
         
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
