@@ -39,96 +39,76 @@
 
             <p:tab title="#{msgs.bus_reservation}"> 
                 <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:menubar>
-                        <p:submenu label="#{msgs.student}">
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_road_map}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_roadmap}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    
-                            </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.seat_reservation}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_seatRes}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_position}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_position}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.check_in}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_checkin}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                        </p:submenu>
-                    </p:menubar>
+                               label="#{msgs.student}"                                
+                               style="float:#{langBean.styleFloat};">                    
+                    <p:commandButton  value="#{msgs.bus_road_map}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_roadmap()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                    
+
+                    <p:commandButton  value="#{msgs.seat_reservation}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_seatRes()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                   
+                    <br/>
+                    <p:commandButton  value="#{msgs.bus_position}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_position()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                   
+
+                    <p:commandButton  value="#{msgs.check_in}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_checkin()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                                         
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:menubar>                  
-                        <p:submenu label="#{msgs.driver}">
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_status}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_status}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                        </p:submenu>
-                    </p:menubar>
+                               label="#{msgs.driver}"
+                               style="float:#{langBean.styleFloat};">                    
+                    <p:commandButton  value="#{msgs.bus_status}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_status()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                    
                 </p:ribbonGroup>
                  
                 <p:ribbonGroup styleClass="ribbonGroup"
+                               label="#{msgs.admin}"
                                style="float:#{langBean.styleFloat};">
-                    <p:menubar>
-                        <p:submenu label="#{msgs.admin}">
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.student_info}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_std_info}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_info}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_info}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.driver_info}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_driver_info}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_position}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_admin_position}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                        </p:submenu>
-                    </p:menubar>
+
+                    <p:commandButton  value="#{msgs.student_info}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_std_info()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                    
+                    <p:commandButton  value="#{msgs.bus_info}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_info()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>   
+                    <br/>
+                    <p:commandButton  value="#{msgs.driver_info}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_driver_info()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                   
+                    <p:commandButton  value="#{msgs.bus_position}" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"                                      
+                                      action="#{sessionBean.bus_admin_position()}">
+                        <f:param name="i" value="1" />
+                    </p:commandButton>                    
                 </p:ribbonGroup>                
             </p:tab>
 
