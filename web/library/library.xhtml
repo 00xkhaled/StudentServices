@@ -9,9 +9,8 @@
         <title>#{msgs.library}</title>
     </h:head>
     <h:body>
-
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="manage_events_form">
+            <h:form id="manage_books_form">
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable"
                              value="#{BookBean.list}"                    
@@ -26,8 +25,8 @@
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
                              >
-                   <p:ajax event="rowSelectRadio"
-                        />
+                    <p:ajax event="rowSelectRadio"
+                            />
                     <f:facet name="header" id="header">
                         #{msgs.books}
                     </f:facet>
@@ -116,9 +115,8 @@
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 ajax="false"
-                                 action ="library/addbook" /> 
+                                 style="float:#{langBean.styleFloat}"                                  
+                                 action ="addbook.xhtml" /> 
                 <p:commandButton value="#{msgs.buy_book}"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
@@ -135,9 +133,7 @@
                                  style="float:#{langBean.styleFloat}" 
                                  action ="viewtransactions" /> 
             </h:form>
-            </ui:decorate>
-
+        </ui:decorate>
     </h:body>     
-
 </html>
 
