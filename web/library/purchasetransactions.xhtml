@@ -7,36 +7,36 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.event}</title>
+        <title>#{msgs.purchase_transactions}</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="manage_events_form">               
-                <p:dataTable id="manage_events_tbl"
+            <h:form id="purchase_transactions_form">               
+                <p:dataTable id="purchase_transactions_tbl"
                              class="dataTable"
                              value="#{manageEventsBean.events}"                    
                              selection="#{manageEventsBean.selectedEvent}"
-                             rowKey="#{event.eventId}"                    
-                             var="event"   
+                             rowKey="#{purchase_transactionsId}"                    
+                             var="purchase_transactions"   
                              rows="2"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
-                             emptyMessage="#{msgs.no_events}"
+                             emptyMessage="#{msgs.no_transactions}"
                              paginator="true"
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":manage_events_form:manage_events_tbl"/>
+                            />
 
                     <f:facet name="header" id="header">
-                        #{msgs.events}
+                        #{msgs.purchase_transactions}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
 
-                    <p:column headerText="#{msgs.name}"
+                    <p:column headerText="#{msgs.transaction_id}"
                               style="width:20%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
@@ -44,7 +44,7 @@
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.type}"
+                    <p:column headerText="#{msgs.book_Id}"
                               style="width:20%"
                               filterBy="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"
                               filterMatchMode="contains"
@@ -52,7 +52,7 @@
                         <h:outputText value="#{langBean.isEnglish?event.type.nameEn:event.type.nameAr}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.place}"
+                    <p:column headerText="#{msgs.date_of_transaction}"
                               style="width:20%"
                               filterBy="#{langBean.isEnglish?event.placeEn:event.placeAr}"
                               filterMatchMode="contains"
@@ -60,13 +60,22 @@
                         <h:outputText value="#{langBean.isEnglish?event.placeEn:event.placeAr}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.date}"
+                    <p:column headerText="#{msgs.buyer_name}"
                               style="width:15%"
+                              filterBy="#{event.capacity}"
+                              filterMatchMode="contains"
                               sortBy="#{event.date}">                    
                         <h:outputText value="#{event.date}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.capacity}"
+                    <p:column headerText="#{msgs.seller_name}"
+                              style="width:15%"
+                              filterBy="#{event.capacity}"
+                              filterMatchMode="contains"
+                              sortBy="#{event.capacity}">                    
+                        <h:outputText value="#{event.capacity}"/>  
+                    </p:column>
+                     <p:column headerText="#{msgs.price}"
                               style="width:15%"
                               filterBy="#{event.capacity}"
                               filterMatchMode="contains"

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package busReservationBean;
+package beans;
 
 /**
  *
- * @author Kamal Jabari
+ * @author Khaled
  */
-public class AddDriverBeans {
+class insertrequest {
     
 }
