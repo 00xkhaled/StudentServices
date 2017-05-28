@@ -15,6 +15,7 @@ import static java.util.Collections.list;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import LibraryModel.Book;
+import LibraryModel.Authors;
 import LibraryDao.LibraryConnectionDao;
 
 
@@ -99,6 +100,36 @@ public class BookInformationDao extends LibraryConnectionDao {
             ps.executeUpdate();
             
             ps.close();
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
+    }
+       public Book getBook(int bookId) throws Exception {
+        try {   
+            Book book = null;
+            Connection conn = getConnection();
+            
+            String sql = "SELECT BOOKS.*, "
+                    + " AUTHOR_NAME_EN as AUTHOR_EN,"
+                    + " AUTHOR_NAME_AR as AUTHOR_AR "
+                    + " FROM BOOKS, AUTHORS "
+                    + " WHERE BOOKS.AUTHOR_ID=AUTHORS.AUTHOR_ID AND"
+                    + " BOOK_ID=?";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
+            ps.setInt(1, bookId);
+            
+            ResultSet rs = ps.executeQuery();           
+
+            while (rs.next()) {
+                book = populateEvent(rs);
+                book.getAuthor().setAuthornameEn(rs.getString("AUTHOR_EN"));
+                book.getAuthor().setAuthornameAr(rs.getString("AUTHOR_AR"));
+            }
+
+            rs.close();
+            ps.close();
+            
+            return book;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
