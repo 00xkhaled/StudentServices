@@ -48,8 +48,8 @@ public class DriverInformation implements Serializable{
      public String getDriverAddressEn(){
         return this.driver_add_en;
     }
-    public void setDriverAddressEn(String driver_add_ar ){
-        this.driver_add_ar=driver_add_ar;
+    public void setDriverAddressEn(String driver_add_en ){
+        this.driver_add_en=driver_add_en;
     }
          public String getDriverAddressAr(){
         return this.driver_add_ar;

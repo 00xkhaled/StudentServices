@@ -28,7 +28,7 @@ public class DriverInformationBean implements Serializable {
     private int phone;
     private String driver_add_en;
     private String driver_add_ar;
-    private int driver_code;
+    
     private int driver_license_no;
     
     
@@ -71,8 +71,6 @@ public class DriverInformationBean implements Serializable {
     }
     
     
-
-    
     
      public String getDriverNameEn(){
         return this.driver_name_en;
@@ -81,7 +79,7 @@ public class DriverInformationBean implements Serializable {
         this.driver_name_en=driver_name_en;
     }
     public String getDriverNameAr(){
-        return this.driver_name_en;
+        return this.driver_name_ar;
     }
     public void setDriverNameAr(String driver_name_ar){
         this.driver_name_ar=driver_name_ar;

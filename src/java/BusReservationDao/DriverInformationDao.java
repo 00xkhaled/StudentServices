@@ -121,7 +121,7 @@ public class DriverInformationDao extends BusConnectionDao {
         }
     }
     
-    public void deleteEvent(int driver_id) throws Exception {
+    public void deleteStudent(int driver_id) throws Exception {
         Connection conn = getConnection();
         
         try {

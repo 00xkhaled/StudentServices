@@ -9,21 +9,21 @@
         <title>#{msgs.app_title}</title>
     </h:head>
     <h:body> <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form>
-                 <p:dataTable 
-                             class="dataTable"
-                             
-                             rowKey="#{msgs.bus_info}"                    
-                             var="bus info"   
-                             rows="2"     
-                             rowsPerPageTemplate="1,2,3"
-                             dir="#{langBean.dir}"
-                             emptyMessage="no student name found"
-                             paginator="true"
-                             paginatorPosition="top" 
-                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                             >
-
+            <h:form id="manage_events_form">
+                  <p:dataTable id="manage_events_tbl"
+                         class="dataTable"
+                         value="#{DriverInformationBean.list}"
+                         selection="#{DriverInformationBean.selectedDriver}"
+                         rowKey="#{list.driverID}"                    
+                         var="list"   
+                         rows="4"     
+                         rowsPerPageTemplate="1,2,3"
+                        dir="#{langBean.dir}"
+                         emptyMessage="no Driver found"
+                         paginator="true"
+                         paginatorPosition="top" 
+                         paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                         >
                     <p:ajax event="rowSelectRadio"/>
 
                     <f:facet name="header" id="header">
@@ -37,6 +37,8 @@
                               filterBy="#{langBean.isEnglish?driver_info.driver_name.nameEn:driver_info.driver_name.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?driver_info.driver_name.nameEn:driver_info.driver_name.nameAr}">                    
+                        <h:outputText value="#{list.driverNameEn}"/>
+
                     </p:column>
 
                     <p:column headerText="#{msgs.driver_id}"
@@ -44,7 +46,8 @@
                               filterBy="#{langBean.isEnglish?driver_info.driver_id.nameEn:driver_info.driver_id.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?driver_info.driver_id.nameEn:driver_info.driver_id.nameAr}">                    
-                        
+                        <h:outputText value="#{list.driverID}"/>
+
                     </p:column>
                     
                     <p:column headerText="#{msgs.driver_add}"
@@ -52,7 +55,8 @@
                               filterBy="#{langBean.isEnglish?driver_info.driver_add.nameEn:driver_info.driver_add.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?driver_info.driver_add.nameEn:driver_info.driver_add.nameAr}">                    
-                        
+                        <h:outputText value="#{list.driverAddressEn}"/>
+
                     </p:column>
                     
                     <p:column headerText="#{msgs.driver_phone}"
@@ -60,7 +64,8 @@
                               filterBy="#{langBean.isEnglish?driver_info.driver_phone.nameEn:driver_info.driver_phone.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?driver_info.driver_phone.nameEn:driver_info.driver_phone.nameAr}">                    
-                        
+                        <h:outputText value="#{list.phone}"/>
+
                     </p:column>
 
            <f:facet name="footer">
