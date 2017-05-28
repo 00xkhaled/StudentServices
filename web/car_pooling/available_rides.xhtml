@@ -38,7 +38,7 @@
 
                     <p:column headerText="#{msgs.from}"
                               style="width:10%"
-                              filterBy="#{ava}"
+                              filterBy="#{list.rideFrom}"
                               filterMatchMode="contains"
                               sortBy="#{list.rideFrom}">                    
                         <h:outputText value="#{list.rideFrom}"/>  
@@ -81,10 +81,10 @@
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{manageEventsBean.selectedEvent==null}"
-                                                 onclick="return confirm('#{msgs.confirm_delete_event}?');"
-                                                 actionListener="#{manageEventsBean.deleteSelectedEvent()}"
-                                                 action="manage_events" />
+                                                 disabled="#{availableRidesBean.selectedRide==null}"
+                                                 onclick="return confirm('#{msgs.confirm_delete_ride}?');"
+                                                 actionListener="#{availableRidesBean.deleteSelectedRide()}"
+                                                 action="available_rides" />
                                 <p:commandButton value="#{msgs.edit}"
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"

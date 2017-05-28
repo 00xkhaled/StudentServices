@@ -9,11 +9,12 @@ public class DriverInformation implements Serializable{
 
     
     private int driver_id;
-    private String driver_name;
-    private String phone;
-    private String driver_add;
-    private String driver_code;
-    private String driver_license_no;
+    private String driver_name_en;
+    private String driver_name_ar;
+    private int phone;
+    private String driver_add_en;
+    private String driver_add_ar;
+    private int driver_license_no;
     
     
     public int getDriverID(){
@@ -23,40 +24,48 @@ public class DriverInformation implements Serializable{
         this.driver_id=driver_id;
     }
     
-     public String getDriverName(){
-        return this.driver_name;
+    
+     public String getDriverNameEn(){
+        return this.driver_name_en;
     }
-    public void setDriverName(String driver_name){
-        this.driver_name=driver_name;
+    public void setDriverNameEn(String driver_name_en){
+        this.driver_name_en=driver_name_en;
+    }
+    public String getDriverNameAr(){
+        return this.driver_name_en;
+    }
+    public void setDriverNameAr(String driver_name_ar){
+        this.driver_name_ar=driver_name_ar;
     }
     
-     public String getPhone(){
+     public int getPhone(){
         return this.phone;
     }
-    public void setPhone(String phone){
+    public void setPhone(int phone){
         this.phone=phone;
     }
     
-     public String getDriverAdd(){
-        return this.driver_add;
+     public String getDriverAddressEn(){
+        return this.driver_add_en;
     }
-    public void setDriverAdd(String driver_add ){
-        this.driver_add=driver_add;
+    public void setDriverAddressEn(String driver_add_ar ){
+        this.driver_add_ar=driver_add_ar;
+    }
+         public String getDriverAddressAr(){
+        return this.driver_add_ar;
+    }
+         
+    public void setDriverAddressAr(String driver_add_ar ){
+        this.driver_add_ar=driver_add_ar;
     }
         
-     public String getDriverCode(){
-        return this.driver_code;
-    }
+   
      
-     public void setDriverCode(String driver_code){
-     this.driver_code=driver_code;
-     }
-     
-      public String getDriverLicenseNo(){
+      public int getDriverLicenseNo(){
         return this.driver_license_no;
     }
      
-     public void setDriverLicenseNo(String driver_license_no){
+     public void setDriverLicenseNo(int driver_license_no){
      this.driver_license_no=driver_license_no;
      }
     

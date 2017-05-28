@@ -18,8 +18,7 @@ import models.AvailableRides;
 @SessionScoped
 public class AvailableRidesBean implements Serializable {
     
-    
-    
+   
     private int ride_id;
     private String ride_from;
     private String ride_to;
@@ -28,7 +27,6 @@ public class AvailableRidesBean implements Serializable {
     private String departure_time;
     
     private AvailableRides selectedRide;
-    
     private final AvailableRidesDao ridesdao=new AvailableRidesDao();
     private ArrayList<AvailableRides> list;
     
@@ -36,15 +34,14 @@ public class AvailableRidesBean implements Serializable {
     private SessionBean sessionBean;
      
     public AvailableRidesBean(){
-        init();
-    
     }
     
      @PostConstruct
     public void init(){
       
-       try {            
-            list = ridesdao.buildEvents();            
+       try {
+           
+            list = ridesdao.getRides();            
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,22 +51,23 @@ public class AvailableRidesBean implements Serializable {
     /**
      *
      */
-    public String AddRide(){
+    public void addRide(){
+        System.out.println("addRide();");
          try { 
         AvailableRides insertRide = new AvailableRides();
-        
+        insertRide.setRideID(ride_id);
         insertRide.setRideFrom(ride_from);
         insertRide.setRideTo(ride_to);
         insertRide.setName(name);
         insertRide.setPhone(phone);
         insertRide.setDepartureTime(departure_time);
-                  System.out.print("reachecd AAvailableRideBean.rideDao()");
+                  System.out.print("reachecd AvailableRideBean.rideDao()");
             ridesdao.insertRide(insertRide);            
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        sessionBean.navigate("view_rides");
-       return "success";
+        sessionBean.navigate("available_rides");
+       
     }
     
     public String getRideID(){
@@ -133,6 +131,12 @@ public class AvailableRidesBean implements Serializable {
     public void setList(ArrayList<AvailableRides> list) {
         this.list = list;
     }
-    
+     public void deleteSelectedRide(){
+        try {
+            ridesdao.deleteRide(selectedRide.getRideID());
+        } catch (Exception ex) {
+            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
