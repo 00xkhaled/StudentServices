@@ -14,8 +14,6 @@ public class Book implements Serializable {
      private int bookId;
     private String booktitleEn;
     private String booktitleAr;
-    private String authorsnameEn;
-    private String authorsnameAr;
     private String genre;
     private int publishyear;
     private String version;
@@ -24,6 +22,7 @@ public class Book implements Serializable {
     private int priceday;
     private String status;
     private String ownername;
+    private Authors author;
    
     public int getBookId() {
         return bookId;
@@ -49,22 +48,10 @@ public class Book implements Serializable {
         this.booktitleAr = booktitleAr;
     }
    
-    public String getAuthorsnameEn() {
-        return authorsnameEn;
-    }
-  
-    public void setAuthorsnameEn(String authorsnameEn) {
-        this.authorsnameEn = authorsnameEn;
-    }
- 
-    public String getAuthorsnameAr() {
-        return authorsnameAr;
+    public void setAuthor(Authors author){
+        this.author = author;
     }
     
-    public void setAuthorsnameAr(String authorsnameAr) {
-        this.authorsnameAr = authorsnameAr;
-    }
-   
     public String getGenre() {
         return genre;
     }
@@ -127,5 +114,10 @@ public class Book implements Serializable {
 
     public void setOwnername(String ownername) {
         this.ownername = ownername;
+    }
+    
+    public Authors getAuthor ()
+    {
+        return author;
     }
 }

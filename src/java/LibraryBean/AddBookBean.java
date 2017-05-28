@@ -5,6 +5,7 @@
  */
 package LibraryBean;
 
+import LibraryDao.AuthorsDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,22 +15,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import LibraryModel.Book;
+import LibraryModel.Authors;
 import beans.SessionBean;
 import LibraryDao.BookInformationDao;
-
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author tarekashi
  */
-@Named(value = "BookBean")
-@SessionScoped
-public class BookBean implements Serializable {
 
-   
+@Named(value = "addbookBean")
+@ViewScoped
+public class AddBookBean implements Serializable {
+
+    private ArrayList <Authors> authors;
+    private final AuthorsDao authorsDao = new AuthorsDao ();
+    private final BookInformationDao bookinformationDao = new BookInformationDao();
     private int bookId;
     private String booktitleEn;
     private String booktitleAr;
+    private int authorId;
     private String authorsnameEn;
     private String authorsnameAr;
     private String genre;
@@ -41,68 +47,53 @@ public class BookBean implements Serializable {
     private String status;
     private String ownername;
     
-    private Book SelectedBook; //model object to save the selected book;
-    private final BookInformationDao book_inf_dao = new BookInformationDao();
-    private ArrayList<Book> list;
-    
     @Inject
-    
     private SessionBean sessionBean;
     
-    public BookBean(){
-        init ();
+    public AddBookBean (){
+        
     }
-       @PostConstruct
-       
-       public void init(){
-           try{
-               list = book_inf_dao.buildEvents();
-           } catch (Exception ex){
-               Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);   
-           } 
-       }
-        /**
-     * @return the bookId
-     */
-    public int getBookId() {
-        return bookId;
+    
+    @PostConstruct
+    public void init()
+    {
+        try{
+            bookId = sessionBean.getSelectedItemId();
+            authors = authorsDao.buildEvents();
+            
+            if (bookId > 0){
+                Book book = bookinformationDao.getBook(bookId);
+                booktitleEn = book.getBooktitleEn();
+                booktitleAr= book.getBooktitleAr();
+                genre = book.getGenre();
+                publishyear = book.getPublishyear();
+                version = book.getVersion();
+                numofpages = book.getNumofpages();
+                price = book.getPrice();
+                priceday = book.getPriceday();
+                status = book.getStatus();
+                ownername = book.getOwnername();
+                authorId = book.getAuthor().getAuthorId();
+            }
+        } catch (Exception ex){
+            Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
-    /**
-     * @param bookId the bookId to set
-     */
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    
+    public ArrayList <Authors> getAuthors()  
+    {
+         return authors;
     }
-
-    /**
-     * @return the booktitleEn
-     */
-    public String getBooktitleEn() {
-        return booktitleEn;
+    
+    public int getAuthorId()
+    {
+        return authorId;
     }
-
-    /**
-     * @param booktitleEn the booktitleEn to set
-     */
-    public void setBooktitleEn(String booktitleEn) {
-        this.booktitleEn = booktitleEn;
+    
+    public void setAuthorId(int AuthorId) {
+        this.authorId = AuthorId;
     }
-
-    /**
-     * @return the booktitleAr
-     */
-    public String getBooktitleAr() {
-        return booktitleAr;
-    }
-
-    /**
-     * @param booktitleAr the booktitleAr to set
-     */
-    public void setBooktitleAr(String booktitleAr) {
-        this.booktitleAr = booktitleAr;
-    }
-
+    
     /**
      * @return the authorsnameEn
      */
@@ -242,28 +233,67 @@ public class BookBean implements Serializable {
     public void setOwnername(String ownername) {
         this.ownername = ownername;
     }
+    
+    public void saveBook()
+    {
+        try{
+        Book book = new Book();
+        Authors author = authors.get(authorId - 1);
+        book.setBookId(bookId);
+        book.setAuthor(author);
+        book.setBooktitleAr(booktitleAr);
+        book.setBooktitleEn(booktitleEn);
+        book.setGenre(genre);
+        book.setNumofpages(numofpages);
+        book.setPrice(price);
+        book.setPriceday(priceday);
+        book.setPublishyear(publishyear);
+        book.setStatus(status);
+        book.setVersion(version);
+        book.setOwnername(ownername);
+        
+         
+            if (sessionBean.getSelectedItemId() > 0) {
+                bookinformationDao.insertBook(book);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    /**
-     * @return the SelectedBook
-     */
-    public Book getSelectedBook() {
-        return SelectedBook;
+        sessionBean.navigate("library");
+    }
+        
     }
 
-    /**
-     * @param SelectedBook the SelectedBook to set
-     */
-    public void setSelectedBook(Book SelectedBook) {
-        this.SelectedBook = SelectedBook;
-    }
-    public void saveSelectedBookID(){
-        sessionBean.setSelectedItemId(SelectedBook.getBookId());
-    } 
-       public ArrayList<Book> getList() {
-        return list;
-    }
-       
-       public void setList(ArrayList<Book> list) { //TO SET IN THE list of type model to save result from database
-        this.list = list;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

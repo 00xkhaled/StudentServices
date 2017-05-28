@@ -42,17 +42,17 @@
                     </p:column>
                     <p:column headerText="#{msgs.book_title}"
                               style="width:5%"
-                              filterBy="#{list.booktitleEn}"
+                              filterBy="#{langBean.isEnglish?list.booktitleEn:booktitleAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?list.booktitleEn:booktitleAr}">                    
                         <h:outputText value="#{langBean.isEnglish?list.booktitleEn:booktitleAr}"/>  
                     </p:column>
                     <p:column headerText="#{msgs.authors_name}"
                               style="width:5%"
-                              filterBy="#{langBean.isEnglish?list.authorsnameEn:list.authorsnameAr}"
+                              filterBy="#{langBean.isEnglish?authorList.authornameEn:authornameAr}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?list.authorsnameEn:list.authorsnameAr}">
-                        <h:outputText value="#{langBean.isEnglish?list.authorsnameEn:list.authorsnameAr}"/>
+                              sortBy="#{langBean.isEnglish?authorList.authornameEn:authornameAr}">
+                        <h:outputText value="#{langBean.isEnglish?authorList.authornameEn:authornameAr}"/>
                     </p:column>
                     <p:column headerText="#{msgs.genre}"
                               style="width:5%"
@@ -118,7 +118,7 @@
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
                                  ajax="false"
-                                 action ="library/addbook" /> 
+                                 action ="addbook.xhtml" /> 
                 <p:commandButton value="#{msgs.buy_book}"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
