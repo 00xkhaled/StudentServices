@@ -52,6 +52,8 @@
     font-size:10pt;                         
     margin-bottom:2px;             
     background-color: lightgray; 
+    
+    
 }
 
 #app_content{  
@@ -95,13 +97,13 @@
 }
 
 .ribbonButton{
-    width:120px; 
-    height:20px;    
+    width:140px; 
+    height:25px;    
 }
 
 .ribbonGroup{
-    height:40px;
-    margin-top:10px;
+    height:80px;
+    margin-top:10px;     
 }
 
 .dataTable{
@@ -135,4 +137,9 @@
 
 .ui-outputlabel-rfi{
     color: red;
+}
+
+
+.ui-button-text-only .ui-button-text {
+    padding: 0.3em 0em !important;
 }

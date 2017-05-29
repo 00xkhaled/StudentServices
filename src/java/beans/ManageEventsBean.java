@@ -1,7 +1,13 @@
 package beans;
 
+import daos.EventTypesDao;
+import daos.EventsDao;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -17,19 +23,24 @@ import models.EventType;
 @Named(value = "manageEventsBean")
 @ViewScoped
 public class ManageEventsBean implements Serializable{
-    private Event selectedEvent;    
+    private Event selectedEvent;  
+    private final EventTypesDao eventTypesDao = new EventTypesDao();
+    private final EventsDao eventsDao = new EventsDao();
+    private ArrayList<Event> events; 
     
-    private ArrayList<Event> filteredEvents;
-    
-    @Inject
-    private EventsBean eventsBean;
+    @Inject 
+    private SessionBean sessionBean;
     
     public ManageEventsBean() {        
     }       
     
     @PostConstruct
     public void init(){
-        filteredEvents = eventsBean.getEvents();
+        try {            
+            events = eventsDao.buildEvents(eventTypesDao.buildEventTypesMap());            
+        } catch (Exception ex) {
+            Logger.getLogger(ManageEventsBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Event getSelectedEvent() {
@@ -40,18 +51,26 @@ public class ManageEventsBean implements Serializable{
         this.selectedEvent = selectedEvent;
     }  
 
-    public ArrayList<Event> getFilteredEvents() {
-        return filteredEvents;
+    public ArrayList<Event> getEvents() {
+        return events;
     }
 
-    public void setFilteredEvents(ArrayList<Event> filteredEvents) {
-        this.filteredEvents = filteredEvents;
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
     }   
     
     public void searchEvents(){        
     }
     
-    public void deleteSelected(){
-        filteredEvents.remove(selectedEvent);
+    public void saveSelectedItemId(){
+        sessionBean.setSelectedItemId(selectedEvent.getEventId());
+    }
+    
+    public void deleteSelectedEvent(){
+        try {
+            eventsDao.deleteEvent(selectedEvent.getEventId());
+        } catch (Exception ex) {
+            Logger.getLogger(ManageEventsBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{msgs.app_title}</title>
+    </h:head>
+    <h:body> <ui:decorate template="/app_templates/app_template.xhtml">                                            
+            <h:form>
+                 <p:dataTable 
+                             class="dataTable"
+                             
+                             rowKey="#{msgs.bus_info}"                    
+                             var="bus info"   
+                             rows="2"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="no bus  name found"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
+                    <p:ajax event="rowSelectRadio"/>
+
+                    <f:facet name="header" id="header">
+                        #{msgs.bus_info}
+                    </f:facet>
+
+                    <p:column selectionMode="single" style="width:5%"/>
+
+                    <p:column headerText="#{msgs.bus_id}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?bus_info.bus_id.nameEn:bus_info.bus_id.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?bus_info.bus_id.nameEn:bus_info.bus_id.nameAr}">                    
+                    </p:column>
+
+                    <p:column headerText="#{msgs.bus_number}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?bus_info.bus_number.nameEn:bus_info.bus_number.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?bus_info.bus_number.nameEn:bus_info.bus_number.nameAr}">                    
+                        
+                    </p:column>
+                    
+                    <p:column headerText="#{msgs.bus_type}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?bus_info.bus_type.nameEn:bus_info.bus_type.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?bus_info.bus_type.nameEn:bus_info.bus_type.nameAr}">                    
+                        
+                    </p:column>
+                    
+                    <p:column headerText="#{msgs.bus_capacity}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?bus_info.bus_capacity.nameEn:bus_info.bus_capacity.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?bus_info.bus_capacity.nameEn:bus_info.bus_capacity.nameAr}">                    
+                        
+                    </p:column>
+
+           <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                                <p:commandButton value="#{msgs.delete}"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 action="manage_bus" />
+                                <p:commandButton value="#{msgs.edit}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 />
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
+                </p:dataTable>
+                <p:commandButton value="#{msgs.add}"
+                                 icon="ui-icon-plus"                                  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 style="float:#{langBean.styleFloat}" 
+                                 action="add_bus"
+                                  />      
+            </h:form>        
+        </ui:decorate>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,346 @@
+            
+            
+ @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
+ 
+ 
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+h1 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  font-size: 50px;
+  font-weight: 100;
+  text-align: center;
+  color: white;
+}
+
+
+h3 {
+  position: relative;
+  top: 54%;
+  transform: translateY(-50%);
+  margin: 0;
+  font-size: 20px !important;
+  font-weight: 100;
+  text-align: center;
+  color: white;
+}
+
+p {
+  font-weight: 300;
+  font-family: fantasy;
+  font-size: 1.2em;
+  margin: 4px 24em;
+  color: black;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+#section {
+  width: 100%;
+  padding: 0em 0em;
+  background: white;
+}
+
+.img {
+  padding: 0;
+  min-height: 34em;
+  background-attachment: fixed !important;
+  background-position: 50% 0 !important;
+  background-repeat: no-repeat;
+}
+
+.img:first-child {
+  height: 303px;
+  /* min-height: inherit; */
+  background-attachment: inherit;
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+/* General button style (reset) */
+#main_button 
+{
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#main_button:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+/* Main button  */
+#main_button
+{
+	border: 3px solid #fff;
+	color: #fff;
+        margin-left: 21em;
+           margin-top: 18em;
+}
+
+/* Main Buttons on hover action  */
+#main_button:hover,
+#main_button:active 
+{
+	color: #0e83cd;
+	background: #fff;
+}
+
+#about_header{
+    
+    color: black;
+    
+}
+
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+{
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #1E86C8;
+    font-size: 4em !important;
+    font-family: fantasy;
+}
+
+h1 small, h1 .small, h2 small, h2 .small, h3 small, 
+h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small,
+h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small,
+.h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, 
+.h5 .small, .h6 small, .h6 .small 
+{
+    font-weight: normal;
+    line-height: 1;
+    color: #777777;
+}
+
+h1, .h1, h2, .h2, h3, .h3 
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h1 small, h1 .small, .h1 small, .h1 .small, 
+h2 small, h2 .small, .h2 small, .h2 .small, 
+h3 small, h3 .small, .h3 small, .h3 .small 
+{
+    font-size: 65%
+}
+
+h4, .h4, h5, .h5, h6, .h6 
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h4 small, h4 .small, .h4 small, .h4 .small, 
+h5 small, h5 .small, .h5 small, .h5 .small, 
+h6 small, h6 .small, .h6 small, .h6 .small
+{
+    font-size: 75%
+}
+
+h1, .h1 
+{
+    font-size: 36px;
+}
+
+h2, .h2 
+{
+    font-size: 30px;
+}
+h3, .h3 
+{
+    font-size: 24px;
+}
+h4, .h4 
+{
+    font-size: 18px;
+}
+h5, .h5 
+{
+    font-size: 14px;
+}
+
+
+h6, .h6 
+{
+    font-size: 12px;
+}
+
+p 
+{
+    margin: 0 0 10px;
+}
+
+.container 
+{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container:after 
+{
+    clear: both;
+}
+
+.container-fluid 
+{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.container-fluid:before, 
+.container-fluid:after
+{
+    content: " ";
+    display: table;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, 
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, 
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, 
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, 
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, 
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, 
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, 
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 
+{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, 
+.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10,
+.col-xs-11, .col-xs-12 
+{
+    float: left;
+}
+
+.featurettes {
+    margin-bottom: 20px;
+}
+.featurette {
+    padding: 20px 0;
+}
+.featurette:nth-child(even) {
+    background-color: #f5a900;
+}
+.featurette h3 {
+    margin-top: 10px;
+}
+.featurette .container {
+    max-width: 970px;
+}
+.featurette .fa {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    font-size: 4em;
+    color: #1e86c8;
+}
+
+.featurette
+{
+    padding: 60px 0;
+}
+
+.featurette h3 {
+    font-size: 36px;
+}
+.featurette p 
+{
+    font-size: 21px;
+    font-weight: 300;
+}
+
+.featurette .fa 
+{
+    margin-right: 60px;
+    font-size: 10em;
+}
+
+.featurette:nth-child(even) 
+.fa {
+    float: right;
+    margin-right: 0;
+    margin-left: 60px;
+}
+
+
+#cp_desc 
+{ 
+     font-size: 2em !important; 
+    color: #ffffff;
+    
+}
+
+
+
+#map-canvas 
+{
+    width: 39em;
+    height: 24em;
+    padding: 0px;
+    float: right;
+}
+
+#add_ride{
+        margin: auto;
+    }
+    
+    #panel{
+        
+        float: right
+    }
+    #under_construction{
+        font-size: 3em;
+        color: blue;
+        text-align: center;
+        
+    }
