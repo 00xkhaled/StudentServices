@@ -38,50 +38,9 @@
             </p:tab>
 
             <p:tab title="#{msgs.bus_reservation}"> 
-                <p:ribbonGroup styleClass="ribbonGroup"
-<<<<<<< HEAD
-                               style="float:#{langBean.styleFloat};">
-                    <p:menubar>
-                        <p:submenu label="#{msgs.student}">
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_road_map}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_roadmap}">
-                                    <f:param name="i" value="2" />
-                                </p:commandButton>                    
-                            </p:menuitem>
-                             
-                            <p:separator/>
-                            
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.seat_reservation}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_seatRes}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.bus_position}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_position}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                            <p:separator/>
-                            <p:menuitem>
-                                <p:commandButton  value="#{msgs.check_in}" 
-                                                  styleClass="ribbonButton" 
-                                                  style="float:#{langBean.styleFloat};"                                      
-                                                  action="#{sessionBean.bus_checkin}">
-                                    <f:param name="i" value="1" />
-                                </p:commandButton>                    </p:menuitem>
-                        </p:submenu>
-                    </p:menubar>
-=======
-                               label="#{msgs.student}"                                
-                               style="float:#{langBean.styleFloat};">                    
+                    <p:ribbonGroup styleClass="ribbonGroup"
+                               label="#{msgs.student}"
+                               style="float:#{langBean.styleFloat};">  
                     <p:commandButton  value="#{msgs.bus_road_map}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"  
@@ -109,7 +68,6 @@
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
                                       action="#{sessionBean.bus_checkin()}">                        
                     </p:commandButton>                                         
->>>>>>> 7622f48076878427c4524373857126285ae9b2ee
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                label="#{msgs.driver}"

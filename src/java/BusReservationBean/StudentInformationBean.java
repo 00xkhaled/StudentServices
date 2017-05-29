@@ -59,13 +59,7 @@ public class StudentInformationBean implements Serializable {
     public void setSelectedStudent(StudentInformation selectedStudent) {
         this.selectedStudent = selectedStudent;
     } 
-<<<<<<< HEAD
-    public ArrayList<StudentInformation> getAvailableRides() {
-=======
-    
-    // hay hee elee ma3molelha call bl page
     public ArrayList<StudentInformation> getStudent() {
->>>>>>> 7622f48076878427c4524373857126285ae9b2ee
         return list;
     }
      public String getStudentName(){

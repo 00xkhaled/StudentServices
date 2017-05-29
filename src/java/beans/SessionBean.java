@@ -129,26 +129,13 @@ public class SessionBean implements Serializable {
     public void bus_std_info() {
         navigate("/bus_reservation/admin_pages/student_info.xhtml");
     }
-<<<<<<< HEAD
     public void bus_info(){
         navigate("/bus_reservation/admin_pages/bus_info.xhtml");
     }
     public void bus_driver_info(){
         navigate("/bus_reservation/admin_pages/driver_info.xhtml");
     }
-    public void bus_admin_position(){
-=======
-
-    public void bus_info() {
-        navigate("/bus_reservation/admin_pages/bus_info.xhtml");
-    }
-
-    public void bus_driver_info() {
-        navigate("/bus_reservation/admin_pages/driver_info.xhtml");
-    }
-
     public void bus_admin_position() {
->>>>>>> 7622f48076878427c4524373857126285ae9b2ee
         navigate("/bus_reservation/admin_pages/bus_position.xhtml");
     }
 
