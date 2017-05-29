@@ -50,7 +50,7 @@ public class StudentInformationBean implements Serializable {
     public String getStudentID(){
         return this.student_id;
     }
-    public void setRideID(String student_id){
+    public void setStudentID(String student_id){
         this.student_id=student_id;
     }
      public StudentInformation getSelectedStudent() {//selected model 
