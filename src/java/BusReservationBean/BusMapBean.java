@@ -45,4 +45,9 @@ model.addOverlay(new Marker(new LatLng(x, y), "GJU"));
         polygon.setFillOpacity(0.7);
         model.addOverlay(polygon);
        }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> 7622f48076878427c4524373857126285ae9b2ee

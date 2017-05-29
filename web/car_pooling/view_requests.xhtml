@@ -9,19 +9,23 @@
     <h:head>
         <title>#{msgs.car_pooling}</title>
     </h:head>
+    
+    
+    
+      
     <h:body>
        <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable"
-                             value="#{availableRidesBean.list}"                    
-                             selection="#{availableRidesBean.selectedRide}"
-                             rowKey="#{list.rideID}"                    
+                             value="#{availableRequestsBean.list}"                    
+                             selection="#{availableRequestsBean.selectedRequest}"
+                             rowKey="#{list.requestID}"                    
                              var="list"   
                              rows="2"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
-                             emptyMessage="#{msgs.no_events}"
+                             emptyMessage="#{msgs.no_requests}"
                              paginator="true"
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
@@ -31,7 +35,7 @@
                             update=":manage_events_form:manage_events_tbl"/>
 
                     <f:facet name="header" id="header">
-                        #{msgs.available_rides}
+                        #{msgs.available_requests}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
@@ -40,16 +44,16 @@
                               style="width:10%"
                               filterBy="#{ava}"
                               filterMatchMode="contains"
-                              sortBy="#{list.rideFrom}">                    
-                        <h:outputText value="#{list.rideFrom}"/>  
+                              sortBy="#{list.requestFrom}">                    
+                        <h:outputText value="#{list.requestFrom}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.to}"
                               style="width:10%"
-                              filterBy="#{list.rideTo}"
+                              filterBy="#{list.requestTo}"
                               filterMatchMode="contains"
-                              sortBy="#{list.rideTo}">                    
-                        <h:outputText value="#{list.rideTo}"/>  
+                              sortBy="#{list.requestTo}">                    
+                        <h:outputText value="#{list.requestTo}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.name}"
@@ -68,10 +72,10 @@
 
                     <p:column headerText="#{msgs.departure_time}"
                               style="width:15%"
-                              filterBy="#{list.departureTime}"
+                              filterBy="#{list.leavingTime}"
                               filterMatchMode="contains"
-                              sortBy="#{list.departureTime}">                    
-                        <h:outputText value="#{list.departureTime}"/>  
+                              sortBy="#{list.leavingTime}">                    
+                        <h:outputText value="#{list.leavingTime}"/>  
                     </p:column>
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
@@ -104,7 +108,7 @@
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action="add_ride" />                
+                                 action="add_request" />                
             </h:form>
         </ui:decorate>
     </h:body>

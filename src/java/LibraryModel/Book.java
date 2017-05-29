@@ -11,11 +11,10 @@ package LibraryModel;
  */
 import java.io.Serializable;
 public class Book implements Serializable {
-     private int bookId;
+
+    private int bookId;
     private String booktitleEn;
     private String booktitleAr;
-    private String authorsnameEn;
-    private String authorsnameAr;
     private String genre;
     private int publishyear;
     private String version;
@@ -24,6 +23,9 @@ public class Book implements Serializable {
     private int priceday;
     private String status;
     private String ownername;
+    private Authors authorEn;
+    private Authors authorAr;
+    private Authors author;
    
     public int getBookId() {
         return bookId;
@@ -48,23 +50,7 @@ public class Book implements Serializable {
     public void setBooktitleAr(String booktitleAr) {
         this.booktitleAr = booktitleAr;
     }
-   
-    public String getAuthorsnameEn() {
-        return authorsnameEn;
-    }
-  
-    public void setAuthorsnameEn(String authorsnameEn) {
-        this.authorsnameEn = authorsnameEn;
-    }
- 
-    public String getAuthorsnameAr() {
-        return authorsnameAr;
-    }
     
-    public void setAuthorsnameAr(String authorsnameAr) {
-        this.authorsnameAr = authorsnameAr;
-    }
-   
     public String getGenre() {
         return genre;
     }
@@ -128,4 +114,43 @@ public class Book implements Serializable {
     public void setOwnername(String ownername) {
         this.ownername = ownername;
     }
+    
+    
+    /**
+     * @return the authorEn
+     */
+    public Authors getAuthorEn() {
+        return authorEn;
+    }
+
+    /**
+     * @param authorEn the authorEn to set
+     */
+    public void setAuthorEn(Authors authorEn) {
+        this.authorEn = authorEn;
+    }
+
+    /**
+     * @return the authorAr
+     */
+    public Authors getAuthorAr() {
+        return authorAr;
+    }
+
+    /**
+     * @param authorAr the authorAr to set
+     */
+    public void setAuthorAr(Authors authorAr) {
+        this.authorAr = authorAr;
+    }
+    
+     public Authors getAuthor() {
+        return author;
+    }
+    
+     public void setAuthor(Authors author) {
+        this.author = author;
+    } 
+     
+ 
 }

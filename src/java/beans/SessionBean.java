@@ -16,11 +16,12 @@ import javax.inject.Named;
 @SessionScoped
 public class SessionBean implements Serializable {
     private String username;
-    private String password;  
+    private String password;          
     
     // Session attributes
     private Connection connection; 
-    private int selectedItemId;    
+    private int selectedItemId;  
+    private int menuIndex = 0;
     
     public SessionBean() {          
     }         
@@ -55,7 +56,15 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    }   
+    } 
+
+    public int getMenuIndex() {
+        return menuIndex;
+    }
+
+    public void setMenuIndex(int menuIndex) {
+        this.menuIndex = menuIndex;
+    }        
         
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -70,7 +79,7 @@ public class SessionBean implements Serializable {
         }      
         
         if(success){           
-            navigate("/car_pooling/add_ride");
+            navigate("/first_page");
         } 
     }      
     
@@ -95,24 +104,32 @@ public class SessionBean implements Serializable {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.getExternalContext().invalidateSession();
         }
-    }    
-    public void bus_position(){
+    }
+
+    public void bus_position() {
         navigate("/bus_reservation/student_pages/bus_position.xhtml");
     }
-    public void bus_roadmap(){
+
+    public void bus_roadmap() {
         navigate("/bus_reservation/student_pages/road_map.xhtml");
-    }public void bus_seatRes(){
+    }
+
+    public void bus_seatRes() {
         navigate("/bus_reservation/student_pages/seat_reservation.xhtml");
     }
-    public void bus_checkin(){
+
+    public void bus_checkin() {
         navigate("/bus_reservation/student_pages/check_in.xhtml");
     }
-    public void bus_status(){
+
+    public void bus_status() {
         navigate("/bus_reservation/driver_pages/bus_status.xhtml");
     }
-    public void bus_std_info(){
+
+    public void bus_std_info() {
         navigate("/bus_reservation/admin_pages/student_info.xhtml");
     }
+<<<<<<< HEAD
     public void bus_info(){
         navigate("/bus_reservation/admin_pages/bus_info.xhtml");
     }
@@ -120,14 +137,27 @@ public class SessionBean implements Serializable {
         navigate("/bus_reservation/admin_pages/driver_info.xhtml");
     }
     public void bus_admin_position(){
+=======
+
+    public void bus_info() {
+        navigate("/bus_reservation/admin_pages/bus_info.xhtml");
+    }
+
+    public void bus_driver_info() {
+        navigate("/bus_reservation/admin_pages/driver_info.xhtml");
+    }
+
+    public void bus_admin_position() {
+>>>>>>> 7622f48076878427c4524373857126285ae9b2ee
         navigate("/bus_reservation/admin_pages/bus_position.xhtml");
     }
+
     public void navigate(String url) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-         
+
         if (facesContext != null) {
             NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
             navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
         }
-    }         
+    }
 }
