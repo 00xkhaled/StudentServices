@@ -16,45 +16,63 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import LibraryModel.Authors;
 import LibraryDao.LibraryConnectionDao;
+import java.util.HashMap;
 
 /**
  *
  * @author tarekashi
  */
 public class AuthorsDao extends LibraryConnectionDao {
-    public ArrayList<Authors> buildEvents() throws Exception {
-                
+    public ArrayList<Authors> buildAuthors() throws Exception {
         ArrayList<Authors> list = new ArrayList<>();
+        Connection conn = getConnection();
         try {   
-            Connection conn = getConnection();
-            
-            String sql = "SELECT * FROM AUTHORS";                        
+            String sql = "SELECT * FROM AUTHORS ORDER BY AUTHOR_ID";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateEvent(rs));
+                list.add(populateAuthor(rs));
             }
-            
             rs.close();
             ps.close();
-            
             return list;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
     
-     private Authors populateEvent(ResultSet rs) throws SQLException {
-        Authors event = new Authors();
+      public HashMap<Integer, Authors> buildAuthorsMap() throws Exception {
+        HashMap<Integer, Authors> map = new HashMap<>();
+        Connection conn = getConnection();
         
-         event.setAuthorId(rs.getInt("AUTHOR_ID"));
-        event.setAuthornameEn(rs.getString("AUTHOR_NAME_EN"));
-        event.setAuthornameAr(rs.getString("AUTHOR_NAME_AR"));
-        return event;
+        try {            
+            String sql = "SELECT * FROM AUTHORS ORDER BY AUTHOR_ID";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
+            ResultSet rs = ps.executeQuery();           
+
+            while (rs.next()) {
+                Authors author = populateAuthor(rs);
+                map.put(author.getAuthorId(), author);
+            }
+            rs.close();
+            ps.close();
+
+            return map;
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
     }
-     
+    
+     private Authors populateAuthor(ResultSet rs) throws SQLException {
+        Authors author = new Authors();
+        author.setAuthorId(rs.getInt("AUTHOR_ID"));
+        author.setAuthornameEn(rs.getString("AUTHOR_NAME_EN"));
+        author.setAuthornameAr(rs.getString("AUTHOR_NAME_AR"));
+        return author;
+    }
+     /*
       public void insertAuthor(Authors event) throws Exception {                
         try {
             Connection conn = getConnection();
@@ -83,5 +101,5 @@ public class AuthorsDao extends LibraryConnectionDao {
         } catch (Exception ex) {
             Logger.getLogger(AuthorsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 }

@@ -11,7 +11,8 @@ package LibraryModel;
  */
 import java.io.Serializable;
 public class Book implements Serializable {
-     private int bookId;
+
+    private int bookId;
     private String booktitleEn;
     private String booktitleAr;
     private String genre;
@@ -22,6 +23,8 @@ public class Book implements Serializable {
     private int priceday;
     private String status;
     private String ownername;
+    private Authors authorEn;
+    private Authors authorAr;
     private Authors author;
    
     public int getBookId() {
@@ -46,10 +49,6 @@ public class Book implements Serializable {
    
     public void setBooktitleAr(String booktitleAr) {
         this.booktitleAr = booktitleAr;
-    }
-   
-    public void setAuthor(Authors author){
-        this.author = author;
     }
     
     public String getGenre() {
@@ -116,8 +115,42 @@ public class Book implements Serializable {
         this.ownername = ownername;
     }
     
-    public Authors getAuthor ()
-    {
+    
+    /**
+     * @return the authorEn
+     */
+    public Authors getAuthorEn() {
+        return authorEn;
+    }
+
+    /**
+     * @param authorEn the authorEn to set
+     */
+    public void setAuthorEn(Authors authorEn) {
+        this.authorEn = authorEn;
+    }
+
+    /**
+     * @return the authorAr
+     */
+    public Authors getAuthorAr() {
+        return authorAr;
+    }
+
+    /**
+     * @param authorAr the authorAr to set
+     */
+    public void setAuthorAr(Authors authorAr) {
+        this.authorAr = authorAr;
+    }
+    
+     public Authors getAuthor() {
         return author;
     }
+    
+     public void setAuthor(Authors author) {
+        this.author = author;
+    } 
+     
+ 
 }
