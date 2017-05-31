@@ -21,59 +21,86 @@
                                  style="float: #{langBean.styleFloat};" 
                                  columns="3"                              
                                  dir="#{langBean.dir}">
-                        
-                        <p:outputLabel value="#{msgs.bus_id}:" />
-                        <p:inputText id="bus_id"
+
+                        <p:outputLabel value="#{msgs.bus_number}:"/>
+                        <p:inputText id="bus_number"
+                                     value="#{addEditBusBean.busNumber}"
                                      style="width:350px"
-                                     value="#{add_bus.bus_id}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="bus_id" styleClass="errorMsg"/>
-
-                        <p:outputLabel value="#{msgs.bus_number}:"/>
-                        <p:inputText id="bus_number"
-                                     value="#{add_bus.bus_number}"
-                                     style="width:350px"
-                                     required="true"
-                                     maxlength="512"
-                                     requiredMessage=" #{msgs.required_msg}">
-                        </p:inputText>
                         <h:message for="bus_number" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.bus_type_ar}:" />
-                        <p:inputText id="bus_type"
-                                     value="#{add_bus.bus_type_ar}"
+                        <p:outputLabel value="#{msgs.bus_type_en}:" />
+                        <p:inputText id="bus_type_en"
+                                     value="#{addEditBusBean.busTypeEn}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
-                                     requiredMessage=" #{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="bus_type" styleClass="errorMsg"/>
+                        <h:message for="bus_type_en" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.bus_type}:" />
-                        <p:inputText id="bus_type"
-                                     value="#{add_bus.bus_type}"
+                        <p:outputLabel value="#{msgs.bus_type_ar}:" />
+                        <p:inputText id="bus_type_ar"
+                                     value="#{addEditBusBean.busTypeAr}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
-                                     requiredMessage=" #{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="bus_type" styleClass="errorMsg"/>
+                        <h:message for="bus_type_ar" styleClass="errorMsg"/>
                         
                         <p:outputLabel value="#{msgs.bus_capacity}:" />
                         <p:inputText id="bus_capacity"
-                                     value="#{add_bus.bus_capacity}"
+                                     value="#{addEditBusBean.busCapacity}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
-                                     requiredMessage=" #{msgs.bus_capacity}">
+                                     requiredMessage="#{msgs.bus_capacity}">
                         </p:inputText>
-                        <h:message for="bus_capacity" styleClass="errorMsg"/>
+                        <h:message for="bus_plate" styleClass="errorMsg"/>
                         
-
-                                                             
+                        <p:outputLabel value="#{msgs.plate_no}:" />
+                        <p:inputText id="bus_plate"
+                                     value="#{addEditBusBean.plateNo}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.plate_no}">
+                        </p:inputText>
+                        <h:message for="bus_plate" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.driver_id}:" />
+                        <p:inputText id="bus_driver_id"
+                                     value="#{addEditBusBean.driverID}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.driver_id}">
+                        </p:inputText>
+                        <h:message for="bus_driver_id" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.driver_name_en}:" />
+                        <p:inputText id="bus_driver_name_en"
+                                     value="#{addEditBusBean.driverNameEn}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.driver_name_en}">
+                        </p:inputText>
+                        <h:message for="driver_name_en" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.driver_name_ar}:" />
+                        <p:inputText id="bus_driver_name_ar"
+                                     value="#{addEditBusBean.driverNameAr}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.driver_name_ar}">
+                        </p:inputText>
+                        <h:message for="driver_name_en" styleClass="errorMsg"/>                                
 
                                                
                     </h:panelGrid>
@@ -83,14 +110,16 @@
                                  styleClass="commandButton"
                                  icon="ui-icon-disk"
                                  iconPos="#{langBean.styleFloat}"
-                                 style="float:#{langBean.styleFloat}"/>
+                                 style="float:#{langBean.styleFloat}"
+                                 actionListener="#{addEditBusBean.saveBus()}"/>
                 <p:commandButton value="#{msgs.cancel}"
                                  icon="ui-icon-cancel"  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  immediate="true" 
-                                 style="float:#{langBean.styleFloat}"                                 
-                                 action="bus_info"  />                                   
+                                 style="float:#{langBean.styleFloat}" 
+                                 actionListener="#{sessionBean.setSelectedBusID(-1)}"
+                                 action="bus_info"/>                                   
             </h:form>
         </ui:decorate>
     </h:body>
