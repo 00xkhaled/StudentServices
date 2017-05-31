@@ -20,7 +20,8 @@ public class SessionBean implements Serializable {
     
     // Session attributes
     private Connection connection; 
-    private int selectedItemId;  
+    private int selectedItemId; 
+     private int selectedBusID;
     private int menuIndex = 0;
     
     public SessionBean() {          
@@ -56,6 +57,13 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
+    } 
+     public int getSelectedIBusID() {
+        return selectedBusID;
+    }
+
+    public void setSelectedBusID(int selectedBusID) {
+        this.selectedBusID = selectedBusID;
     } 
 
     public int getMenuIndex() {

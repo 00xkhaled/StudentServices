@@ -1,7 +1,4 @@
 package BusReservationBean;
-
-
-
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -38,7 +35,6 @@ model.addOverlay(new Marker(new LatLng(x, y), "GJU"));
         Polygon polygon = new Polygon();
         polygon.getPaths().add(coord1);
         polygon.getPaths().add(coord2);
-
         polygon.setStrokeColor("#FF9900");
         polygon.setFillColor("#FF9900");
         polygon.setStrokeOpacity(0.7);
