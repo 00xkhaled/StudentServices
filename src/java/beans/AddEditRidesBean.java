@@ -20,7 +20,7 @@ import models.AvailableRides;
 public class AddEditRidesBean implements Serializable
 {
 
-    private String ride_id;
+    private int ride_id;
     private String ride_from;
     private String ride_to;
     private String name;
@@ -36,16 +36,27 @@ public class AddEditRidesBean implements Serializable
    
     public AddEditRidesBean() {
     }
-    
+    //the next methode will help me while editing, so that it will get the values of the 
+    //attributes and fill them in the in the input fields
      @PostConstruct
     public void init(){
-      
        try {
-           addRide();
+        ride_id = sessionBean.getSelectedItemId();
+            
+            if(ride_id > 0){
+            AvailableRides ride=ridesdao.getRide(ride_id);
+            
+            ride_from=ride.getRideFrom();
+            ride_to=ride.getRideTo();
+            name=ride.getName();
+            phone=ride.getPhone();
+            departure_time=ride.getDepartureTime();
+            }
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //this method should add the value directly. and it will navigate to the edit update method in the dao.
     public void addRide(){
          try { 
         AvailableRides insertRide = new AvailableRides();
@@ -56,9 +67,13 @@ public class AddEditRidesBean implements Serializable
         insertRide.setPhone(phone);
         insertRide.setDepartureTime(departure_time);
         System.out.println("beans.AddEditAvailableRidesBean.AddRide()");
-            ridesdao.insertRide(insertRide);            
+            if (sessionBean.getSelectedItemId() > 0) {
+                ridesdao.updateRide(insertRide);
+            } else {
+                ridesdao.insertRide(insertRide);
+            }         
         } catch (Exception ex) {
-            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEditRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         sessionBean.navigate("available_rides");
        
@@ -70,10 +85,10 @@ public class AddEditRidesBean implements Serializable
     public void setSelectedRide(AvailableRides selectedRides) {
         this.selectedRide = selectedRides;
     } 
-    public String getRideID(){
+    public int getRideID(){
         return this.ride_id;
     }
-    public void setRideID(String ride_id){
+    public void setRideID(int ride_id){
         this.ride_id=ride_id;
     }
      public String getRideFrom(){
@@ -110,5 +125,9 @@ public class AddEditRidesBean implements Serializable
     public void setDepartureTime(String departure_time){
         this.departure_time=departure_time;
     }
-    
+ 
+     public void saveSelectedItemId(){
+         System.out.println("beans.AddEditRidesBean.saveSelectedItemId()");
+        sessionBean.setSelectedItemId(selectedRide.getRideID());
+    }
 }
