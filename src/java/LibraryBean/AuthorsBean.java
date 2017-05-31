@@ -44,7 +44,7 @@ public class AuthorsBean implements Serializable {
        
        public void init(){
            try{
-               authorList = authors_dao.buildEvents();
+               authorList = authors_dao.buildAuthors();
            } catch (Exception ex){
                Logger.getLogger(AuthorsBean.class.getName()).log(Level.SEVERE, null, ex);   
            } 

@@ -5,6 +5,7 @@
  */
 package LibraryBean;
 
+import LibraryDao.AuthorsDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -43,6 +44,7 @@ public class BookBean implements Serializable {
     
     private Book SelectedBook; //model object to save the selected book;
     private final BookInformationDao book_inf_dao = new BookInformationDao();
+    private final AuthorsDao authors_dao = new AuthorsDao ();
     private ArrayList<Book> list;
     
     @Inject
@@ -56,7 +58,7 @@ public class BookBean implements Serializable {
        
        public void init(){
            try{
-               list = book_inf_dao.buildEvents();
+               list = book_inf_dao.buildEvents(authors_dao.buildAuthorsMap());
            } catch (Exception ex){
                Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);   
            } 
@@ -266,4 +268,24 @@ public class BookBean implements Serializable {
        public void setList(ArrayList<Book> list) { //TO SET IN THE list of type model to save result from database
         this.list = list;
     }
+       
+       
+           /** hamza adda
+     */       
+       
+          public void BuySelectedBook(){
+        try {
+            book_inf_dao.BuyBook(getSelectedBook());     
+        } catch (Exception ex) {
+            Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+       
+           public void borrowSelectedBook(){
+        try {
+            book_inf_dao.borrowBook(getSelectedBook());     
+        } catch (Exception ex) {
+            Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }     
 }

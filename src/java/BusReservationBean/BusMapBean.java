@@ -15,7 +15,7 @@ import org.primefaces.model.map.Polygon;
 
 public class BusMapBean implements Serializable {
     
-    private MapModel mapModel;    
+    private MapModel MapModel;    
     private double lat;  
     private double lng;  
     double x=31.777067;
@@ -45,5 +45,4 @@ model.addOverlay(new Marker(new LatLng(x, y), "GJU"));
         polygon.setFillOpacity(0.7);
         model.addOverlay(polygon);
        }
-
 }

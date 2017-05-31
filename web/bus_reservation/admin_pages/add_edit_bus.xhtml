@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.student_info}</title>
+        <title>#{msgs.bus_info}</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">  
@@ -17,7 +17,7 @@
                 <p:panel header="#{msgs.bus_info}"                            
                          style="min-height:400px; 
                                 direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-                    <h:panelGrid id="add"
+                    <h:panelGrid id="add_bus"
                                  style="float: #{langBean.styleFloat};" 
                                  columns="3"                              
                                  dir="#{langBean.dir}">
@@ -42,6 +42,16 @@
                         </p:inputText>
                         <h:message for="bus_number" styleClass="errorMsg"/>
 
+                        <p:outputLabel value="#{msgs.bus_type_ar}:" />
+                        <p:inputText id="bus_type"
+                                     value="#{add_bus.bus_type_ar}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="bus_type" styleClass="errorMsg"/>
+                        
                         <p:outputLabel value="#{msgs.bus_type}:" />
                         <p:inputText id="bus_type"
                                      value="#{add_bus.bus_type}"

@@ -59,7 +59,7 @@ public class AddBookBean implements Serializable {
     {
         try{
             bookId = sessionBean.getSelectedItemId();
-            authors = authorsDao.buildEvents();
+            authors = authorsDao.buildAuthors();
             
             if (bookId > 0){
                 Book book = bookinformationDao.getBook(bookId);
@@ -80,7 +80,7 @@ public class AddBookBean implements Serializable {
         }
     }
     
-    public ArrayList <Authors> getAuthors()  
+    public ArrayList<Authors>getAuthors()  
     {
          return authors;
     }
@@ -260,7 +260,7 @@ public class AddBookBean implements Serializable {
             Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        sessionBean.navigate("library");
+        sessionBean.navigate("library/library.xhtml");
     }
         
     }

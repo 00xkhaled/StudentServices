@@ -23,7 +23,7 @@ public class LibraryConnectionDao implements Serializable {
     private String databasePassword;
     private final String oracleDriver;    
     private final boolean useConnectionPool = false;
-    private final SessionBean sessionBean;
+    final SessionBean sessionBean;
     
     public LibraryConnectionDao() {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";

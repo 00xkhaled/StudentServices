@@ -18,7 +18,7 @@ xmlns:p="http://primefaces.org/ui">
        style="width:1300px;height:500px"
        model="#{BmapBean.model}"/>
     <h:form>
-    <p:poll interval="10" onstart="#{sessionBean.connection}" listener="#{BmapBean.update}" update="gmap"  />
+    <p:poll interval="10" listener="#{BmapBean.update}" update="gmap"  />
     </h:form>
     </ui:decorate>
     </h:body>
