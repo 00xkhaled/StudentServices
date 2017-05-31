@@ -17,6 +17,7 @@ import models.AvailableRides;
  */
 public class AvailableRidesDao extends ConnectionDao {    
     
+    //it will be used by the AvailableRidesBean to flush the data into the tabel;(working)
     public ArrayList<AvailableRides> getRides() throws Exception {
                 
         ArrayList<AvailableRides> list = new ArrayList<>();
@@ -42,7 +43,8 @@ public class AvailableRidesDao extends ConnectionDao {
     }
 
    
-    
+    //it will cooperate with the getRide() methode so that it will seperate the 
+    //returned data before return it again.
     private AvailableRides populateRide(ResultSet rs) throws SQLException {
         AvailableRides ride = new AvailableRides();
         
@@ -54,7 +56,7 @@ public class AvailableRidesDao extends ConnectionDao {
         ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
         return ride;
     }
-    
+    //not working
     public void insertRide(AvailableRides ride) throws Exception {                
         System.out.println("reached dao...");
         try {
@@ -68,22 +70,20 @@ public class AvailableRidesDao extends ConnectionDao {
                     + " DRIVER_PHONE,"
                     + " DEPARTURE_TIME"
                     + " VALUES ((select max(RIDE_ID) from AVAILABLE_RIDES)+1,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql); 
-            
-            ps.setString(1, ride.getRideFrom());
-            ps.setString(2, ride.getRideTo());
-            ps.setString(3, ride.getName());
-            ps.setString(4, ride.getPhone());
-            ps.setString(5, ride.getDepartureTime());
-            
-            ps.executeUpdate();
-            
-            ps.close();
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, ride.getRideFrom());
+                ps.setString(2, ride.getRideTo());
+                ps.setString(3, ride.getName());
+                ps.setString(4, ride.getPhone());
+                ps.setString(5, ride.getDepartureTime());
+                
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-    
+    //updating(not working)
     public void updateRide(AvailableRides ride) throws Exception {
         try {
             Connection conn = getConnection();
@@ -111,7 +111,7 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    
+    //to delete the selected ride.(working)
     public void deleteRide(int RideID) throws Exception {
         Connection conn = getConnection();
         
@@ -127,27 +127,20 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    /*
-    public AvailableRides getEvent(int RideId) throws Exception {
+    //this methode is to get only one ride by id;
+         public AvailableRides getRide(int ride_id) throws Exception {
         try {   
-            AvailableRides ride = null;
+            AvailableRides ride=null;
             Connection conn = getConnection();
             
-            String sql = "SELECT AVAILABLE_RIDES.*, "
-                    + " EVENT_TYPES.NAME_EN as TYPE_EN,"
-                    + " EVENT_TYPES.NAME_AR as TYPE_AR "
-                    + " FROM EVENTS, EVENT_TYPES "
-                    + " WHERE EVENTS.EVENT_TYPE_ID=EVENT_TYPES.EVENT_TYPE_ID AND"
-                    + " RIDE_ID=?";                        
+            String sql = "SELECT AVAILABLE_RIDES.* WHERE RIDE_ID=?";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
-            ps.setInt(1, eventId);
+            ps.setInt(1, ride_id);
             
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
                 ride = populateRide(rs);
-                ride.getType().setNameEn(rs.getString("TYPE_EN"));
-                ride.getType().setNameAr(rs.getString("TYPE_AR"));
             }
 
             rs.close();
@@ -158,11 +151,10 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-      */      
     public static void main(String [] args){        
         try {
             AvailableRidesDao dao = new AvailableRidesDao();                
-            //ArrayList<Event> events = dao.buildEvents();
+            
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesDao.class.getName()).log(Level.SEVERE, null, ex);
         }
