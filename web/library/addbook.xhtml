@@ -19,11 +19,11 @@ and open the template in the editor.
              <h:form id="add_book">
                  <p:messages id="books" closable="true" globalOnly="true"/>
                   <p:panel header="#{msgs.book_info}"                            
-                         style="min-height:675px; 
+                         style="min-height:450px; 
                                 direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                       <h:panelGrid id="add"
                                  style="float: #{langBean.styleFloat};" 
-                                 columns="1"                              
+                                 columns="2"                              
                                  dir="#{langBean.dir}">
                           <p:outputLabel value="#{msgs.book_Id}:" for="bookId"/>
                         <p:inputText id="bookId"
@@ -31,13 +31,13 @@ and open the template in the editor.
                                      value="#{AddBookBean.bookId}"                                      
                                      maxlength="512">
                         </p:inputText>
-                           <p:outputLabel value="#{msgs.book_title_en}:" for="book_title_en"/>
+                           <p:outputLabel value="#{msgs.book_title_en}" for="book_title_en"/>
                         <p:inputText id="book_title_en"
                                      style="width:400px"
                                      value="#{AddBookBean.booktitleEn}"                                      
                                      maxlength="512">
                         </p:inputText>
-                           <p:outputLabel value="#{msgs.book_title_ar}:" for="book_title_ar"/>
+                           <p:outputLabel value="#{msgs.book_title_ar}" for="book_title_ar"/>
                         <p:inputText id="book_title_ar"
                                      value="#{AddBookBean.booktitleAr}"
                                      style="width:400px"
@@ -106,7 +106,7 @@ and open the template in the editor.
                               <p:outputLabel value="#{msgs.owner_name}:" for="owner_name"/>
                         <p:inputText id="owner_name"
                                      value="#{AddBookBean.ownername}"
-                                     style="width:600px"
+                                     style="width:400px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
                                      maxlength="512">
