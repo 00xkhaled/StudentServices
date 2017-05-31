@@ -16,7 +16,8 @@ public class Lecture implements Serializable{
     private ArrayList <Lecturer> lecturers;
     private String lectureNameEn;
     private String lectureNameAr;
-    private Major major;
+    //the following attribute was of type Major:
+    private String major;
     private ArrayList <Post> posts;
     private ArrayList <LectureDocument> documents;
 
@@ -73,11 +74,11 @@ public class Lecture implements Serializable{
         this.lectureNameAr = lectureNameAr;
     }
 
-    public Major getMajor() {
+    public String getMajor() {
         return major;
     }
 
-    public void setMajor(Major major) {
+    public void setMajor(String major) {
         this.major = major;
     }    
 }
