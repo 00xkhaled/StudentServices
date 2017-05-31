@@ -5,16 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import BusReservationModel.BusInformation;
-import BusReservationDao.BusConnectionDao;
 
 
 public class BusInformationDao extends BusConnectionDao { 
+
     
-    public ArrayList<BusInformation> buildEvents() throws Exception {
+    public ArrayList<BusInformation> buildBus() throws Exception {
                 
         ArrayList<BusInformation> list = new ArrayList<>();
         try {   
@@ -26,7 +25,7 @@ public class BusInformationDao extends BusConnectionDao {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateEvent(rs));
+                list.add(populateBuses(rs));
             }
             
             rs.close();
@@ -40,28 +39,29 @@ public class BusInformationDao extends BusConnectionDao {
 
    
     
-    private BusInformation populateEvent(ResultSet rs) throws SQLException {
-        BusInformation event = new BusInformation();
+    private BusInformation populateBuses(ResultSet rs) throws SQLException {
+        BusInformation bus = new BusInformation();
         
-        event.setBusID(rs.getInt("BUS_ID"));
-        event.setBusNumber(rs.getInt("BUS_NUMBER"));
-        event.setDriverNameEn(rs.getString("DRIVER_NAME_EN"));
-        event.setDriverNameAr(rs.getString("DRIVER_NAME_AR"));
-        event.setBusCapacity(rs.getInt("BUS_CAPACITY"));
-        event.setBusTypeEn(rs.getString("BUS_TYPE_EN"));
-        event.setBusTypeAr(rs.getString("BUS_TYPE_AR"));
-        event.setDriverID(rs.getInt("DRIVER_ID"));
-        event.setPlateNo(rs.getInt("PLATE_NO"));
+        bus.setBusID(rs.getInt("BUS_ID"));
+        bus.setBusNumber(rs.getInt("BUS_NUMBER"));
+        bus.setDriverNameEn(rs.getString("DRIVER_NAME_EN"));
+        bus.setDriverNameAr(rs.getString("DRIVER_NAME_AR"));
+        bus.setBusCapacity(rs.getInt("BUS_CAPACITY"));
+        bus.setBusTypeEn(rs.getString("BUS_TYPE_EN"));
+        bus.setBusTypeAr(rs.getString("BUS_TYPE_AR"));
+        bus.setDriverID(rs.getInt("DRIVER_ID"));
+        bus.setPlateNo(rs.getInt("PLATE_NO"));
        
-        return event;
+        return bus;
     }
     
-    public void insertBus(BusInformation event) throws Exception {                
+    public void insertBus(BusInformation bus) throws Exception {                
         try {
             Connection conn = getConnection();
             
-            String sql = "INSERT INTO BUSES "
-                    + "( BUS_ID,"
+            String sql = 
+                    "INSERT INTO BUSES "
+                    + "( BUS_ID, "
                     + " BUS_NUMBER,"
                     + " DRIVER_NAME_EN,"  
                     + " DRIVER_NAME_AR,"
@@ -71,27 +71,26 @@ public class BusInformationDao extends BusConnectionDao {
                     + " DRIVER_ID,"
                     + " PLATE_NO,"
                     + " VALUES ((select max(BUS_ID) from BUSES)+1,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql); 
+                PreparedStatement ps = conn.prepareStatement(sql); 
+                ps.setInt(1, bus.getBusNumber());
+                ps.setString(2, bus.getDriverNameEn());
+                ps.setString(3, bus.getDriverNameAr());
+                ps.setInt(4, bus.getBusCapacity());
+                ps.setString(5,bus.getBusTypeEn());
+                ps.setString(6,bus.getBusTypeAr());
+                ps.setInt(7, bus.getDriverID());
+                ps.setInt(8, bus.getPlateNo());
+                
+                
+                ps.executeUpdate();
+                ps.close();
             
-            ps.setInt(1, event.getBusNumber());
-            ps.setString(2, event.getDriverNameEn());
-            ps.setString(3, event.getDriverNameAr());
-            ps.setInt(4, event.getBusCapacity()); 
-            ps.setString(5,   event.getBusTypeEn());
-            ps.setString(6,   event.getBusTypeAr());
-            ps.setInt(7, event.getDriverID());
-            ps.setInt(8, event.getPlateNo());
-                        
-            
-            ps.executeUpdate();
-            
-            ps.close();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
     
-    public void updateEvent(BusInformation event) throws Exception {
+    public void updateBus(BusInformation bus) throws Exception {
         try {
             Connection conn = getConnection();
 
@@ -107,14 +106,14 @@ public class BusInformationDao extends BusConnectionDao {
                     + " WHERE BUS_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setInt(1, event.getBusNumber());
-            ps.setString(2, event.getDriverNameEn());
-            ps.setString(3, event.getDriverNameAr());
-            ps.setInt(4, event.getBusCapacity()); 
-            ps.setString(5,   event.getBusTypeEn());
-            ps.setString(6,   event.getBusTypeAr());
-            ps.setInt(7, event.getDriverID());
-            ps.setInt(8, event.getPlateNo());
+            ps.setInt(1, bus.getBusNumber());
+            ps.setString(2, bus.getDriverNameEn());
+            ps.setString(3, bus.getDriverNameAr());
+            ps.setInt(4, bus.getBusCapacity()); 
+            ps.setString(5,bus.getBusTypeEn());
+            ps.setString(6,bus.getBusTypeAr());
+            ps.setInt(7, bus.getDriverID());
+            ps.setInt(8, bus.getPlateNo());
 
             ps.executeUpdate();
             
@@ -123,27 +122,28 @@ public class BusInformationDao extends BusConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    
-    public void deleteEvent(int bus_id) throws Exception {
-        Connection conn = getConnection();
-        
+        public  void deleteBus(int busID) throws Exception {
+
         try {
+            Connection conn;
+            conn = getConnection();
             String sql = "DELETE FROM BUSES WHERE BUS_ID=?";                               
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, bus_id);
+            ps.setInt(1, busID);
             
             ps.executeUpdate();
 
             ps.close();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
-        }
-    }
+        }    }
+    
+
     
     public static void main(String [] args){        
         try {
             BusInformationDao dao = new BusInformationDao();                
-            //ArrayList<Event> events = dao.buildEvents();
+            
         } catch (Exception ex) {
             Logger.getLogger(StudentInformationDao.class.getName()).log(Level.SEVERE, null, ex);
         }

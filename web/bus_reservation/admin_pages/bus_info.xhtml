@@ -50,7 +50,7 @@
                     <h:outputText value="#{list.busNumber}"/>  
                 </p:column>
                     
-                <p:column headerText="#{msgs.bus_type}"
+                <p:column headerText="#{msgs.bus_type_en}"
                           style="width:10%"
                           filterBy="#{list.busTypeEn}"
                           filterMatchMode="contains"
@@ -67,18 +67,18 @@
                                              iconPos="#{langBean.styleFloat}"
                                              styleClass="commandButton"
                                              style="float:#{langBean.styleFloat}" 
-                                             disabled="#{manageEventsBean.selectedEvent==null}"
+                                             disabled="#{busInformationBean.selectedBus==null}"
                                              onclick="return confirm('#{msgs.confirm_delete_event}?');"
-                                             actionListener="#{manageEventsBean.deleteSelectedEvent()}"
-                                             action="manage_student" />
+                                             actionListener="#{busInformationBean.deleteSelectedBus()}"
+                                             action="bus_info" />
                             <p:commandButton value="#{msgs.edit}"
                                              icon="ui-icon-pencil"                                  
                                              iconPos="#{langBean.styleFloat}"
                                              styleClass="commandButton"
                                              style="float:#{langBean.styleFloat}" 
-                                             disabled="#{manageEventsBean.selectedEvent==null}"
-                                             actionListener="#{manageEventsBean.saveSelectedItemId()}"
-                                             action="add_edit_student"
+                                             disabled="#{busInformationBean.selectedBus==null}"
+                                             actionListener="#{busInformationBean.saveSelectedBusID()}"
+                                             action="add_edit_bus"
                                                 />
                         </p:toolbarGroup>
                     </p:toolbar>
@@ -90,7 +90,7 @@
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 action="add_edit_student"/>      
+                                 action="add_edit_bus"/>      
         </h:form>        
         </ui:decorate>
 
