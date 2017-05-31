@@ -28,7 +28,7 @@ import javax.faces.view.ViewScoped;
 @Named(value = "addbookBean")
 @ViewScoped
 public class AddBookBean implements Serializable {
-
+    
     private ArrayList <Authors> authors;
     private final AuthorsDao authorsDao = new AuthorsDao ();
     private final BookInformationDao bookinformationDao = new BookInformationDao();
@@ -58,13 +58,13 @@ public class AddBookBean implements Serializable {
     public void init()
     {
         try{
-            bookId = sessionBean.getSelectedItemId();
+            setBookId(sessionBean.getSelectedItemId());
             authors = authorsDao.buildAuthors();
             
-            if (bookId > 0){
-                Book book = bookinformationDao.getBook(bookId);
-                booktitleEn = book.getBooktitleEn();
-                booktitleAr= book.getBooktitleAr();
+            if (getBookId() > 0){
+                Book book = bookinformationDao.getBook(getBookId());
+                setBooktitleEn(book.getBooktitleEn());
+                setBooktitleAr(book.getBooktitleAr());
                 genre = book.getGenre();
                 publishyear = book.getPublishyear();
                 version = book.getVersion();
@@ -233,16 +233,60 @@ public class AddBookBean implements Serializable {
     public void setOwnername(String ownername) {
         this.ownername = ownername;
     }
+    /**
+     * @return the booktitleEn
+     */
+    public String getBooktitleEn() {
+        return booktitleEn;
+    }
+
+    /**
+     * @param booktitleEn the booktitleEn to set
+     */
+    public void setBooktitleEn(String booktitleEn) {
+        this.booktitleEn = booktitleEn;
+    }
+
+    /**
+     * @return the booktitleAr
+     */
+    public String getBooktitleAr() {
+        return booktitleAr;
+    }
+
+    /**
+     * @param booktitleAr the booktitleAr to set
+     */
+    public void setBooktitleAr(String booktitleAr) {
+        this.booktitleAr = booktitleAr;
+    }
+    
+    /**
+     * @return the bookId
+     */
+    public int getBookId() {
+        return bookId;
+    }
+
+    /**
+     * @param bookId the bookId to set
+     */
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+
     
     public void saveBook()
     {
         try{
+            
         Book book = new Book();
         Authors author = authors.get(authorId - 1);
-        book.setBookId(bookId);
+        book.setBookId(getBookId());
         book.setAuthor(author);
-        book.setBooktitleAr(booktitleAr);
-        book.setBooktitleEn(booktitleEn);
+        book.setBooktitleAr(getBooktitleAr());
+        book.setBooktitleEn(getBooktitleEn());
         book.setGenre(genre);
         book.setNumofpages(numofpages);
         book.setPrice(price);

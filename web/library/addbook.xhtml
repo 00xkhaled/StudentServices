@@ -28,38 +28,38 @@ and open the template in the editor.
                           <p:outputLabel value="#{msgs.book_Id}:" for="bookId"/>
                         <p:inputText id="bookId"
                                      style="width:400px"
-                                     value="#{AddBookBean.bookId}"                                      
+                                     value="#{addbookBean.bookId}"                                      
                                      maxlength="512">
                         </p:inputText>
                            <p:outputLabel value="#{msgs.book_title_en}" for="book_title_en"/>
                         <p:inputText id="book_title_en"
                                      style="width:400px"
-                                     value="#{AddBookBean.booktitleEn}"                                      
+                                     value="#{addbookBean.booktitleEn}"                                      
                                      maxlength="512">
                         </p:inputText>
                            <p:outputLabel value="#{msgs.book_title_ar}" for="book_title_ar"/>
                         <p:inputText id="book_title_ar"
-                                     value="#{AddBookBean.booktitleAr}"
+                                     value="#{addbookBean.booktitleAr}"
                                      style="width:400px"
                                      dir="rtl"
                                      maxlength="512">
                         </p:inputText>
                            <p:outputLabel value="#{msgs.authors_name_en}:" for="authors_name_en"/>
                         <p:inputText id="authors_name_en"
-                                     value="#{AddBookBean.authorsnameEn}"
+                                     value="#{addbookBean.authorsnameEn}"
                                      style="width:400px"
                                      maxlength="512">
                         </p:inputText>
                            <p:outputLabel value="#{msgs.authors_name_ar}:" for="authors_name_ar"/>
                         <p:inputText id="authors_name_ar"
-                                     value="#{AddBookBean.authorsnameAr}"
+                                     value="#{addbookBean.authorsnameAr}"
                                      style="width:400px"
                                      dir="rtl"
                                      maxlength="512">
                         </p:inputText>
                            <p:outputLabel value="#{msgs.genre}:" for="genre"/>
                         <p:inputText id="genre"
-                                     value="#{AddBookBean.genre}"
+                                     value="#{addbookBean.genre}"
                                      style="width:100px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
@@ -67,7 +67,7 @@ and open the template in the editor.
                         </p:inputText>
                            <p:outputLabel value="#{msgs.publish_year}:" for="publish_year"/>
                         <p:inputText id="publish_year"
-                                     value="#{AddBookBean.publishyear}"
+                                     value="#{addbookBean.publishyear}"
                                      style="width:100px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
@@ -75,7 +75,7 @@ and open the template in the editor.
                         </p:inputText>
                             <p:outputLabel value="#{msgs.version}:" for="version"/>
                         <p:inputText id="version"
-                                     value="#{AddBookBean.version}"
+                                     value="#{addbookBean.version}"
                                      style="width:100px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
@@ -83,7 +83,7 @@ and open the template in the editor.
                         </p:inputText>
                              <p:outputLabel value="#{msgs.page_no}:" for="page_no"/>
                         <p:inputText id="page_no"
-                                     value="#{AddBookBean.numofpages}"
+                                     value="#{addbookBean.numofpages}"
                                      style="width:100px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
@@ -91,21 +91,21 @@ and open the template in the editor.
                         </p:inputText>
                              <p:outputLabel value="#{msgs.price}:" for="price"/>
                         <p:inputText id="price"
-                                     value="#{AddBookBean.price}"
+                                     value="#{addbookBean.price}"
                                      style="width:100px"
                                      maxlength="512">
                         </p:inputText>
                            
                                <p:outputLabel value="#{msgs.price_day}:" for="price_day"/>
                         <p:inputText id="price_day"
-                                     value="#{AddBookBean.priceday}"
+                                     value="#{addbookBean.priceday}"
                                      style="width:100px"
                                      maxlength="512">
                         </p:inputText>
                              
                               <p:outputLabel value="#{msgs.owner_name}:" for="owner_name"/>
                         <p:inputText id="owner_name"
-                                     value="#{AddBookBean.ownername}"
+                                     value="#{addbookBean.ownername}"
                                      style="width:400px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
@@ -113,7 +113,7 @@ and open the template in the editor.
                         </p:inputText>
                            <p:outputLabel value="#{msgs.status}:" for="version"/>
                         <p:inputText id="status"
-                                     value="#{AddBookBean.status}"
+                                     value="#{addbookBean.status}"
                                      style="width:100px"
                                      required="true"                                                                                  
                                      requiredMessage=" #{msgs.required_msg}"
