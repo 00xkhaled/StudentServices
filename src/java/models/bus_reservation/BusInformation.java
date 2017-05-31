@@ -1,5 +1,5 @@
 
-package BusReservationModel;
+package models.bus_reservation;
 
 import java.io.Serializable;
 

@@ -1,24 +1,23 @@
-package BusReservationBean;
+package beans.bus_reservation;
 
-import BusReservationDao.BusInformationDao;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import javax.inject.Inject;
+import models.bus_reservation.BusInformation;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import BusReservationModel.BusInformation;
 import beans.SessionBean;
-
-
-@Named("addEditBusBean")
-@ViewScoped
-public class AddEditBusBean implements Serializable{
-    private final BusInformationDao BusInformationDao = new BusInformationDao();
+import daos.bus_reservation.BusInformationDao;
+import daos.bus_reservation.BusConnectionDao;
+@Named("busInformationBean")
+@SessionScoped
+public class BusInformationBean implements Serializable {
+    
+    
+    
     private int bus_id;
     private int bus_number;
     private String bus_type_en;
@@ -27,41 +26,42 @@ public class AddEditBusBean implements Serializable{
     private int driver_id;
     private int plate_no;
     private String driver_name_en;
-    private String driver_name_ar; 
+    private String driver_name_ar;
     
-    @Inject
+    private BusInformation selectedBus;
+    private final BusInformationDao bus=new BusInformationDao();
+    private ArrayList<BusInformation> list;
+    
+     @Inject
     private SessionBean sessionBean;
+     
+    public BusInformationBean(){
+        init();
     
-    public AddEditBusBean() {        
     }
     
-    @PostConstruct
-    public void init(){                
-        try {
-            bus_id = sessionBean.getSelectedItemId();
-                      
-            if(bus_id > 0){
-            BusInformation bus = new BusInformation();
-           bus.getBusID();
-           bus.getBusNumber();
-           bus.getDriverNameEn();
-           bus.getDriverNameAr();
-           bus.getBusCapacity();
-           bus.getBusTypeEn();
-           bus.getBusTypeAr();
-           bus.getDriverID();
-           bus.getPlateNo();
-            }
+     @PostConstruct
+    public void init(){
+        try {            
+            list = bus.buildBus();            
         } catch (Exception ex) {
-            Logger.getLogger(AddEditBusBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentInformationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     public int getBusID(){
         return this.bus_id;
     }
     public void setBusID(int bus_id){
         this.bus_id=bus_id;
+    }
+     public BusInformation getSelectedBus() { 
+        return selectedBus;
+    }
+    public void setSelectedBus(BusInformation selectedBus) {
+        this.selectedBus = selectedBus;
+    } 
+    public ArrayList<BusInformation> getBus() {
+        return list;
     }
      public int getBusNumber(){
         return this.bus_number;
@@ -115,30 +115,25 @@ public class AddEditBusBean implements Serializable{
         public void setDriverNameAr(String DriverNameAr){
             this.driver_name_ar=DriverNameAr;
     }
-        
-    public void saveBus() {
-        try {
-           BusInformation bus = new BusInformation();
-            
-           bus.setBusNumber(bus_number);
-           bus.setDriverNameEn(driver_name_en);
-           bus.setDriverNameAr(driver_name_ar);
-           bus.setBusCapacity(bus_capacity);
-           bus.setBusTypeEn(bus_type_en);
-           bus.setBusTypeAr(bus_type_ar);
-           bus.setDriverID(driver_id);
-           bus.setPlateNo(plate_no);
-            
-            if (sessionBean.getSelectedItemId() > 0) {
-                BusInformationDao.updateBus(bus);
-            } else {
-                BusInformationDao.insertBus(bus);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AddEditBusBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sessionBean.navigate("bus_info");
 
-       
+    
+    public void saveSelectedBusID(){
+        sessionBean.setSelectedBusID(selectedBus.getBusID());
     }
+
+    public ArrayList<BusInformation> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<BusInformation> list) { 
+        this.list = list;
+    }
+     public void deleteSelectedBus(){
+        try {  
+            bus.deleteBus(selectedBus.getBusID());
+        } catch (Exception ex) {
+            Logger.getLogger(BusInformationBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
 }
+

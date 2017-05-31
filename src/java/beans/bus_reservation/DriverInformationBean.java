@@ -1,15 +1,15 @@
-package BusReservationBean;
+package beans.bus_reservation;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.inject.Inject;
-import BusReservationDao.DriverInformationDao;
+import daos.bus_reservation.DriverInformationDao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import BusReservationModel.DriverInformation; //MODEL
+import models.bus_reservation.DriverInformation; //MODEL
 import beans.SessionBean;
 
 /**

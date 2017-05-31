@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package LibraryDao;
+package daos.bus_reservation;
 
 import beans.SessionBean;
 import java.io.Serializable;
@@ -12,20 +7,22 @@ import javax.faces.context.FacesContext;
 import java.sql.DriverManager;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
 /**
  *
- * @author tarekashi
+ * Author:Kamal Jabari
+ *
  */
-public class LibraryConnectionDao implements Serializable {
+public class BusConnectionDao implements Serializable {
     private DataSource dataSource;
     private String oracleUrl;
     private String databaseUsername;
     private String databasePassword;
     private final String oracleDriver;    
     private final boolean useConnectionPool = false;
-    final SessionBean sessionBean;
+    private final SessionBean sessionBean;
     
-    public LibraryConnectionDao() {
+    public BusConnectionDao() {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
         if (!useConnectionPool) {
@@ -83,5 +80,4 @@ public class LibraryConnectionDao implements Serializable {
 
         return connection;
     }   
-    
 }

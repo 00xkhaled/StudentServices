@@ -1,5 +1,6 @@
-package BusReservationDao;
+package daos.bus_reservation;
   
+import daos.bus_reservation.StudentInformationDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import BusReservationModel.BusInformation;
+import models.bus_reservation.BusInformation;
 
 
 public class BusInformationDao extends BusConnectionDao { 

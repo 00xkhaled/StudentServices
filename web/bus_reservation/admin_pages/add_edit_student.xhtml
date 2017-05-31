@@ -23,7 +23,6 @@
                                  dir="#{langBean.dir}">
                         <p:outputLabel value="#{msgs.student_id}:"/>
                         <p:inputText id="student_id"
-                                     value="#{addEditStudentBean.id}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
@@ -34,7 +33,6 @@
                         <p:outputLabel value="#{msgs.student_fname_en}:" />
                         <p:inputText id="student_fname_en"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_fname_en}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -44,7 +42,6 @@
                         <p:outputLabel value="#{msgs.student_fname_ar}:" />
                         <p:inputText id="student_fname_ar"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_fname_ar}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -54,7 +51,6 @@
                         <p:outputLabel value="#{msgs.student_lname_en}:" />
                         <p:inputText id="student_lname_en"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_lname_en}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -64,7 +60,6 @@
                         <p:outputLabel value="#{msgs.student_lname_ar}:" />
                         <p:inputText id="student_lname_ar"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_lname_ar}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -74,7 +69,6 @@
                             <p:outputLabel value="#{msgs.student_add_en}:" />
                         <p:inputText id="student_add_en"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_add_en}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -84,7 +78,6 @@
                             <p:outputLabel value="#{msgs.student_add_ar}:" />
                         <p:inputText id="student_add_ar"
                                      style="width:350px"
-                                     value="#{addEditStudentBean.student_add_ar}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -126,7 +119,7 @@
                                  icon="ui-icon-disk"
                                  iconPos="#{langBean.styleFloat}"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 actionListener="#{addEditStudentBean.saveStudent()}" />
+                                 actionListener="#{addEditEventBean.saveEvent()}" />
                 <p:commandButton value="#{msgs.cancel}"
                                  icon="ui-icon-cancel"  
                                  iconPos="#{langBean.styleFloat}"
