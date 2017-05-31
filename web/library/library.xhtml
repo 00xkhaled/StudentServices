@@ -117,14 +117,14 @@ Hamza ( buy & borrow ).
                        <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                
+                           
                                 <p:commandButton value="#{msgs.buy_book}"
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{BookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_Buy_book}?');"
+                                                 onclick="return confirm('#{msgs.confirm_Buy_book}');"
                                                  actionListener="#{BookBean.BuySelectedBook()}"
                                                  action="library" />
                                 
@@ -134,9 +134,10 @@ Hamza ( buy & borrow ).
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{BookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_borrow_book}?');"
+                                                 onclick="return confirm('#{msgs.confirm_borrow_book}');"
                                                  actionListener="#{BookBean.borrowSelectedBook()}"
                                                  action="library" />
+                               
 
                             </p:toolbarGroup>
                         </p:toolbar>
@@ -154,6 +155,7 @@ Hamza ( buy & borrow ).
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action ="addbook" /> 
+                <!-- skdhajsdhasjhd
                 <p:commandButton value="#{msgs.buy_book}"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
@@ -163,7 +165,8 @@ Hamza ( buy & borrow ).
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 action="borrowbook" /> 
+                                 action="borrowbook" />
+                -->
                 <p:commandButton value="#{msgs.view_transactions}"
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"

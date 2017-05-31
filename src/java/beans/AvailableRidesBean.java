@@ -1,7 +1,6 @@
 package beans;
 
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.inject.Inject;
 import daos.AvailableRidesDao;
@@ -9,13 +8,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import models.AvailableRides;
 /**
  *
  * @author OthmanKurdi
  */
 @Named(value = "availableRidesBean")
-@SessionScoped
+@ViewScoped
 public class AvailableRidesBean implements Serializable {
     
    
@@ -45,29 +45,6 @@ public class AvailableRidesBean implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    
-    /**
-     *
-     */
-    public void addRide(){
-        System.out.println("addRide();");
-         try { 
-        AvailableRides insertRide = new AvailableRides();
-        insertRide.setRideID(ride_id);
-        insertRide.setRideFrom(ride_from);
-        insertRide.setRideTo(ride_to);
-        insertRide.setName(name);
-        insertRide.setPhone(phone);
-        insertRide.setDepartureTime(departure_time);
-                  System.out.print("reachecd AvailableRideBean.rideDao()");
-            ridesdao.insertRide(insertRide);            
-        } catch (Exception ex) {
-            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sessionBean.navigate("available_rides");
-       
     }
     
     public String getRideID(){
@@ -134,6 +111,7 @@ public class AvailableRidesBean implements Serializable {
      public void deleteSelectedRide(){
         try {
             ridesdao.deleteRide(selectedRide.getRideID());
+            sessionBean.navigate("available_rides");
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
