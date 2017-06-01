@@ -72,7 +72,7 @@ public class StudentInformationDao extends BusConnectionDao {
                     + " STUDENT_PHONE_NUMBER,"
                     + " SEATS_PREVIOUSLY_RESERVED,"
                     + " STUDENT_ADDRESS_EN,"
-                    + " STUDENT_ADDRESS_AR,"
+                    + " STUDENT_ADDRESS_AR)"
                     + " VALUES ((select max(STUDENT_ID) from STUDENTS)+1,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
