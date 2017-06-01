@@ -9,7 +9,7 @@ import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
-@Named("mapBean")
+@Named(value="mapBean")
 @SessionScoped
     
 

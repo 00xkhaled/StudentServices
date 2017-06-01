@@ -1,4 +1,4 @@
-package BusReservationBean;
+package beans.bus_reservation;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;

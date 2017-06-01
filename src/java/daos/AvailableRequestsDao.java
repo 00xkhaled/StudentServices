@@ -132,16 +132,15 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
             Connection conn = getConnection();
             
             String sql = "SELECT * FROM AVAILABLE_REQUESTS";          // select all avaliable requests               
-            PreparedStatement ps = conn.prepareStatement(sql);            
-
-            ResultSet rs = ps.executeQuery();           
-
-            while (rs.next()) {
-                list.add(populateEvent(rs));
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                
+                while (rs.next()) {
+                    list.add(populateEvent(rs));
+                }
+                
+                rs.close();
             }
-            
-            rs.close();
-            ps.close();
             
             return list;            
         } 

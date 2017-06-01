@@ -41,13 +41,14 @@
                 
                 
                 
-                
-                <!-- <div id="map-canvas"></div> -->
+                <div id="map-canvas"></div> 
+                <!-- 
                 <p:gmap center="31.777067, 35.802555"
                         zoom="15"
                         type="hybrid"
                         style="width:600px;height:330px"
                         model="#{mapBean.model}"/>
+                -->
                 <br/><br/>
          </div>
              
@@ -110,7 +111,7 @@
   
   <script id="map-canvas">
       
-      
+  
 var directionDisplay;
   var directionsService = new google.maps.DirectionsService();
   var map;
@@ -121,17 +122,14 @@ var directionDisplay;
    calcRoute();
 	initialize();
   });
-  
-  
-  
   // initialize the Google Map API.
   function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
-    var Amman = new google.maps.LatLng(31.9454,  35.9284);
+    var Mumbai = new google.maps.LatLng(19.075984, 72.877656);
     var mapOptions = {
       zoom:15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      center: 
+      center: Mumbai
     }
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
@@ -152,7 +150,6 @@ var directionDisplay;
       }
     });
   }
-  
   </script>
 
 
