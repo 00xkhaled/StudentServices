@@ -49,7 +49,7 @@ public class UserWizard implements Serializable {
     }
      
     public void save() {        
-        FacesMessage msg = new FacesMessage("Successful", "Welcome :" + user.getFirstname());
+        FacesMessage msg = new FacesMessage("Thanks" + user.getFirstname()+ "please wait for call or comfirmation ");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
