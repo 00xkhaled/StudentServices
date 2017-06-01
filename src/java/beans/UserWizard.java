@@ -15,14 +15,24 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import org.primefaces.event.FlowEvent;
 import models.RequestInformation;
  
 @ManagedBean
 @ViewScoped
 
-public class UserWizard implements Serializable {
+
+
+public class UserWizard implements Serializable
+
+{
     
+    
+       @Inject
+    private SessionBean sessionBean;
+       
+       
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,9 +58,14 @@ public class UserWizard implements Serializable {
         this.user = user;
     }
      
-    public void save() {        
+    public void save() {
+        
         FacesMessage msg = new FacesMessage("Thanks" + user.getFirstname()+ "please wait for call or comfirmation ");
+        
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+                sessionBean.navigate("add_requests");
+
     }
      
     public boolean isSkip() {
