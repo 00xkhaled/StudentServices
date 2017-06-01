@@ -69,7 +69,7 @@ public class BusInformationDao extends BusConnectionDao {
                     + " BUS_TYPE_EN,"
                     + " BUS_TYPE_AR,"
                     + " DRIVER_ID,"
-                    + " PLATE_NO,"
+                    + " PLATE_NO)"
                     + " VALUES ((select max(BUS_ID) from BUSES)+1,?,?,?,?,?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql); 
                 ps.setInt(1, bus.getBusNumber());
@@ -122,7 +122,7 @@ public class BusInformationDao extends BusConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-        public  void deleteBus(int busID) throws Exception {
+        public void deleteBus(int busID) throws Exception {
 
         try {
             Connection conn;

@@ -39,7 +39,6 @@ public class AddEditBusBean implements Serializable{
     public void init(){                
         try {
             bus_id = sessionBean.getSelectedItemId();
-                      
             if(bus_id > 0){
             BusInformation bus = new BusInformation();
            bus.getBusID();
@@ -56,7 +55,7 @@ public class AddEditBusBean implements Serializable{
             Logger.getLogger(AddEditBusBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public int getBusID(){
         return this.bus_id;
     }
@@ -116,7 +115,7 @@ public class AddEditBusBean implements Serializable{
             this.driver_name_ar=DriverNameAr;
     }
         
-    public void saveBus() {
+    public void saveBusInfo() {
         try {
            BusInformation bus = new BusInformation();
             
