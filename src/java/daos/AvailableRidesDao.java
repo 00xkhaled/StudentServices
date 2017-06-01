@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.AvailableRides;
+import models.AvailableRide;
 
 
 /**
@@ -18,9 +18,9 @@ import models.AvailableRides;
 public class AvailableRidesDao extends ConnectionDao {    
     
     //it will be used by the AvailableRidesBean to flush the data into the tabel;(working)
-    public ArrayList<AvailableRides> getRides() throws Exception {
+    public ArrayList<AvailableRide> getRides() throws Exception {
                 
-        ArrayList<AvailableRides> list = new ArrayList<>();
+        ArrayList<AvailableRide> list = new ArrayList<>();
         try {   
             Connection conn = getConnection();
             
@@ -45,8 +45,8 @@ public class AvailableRidesDao extends ConnectionDao {
    
     //it will cooperate with the getRide() methode so that it will seperate the 
     //returned data before return it again.
-    private AvailableRides populateRide(ResultSet rs) throws SQLException {
-        AvailableRides ride = new AvailableRides();
+    private AvailableRide populateRide(ResultSet rs) throws SQLException {
+        AvailableRide ride = new AvailableRide();
         
          ride.setRideID(rs.getInt("RIDE_ID"));
         ride.setRideFrom(rs.getString("RIDE_FROM"));
@@ -57,7 +57,7 @@ public class AvailableRidesDao extends ConnectionDao {
         return ride;
     }
     //not working
-    public void insertRide(AvailableRides ride) throws Exception {                
+    public void insertRide(AvailableRide ride) throws Exception {                
         System.out.println("reached dao...");
         try {
             Connection conn = getConnection();
@@ -84,7 +84,7 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
     //updating(not working)
-    public void updateRide(AvailableRides ride) throws Exception {
+    public void updateRide(AvailableRide ride) throws Exception {
         try {
             Connection conn = getConnection();
 
@@ -128,9 +128,9 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
     //this methode is to get only one ride by id;
-         public AvailableRides getRide(int ride_id) throws Exception {
+         public AvailableRide getRide(int ride_id) throws Exception {
         try {   
-            AvailableRides ride=null;
+            AvailableRide ride=null;
             Connection conn = getConnection();
             
             String sql = "SELECT AVAILABLE_RIDES.* WHERE RIDE_ID=?";                        

@@ -125,7 +125,8 @@
     margin-left:5px;
     font-size:10pt;
     width:120px;
-    height:30px;        
+    height:30px;   
+    display: inline;
 }
 
 .errorMsg{
@@ -147,3 +148,4 @@
         
         float: right
     }
+    
