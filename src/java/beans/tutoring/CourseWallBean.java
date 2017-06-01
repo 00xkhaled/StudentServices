@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beans;
+package beans.tutoring;
 
 /**
  *
@@ -12,7 +12,7 @@ package beans;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import models.Lecture;
+import models.tutoring.Lecture;
 
 @Named(value = "courseWallBean")
 @ViewScoped

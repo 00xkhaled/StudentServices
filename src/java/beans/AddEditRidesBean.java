@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import models.AvailableRides;
+import models.AvailableRide;
 
 /**
  *
@@ -19,25 +19,25 @@ import models.AvailableRides;
 @ViewScoped
 public class AddEditRidesBean implements Serializable {
 
-    private int ride_id;
-    private int student_id;
+    private int rideId;
+    private int studentId;
     private String name;
     private String phone;
     private String gender;
 
-    private String ride_from;
-    private String ride_to;
-    private String departure_time;
+    private String rideFrom;
+    private String rideTo;
+    private String departureTime;
 
-    private int car_plate_number;
-    private String car_make;
-    private String car_model;
-    private String year_of_make;
-    private String car_color;
+    private int carPlateNumber;
+    private String carMake;
+    private String carModel;
+    private String yearOfMake;
+    private String carColor;
 
-    private AvailableRides selectedRide;
+    private AvailableRide selectedRide;
     private final AvailableRidesDao ridesdao = new AvailableRidesDao();
-    private ArrayList<AvailableRides> list;
+    private ArrayList<AvailableRide> list;
 
     @Inject
     private SessionBean sessionBean;
@@ -50,17 +50,28 @@ public class AddEditRidesBean implements Serializable {
     @PostConstruct
     public void init() {
         try {
-            ride_id = sessionBean.getSelectedItemId();
+            rideId = sessionBean.getSelectedItemId();
 
-            if (ride_id > 0) {
-                AvailableRides ride = ridesdao.getRide(ride_id);
-
-                ride_from = ride.getRideFrom();
-                ride_to = ride.getRideTo();
-                student_id = ride.getStudent_id();
+            if (rideId > 0) {
+                AvailableRide ride = ridesdao.getRide(rideId);
+                
+                //rideId;
+                studentId=ride.getStudentId();
                 name = ride.getName();
                 phone = ride.getPhone();
-                departure_time = ride.getDepartureTime();
+                gender=ride.getGender();
+                
+                rideFrom = ride.getRideFrom();
+                rideTo = ride.getRideTo();
+                departureTime = ride.getDepartureTime();
+                
+                carPlateNumber=ride.getCarPlateNumber();
+                carMake=ride.getCarMake();
+                carModel=ride.getCarModel();
+                yearOfMake=ride.getYearOfMake();
+                carColor=ride.getCarColor();
+                
+                
             }
         } catch (Exception ex) {
             Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,13 +81,13 @@ public class AddEditRidesBean implements Serializable {
     //this method should add the value directly. and it will navigate to the edit update method in the dao.
     public void addRide() {
         try {
-            AvailableRides insertRide = new AvailableRides();
+            AvailableRide insertRide = new AvailableRide();
 
-            insertRide.setRideFrom(ride_from);
-            insertRide.setRideTo(ride_to);
+            insertRide.setRideFrom(rideFrom);
+            insertRide.setRideTo(rideTo);
             insertRide.setName(name);
             insertRide.setPhone(phone);
-            insertRide.setDepartureTime(departure_time);
+            insertRide.setDepartureTime(departureTime);
             System.out.println("beans.AddEditAvailableRidesBean.AddRide()");
             if (sessionBean.getSelectedItemId() > 0) {
                 ridesdao.updateRide(insertRide);
@@ -90,36 +101,36 @@ public class AddEditRidesBean implements Serializable {
 
     }
 
-    public AvailableRides getSelectedRide() {
+    public AvailableRide getSelectedRide() {
         return selectedRide;
     }
 
-    public void setSelectedRide(AvailableRides selectedRides) {
+    public void setSelectedRide(AvailableRide selectedRides) {
         this.selectedRide = selectedRides;
     }
 
     public int getRideID() {
-        return this.ride_id;
+        return this.rideId;
     }
 
-    public void setRideID(int ride_id) {
-        this.ride_id = ride_id;
+    public void setRideID(int rideId) {
+        this.rideId = rideId;
     }
 
     public String getRideFrom() {
-        return this.ride_from;
+        return this.rideFrom;
     }
 
-    public void setRideFrom(String ride_from) {
-        this.ride_from = ride_from;
+    public void setRideFrom(String rideFrom) {
+        this.rideFrom = rideFrom;
     }
 
     public String getRideTo() {
-        return this.ride_to;
+        return this.rideTo;
     }
 
-    public void setRideTo(String ride_to) {
-        this.ride_to = ride_to;
+    public void setRideTo(String rideTo) {
+        this.rideTo = rideTo;
     }
 
     public String getName() {
@@ -138,33 +149,25 @@ public class AddEditRidesBean implements Serializable {
         this.phone = phone;
     }
 
-    public String getDepartureTime() {
-        return this.departure_time;
-    }
-
-    public void setDepartureTime(String departure_time) {
-        this.departure_time = departure_time;
-    }
-
     public void saveSelectedItemId() {
         System.out.println("beans.AddEditRidesBean.saveSelectedItemId()");
         sessionBean.setSelectedItemId(selectedRide.getRideID());
     }
 
-    public int getRide_id() {
-        return ride_id;
+    public int getRideId() {
+        return rideId;
     }
 
-    public void setRide_id(int ride_id) {
-        this.ride_id = ride_id;
+    public void setRideId(int rideId) {
+        this.rideId = rideId;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getGender() {
@@ -175,75 +178,60 @@ public class AddEditRidesBean implements Serializable {
         this.gender = gender;
     }
 
-    public String getRide_from() {
-        return ride_from;
+    
+    public String getDepartureTime() {
+        return departureTime;
     }
 
-    public void setRide_from(String ride_from) {
-        this.ride_from = ride_from;
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 
-    public String getRide_to() {
-        return ride_to;
+    public int getCarPlateNumber() {
+        return carPlateNumber;
     }
 
-    public void setRide_to(String ride_to) {
-        this.ride_to = ride_to;
+    public void setCarPlateNumber(int carPlateNumber) {
+        this.carPlateNumber = carPlateNumber;
     }
 
-    public String getDeparture_time() {
-        return departure_time;
+    public String getCarMake() {
+        return carMake;
     }
 
-    public void setDeparture_time(String departure_time) {
-        this.departure_time = departure_time;
+    public void setCarMake(String carMake) {
+        this.carMake = carMake;
     }
 
-    public int getCar_plate_number() {
-        return car_plate_number;
+    public String getCarModel() {
+        return carModel;
     }
 
-    public void setCar_plate_number(int car_plate_number) {
-        this.car_plate_number = car_plate_number;
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     }
 
-    public String getCar_make() {
-        return car_make;
+    public String getYearOfMake() {
+        return yearOfMake;
     }
 
-    public void setCar_make(String car_make) {
-        this.car_make = car_make;
-    }
-
-    public String getCar_model() {
-        return car_model;
-    }
-
-    public void setCar_model(String car_model) {
-        this.car_model = car_model;
-    }
-
-    public String getYear_of_make() {
-        return year_of_make;
-    }
-
-    public void setYear_of_make(String year_of_make) {
-        this.year_of_make = year_of_make;
+    public void setYearOfMake(String yearOfMake) {
+        this.yearOfMake = yearOfMake;
     }
 
     public String getCar_color() {
-        return car_color;
+        return carColor;
     }
 
-    public void setCar_color(String car_color) {
-        this.car_color = car_color;
+    public void setCar_color(String carColor) {
+        this.carColor = carColor;
     }
 
-    public ArrayList<AvailableRides> getList() {
+    public ArrayList<AvailableRide> getList() {
         return list;
     }
 
-    public void setList(ArrayList<AvailableRides> list) {
+    public void setList(ArrayList<AvailableRide> list) {
         this.list = list;
     }
 
