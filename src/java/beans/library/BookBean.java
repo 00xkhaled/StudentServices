@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LibraryBean;
+package beans.library;
 
-import LibraryDao.AuthorsDao;
+import daos.library.AuthorsDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import LibraryModel.Book;
+import models.library.Book;
 import beans.SessionBean;
-import LibraryDao.BookInformationDao;
+import daos.library.BookInformationDao;
 
 
 /**

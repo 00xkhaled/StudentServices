@@ -12,7 +12,9 @@
     
        <h:outputStylesheet library="css" name="carpooling.css"/>    
        <h:outputStylesheet library="css" name="app_style.css"/>    
-       <h:outputStylesheet library="css" name="font-awesome.css"/>   
+       <h:outputStylesheet library="css" name="font-awesome.css"/>  
+       
+       <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
      </h:head>
     
     
@@ -24,7 +26,7 @@
           
                
             <p:panel header="#{msgs.driver_information}"                            
-                  style="min-height:200px; width: 1410px;
+                  style="min-height:200px; width: 1340px;
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                 
             <h:panelGrid id="post_ride"
@@ -58,7 +60,7 @@
             </p:panel>
             
             <p:panel header="#{msgs.car_information}"                            
-                  style="min-height:200px; width: 1410px;
+                  style="min-height:200px; width: 1340px;
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                 
                 <h:panelGrid id="car"
@@ -80,7 +82,7 @@
             </p:panel>
             
              <p:panel header="#{msgs.add_ride}"                            
-                  style="min-height:400px; width: 1410px;
+                  style="min-height:400px; width: 1340px;
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
               
                   <h:panelGrid id="map"
@@ -103,14 +105,15 @@
                                  style=""                                                                   
                                  />
                 </h:panelGrid>
-                <p:gmap 
-                        id="gmap"    
-                        center="31.777067, 35.802555"
-                        zoom="14"
-                        type="hybrid"
-                        style="width:600px;height:330px"
-                        model="#{mapBean.model}"/>
-                
+                 <div id="panel">
+                 <p:gmap 
+                     id="gmap"    
+                     center="31.777067, 35.802555"
+                     zoom="14"
+                     type="hybrid"
+                     style="width:900px;height:350px"
+                     model="#{BmapBean.model}"/>
+                 </div>
                 <br/><br/>
          </p:panel>
          <p:commandButton value="#{msgs.save}"
@@ -124,7 +127,7 @@
                                  icon="ui-icon-cancel"
                                  iconPos=""
                                  style=""                                                                   
-                                 actionListener="available_rides" />
+                                 action="available_rides" />
                 
         </ui:decorate>
     </h:body> 

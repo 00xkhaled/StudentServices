@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LibraryDao;
+package daos.library;
 
 import static java.nio.file.Files.list;
 import java.sql.Connection;
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import LibraryModel.Book;
-import LibraryModel.Authors;
+import models.library.Book;
+import models.library.Authors;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import LibraryModel.Book;
-import LibraryModel.Authors;
+import models.library.Book;
+import models.library.Authors;
 
 
 /**
