@@ -71,6 +71,14 @@
             <h:outputText value="#{userWizard.user.date}">
                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
             </h:outputText>
+            
+            <p:gmap center="-16.1985, -48.7056"
+zoom="12"
+type="ROADMAP" 
+style="width:600px;height:400px"
+widgetVar="gmap"
+fitBounds="true"
+/>
  
           
         </p:panelGrid>
