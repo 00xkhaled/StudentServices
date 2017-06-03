@@ -90,8 +90,8 @@
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{addEditRidesBean.selectedRide=null}"                                                 
-                                                 actionListener="#{addEditRidesBean.saveSelectedItemId()}"
+                                                 disabled="#{availableRidesBean.selectedRide==null}"                                                 
+                                                 actionListener="#{availableRidesBean.saveSelectedItemId()}"
                                                  action="add_ride" />
                             </p:toolbarGroup>
                         </p:toolbar>

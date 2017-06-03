@@ -24,7 +24,9 @@ public class AvailableRidesDao extends ConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT * FROM AVAILABLE_RIDES";                        
+            String sql = "select ride_from, ride_to, name, phone, departure_time "
+                       + "from students_carpooling, Destinations "
+                       + "where(students_carpooling.ride_id==Destinations.ride_id);";                     
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
@@ -45,78 +47,34 @@ public class AvailableRidesDao extends ConnectionDao {
    
     //it will cooperate with the getRide() methode so that it will seperate the 
     //returned data before return it again.
-    private AvailableRide populateRide(ResultSet rs) throws SQLException {
+   private AvailableRide populateRide(ResultSet rs) throws SQLException {
         AvailableRide ride = new AvailableRide();
         
-         ride.setRideID(rs.getInt("RIDE_ID"));
-        ride.setRideFrom(rs.getString("RIDE_FROM"));
-        ride.setRideTo(rs.getString("RIDE_TO"));
+        ride.setRideID(rs.getInt("RIDE_ID"));
+        ride.setStudentId(rs.getInt("STUDENT_ID"));
         ride.setName(rs.getString("DRIVER_NAME"));
         ride.setPhone(rs.getString("DRIVER_PHONE"));
+        ride.setGender(rs.getString("GENDER"));
+        
+        ride.setRideFrom(rs.getString("RIDE_FROM"));
+        ride.setRideTo(rs.getString("RIDE_TO"));
         ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
+        
+        ride.setCarPlateNumber(rs.getInt("CAR_PLATE_NUMBER"));
+        ride.setCarMake(rs.getString("CAR_MAKE"));
+        ride.setCarModel(rs.getString("CAR_MODEL"));
+        ride.setYearOfMake(rs.getString("YEAR_OF_MAKE"));
+        ride.setCarColor(rs.getString("CAR_COLOR"));
+        
         return ride;
     }
-    //not working
-    public void insertRide(AvailableRide ride) throws Exception {                
-        System.out.println("reached dao...");
-        try {
-            Connection conn = getConnection();
-            
-            String sql = "INSERT INTO AVAILABLE_RIDES "
-                    + "( RIDE_ID,"
-                    + " RIDE_FROM,"
-                    + " RIDE_TO,"
-                    + " DRIVER_NAME,"
-                    + " DRIVER_PHONE,"
-                    + " DEPARTURE_TIME"
-                    + " VALUES ((select max(RIDE_ID) from AVAILABLE_RIDES)+1,?,?,?,?,?)";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, ride.getRideFrom());
-                ps.setString(2, ride.getRideTo());
-                ps.setString(3, ride.getName());
-                ps.setString(4, ride.getPhone());
-                ps.setString(5, ride.getDepartureTime());
-                
-                ps.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
-    //updating(not working)
-    public void updateRide(AvailableRide ride) throws Exception {
-        try {
-            Connection conn = getConnection();
-
-            String sql = "UPDATE AVAILABLE_RIDES SET "
-                    + "(RIDE_FROM=?,"
-                    + " RIDE_TO=?,"
-                    + " DRIVER_NAME=?,"
-                    + " DRIVER_PHONE=?,"
-                    + " DEPARTURE_TIME=?"
-                    + " WHERE RIDE_ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-           ps.setString(1, ride.getRideFrom());
-            ps.setString(2, ride.getRideTo());
-            ps.setString(3, ride.getName());
-            ps.setString(4, ride.getPhone());
-            ps.setString(5, ride.getDepartureTime());            
-            ps.setInt(6, ride.getRideID());
-
-            ps.executeUpdate();
-            
-            ps.close();
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
+    
     //to delete the selected ride.(working)
     public void deleteRide(int RideID) throws Exception {
         Connection conn = getConnection();
         
         try {
-            String sql = "DELETE FROM AVAILABLE_RIDES WHERE RIDE_ID=?";                               
+            String sql = "DELETE FROM STUDENTS_CARPOOLING, CARS, DESTINATION WHERE RIDE_ID=?";                               
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, RideID);
             
@@ -127,30 +85,7 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    //this methode is to get only one ride by id;
-         public AvailableRide getRide(int ride_id) throws Exception {
-        try {   
-            AvailableRide ride=null;
-            Connection conn = getConnection();
-            
-            String sql = "SELECT AVAILABLE_RIDES.* WHERE RIDE_ID=?";                        
-            PreparedStatement ps = conn.prepareStatement(sql);            
-            ps.setInt(1, ride_id);
-            
-            ResultSet rs = ps.executeQuery();           
-
-            while (rs.next()) {
-                ride = populateRide(rs);
-            }
-
-            rs.close();
-            ps.close();
-            
-            return ride;            
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
+        
     public static void main(String [] args){        
         try {
             AvailableRidesDao dao = new AvailableRidesDao();                

@@ -1,6 +1,6 @@
 package beans;
 
-import daos.AvailableRidesDao;
+import daos.AddEditRidesDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -18,25 +18,25 @@ import models.AvailableRide;
 @Named(value = "addEditRidesBean")
 @ViewScoped
 public class AddEditRidesBean implements Serializable {
-
-    private int rideId;
-    private int studentId;
-    private String name;
-    private String phone;
-    private String gender;
-
-    private String rideFrom;
-    private String rideTo;
-    private String departureTime;
-
-    private int carPlateNumber;
-    private String carMake;
-    private String carModel;
-    private String yearOfMake;
-    private String carColor;
+    //STUDENT_CARPOOLING:
+    /*01*/private int rideId;
+    /*02*/private int studentId;
+    /*03*/private String name;
+    /*04*/private String phone;
+    /*05*/private String gender;
+    //RIDES:
+    /*06*/private String rideFrom;
+    /*07*/private String rideTo;
+    /*08*/private String departureTime;
+    //CARS:
+    /*09*/private int carPlateNumber;
+    /*10*/private String carMake;
+    /*11*/private String carModel;
+    /*12*/private String yearOfMake;
+    /*13*/private String carColor;
 
     private AvailableRide selectedRide;
-    private final AvailableRidesDao ridesdao = new AvailableRidesDao();
+    private final AddEditRidesDao ridesDao=new AddEditRidesDao();
     private ArrayList<AvailableRide> list;
 
     @Inject
@@ -53,7 +53,7 @@ public class AddEditRidesBean implements Serializable {
             rideId = sessionBean.getSelectedItemId();
 
             if (rideId > 0) {
-                AvailableRide ride = ridesdao.getRide(rideId);
+                AvailableRide ride = ridesDao.getRide(rideId);
                 
                 //rideId;
                 studentId=ride.getStudentId();
@@ -74,25 +74,33 @@ public class AddEditRidesBean implements Serializable {
                 
             }
         } catch (Exception ex) {
-            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEditRidesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     //this method should add the value directly. and it will navigate to the edit update method in the dao.
     public void addRide() {
         try {
-            AvailableRide insertRide = new AvailableRide();
-
-            insertRide.setRideFrom(rideFrom);
-            insertRide.setRideTo(rideTo);
-            insertRide.setName(name);
-            insertRide.setPhone(phone);
-            insertRide.setDepartureTime(departureTime);
-            System.out.println("beans.AddEditAvailableRidesBean.AddRide()");
+            AvailableRide ride= new AvailableRide();
+            
+            ride.setRideID(rideId);
+            ride.setStudentId(studentId);
+            ride.setName(name);
+            ride.setPhone(phone);
+            ride.setGender(gender);
+            ride.setRideFrom(rideFrom);
+            ride.setRideTo(rideTo);
+            ride.setDepartureTime(departureTime);
+            ride.setCarPlateNumber(carPlateNumber);
+            ride.setCarMake(carMake);
+            ride.setCarModel(carModel);
+            ride.setYearOfMake(yearOfMake);
+            ride.setCarColor(carColor);
+            
             if (sessionBean.getSelectedItemId() > 0) {
-                ridesdao.updateRide(insertRide);
+                ridesDao.updateRide(ride);
             } else {
-                ridesdao.insertRide(insertRide);
+                ridesDao.insertRide(ride);
             }
         } catch (Exception ex) {
             Logger.getLogger(AddEditRidesBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,55 +108,6 @@ public class AddEditRidesBean implements Serializable {
         sessionBean.navigate("available_rides");
 
     }
-
-    public AvailableRide getSelectedRide() {
-        return selectedRide;
-    }
-
-    public void setSelectedRide(AvailableRide selectedRides) {
-        this.selectedRide = selectedRides;
-    }
-
-    public int getRideID() {
-        return this.rideId;
-    }
-
-    public void setRideID(int rideId) {
-        this.rideId = rideId;
-    }
-
-    public String getRideFrom() {
-        return this.rideFrom;
-    }
-
-    public void setRideFrom(String rideFrom) {
-        this.rideFrom = rideFrom;
-    }
-
-    public String getRideTo() {
-        return this.rideTo;
-    }
-
-    public void setRideTo(String rideTo) {
-        this.rideTo = rideTo;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return this.phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public void saveSelectedItemId() {
         System.out.println("beans.AddEditRidesBean.saveSelectedItemId()");
         sessionBean.setSelectedItemId(selectedRide.getRideID());
@@ -170,6 +129,22 @@ public class AddEditRidesBean implements Serializable {
         this.studentId = studentId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -178,7 +153,22 @@ public class AddEditRidesBean implements Serializable {
         this.gender = gender;
     }
 
-    
+    public String getRideFrom() {
+        return rideFrom;
+    }
+
+    public void setRideFrom(String rideFrom) {
+        this.rideFrom = rideFrom;
+    }
+
+    public String getRideTo() {
+        return rideTo;
+    }
+
+    public void setRideTo(String rideTo) {
+        this.rideTo = rideTo;
+    }
+
     public String getDepartureTime() {
         return departureTime;
     }
@@ -219,13 +209,22 @@ public class AddEditRidesBean implements Serializable {
         this.yearOfMake = yearOfMake;
     }
 
-    public String getCar_color() {
+    public String getCarColor() {
         return carColor;
     }
 
-    public void setCar_color(String carColor) {
+    public void setCarColor(String carColor) {
         this.carColor = carColor;
     }
+
+    public AvailableRide getSelectedRide() {
+        return selectedRide;
+    }
+
+    public void setSelectedRide(AvailableRide selectedRide) {
+        this.selectedRide = selectedRide;
+    }
+    
 
     public ArrayList<AvailableRide> getList() {
         return list;
