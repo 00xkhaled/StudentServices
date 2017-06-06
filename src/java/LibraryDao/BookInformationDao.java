@@ -55,6 +55,7 @@ public class BookInformationDao extends LibraryConnectionDao {
         }
     }
     
+   
      private Book populateBookwithAuthors(ResultSet rs, HashMap <Integer, Authors> authors) throws SQLException {
         Book book = new Book();
         
@@ -75,7 +76,7 @@ public class BookInformationDao extends LibraryConnectionDao {
     }
       private Book populateBook(ResultSet rs) throws SQLException {
         Book book = new Book();
-        
+       
         book.setBookId(rs.getInt("BOOK_ID"));
         book.setBooktitleEn(rs.getString("TITLE_EN"));
         book.setBooktitleAr(rs.getString("TITLE_AR"));

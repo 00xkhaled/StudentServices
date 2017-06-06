@@ -21,7 +21,7 @@ public class SessionBean implements Serializable {
     // Session attributes
     private Connection connection; 
     private int selectedItemId; 
-     private int selectedBusID;
+    private int selectedBusID;
     private int menuIndex = 0;
     
     public SessionBean() {          

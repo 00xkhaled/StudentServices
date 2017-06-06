@@ -7,7 +7,6 @@ package LibraryBean;
 
 import LibraryDao.AuthorsDao;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -24,13 +23,12 @@ import javax.faces.view.ViewScoped;
  *
  * @author tarekashi
  */
-
 @Named(value = "addbookBean")
 @ViewScoped
 public class AddBookBean implements Serializable {
-    
-    private ArrayList <Authors> authors;
-    private final AuthorsDao authorsDao = new AuthorsDao ();
+
+    private ArrayList<Authors> authors;
+    private final AuthorsDao authorsDao = new AuthorsDao();
     private final BookInformationDao bookinformationDao = new BookInformationDao();
     private int bookId;
     private String booktitleEn;
@@ -46,22 +44,21 @@ public class AddBookBean implements Serializable {
     private int priceday;
     private String status;
     private String ownername;
-    
+
     @Inject
     private SessionBean sessionBean;
-    
-    public AddBookBean (){
+
+    public AddBookBean() {
         
     }
-    
+
     @PostConstruct
-    public void init()
-    {
-        try{
+    public void init() {
+        try {
             setBookId(sessionBean.getSelectedItemId());
             authors = authorsDao.buildAuthors();
-            
-            if (getBookId() > 0){
+
+            if (getBookId() > 0) {
                 Book book = bookinformationDao.getBook(getBookId());
                 setBooktitleEn(book.getBooktitleEn());
                 setBooktitleAr(book.getBooktitleAr());
@@ -75,228 +72,145 @@ public class AddBookBean implements Serializable {
                 ownername = book.getOwnername();
                 authorId = book.getAuthor().getAuthorId();
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public ArrayList<Authors>getAuthors()  
-    {
-         return authors;
+
+    public ArrayList<Authors> getAuthors() {
+        return authors;
     }
-    
-    public int getAuthorId()
-    {
+
+    public int getAuthorId() {
         return authorId;
     }
-    
+
     public void setAuthorId(int AuthorId) {
         this.authorId = AuthorId;
     }
-    
-    /**
-     * @return the authorsnameEn
-     */
+
     public String getAuthorsnameEn() {
         return authorsnameEn;
     }
 
-    /**
-     * @param authorsnameEn the authorsnameEn to set
-     */
     public void setAuthorsnameEn(String authorsnameEn) {
         this.authorsnameEn = authorsnameEn;
     }
 
-    /**
-     * @return the authorsnameAr
-     */
     public String getAuthorsnameAr() {
         return authorsnameAr;
     }
 
-    /**
-     * @param authorsnameAr the authorsnameAr to set
-     */
     public void setAuthorsnameAr(String authorsnameAr) {
         this.authorsnameAr = authorsnameAr;
     }
 
-    /**
-     * @return the genre
-     */
     public String getGenre() {
         return genre;
     }
 
-    /**
-     * @param genre the genre to set
-     */
     public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    /**
-     * @return the publishyear
-     */
     public int getPublishyear() {
         return publishyear;
     }
 
-    /**
-     * @param publishyear the publishyear to set
-     */
     public void setPublishyear(int publishyear) {
         this.publishyear = publishyear;
     }
 
-    /**
-     * @return the version
-     */
     public String getVersion() {
         return version;
     }
 
-    /**
-     * @param version the version to set
-     */
     public void setVersion(String version) {
         this.version = version;
     }
 
-    /**
-     * @return the numofpages
-     */
     public int getNumofpages() {
         return numofpages;
     }
 
-    /**
-     * @param numofpages the numofpages to set
-     */
     public void setNumofpages(int numofpages) {
         this.numofpages = numofpages;
     }
 
-    /**
-     * @return the price
-     */
     public int getPrice() {
         return price;
     }
 
-    /**
-     * @param price the price to set
-     */
     public void setPrice(int price) {
         this.price = price;
     }
 
-    /**
-     * @return the priceday
-     */
     public int getPriceday() {
         return priceday;
     }
 
-    /**
-     * @param priceday the priceday to set
-     */
     public void setPriceday(int priceday) {
         this.priceday = priceday;
     }
 
-    /**
-     * @return the status
-     */
     public String getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
     public void setStatus(String status) {
         this.status = status;
     }
 
-    /**
-     * @return the ownername
-     */
     public String getOwnername() {
         return ownername;
     }
 
-    /**
-     * @param ownername the ownername to set
-     */
     public void setOwnername(String ownername) {
         this.ownername = ownername;
     }
-    /**
-     * @return the booktitleEn
-     */
+
     public String getBooktitleEn() {
         return booktitleEn;
     }
 
-    /**
-     * @param booktitleEn the booktitleEn to set
-     */
     public void setBooktitleEn(String booktitleEn) {
         this.booktitleEn = booktitleEn;
     }
 
-    /**
-     * @return the booktitleAr
-     */
     public String getBooktitleAr() {
         return booktitleAr;
     }
 
-    /**
-     * @param booktitleAr the booktitleAr to set
-     */
     public void setBooktitleAr(String booktitleAr) {
         this.booktitleAr = booktitleAr;
     }
-    
-    /**
-     * @return the bookId
-     */
+
     public int getBookId() {
         return bookId;
     }
 
-    /**
-     * @param bookId the bookId to set
-     */
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
+    public void saveBook() {
+        try {
 
-    
-    public void saveBook()
-    {
-        try{
-            
-        Book book = new Book();
-        Authors author = authors.get(authorId - 1);
-        book.setBookId(getBookId());
-        book.setAuthor(author);
-        book.setBooktitleAr(getBooktitleAr());
-        book.setBooktitleEn(getBooktitleEn());
-        book.setGenre(genre);
-        book.setNumofpages(numofpages);
-        book.setPrice(price);
-        book.setPriceday(priceday);
-        book.setPublishyear(publishyear);
-        book.setStatus(status);
-        book.setVersion(version);
-        book.setOwnername(ownername);
-        
-         
+            Book book = new Book();
+            Authors author = authors.get(authorId - 1);
+            book.setBookId(getBookId());
+            book.setAuthor(author);
+            book.setBooktitleAr(getBooktitleAr());
+            book.setBooktitleEn(getBooktitleEn());
+            book.setGenre(genre);
+            book.setNumofpages(numofpages);
+            book.setPrice(price);
+            book.setPriceday(priceday);
+            book.setPublishyear(publishyear);
+            book.setStatus(status);
+            book.setVersion(version);
+            book.setOwnername(ownername);
+
             if (sessionBean.getSelectedItemId() > 0) {
                 bookinformationDao.insertBook(book);
             }
@@ -304,40 +218,7 @@ public class AddBookBean implements Serializable {
             Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        sessionBean.navigate("library/library.xhtml");
-    }
-        
+        sessionBean.navigate("library");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

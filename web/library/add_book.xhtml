@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add a Book</title>
+    </h:head>
+    <body>
+        <ui:decorate template="/app_templates/app_template.xhtml">
+             <h:form id="add_book">
+                 <p:messages id="books" closable="true" globalOnly="true"/>
+                  <p:panel header="#{msgs.book_info}"                            
+                         style="min-height:450px; 
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                      <h:panelGrid id="add"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="2"                              
+                                 dir="#{langBean.dir}">
+                          <p:outputLabel value="#{msgs.book_Id}:" for="bookId"/>
+                        <p:inputText id="bookId"
+                                     style="width:400px"
+                                     value="#{addbookBean.bookId}"                                      
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.book_title_en}" for="book_title_en"/>
+                        <p:inputText id="book_title_en"
+                                     style="width:400px"
+                                     value="#{addbookBean.booktitleEn}"                                      
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.book_title_ar}" for="book_title_ar"/>
+                        <p:inputText id="book_title_ar"
+                                     value="#{addbookBean.booktitleAr}"
+                                     style="width:400px"
+                                     dir="rtl"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.authors_name_en}:" for="authors_name_en"/>
+                        <p:inputText id="authors_name_en"
+                                     value="#{addbookBean.authorsnameEn}"
+                                     style="width:400px"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.authors_name_ar}:" for="authors_name_ar"/>
+                        <p:inputText id="authors_name_ar"
+                                     value="#{addbookBean.authorsnameAr}"
+                                     style="width:400px"
+                                     dir="rtl"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.genre}:" for="genre"/>
+                        <p:inputText id="genre"
+                                     value="#{addbookBean.genre}"
+                                     style="width:100px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.publish_year}:" for="publish_year"/>
+                        <p:inputText id="publish_year"
+                                     value="#{addbookBean.publishyear}"
+                                     style="width:100px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                            <p:outputLabel value="#{msgs.version}:" for="version"/>
+                        <p:inputText id="version"
+                                     value="#{addbookBean.version}"
+                                     style="width:100px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                             <p:outputLabel value="#{msgs.page_no}:" for="page_no"/>
+                        <p:inputText id="page_no"
+                                     value="#{addbookBean.numofpages}"
+                                     style="width:100px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                             <p:outputLabel value="#{msgs.price}:" for="price"/>
+                        <p:inputText id="price"
+                                     value="#{addbookBean.price}"
+                                     style="width:100px"
+                                     maxlength="512">
+                        </p:inputText>
+                           
+                               <p:outputLabel value="#{msgs.price_day}:" for="price_day"/>
+                        <p:inputText id="price_day"
+                                     value="#{addbookBean.priceday}"
+                                     style="width:100px"
+                                     maxlength="512">
+                        </p:inputText>
+                             
+                              <p:outputLabel value="#{msgs.owner_name}:" for="owner_name"/>
+                        <p:inputText id="owner_name"
+                                     value="#{addbookBean.ownername}"
+                                     style="width:400px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                           <p:outputLabel value="#{msgs.status}:" for="version"/>
+                        <p:inputText id="status"
+                                     value="#{addbookBean.status}"
+                                     style="width:100px"
+                                     required="true"                                                                                  
+                                     requiredMessage=" #{msgs.required_msg}"
+                                     maxlength="512">
+                        </p:inputText>
+                           </h:panelGrid>
+                      </p:panel>
+                
+                              <p:commandButton value="#{msgs.save}"
+                                 styleClass="commandButton"
+                                 icon="ui-icon-disk"
+                                 iconPos="#{langBean.styleFloat}"
+                                 style="float:#{langBean.styleFloat}"                                                                   
+                                 actionListener="#{addbookBean.saveBook()}" 
+                                 action="library"/>
+                              <p:commandButton value="#{msgs.cancel}"
+                                 icon="ui-icon-cancel"  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 immediate="true" 
+                                 style="float:#{langBean.styleFloat}"                                 
+                                 action="library"  />   
+                                </h:form>
+        </ui:decorate>
+        
+    </body>
+</html>
+
