@@ -11,7 +11,6 @@ public class ViewFilterRide implements Serializable {
     private String name;
     private String phone;
     private String gender;
-
     private String ride_from;
     private String ride_to;
   

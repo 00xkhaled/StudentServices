@@ -60,7 +60,7 @@ public class ViewRideBean implements Serializable {
     public void setSelectedRide(ViewFilterRide selectedRides) {
         this.selectedRide = selectedRides;
     } 
-    // hay hee elee ma3molelha call bl page
+    
     
     
      public String getRideFrom(){
@@ -94,8 +94,8 @@ public class ViewRideBean implements Serializable {
       public String getGender(){
         return this.gender;
     }
-    public void setGender(String phone){
-        this.phone=gender;
+    public void setGender(String gender){
+        this.gender=gender;
     }
     
   
