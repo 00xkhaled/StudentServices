@@ -3,18 +3,18 @@ package beans;
 import javax.inject.Named;
 import java.io.Serializable;
 import javax.inject.Inject;
-import daos.AvailableRidesDao;
+import daos.ViewFilterRideDao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
-import models.AvailableRides;
+import models.ViewFilterRide;
 /**
  *
  * @author Sarayreh
  */
-@Named(value = "ViewRideBean")
+@Named(value = "viewRideBean")
 @ViewScoped
 public class ViewRideBean implements Serializable {
     
@@ -27,9 +27,9 @@ public class ViewRideBean implements Serializable {
     private String gender;
    
     
-    private AvailableRides selectedRide;
-    private final AvailableRidesDao ridesdao=new AvailableRidesDao();
-    private ArrayList<AvailableRides> list;
+    private ViewFilterRide selectedRide;
+   private final ViewFilterRideDao ridesdao=new ViewFilterRideDao();
+    private ArrayList<ViewFilterRide> list;
     
      @Inject
     private SessionBean sessionBean;
@@ -44,7 +44,7 @@ public class ViewRideBean implements Serializable {
            
             list = ridesdao.getRides();            
         } catch (Exception ex) {
-            Logger.getLogger(AvailableRidesBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewRideBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -54,13 +54,13 @@ public class ViewRideBean implements Serializable {
     public void setRideID(String ride_id){
         this.ride_id=Integer.parseInt(ride_id);
     }
-    public AvailableRides getSelectedRide() {
+    public ViewFilterRide getSelectedRide() {
         return selectedRide;
     }
-    public void setSelectedRide(AvailableRides selectedRides) {
+    public void setSelectedRide(ViewFilterRide selectedRides) {
         this.selectedRide = selectedRides;
     } 
-    // hay hee elee ma3molelha call bl page
+    
     
     
      public String getRideFrom(){
@@ -94,8 +94,8 @@ public class ViewRideBean implements Serializable {
       public String getGender(){
         return this.gender;
     }
-    public void setGender(String phone){
-        this.phone=gender;
+    public void setGender(String gender){
+        this.gender=gender;
     }
     
   
@@ -104,11 +104,11 @@ public class ViewRideBean implements Serializable {
         sessionBean.setSelectedItemId(selectedRide.getRideID());
     }
 
-    public ArrayList<AvailableRides> getList() {
+    public ArrayList<ViewFilterRide> getList() {
         return list;
     }
 
-    public void setList(ArrayList<AvailableRides> list) {
+    public void setList(ArrayList<ViewFilterRide> list) {
         this.list = list;
     }
      
