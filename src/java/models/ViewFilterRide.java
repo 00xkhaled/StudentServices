@@ -1,7 +1,6 @@
 package models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /*
  * @author Sarayreh
@@ -9,14 +8,13 @@ import java.sql.Timestamp;
 public class ViewFilterRide implements Serializable {
 
     private int ride_id;
-    private int student_id;
     private String name;
     private String phone;
     private String gender;
 
     private String ride_from;
     private String ride_to;
-    private String departure_time;
+  
 
     
 
@@ -53,13 +51,7 @@ public class ViewFilterRide implements Serializable {
         this.ride_to = ride_to;
     }
 
-    public String getDeparture_time() {
-        return departure_time;
-    }
-
-    public void setDeparture_time(String departure_time) {
-        this.departure_time = departure_time;
-    }
+    
 
     public int getRideID() {
         return this.ride_id;
@@ -101,11 +93,5 @@ public class ViewFilterRide implements Serializable {
         this.phone = phone;
     }
 
-    public String getDepartureTime() {
-        return this.departure_time;
-    }
-
-    public void setDepartureTime(String departure_time) {
-        this.departure_time = departure_time;
-    }
+   
 }

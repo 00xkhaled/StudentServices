@@ -60,7 +60,7 @@
                               sortBy="#{list.phone}">                    
                         <h:outputText value="#{list.phone}"/>  
                     </p:column>
-                      <p:column headerText="#{msgs.ge}"
+                    <p:column headerText="#{msgs.gender}"
                               style="width:20%"
                               sortBy="#{list.name}">                    
                         <h:outputText value="#{list.name}"/>  
@@ -76,7 +76,12 @@
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
- 
+                <p:commandButton value="#{msgs.back}"
+                             styleClass="commandButton"
+                             icon="ui-icon-arrowreturnthick-1-n"
+                             iconPos=""
+                             style=""                                                                   
+                             action="filter" />
                                 
             </h:form>
         </ui:decorate>
