@@ -21,7 +21,7 @@ import beans.SessionBean;
  */
 @Named(value = "addEditStudentBean")
 @ViewScoped
-public class addEditStudentBean implements Serializable {
+public class AddEditStudentBean implements Serializable {
 
     private final StudentInformationDao studentsDao = new StudentInformationDao();
     private int student_id;
@@ -37,7 +37,7 @@ public class addEditStudentBean implements Serializable {
     @Inject
     private SessionBean sessionBean;
 
-    public addEditStudentBean() {
+    public AddEditStudentBean() {
     }
 
     @PostConstruct
@@ -59,7 +59,7 @@ public class addEditStudentBean implements Serializable {
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(addEditStudentBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEditStudentBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -155,9 +155,9 @@ public class addEditStudentBean implements Serializable {
                 studentsDao.insertStudent(student);
             }
         } catch (Exception ex) {
-            Logger.getLogger(addEditStudentBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEditStudentBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        sessionBean.navigate("manage_events");
+        sessionBean.navigate("student_info");
     }
 }

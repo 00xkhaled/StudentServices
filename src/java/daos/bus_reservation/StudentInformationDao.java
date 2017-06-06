@@ -17,7 +17,7 @@ import models.bus_reservation.StudentInformation;
  */
 public class StudentInformationDao extends BusConnectionDao { 
     
-    public ArrayList<StudentInformation> buildStudent() throws Exception {
+    public ArrayList<StudentInformation> getStudent() throws Exception {
                 
         ArrayList<StudentInformation> list = new ArrayList<>();
         try {   
@@ -29,7 +29,7 @@ public class StudentInformationDao extends BusConnectionDao {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateEvent(rs));
+                list.add(populateStudent(rs));
             }
             
             rs.close();
@@ -43,23 +43,23 @@ public class StudentInformationDao extends BusConnectionDao {
 
    
     
-    private StudentInformation populateEvent(ResultSet rs) throws SQLException {
-        StudentInformation event = new StudentInformation();
+    private StudentInformation populateStudent(ResultSet rs) throws SQLException {
+        StudentInformation student = new StudentInformation();
         
-        event.setStudentID(rs.getInt("STUDENT_ID"));
-        event.setStudentFNameEn(rs.getString("STUDENT_FIRST_NAME_EN"));
-        event.setStudentLNameEn(rs.getString("STUDENT_LAST_NAME_EN"));
-        event.setStudentFNameAr(rs.getString("STUDENT_FIRST_NAME_AR"));
-        event.setStudentLNameAr(rs.getString("STUDENT_LAST_NAME_AR"));
-        event.setPhone(rs.getInt("STUDENT_PHONE_NUMBER"));
-        event.setStudentAddressEn(rs.getString("STUDENT_ADDRESS_EN"));
-        event.setStudentAddressAr(rs.getString("STUDENT_ADDRESS_AR"));
-        event.setSeatPreRes(rs.getInt("SEATS_PREVIOUSLY_RESERVED"));
+        student.setStudentID(rs.getInt("STUDENT_ID"));
+        student.setStudentFNameEn(rs.getString("STUDENT_FIRST_NAME_EN"));
+        student.setStudentLNameEn(rs.getString("STUDENT_LAST_NAME_EN"));
+        student.setStudentFNameAr(rs.getString("STUDENT_FIRST_NAME_AR"));
+        student.setStudentLNameAr(rs.getString("STUDENT_LAST_NAME_AR"));
+        student.setPhone(rs.getInt("STUDENT_PHONE_NUMBER"));
+        student.setStudentAddressEn(rs.getString("STUDENT_ADDRESS_EN"));
+        student.setStudentAddressAr(rs.getString("STUDENT_ADDRESS_AR"));
+        student.setSeatPreRes(rs.getInt("SEATS_PREVIOUSLY_RESERVED"));
         
-        return event;
+        return student;
     }
     
-    public void insertStudent(StudentInformation event) throws Exception {                
+    public void insertStudent(StudentInformation student) throws Exception {                
         try {
             Connection conn = getConnection();
             
@@ -72,18 +72,18 @@ public class StudentInformationDao extends BusConnectionDao {
                     + " STUDENT_PHONE_NUMBER,"
                     + " SEATS_PREVIOUSLY_RESERVED,"
                     + " STUDENT_ADDRESS_EN,"
-                    + " STUDENT_ADDRESS_AR,"
+                    + " STUDENT_ADDRESS_AR)"
                     + " VALUES ((select max(STUDENT_ID) from STUDENTS)+1,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
-            ps.setString(1, event.getStudentFNameEn());
-            ps.setString(2, event.getStudentFNameAr());
-            ps.setString(3, event.getStudentLNameEn());
-            ps.setString(4, event.getStudentLNameAr()); 
-            ps.setInt(5 ,   event.getPhone());
-            ps.setInt(6 ,   event.getSeatPreRes());
-            ps.setString(7, event.getStudentAddressEn());
-            ps.setString(8, event.getStudentAddressAr());
+            ps.setString(1, student.getStudentFNameEn());
+            ps.setString(2, student.getStudentFNameAr());
+            ps.setString(3, student.getStudentLNameEn());
+            ps.setString(4, student.getStudentLNameAr()); 
+            ps.setInt(5 ,   student.getPhone());
+            ps.setInt(6 ,   student.getSeatPreRes());
+            ps.setString(7, student.getStudentAddressEn());
+            ps.setString(8, student.getStudentAddressAr());
                         
             
             ps.executeUpdate();
@@ -94,7 +94,7 @@ public class StudentInformationDao extends BusConnectionDao {
         }
     }
     
-    public void updateStudent(StudentInformation event) throws Exception {
+    public void updateStudent(StudentInformation student) throws Exception {
         try {
             Connection conn = getConnection();
 
@@ -110,15 +110,15 @@ public class StudentInformationDao extends BusConnectionDao {
                     + " WHERE STUDENT_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setString(1, event.getStudentFNameEn());
-            ps.setString(2, event.getStudentFNameAr());
-            ps.setString(3, event.getStudentLNameEn());
-            ps.setString(4, event.getStudentLNameAr()); 
-            ps.setInt(5 ,   event.getPhone());
-            ps.setInt(6 ,   event.getSeatPreRes());
-            ps.setString(7, event.getStudentAddressEn());
-            ps.setString(8, event.getStudentAddressAr());            
-            ps.setInt(9, event.getStudentID());
+            ps.setString(1, student.getStudentFNameEn());
+            ps.setString(2, student.getStudentFNameAr());
+            ps.setString(3, student.getStudentLNameEn());
+            ps.setString(4, student.getStudentLNameAr()); 
+            ps.setInt(5 ,   student.getPhone());
+            ps.setInt(6 ,   student.getSeatPreRes());
+            ps.setString(7, student.getStudentAddressEn());
+            ps.setString(8, student.getStudentAddressAr());            
+            ps.setInt(9, student.getStudentID());
 
             ps.executeUpdate();
             
@@ -147,7 +147,7 @@ public class StudentInformationDao extends BusConnectionDao {
     public static void main(String [] args){        
         try {
             StudentInformationDao dao = new StudentInformationDao();                
-            //ArrayList<Event> events = dao.buildEvents();
+            //ArrayList<Event> students = dao.buildEvents();
         } catch (Exception ex) {
             Logger.getLogger(StudentInformationDao.class.getName()).log(Level.SEVERE, null, ex);
         }
