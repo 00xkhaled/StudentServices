@@ -24,15 +24,13 @@ public class AvailableRidesDao extends ConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "select ride_from, ride_to, name, phone, departure_time "
-                       + "from students_carpooling, Destinations "
-                       + "where(students_carpooling.ride_id==Destinations.ride_id);";                     
+            String sql = "SELECT DESTINATIONS.RIDE_FROM, DESTINATIONS.RIDE_TO, STUDENTS_CARPOOLING.STUDENT_NAME, STUDENTS_CARPOOLING.PHONE,DESTINATIONS.DEPARTURE_TIME  FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID;";                     
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateRide(rs));
+                list.add(populateRide2(rs));
             }
             
             rs.close();
@@ -44,10 +42,7 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
 
-   
-    //it will cooperate with the getRide() methode so that it will seperate the 
-    //returned data before return it again.
-   private AvailableRide populateRide(ResultSet rs) throws SQLException {
+    private AvailableRide populateRide(ResultSet rs) throws SQLException {
         AvailableRide ride = new AvailableRide();
         
         ride.setRideID(rs.getInt("RIDE_ID"));
@@ -65,6 +60,25 @@ public class AvailableRidesDao extends ConnectionDao {
         ride.setCarModel(rs.getString("CAR_MODEL"));
         ride.setYearOfMake(rs.getString("YEAR_OF_MAKE"));
         ride.setCarColor(rs.getString("CAR_COLOR"));
+        
+        return ride;
+    }
+    //it will cooperate with the getRide() methode so that it will seperate the 
+    //returned data before return it again.
+   private AvailableRide populateRide2(ResultSet rs) throws SQLException {
+        AvailableRide ride = new AvailableRide();
+        
+        
+        
+        ride.setName(rs.getString("STUDENT_NAME"));
+        ride.setPhone(rs.getString("PHONE"));
+        ride.setGender(rs.getString("GENDER"));
+        
+        ride.setRideFrom(rs.getString("RIDE_FROM"));
+        ride.setRideTo(rs.getString("RIDE_TO"));
+        ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
+        
+        
         
         return ride;
     }
