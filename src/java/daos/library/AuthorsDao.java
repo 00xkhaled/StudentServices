@@ -72,7 +72,7 @@ public class AuthorsDao extends LibraryConnectionDao {
         author.setAuthornameAr(rs.getString("AUTHOR_NAME_AR"));
         return author;
     }
-     /*
+     
       public void insertAuthor(Authors event) throws Exception {                
         try {
             Connection conn = getConnection();
@@ -101,5 +101,5 @@ public class AuthorsDao extends LibraryConnectionDao {
         } catch (Exception ex) {
             Logger.getLogger(AuthorsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
 }

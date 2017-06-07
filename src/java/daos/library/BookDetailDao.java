@@ -113,7 +113,7 @@ public class BookDetailDao extends LibraryConnectionDao {
                     + " STATUS,"
                     + " OWNER_NAME,"
                     + "AUTHOR_ID)"
-                    + " VALUES ((select max(BOOK_ID) from BOOKS)+1,?,?,?)";
+                    + " VALUES ((select max(BOOK_ID) from BOOKS)+1,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
             ps.setInt(1, event.getBookId());

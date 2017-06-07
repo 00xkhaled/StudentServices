@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
 import models.library.Book;
 import beans.SessionBean;
 import daos.library.BookInformationDao;
-import models.library.Authors;
+import models.library.Authors; 
 import javax.faces.view.ViewScoped;
 import daos.library.BookDetailDao;
 
