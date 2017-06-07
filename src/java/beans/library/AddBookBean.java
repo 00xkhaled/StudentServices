@@ -17,6 +17,8 @@ import models.library.Book;
 import models.library.Authors;
 import beans.SessionBean;
 import daos.library.BookInformationDao;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.faces.view.ViewScoped;
 
 /**
@@ -44,12 +46,13 @@ public class AddBookBean implements Serializable {
     private int priceday;
     private String status;
     private String ownername;
+    private Date returnDate;
 
     @Inject
     private SessionBean sessionBean;
 
     public AddBookBean() {
-        
+
     }
 
     @PostConstruct
@@ -71,6 +74,7 @@ public class AddBookBean implements Serializable {
                 status = book.getStatus();
                 ownername = book.getOwnername();
                 authorId = book.getAuthor().getAuthorId();
+                returnDate = book.getReturnDate();
             }
         } catch (Exception ex) {
             Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -193,6 +197,56 @@ public class AddBookBean implements Serializable {
         this.bookId = bookId;
     }
 
+    public Date getreturnDate() {
+        return returnDate;
+    }
+
+    public void setreturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    //  Hamza ( buy & borrow ).
+    public void saveBuyBook() {
+        try {
+
+            Book book = new Book();
+
+            book.setStatus("Sold");
+            book.setOwnername(ownername);
+
+            if (sessionBean.getSelectedItemId() > 0) {
+                bookinformationDao.BuyBook(book);
+            } else {
+                bookinformationDao.insertBook(book);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        sessionBean.navigate("library");
+    }
+
+    public void saveBorrowBook() {
+        try {
+
+            Book book = new Book();
+
+            book.setStatus("Rented");
+            book.setReturnDate(new Timestamp(returnDate.getTime()));
+
+            if (sessionBean.getSelectedItemId() > 0) {
+                bookinformationDao.borrowBook(book);
+            } else {
+                bookinformationDao.insertBook(book);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AddBookBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        sessionBean.navigate("library");
+    }
+
+//  Hamza ( buy & borrow ).    
     public void saveBook() {
         try {
 

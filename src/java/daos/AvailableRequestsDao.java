@@ -36,7 +36,7 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
             Connection conn = getConnection();
             
             String sql =
-                      "INSERT INTO AVALIABLE_REQUESTS "
+                      "INSERT INTO AV_REQ  "
                     + "( REQUEST_ID,"
                     + " REQUEST_FROM,"
                     + " REQUEST_TO,"
@@ -72,7 +72,7 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
         
         try 
         {
-                String sql = "DELETE FROM AVAILABLE_REQUESTS WHERE REQUEST_ID=?";                               
+                String sql = "DELETE FROM AV_REQ  WHERE REQUEST_ID=?";                               
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setInt(1, PASSENGER_ID);
 
@@ -94,7 +94,7 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
         {
             Connection conn = getConnection();
 
-            String sql = "UPDATE AVAILABLE_REQUESTS SET "
+            String sql = "UPDATE AV_REQ SET "
                     + "(REQUEST_FROM=?,"
                     + " REQUEST_TO=?,"
                     + " PASSENGER_NAME=?,"
@@ -131,7 +131,7 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
         {   
             Connection conn = getConnection();
             
-            String sql = "SELECT * FROM AVAILABLE_REQUESTS";          // select all avaliable requests               
+            String sql = "SELECT * FROM AV_REQ";          // select all avaliable requests               
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 

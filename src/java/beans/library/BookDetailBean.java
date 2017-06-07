@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
 import models.library.Book;
 import beans.SessionBean;
 import daos.library.BookInformationDao;
-import models.library.Authors; 
+import models.library.Authors;
 import javax.faces.view.ViewScoped;
 import daos.library.BookDetailDao;
 
@@ -64,7 +64,6 @@ public class BookDetailBean implements Serializable {
             authors = authors_dao.buildAuthors();
 
             if (bookId > 0) {
-                // call the book_inf_dao who is in BookBean;
                 Book boook = book_inf_dao.getBook(bookId);
                 booktitleEn = boook.getBooktitleEn();
                 booktitleAr = boook.getBooktitleAr();

@@ -10,6 +10,7 @@ package models.library;
  * @author tarekashi
  */
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Book implements Serializable {
 
@@ -27,6 +28,7 @@ public class Book implements Serializable {
     private Authors authorEn;
     private Authors authorAr;
     private Authors author;
+    private Timestamp returnDate;
 
     public int getBookId() {
         return bookId;
@@ -138,6 +140,14 @@ public class Book implements Serializable {
 
     public void setAuthor(Authors author) {
         this.author = author;
+    }
+
+    public void setReturnDate(Timestamp returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public Timestamp getReturnDate() {
+        return returnDate;
     }
 
 }
