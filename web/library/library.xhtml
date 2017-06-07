@@ -130,13 +130,14 @@ Hamza ( buy & borrow ).
                                  action ="add_book" />
                 <p:commandButton value="#{msgs.purchase_transactions}"                                  
                                  styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}"
+                                 style="float:#{langBean.styleFloat};
+                                  padding-bottom: 3em !important;"
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action ="purchase_transactions" />
                 <p:commandButton value="#{msgs.rent_transactions}"
                                  styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
+                                 style="float:#{langBean.styleFloat}"
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action ="rent_transactions" /> 
@@ -152,12 +153,7 @@ Hamza ( buy & borrow ).
                                  style="float:#{langBean.styleFloat}" 
                                  action="borrowbook" />
                 -->
-                <p:commandButton value="#{msgs.view_transactions}"
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action ="viewtransactions" /> 
-                
+               
             </h:form>
         </ui:decorate>
     </h:body>     

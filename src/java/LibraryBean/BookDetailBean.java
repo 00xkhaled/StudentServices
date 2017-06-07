@@ -18,6 +18,7 @@ import beans.SessionBean;
 import LibraryDao.BookInformationDao;
 import LibraryModel.Authors;
 import javax.faces.view.ViewScoped;
+import LibraryDao.BookDetailDao;
 
 /**
  *
@@ -43,41 +44,42 @@ public class BookDetailBean implements Serializable {
     private String ownername;
     private Book SelectedBook;//model object to save the selected book;
     private Book book;
-    private final BookInformationDao book_inf_dao = new BookInformationDao();
+    private final BookDetailDao book_inf_dao = new BookDetailDao();
     private final AuthorsDao authors_dao = new AuthorsDao();
     private ArrayList<Book> list;
     private ArrayList<Authors> authors;
-    
+
     @Inject
 
     private SessionBean sessionBean;
 
     public BookDetailBean() {
-       // init();
+        // init();
     }
 
     @PostConstruct
     public void init() {
         try {
-           bookId = sessionBean.getSelectedItemId();
-           authors = authors_dao.buildAuthors();
-           
-           if (bookId > 0){
-               Book boook = book_inf_dao.getBook(bookId);
-               booktitleEn = boook.getBooktitleEn();
-               booktitleAr = boook.getBooktitleAr();
-               genre = boook.getGenre();
-               publishyear = boook.getPublishyear();
-               version = boook.getVersion();
-               numofpages = boook.getNumofpages();
-               price = boook.getPrice();
-               priceday = boook.getPriceday();
-               status = boook.getStatus();
-               ownername = boook.getOwnername();
-               authorId = boook.getAuthor().getAuthorId();
-           }
-        } catch (Exception ex){
-            //Logger.getLogger(BookDetailBean.class.getName()).log(Level.SEVERE, null, ex);
+            bookId = sessionBean.getSelectedItemId();
+            authors = authors_dao.buildAuthors();
+
+            if (bookId > 0) {
+                // call the book_inf_dao who is in BookBean;
+                Book boook = book_inf_dao.getBook(bookId);
+                booktitleEn = boook.getBooktitleEn();
+                booktitleAr = boook.getBooktitleAr();
+                genre = boook.getGenre();
+                publishyear = boook.getPublishyear();
+                version = boook.getVersion();
+                numofpages = boook.getNumofpages();
+                price = boook.getPrice();
+                priceday = boook.getPriceday();
+                status = boook.getStatus();
+                ownername = boook.getOwnername();
+                authorId = boook.getAuthor().getAuthorId();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(BookDetailBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -218,4 +220,3 @@ public class BookDetailBean implements Serializable {
         return book;
     }
 }
-   

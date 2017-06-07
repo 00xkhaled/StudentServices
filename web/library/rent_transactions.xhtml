@@ -14,9 +14,9 @@
             <h:form id="rent_transaction_form">               
                 <p:dataTable id="rent_transaction_tbl"
                              class="dataTable"
-                             value="#{manageEventsBean.events}"                    
-                             selection="#{manageEventsBean.selectedEvent}"
-                             rowKey="#{rent_transaction.rent_transactionId}"                    
+                             value="#{bookBean.list}"                    
+                             selection="#{bookBean.selectedBook}"
+                             rowKey="#{rent_transactionId}"                    
                              var="rent_transaction"   
                              rows="2"     
                              rowsPerPageTemplate="1,2,3"

@@ -42,6 +42,8 @@ public class BookBean implements Serializable {
     private Book SelectedBook;//model object to save the selected book;
     private Book book;
     private final BookInformationDao book_inf_dao = new BookInformationDao();
+
+    
     private final AuthorsDao authors_dao = new AuthorsDao();
     private ArrayList<Book> list;
     
@@ -60,6 +62,14 @@ public class BookBean implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public BookInformationDao getBook_inf_dao() {
+        return book_inf_dao;
+    }
+
+    public AuthorsDao getAuthors_dao() {
+        return authors_dao;
     }
 
     public int getBookId() {
