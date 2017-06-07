@@ -20,7 +20,7 @@
                          rows="4"     
                          rowsPerPageTemplate="1,2,3"
                          dir="#{langBean.dir}"
-                         emptyMessage="no student found"
+                         emptyMessage="no Student found"
                          paginator="true"
                          paginatorPosition="top" 
                          paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
@@ -77,14 +77,14 @@
                                              disabled="#{studentInformationBean.selectedStudent==null}"
                                              onclick="return confirm('#{msgs.confirm_delete_student}?');"
                                              actionListener="#{studentInformationBean.deleteSelectedStudent()}"
-                                             action="manage_student" />
+                                             action="student_info" />
                             <p:commandButton value="#{msgs.edit}"
                                              icon="ui-icon-pencil"                                  
                                              iconPos="#{langBean.styleFloat}"
                                              styleClass="commandButton"
                                              style="float:#{langBean.styleFloat}" 
                                              disabled="#{studentInformationBean.selectedStudent==null}"
-                                             actionListener="#{addEditStudentBean.saveStudent()}"
+                                             actionListener="#{studentInformationBean.saveSelectedStudentID()}"
                                              action="add_edit_student"
                                                 />
                         </p:toolbarGroup>
@@ -97,7 +97,6 @@
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}"
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action="add_edit_student"/>      
         </h:form>        
         </ui:decorate>
