@@ -113,7 +113,14 @@
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action="add_edit_event" />                
+                                 action="add_edit_event" />
+                
+                <p:commandButton value="#{msgs.book_store}"
+                                 styleClass="commandButton"
+                                 style="float:#{langBean.styleFloat}" 
+                                 ajax="false" 
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                 action ="library" />     
             </h:form>
         </ui:decorate>
     </h:body>
