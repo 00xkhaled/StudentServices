@@ -28,11 +28,11 @@
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.check_information}" 
+                    <p:commandButton  value="#{msgs.filter}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};" 
                                       actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/car_pooling/check_information.xhtml">                       
+                                      action="/car_pooling/filter.xhtml">                       
                     </p:commandButton> 
                 </p:ribbonGroup>                
             </p:tab>
@@ -67,7 +67,8 @@
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
                                       action="#{sessionBean.bus_checkin()}">                        
-                    </p:commandButton>                                         
+                    </p:commandButton>   
+                    
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                label="#{msgs.driver}"
@@ -109,7 +110,21 @@
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
                                       action="#{sessionBean.bus_admin_position()}">                        
                     </p:commandButton>                    
-                </p:ribbonGroup>                
+                </p:ribbonGroup>  
+                
+                 <p:ribbonGroup styleClass="ribbonGroup"
+                               label="Contact us"
+                               style="float:#{langBean.styleFloat};">
+                     
+                    <p:commandButton  value="facebook" 
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"  
+                                      actionListener="#{sessionBean.setMenuIndex(1)}"
+                                      action="#{sessionBean.Contact_us()}">                        
+                    </p:commandButton> 
+                     
+                                     </p:ribbonGroup>  
+
             </p:tab>
 
             <p:tab title="#{msgs.tutoring}" >  

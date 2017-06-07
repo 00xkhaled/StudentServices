@@ -5,7 +5,7 @@
  */
 package LibraryBean;
 
-import LibraryDao.AuthorsDao;
+import daos.library.AuthorsDao;
 import javax.inject.Named;
 import java.io.Serializable;
 import javax.inject.Inject;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import LibraryModel.Book;
+import models.library.Book;
 import beans.SessionBean;
-import LibraryDao.BookInformationDao;
-import LibraryModel.Authors;
+import daos.library.BookInformationDao;
+import models.library.Authors;
 import javax.faces.view.ViewScoped;
-import LibraryDao.BookDetailDao;
+import daos.library.BookDetailDao;
 
 /**
  *
