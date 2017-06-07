@@ -6,6 +6,7 @@
 package beans;
 
 import daos.AddEditRidesDao;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,7 @@ import models.AvailableRide;
  */
 @Named(value = "rideInfoBean")
 @ViewScoped
-public class RideInfoBean {
+public class RideInfoBean implements Serializable{
 
     //STUDENT_CARPOOLING:
     /*01*/private int rideId;
