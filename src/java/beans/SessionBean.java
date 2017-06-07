@@ -20,19 +20,15 @@ public class SessionBean implements Serializable {
     private String password;
 
     // Session attributes
-<<<<<<< HEAD
+
     private Connection connection; 
     private int selectedItemId; 
      private int selectedBusID;
      private int selectedStudentID;
      private int selectedDriverID;
 
-=======
-    private Connection connection;
-    private int selectedItemId;
-    private int selectedBusID;
-    private int selectedStudentID;
->>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
+
+
     private int menuIndex = 0;
 
     public SessionBean() {
@@ -76,22 +72,17 @@ public class SessionBean implements Serializable {
 
     public void setSelectedBusID(int selectedBusID) {
         this.selectedBusID = selectedBusID;
-<<<<<<< HEAD
     } 
     
-         public int getSelectedStudentID() {
-=======
-    }
 
     public int getSelectedStudentID() {
->>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
+
         return selectedStudentID;
     }
 
     public void setSelectedStudentID(int selectedStudentID) {
         this.selectedStudentID = selectedStudentID;
     }
-<<<<<<< HEAD
     
              public int getSelectedDriverID() {
         return selectedDriverID;
@@ -100,8 +91,7 @@ public class SessionBean implements Serializable {
     public void setSelectedDriverID(int selectedDriverID) {
         this.selectedDriverID = selectedDriverID;
     }
-=======
->>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
+
 
     public int getMenuIndex() {
         return menuIndex;
