@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LibraryBean;
+package beans.library;
 
 import daos.library.AuthorsDao;
 import javax.inject.Named;
