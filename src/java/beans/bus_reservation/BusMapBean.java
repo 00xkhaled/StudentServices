@@ -8,7 +8,7 @@ import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 import org.primefaces.model.map.Polygon;
-@Named("bmapBean")
+@Named("busmapBean")
 @ViewScoped
 
 
