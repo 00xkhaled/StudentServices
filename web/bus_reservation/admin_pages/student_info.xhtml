@@ -10,8 +10,8 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form id="manage_events_form">
-                <p:dataTable id="manage_events_tbl"
+            <h:form id="student_form">
+                <p:dataTable id="student_tbl"
                              class="dataTable"
                              value="#{studentInformationBean.list}"
                              selection="#{studentInformationBean.selectedStudent}"
@@ -27,7 +27,7 @@
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":manage_events_form:manage_events_tbl"/>
+                            update=":student_form:student_tbl"/>
 
                     <f:facet name="header" id="header">
                         #{msgs.student_info}
@@ -38,7 +38,7 @@
                               style="width:10%"
                               filterBy="#{list.studentFNameEn}"
                               filterMatchMode="contains"
-                              sortBy="#{list.studentFNameEn}"> 
+                              sortBy="#{list.studentID}"> 
                         <h:outputText value="#{list.studentFNameEn}"/>
                     </p:column>
 
@@ -54,7 +54,7 @@
                               style="width:10%"
                               filterBy="#{list.phone}"
                               filterMatchMode="contains"
-                              sortBy="#{list.phone}">  
+                              sortBy="#{list.studentID}">  
                         <h:outputText value="#{list.phone}"/>  
                     </p:column>
 
@@ -62,7 +62,7 @@
                               style="width:10%"
                               filterBy="#{list.seatPreRes}"
                               filterMatchMode="contains"
-                              sortBy="#{list.seatPreRes}"> 
+                              sortBy="#{list.studentID}"> 
                         <h:outputText value="#{list.seatPreRes}"/>  
                     </p:column>
 

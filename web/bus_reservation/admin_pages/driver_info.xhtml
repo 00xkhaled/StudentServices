@@ -10,13 +10,13 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                            
-        <h:form id="manage_events_form">
-            <p:dataTable id="manage_events_tbl"
+        <h:form id="driver_form">
+            <p:dataTable id="driver_tbl"
                          class="dataTable"
                          value="#{driverInformationBean.list}"
                          selection="#{driverInformationBean.selectedDriver}"
-                         rowKey="#{list.driverID}"                    
-                         var="list"   
+                         rowKey="#{driver.driverID}"                    
+                         var="driver"   
                          rows="4"     
                          rowsPerPageTemplate="1,2,3"
                          dir="#{langBean.dir}"
@@ -27,7 +27,7 @@
                          >
 
                 <p:ajax event="rowSelectRadio"
-                        update=":manage_events_form:manage_events_tbl"/>
+                        update=":driver_form:driver_tbl"/>
                 
                 <f:facet name="header" id="header">
                     Driver Information
@@ -36,34 +36,34 @@
                 <p:column selectionMode="single" style="width:5%"/>
                 <p:column headerText="#{msgs.driver_name}"
                           style="width:10%"
-                          filterBy="#{list.driverNameEn}"
+                          filterBy="#{driver.driverNameEn}"
                           filterMatchMode="contains"
-                          sortBy="#{list.driverID}"> 
-                    <h:outputText value="#{list.driverNameEn}"/>
+                          sortBy="#{driver.driverID}"> 
+                    <h:outputText value="#{driver.driverNameEn}"/>
                 </p:column>
 
                 <p:column headerText="#{msgs.driver_id}"
                           style="width:10%"
-                          filterBy="#{list.driverID}"
+                          filterBy="#{driver.driverID}"
                           filterMatchMode="contains"
-                          sortBy="#{list.driverID}"> 
-                    <h:outputText value="#{list.driverID}"/>  
+                          sortBy="#{driver.driverID}"> 
+                    <h:outputText value="#{driver.driverID}"/>  
                 </p:column>
                     
                 <p:column headerText="#{msgs.driver_add}"
                           style="width:10%"
-                          filterBy="#{list.driverAddressEn}"
+                          filterBy="#{driver.driverAddressEn}"
                           filterMatchMode="contains"
-                          sortBy="#{list.driverID}">  
-                    <h:outputText value="#{list.driverAddressEn}"/>  
+                          sortBy="#{driver.driverID}">  
+                    <h:outputText value="#{driver.driverAddressEn}"/>  
                 </p:column>
                     
                 <p:column headerText="#{msgs.phone}"
                           style="width:10%"
-                          filterBy="#{list.phone}"
+                          filterBy="#{driver.phone}"
                           filterMatchMode="contains"
-                          sortBy="#{list.driverID}"> 
-                    <h:outputText value="#{list.phone}"/>  
+                          sortBy="#{driver.driverID}"> 
+                    <h:outputText value="#{driver.phone}"/>  
                 </p:column>
 
             <f:facet name="footer">
