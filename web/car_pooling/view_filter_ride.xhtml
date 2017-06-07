@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.Search}</title>
+        <title>#{msgs.search}</title>
     </h:head>
     <h:body>
        <ui:decorate template="/app_templates/app_template.xhtml"> 
@@ -76,14 +76,15 @@
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
+                </h:form>
                 <p:commandButton value="#{msgs.back}"
                              styleClass="commandButton"
                              icon="ui-icon-arrowreturnthick-1-n"
                              iconPos=""
                              style=""                                                                   
-                             action="filter" />
+                             action="filter"/>
                                 
-            </h:form>
+            
         </ui:decorate>
     </h:body>
 </html>
