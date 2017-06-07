@@ -26,14 +26,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.library.Book;
 import models.library.Authors;
-
+import daos.library.LibraryConnectionDao;
+import daos.library.BookInformationDao;
 
 /**
  *
  * @author tarekashi
  */
-public class BookInformationDao extends LibraryConnectionDao {
-    public ArrayList<Book> buildEvents(HashMap<Integer, Authors> authors) throws Exception {
+public class BookDetailDao extends LibraryConnectionDao {
+     public ArrayList<Book> buildEvents(HashMap<Integer, Authors> authors) throws Exception {
                 
         ArrayList<Book> list = new ArrayList<>();
         try {   
@@ -251,3 +252,4 @@ public class BookInformationDao extends LibraryConnectionDao {
         }
     }
 }
+

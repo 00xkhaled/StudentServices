@@ -16,15 +16,14 @@
                 <p:panel header="#{msgs.student_info}"                            
                          style="min-height:400px; 
                                 direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-                    <h:panelGrid id="add"
+                    <h:panelGrid id="add_student"
                                  style="float: #{langBean.styleFloat};" 
                                  columns="3"    
                                  
                                  dir="#{langBean.dir}">
-                       
-                     
+
                         
-                        <p:outputLabel value="#{msgs.student_fname_en}:" />
+                        <p:outputLabel value="#{msgs.student_fname_en}:" for="student_fname_en" />
                         <p:inputText id="student_fname_en"
                                      value="#{addEditStudentBean.studentFNameEn}"
                                      style="width:350px"
@@ -34,7 +33,7 @@
                         </p:inputText>
                         <h:message for="student_fname_en" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.student_fname_ar}:" />
+                        <p:outputLabel value="#{msgs.student_fname_ar}:" for="student_fname_ar" />
                         <p:inputText id="student_fname_ar"
                                      value="#{addEditStudentBean.studentFNameAr}"
                                      style="width:350px"
@@ -44,8 +43,7 @@
                         </p:inputText>
                         <h:message for="student_fname_ar" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.student_lname_en}:" />
-                        
+                        <p:outputLabel value="#{msgs.student_lname_en}:" for="student_lname_en" />
                         <p:inputText id="student_lname_en"
                                      value="#{addEditStudentBean.studentLNameEn}"
                                      style="width:350px"
@@ -55,7 +53,7 @@
                         </p:inputText>
                         <h:message for="student_lname_en" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.student_lname_ar}:" />
+                        <p:outputLabel value="#{msgs.student_lname_ar}:" for="student_lname_ar"/>
                         <p:inputText id="student_lname_ar"
                                      value="#{addEditStudentBean.studentLNameAr}"
                                      style="width:350px"
@@ -65,7 +63,7 @@
                         </p:inputText>
                         <h:message for="student_lname_ar" styleClass="errorMsg"/>
                         
-                            <p:outputLabel value="#{msgs.student_add_en}:" />
+                        <p:outputLabel value="#{msgs.student_add_en}:" for="student_add_en" />
                         <p:inputText id="student_add_en"
                                      value="#{addEditStudentBean.studentAddressEn}"
                                      style="width:350px"
@@ -75,7 +73,7 @@
                         </p:inputText>
                         <h:message for="student_add_en" styleClass="errorMsg"/>
                         
-                            <p:outputLabel value="#{msgs.student_add_ar}:" />
+                        <p:outputLabel value="#{msgs.student_add_ar}:" for="student_add_ar" />
                         <p:inputText id="student_add_ar"
                                      value="#{addEditStudentBean.studentAddressAr}"
                                      style="width:350px"
@@ -88,7 +86,7 @@
 
                         
 
-                        <p:outputLabel value="#{msgs.phone}:" />
+                        <p:outputLabel value="#{msgs.phone}:" for="phone" />
                         <p:inputText id="phone"
                                      value="#{addEditStudentBean.phone}"
                                      style="width:350px"
@@ -98,6 +96,17 @@
                         </p:inputText>
                         <h:message for="phone" styleClass="errorMsg"/>
                         
+                        <p:outputLabel value="#{msgs.seats_pre_res}:" for="seats_pre_res"/>
+                        <p:inputText id="seats_pre_res"
+                                     value="#{addEditStudentBean.seatPreRes}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="seats_pre_res" styleClass="errorMsg"/>
+                                            
+
                         <p:outputLabel value="#{msgs.seats_pre_res}:" />
 
                         
@@ -108,7 +117,7 @@
                     </h:panelGrid>
                 </p:panel>
 
-                                <p:commandButton value="#{msgs.save}"
+                                <p:commandButton value="#{msgs.save}" 
                                  styleClass="commandButton"
                                  icon="ui-icon-disk"
                                  iconPos="#{langBean.styleFloat}"
@@ -120,6 +129,7 @@
                                  styleClass="commandButton"
                                  immediate="true" 
                                  style="float:#{langBean.styleFloat}"                                 
+                                 actionListener="#{sessionBean.setSelectedStudentID(-1)}"
                                  action="student_info"  />                                   
             </h:form>
         </ui:decorate>

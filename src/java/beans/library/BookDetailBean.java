@@ -15,17 +15,18 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import models.library.Book;
 import beans.SessionBean;
-import javax.faces.view.ViewScoped;
 import daos.library.BookInformationDao;
-
+import models.library.Authors;
+import javax.faces.view.ViewScoped;
+import daos.library.BookDetailDao;
 
 /**
  *
  * @author tarekashi
  */
-@Named(value = "bookBean")
+@Named(value = "BookDetailBean")
 @ViewScoped
-public class BookBean implements Serializable {
+public class BookDetailBean implements Serializable {
 
     private int bookId;
     private String booktitleEn;
@@ -34,6 +35,7 @@ public class BookBean implements Serializable {
     private String authorsnameAr;
     private String genre;
     private int publishyear;
+    private int authorId;
     private String version;
     private int numofpages;
     private int price;
@@ -42,35 +44,43 @@ public class BookBean implements Serializable {
     private String ownername;
     private Book SelectedBook;//model object to save the selected book;
     private Book book;
-    private final BookInformationDao book_inf_dao = new BookInformationDao();
-
-    
+    private final BookDetailDao book_inf_dao = new BookDetailDao();
     private final AuthorsDao authors_dao = new AuthorsDao();
     private ArrayList<Book> list;
-    
+    private ArrayList<Authors> authors;
+
     @Inject
 
     private SessionBean sessionBean;
 
-    public BookBean() {
-       // init();
+    public BookDetailBean() {
+        // init();
     }
 
     @PostConstruct
     public void init() {
         try {
-            list = book_inf_dao.buildEvents(authors_dao.buildAuthorsMap());
-        } catch (Exception ex) {
-            Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public BookInformationDao getBook_inf_dao() {
-        return book_inf_dao;
-    }
+            bookId = sessionBean.getSelectedItemId();
+            authors = authors_dao.buildAuthors();
 
-    public AuthorsDao getAuthors_dao() {
-        return authors_dao;
+            if (bookId > 0) {
+                // call the book_inf_dao who is in BookBean;
+                Book boook = book_inf_dao.getBook(bookId);
+                booktitleEn = boook.getBooktitleEn();
+                booktitleAr = boook.getBooktitleAr();
+                genre = boook.getGenre();
+                publishyear = boook.getPublishyear();
+                version = boook.getVersion();
+                numofpages = boook.getNumofpages();
+                price = boook.getPrice();
+                priceday = boook.getPriceday();
+                status = boook.getStatus();
+                ownername = boook.getOwnername();
+                authorId = boook.getAuthor().getAuthorId();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(BookDetailBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public int getBookId() {
@@ -208,24 +218,5 @@ public class BookBean implements Serializable {
     public Book detail(Book book) {
         this.book = book;
         return book;
-    }
-   
-    /**
-     * hamza adda
-     */
-    public void BuySelectedBook() {
-        try {
-            book_inf_dao.BuyBook(getSelectedBook());
-        } catch (Exception ex) {
-            Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void borrowSelectedBook() {
-        try {
-            book_inf_dao.borrowBook(getSelectedBook());
-        } catch (Exception ex) {
-            Logger.getLogger(BookBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

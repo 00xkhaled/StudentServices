@@ -20,10 +20,16 @@ public class SessionBean implements Serializable {
     private String password;
 
     // Session attributes
-    private Connection connection;
-    private int selectedItemId;
-    private int selectedBusID;
+
+    private Connection connection; 
+    private int selectedItemId; 
+
+    private int selectedBusID; 
     private int selectedStudentID;
+    private int selectedDriverID;
+
+
+
     private int menuIndex = 0;
 
     public SessionBean() {
@@ -67,15 +73,26 @@ public class SessionBean implements Serializable {
 
     public void setSelectedBusID(int selectedBusID) {
         this.selectedBusID = selectedBusID;
-    }
+    } 
+    
 
     public int getSelectedStudentID() {
+
         return selectedStudentID;
     }
 
     public void setSelectedStudentID(int selectedStudentID) {
         this.selectedStudentID = selectedStudentID;
     }
+    
+             public int getSelectedDriverID() {
+        return selectedDriverID;
+    }
+
+    public void setSelectedDriverID(int selectedDriverID) {
+        this.selectedDriverID = selectedDriverID;
+    }
+
 
     public int getMenuIndex() {
         return menuIndex;
@@ -143,6 +160,10 @@ public class SessionBean implements Serializable {
 
     public void bus_status() {
         navigate("/bus_reservation/driver_pages/bus_status.xhtml");
+    }
+    
+        public void Contact_us() {
+        navigate("/bus_reservation/bus_reservation.xhtml");
     }
 
     public void bus_std_info() {

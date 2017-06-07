@@ -1,7 +1,9 @@
 package beans.bus_reservation;
 
 
+
 import java.io.Serializable;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -11,6 +13,7 @@ import javax.inject.Inject;
 import models.bus_reservation.StudentInformation;
 import daos.bus_reservation.StudentInformationDao;
 import beans.SessionBean;
+import java.io.Serializable;
 
 /**
  *
@@ -41,19 +44,20 @@ public class AddEditStudentBean implements Serializable {
     @PostConstruct
     public void init() {
         try {
-            student_id = sessionBean.getSelectedItemId();
+            student_id = sessionBean.getSelectedStudentID();
 
-            // eventTypes = eventTypesDao.buildEventTypes();
             if (student_id > 0) {
+
                 StudentInformation student = new StudentInformation();
-                student_fname_en = student.getStudentFNameEn();
-                student_fname_ar = student.getStudentFNameAr();
-                student_lname_en = student.getStudentLNameEn();
-                student_lname_ar = student.getStudentLNameAr();
-                address_en = student.getStudentAddressEn();
-                address_ar = student.getStudentAddressAr();
-                seat_pre_res = student.getSeatPreRes();
-                phone = student.getPhone();
+                student.getStudentID();
+                student.getStudentFNameEn();
+                student.getStudentFNameAr();
+                student.getStudentLNameEn();
+                student.getStudentLNameAr();
+                student.getStudentAddressEn();
+                student.getStudentAddressAr();
+                student.getSeatPreRes();
+                student.getPhone();
 
             }
         } catch (Exception ex) {
