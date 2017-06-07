@@ -24,14 +24,13 @@ public class DriverInformationBean implements Serializable {
     private int driver_id;
     private String driver_name_en;
     private String driver_name_ar;
-    private int phone;
     private String driver_add_en;
     private String driver_add_ar;
-
+    private int phone;
     private int driver_license_no;
 
     private DriverInformation selectedDriver;//model object to save selected student;
-    private final DriverInformationDao driver = new DriverInformationDao();//dao object;
+    private final DriverInformationDao driverdao = new DriverInformationDao();//dao object;
     private ArrayList<DriverInformation> list;//list of type model to save result from database
 
     @Inject
@@ -44,7 +43,7 @@ public class DriverInformationBean implements Serializable {
     @PostConstruct
     public void init() {
         try {
-            list = driver.buildEvents();
+            list = driverdao.buildDriver();
         } catch (Exception ex) {
             Logger.getLogger(DriverInformationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,7 +119,7 @@ public class DriverInformationBean implements Serializable {
     }
 
     public void saveSelectedDriverID() {
-        sessionBean.setSelectedItemId(selectedDriver.getDriverID());
+        sessionBean.setSelectedDriverID(selectedDriver.getDriverID());
     }
 
     public ArrayList<DriverInformation> getList() {
@@ -129,6 +128,15 @@ public class DriverInformationBean implements Serializable {
 
     public void setList(ArrayList<DriverInformation> list) { //TO SET IN THE list of type model to save result from database
         this.list = list;
+    }
+
+    public void deleteSelectedDriver() {
+        try {
+            driverdao.deleteDriver(selectedDriver.getDriverID());
+        } catch (Exception ex) {
+            //sar t3deel hon bel information bean kant bus w 5aletha driver
+            Logger.getLogger(DriverInformationBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

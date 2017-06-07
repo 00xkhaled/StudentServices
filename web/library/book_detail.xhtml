@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Book Details</title>
+    </h:head>
+    <body>
+        <ui:decorate template="/app_templates/app_template.xhtml">
+            <h:form id="book_detail">
+
+                <h:panelGrid columns="2" cellpadding ="2" cellspacing ="2">
+
+                    <h:outputText value="#{msgs.book_Id}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.bookId}"></h:outputText>
+
+                    <h:outputText value="#{msgs.book_title_en}"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.booktitleEn}"></h:outputText>
+
+                    <h:outputText value="#{msgs.book_title_ar}"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.booktitleAr}"></h:outputText>
+
+                    <h:outputText value="#{msgs.author_name_en}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.authorsnameEn}"></h:outputText>
+
+                    <h:outputText value="#{msgs.author_name_ar}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.authorsnameAr}"></h:outputText>
+
+                    <h:outputText value="#{msgs.genre}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.genre}"></h:outputText>
+
+                    <h:outputText value="#{msgs.publish_year}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.publishyear}"></h:outputText>
+
+                    <h:outputText value="#{msgs.version}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.version}"></h:outputText>
+
+                    <h:outputText value="#{msgs.page_no}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.numofpages}"></h:outputText>
+
+                    <h:outputText value="#{msgs.price}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.price}"></h:outputText>
+
+                    <h:outputText value="#{msgs.price_day}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.priceday}"></h:outputText>
+
+                    <h:outputText value="#{msgs.status}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.status}"></h:outputText>
+
+                    <h:outputText value="#{msgs.owner_name}:"></h:outputText>
+                    <h:outputText value ="#{BookDetailBean.ownername}"></h:outputText>
+                </h:panelGrid>
+            </h:form>
+
+            <br></br>
+            <h:link value ="#{msgs.book_list}" outcome="library"></h:link>
+        </ui:decorate>
+    </body>
+</html>
