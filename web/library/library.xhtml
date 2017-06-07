@@ -81,44 +81,11 @@
                         <h:commandLink value="#{msgs.detail}" actionListener ="#{bookBean.saveSelectedBookID()}" action="book_detail">
                         </h:commandLink>        
                     </p:column>
-                    
-                      <!--
-Hamza ( buy & borrow ).
--->                   
 
-                       <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                           
-                                <p:commandButton value="#{msgs.buy_book}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{bookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_Buy_book}');"
-                                                 actionListener="#{bookBean.BuySelectedBook()}"
-                                                 action="library" />
-                                
-                                <p:commandButton value="#{msgs.borrow_book}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{bookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_borrow_book}');"
-                                                 actionListener="#{bookBean.borrowSelectedBook()}"
-                                                 action="library" />
-                               
-
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
- <!--
-Hamza ( buy & borrow ).
--->                
               
                 </p:dataTable>
+                
+                
                 
                 <p:commandButton value="#{msgs.add_book}"
                                  icon="ui-icon-plus"                                  
@@ -128,6 +95,30 @@ Hamza ( buy & borrow ).
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action ="add_book" />
+                <!--
+Hamza ( buy & borrow ).
+-->                   
+                           
+                                <p:commandButton value="#{msgs.buy_book}"
+                                                 icon="ui-icon-cart"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 onclick="return confirm('#{msgs.confirm_Buy_book}');"
+                                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                                 action="buy_book" />
+                                
+                                <p:commandButton value="#{msgs.borrow_book}"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                          
+                                                 onclick="return confirm('#{msgs.confirm_borrow_book}');"
+                                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                                 action="borrow_book" />
+ <!--
+Hamza ( buy & borrow ).
+-->    
+                
                 <p:commandButton value="#{msgs.purchase_transactions}"                                  
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat};
@@ -141,18 +132,7 @@ Hamza ( buy & borrow ).
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action ="rent_transactions" /> 
-                <!-- skdhajsdhasjhd
-                <p:commandButton value="#{msgs.buy_book}"                                  
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action="buybook" /> 
-                <p:commandButton value="#{msgs.borrow_book}"
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action="borrowbook" />
-                -->
+                
                
             </h:form>
         </ui:decorate>
