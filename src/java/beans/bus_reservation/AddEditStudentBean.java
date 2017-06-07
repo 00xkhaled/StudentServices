@@ -1,5 +1,9 @@
 package beans.bus_reservation;
 
+
+
+import java.io.Serializable;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -137,7 +141,6 @@ public class AddEditStudentBean implements Serializable {
         try {
             StudentInformation student = new StudentInformation();
 
-            student.setStudentID(student_id);
             student.setStudentFNameEn(student_fname_en);
             student.setStudentFNameAr(student_fname_ar);
             student.setStudentLNameEn(student_lname_en);

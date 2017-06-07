@@ -15,20 +15,28 @@ import javax.inject.Named;
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
+
     private String username;
-    private String password;          
-    
+    private String password;
+
     // Session attributes
+<<<<<<< HEAD
     private Connection connection; 
     private int selectedItemId; 
      private int selectedBusID;
      private int selectedStudentID;
      private int selectedDriverID;
 
+=======
+    private Connection connection;
+    private int selectedItemId;
+    private int selectedBusID;
+    private int selectedStudentID;
+>>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
     private int menuIndex = 0;
-    
-    public SessionBean() {          
-    }         
+
+    public SessionBean() {
+    }
 
     public String getUsername() {
         return username;
@@ -44,7 +52,7 @@ public class SessionBean implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    } 
+    }
 
     public Connection getConnection() {
         return connection;
@@ -60,22 +68,30 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    } 
-     public int getSelectedIBusID() {
+    }
+
+    public int getSelectedBusID() {
         return selectedBusID;
     }
 
     public void setSelectedBusID(int selectedBusID) {
         this.selectedBusID = selectedBusID;
+<<<<<<< HEAD
     } 
     
          public int getSelectedStudentID() {
+=======
+    }
+
+    public int getSelectedStudentID() {
+>>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
         return selectedStudentID;
     }
 
     public void setSelectedStudentID(int selectedStudentID) {
         this.selectedStudentID = selectedStudentID;
     }
+<<<<<<< HEAD
     
              public int getSelectedDriverID() {
         return selectedDriverID;
@@ -84,6 +100,8 @@ public class SessionBean implements Serializable {
     public void setSelectedDriverID(int selectedDriverID) {
         this.selectedDriverID = selectedDriverID;
     }
+=======
+>>>>>>> e73fc39c626a18ffc5d412e4aafafd9b081f84f4
 
     public int getMenuIndex() {
         return menuIndex;
@@ -91,40 +109,40 @@ public class SessionBean implements Serializable {
 
     public void setMenuIndex(int menuIndex) {
         this.menuIndex = menuIndex;
-    }        
-        
+    }
+
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         boolean success = true;
-        
+
         try {
-            
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
-        } finally {            
-              
-        }      
-        
-        if(success){           
+        } finally {
+
+        }
+
+        if (success) {
             navigate("/first_page");
-        } 
-    }      
-    
+        }
+    }
+
     public void logout() throws Exception {
         try {
             // Release and close database resources and connections 
-            if(connection != null){
-                if(!connection.getAutoCommit()){
+            if (connection != null) {
+                if (!connection.getAutoCommit()) {
                     connection.rollback();
                     connection.setAutoCommit(true);
                 }
-                
+
                 connection.close();
                 connection = null;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
-        } finally {            
+        } finally {
             setPassword(null);
             setUsername(null);
 
@@ -160,12 +178,15 @@ public class SessionBean implements Serializable {
     public void bus_std_info() {
         navigate("/bus_reservation/admin_pages/student_info.xhtml");
     }
-    public void bus_info(){
+
+    public void bus_info() {
         navigate("/bus_reservation/admin_pages/bus_info.xhtml");
     }
-    public void bus_driver_info(){
+
+    public void bus_driver_info() {
         navigate("/bus_reservation/admin_pages/driver_info.xhtml");
     }
+
     public void bus_admin_position() {
         navigate("/bus_reservation/admin_pages/bus_position.xhtml");
     }
