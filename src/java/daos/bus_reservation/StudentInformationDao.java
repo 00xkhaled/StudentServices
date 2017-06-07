@@ -43,14 +43,14 @@ public class StudentInformationDao extends BusConnectionDao {
     private StudentInformation populateStudent(ResultSet rs) throws SQLException {
         StudentInformation student = new StudentInformation();
 
-        student.setStudentID(rs.getInt("STUDENT_ID"));
-        student.setStudentFNameEn(rs.getString("STUDENT_FIRST_NAME_EN"));
-        student.setStudentLNameEn(rs.getString("STUDENT_LAST_NAME_EN"));
-        student.setStudentFNameAr(rs.getString("STUDENT_FIRST_NAME_AR"));
-        student.setStudentLNameAr(rs.getString("STUDENT_LAST_NAME_AR"));
+        student.setStudentId(rs.getInt("STUDENT_ID"));
+        student.setStudentFnameEn(rs.getString("STUDENT_FIRST_NAME_EN"));
+        student.setStudentLnameEn(rs.getString("STUDENT_LAST_NAME_EN"));
+        student.setStudentFnameAr(rs.getString("STUDENT_FIRST_NAME_AR"));
+        student.setStudentLnameAr(rs.getString("STUDENT_LAST_NAME_AR"));
         student.setPhone(rs.getInt("STUDENT_PHONE_NUMBER"));
-        student.setStudentAddressEn(rs.getString("STUDENT_ADDRESS_EN"));
-        student.setStudentAddressAr(rs.getString("STUDENT_ADDRESS_AR"));
+        student.setAddressEn(rs.getString("STUDENT_ADDRESS_EN"));
+        student.setAddressAr(rs.getString("STUDENT_ADDRESS_AR"));
         student.setSeatPreRes(rs.getString("SEATS_PREVIOUSLY_RESERVED"));
 
         return student;
@@ -60,8 +60,7 @@ public class StudentInformationDao extends BusConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "INSERT INTO STUDENTS "
-                    + "( STUDENT_ID,"
+            String sql = "INSERT INTO STUDENTS (STUDENT_ID,"
                     + " STUDENT_FNAME_EN,"
                     + " STUDENT_FNAME_AR,"
                     + " STUDENT_LNAME_EN,"
@@ -73,14 +72,14 @@ public class StudentInformationDao extends BusConnectionDao {
                     + " VALUES ((select max(STUDENT_ID) from STUDENTS)+1,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1, student.getStudentFNameEn());
-            ps.setString(2, student.getStudentFNameAr());
-            ps.setString(3, student.getStudentLNameEn());
-            ps.setString(4, student.getStudentLNameAr());
+            ps.setString(1, student.getStudentFnameEn());
+            ps.setString(2, student.getStudentFnameAr());
+            ps.setString(3, student.getStudentLnameEn());
+            ps.setString(4, student.getStudentLnameAr());
             ps.setInt(5, student.getPhone());
             ps.setString(6, student.getSeatPreRes());
-            ps.setString(7, student.getStudentAddressEn());
-            ps.setString(8, student.getStudentAddressAr());
+            ps.setString(7, student.getAddressEn());
+            ps.setString(8, student.getAddressAr());
 
             ps.executeUpdate();
 
@@ -95,26 +94,26 @@ public class StudentInformationDao extends BusConnectionDao {
             Connection conn = getConnection();
 
             String sql = "UPDATE STUDENTS SET "
-                    + " STUDENT_FNAME_EN,"
-                    + " STUDENT_FNAME_AR,"
-                    + " STUDENT_LNAME_EN,"
-                    + " STUDENT_LNAME_AR,"
-                    + " STUDENT_PHONE_NUMBER,"
-                    + " SEATS_PREVIOUSLY_RESERVED,"
-                    + " STUDENT_ADDRESS_EN,"
-                    + " STUDENT_ADDRESS_AR,"
-                    + " WHERE STUDENT_ID=?";
+                    + "STUDENT_FNAME_EN,"
+                    + "STUDENT_FNAME_AR,"
+                    + "STUDENT_LNAME_EN,"
+                    + "STUDENT_LNAME_AR,"
+                    + "STUDENT_PHONE_NUMBER,"
+                    + "SEATS_PREVIOUSLY_RESERVED,"
+                    + "STUDENT_ADDRESS_EN,"
+                    + "STUDENT_ADDRESS_AR,"
+                    + "WHERE STUDENT_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1, student.getStudentFNameEn());
-            ps.setString(2, student.getStudentFNameAr());
-            ps.setString(3, student.getStudentLNameEn());
-            ps.setString(4, student.getStudentLNameAr());
+            ps.setString(1, student.getStudentFnameEn());
+            ps.setString(2, student.getStudentFnameAr());
+            ps.setString(3, student.getStudentLnameEn());
+            ps.setString(4, student.getStudentLnameAr());
             ps.setInt(5, student.getPhone());
             ps.setString(6, student.getSeatPreRes());
-            ps.setString(7, student.getStudentAddressEn());
-            ps.setString(8, student.getStudentAddressAr());
-            ps.setInt(9, student.getStudentID());
+            ps.setString(7, student.getAddressEn());
+            ps.setString(8, student.getAddressAr());
+            ps.setInt(9, student.getStudentId());
 
             ps.executeUpdate();
 
@@ -124,13 +123,13 @@ public class StudentInformationDao extends BusConnectionDao {
         }
     }
 
-    public void deleteStudent(int student_id) throws Exception {
+    public void deleteStudent(int studentId) throws Exception {
         Connection conn = getConnection();
 
         try {
             String sql = "DELETE FROM STUDENTS WHERE STUDENT_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, student_id);
+            ps.setInt(1, studentId);
 
             ps.executeUpdate();
 
