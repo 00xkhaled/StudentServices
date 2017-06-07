@@ -1,14 +1,14 @@
 package beans.bus_reservation;
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 import org.primefaces.model.map.Polygon;
-@Named("BmapBean")
-@SessionScoped
+@Named("bmapBean")
+@ViewScoped
 
 public class BusMapBean implements Serializable {
     

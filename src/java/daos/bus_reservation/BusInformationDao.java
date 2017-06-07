@@ -1,6 +1,5 @@
 package daos.bus_reservation;
   
-import daos.bus_reservation.StudentInformationDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ public class BusInformationDao extends BusConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT * FROM BUSES";                        
+            String sql = "SELECT * FROM BUSES1";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
@@ -61,7 +60,7 @@ public class BusInformationDao extends BusConnectionDao {
             Connection conn = getConnection();
             
             String sql = 
-                    "INSERT INTO BUSES "
+                    "INSERT INTO BUSES1 "
                     + "( BUS_ID, "
                     + " BUS_NUMBER,"
                     + " DRIVER_NAME_EN,"  
@@ -71,7 +70,7 @@ public class BusInformationDao extends BusConnectionDao {
                     + " BUS_TYPE_AR,"
                     + " DRIVER_ID,"
                     + " PLATE_NO)"
-                    + " VALUES ((select max(BUS_ID) from BUSES)+1,?,?,?,?,?,?,?,?)";
+                    + " VALUES ((select max(BUS_ID) from BUSES1)+1,?,?,?,?,?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql); 
                 ps.setInt(1, bus.getBusNumber());
                 ps.setString(2, bus.getDriverNameEn());
@@ -95,26 +94,26 @@ public class BusInformationDao extends BusConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE INTO BUSES "
-                    + " (BUS_NUMBER,"
-                    + " DRIVER_NAME_EN,"  
-                    + " DRIVER_NAME_AR,"
-                    + " BUS_CAPACITY,"
-                    + " BUS_TYPE_EN,"
-                    + " BUS_TYPE_AR,"
-                    + " DRIVER_ID,"
-                    + " PLATE_NO,"
-                    + " WHERE BUS_ID=?";
+            String sql = "UPDATE BUSES1 SET"
+                    + "BUS_NUMBER=?,"
+                    + "DRIVER_NAME_EN=?,"  
+                    + "DRIVER_NAME_AR=?,"
+                    + "BUS_CAPACITY=?,"
+                    + "BUS_TYPE_EN=?,"
+                    + "BUS_TYPE_AR=?,"
+                    + "DRIVER_ID=?,"
+                    + "PLATE_NO=?"
+                    + "WHERE (BUS_ID=?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setInt(1, bus.getBusNumber());
+            ps.setInt(1,    bus.getBusNumber());
             ps.setString(2, bus.getDriverNameEn());
             ps.setString(3, bus.getDriverNameAr());
-            ps.setInt(4, bus.getBusCapacity()); 
-            ps.setString(5,bus.getBusTypeEn());
-            ps.setString(6,bus.getBusTypeAr());
-            ps.setInt(7, bus.getDriverID());
-            ps.setInt(8, bus.getPlateNo());
+            ps.setInt(4,    bus.getBusCapacity()); 
+            ps.setString(5, bus.getBusTypeEn());
+            ps.setString(6, bus.getBusTypeAr());
+            ps.setInt(7,    bus.getDriverID());
+            ps.setInt(8,    bus.getPlateNo());
 
             ps.executeUpdate();
             
@@ -128,7 +127,7 @@ public class BusInformationDao extends BusConnectionDao {
         try {
             Connection conn;
             conn = getConnection();
-            String sql = "DELETE FROM BUSES WHERE BUS_ID=?";                               
+            String sql = "DELETE FROM BUSES1 WHERE BUS_ID=?";                               
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, busID);
             
@@ -146,7 +145,7 @@ public class BusInformationDao extends BusConnectionDao {
             BusInformationDao dao = new BusInformationDao();                
             
         } catch (Exception ex) {
-            Logger.getLogger(StudentInformationDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BusInformationDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

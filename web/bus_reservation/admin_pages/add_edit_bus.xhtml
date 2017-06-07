@@ -1,11 +1,9 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>#{msgs.bus_info}</title>
     </h:head>
@@ -22,7 +20,7 @@
                                  columns="3"                              
                                  dir="#{langBean.dir}">
 
-                        <p:outputLabel value="#{msgs.bus_number}:"/>
+                        <p:outputLabel value="#{msgs.bus_number}:" for="bus_number"/>
                         <p:inputText id="bus_number"
                                      value="#{addEditBusBean.busNumber}"
                                      style="width:350px"
@@ -32,7 +30,7 @@
                         </p:inputText>
                         <h:message for="bus_number" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.bus_type_en}:" />
+                        <p:outputLabel value="#{msgs.bus_type_en}:" for="bus_type_en" />
                         <p:inputText id="bus_type_en"
                                      value="#{addEditBusBean.busTypeEn}"
                                      style="width:350px"
@@ -42,7 +40,7 @@
                         </p:inputText>
                         <h:message for="bus_type_en" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.bus_type_ar}:" />
+                        <p:outputLabel value="#{msgs.bus_type_ar}:" for="bus_type_ar" />
                         <p:inputText id="bus_type_ar"
                                      value="#{addEditBusBean.busTypeAr}"
                                      style="width:350px"
@@ -52,7 +50,7 @@
                         </p:inputText>
                         <h:message for="bus_type_ar" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.bus_capacity}:" />
+                        <p:outputLabel value="#{msgs.bus_capacity}:" for="bus_capacity" />
                         <p:inputText id="bus_capacity"
                                      value="#{addEditBusBean.busCapacity}"
                                      style="width:350px"
@@ -60,19 +58,19 @@
                                      maxlength="512"
                                      requiredMessage="#{msgs.bus_capacity}">
                         </p:inputText>
-                        <h:message for="bus_plate" styleClass="errorMsg"/>
+                        <h:message for="bus_capacity" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.plate_no}:" />
-                        <p:inputText id="bus_plate"
+                        <p:outputLabel value="#{msgs.plate_no}:" for="plate_no" />
+                        <p:inputText id="plate_no"
                                      value="#{addEditBusBean.plateNo}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.plate_no}">
                         </p:inputText>
-                        <h:message for="bus_plate" styleClass="errorMsg"/>
+                        <h:message for="plate_no" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.driver_id}:" />
+                        <p:outputLabel value="#{msgs.driver_id}:" for="bus_driver_id" />
                         <p:inputText id="bus_driver_id"
                                      value="#{addEditBusBean.driverID}"
                                      style="width:350px"
@@ -82,7 +80,7 @@
                         </p:inputText>
                         <h:message for="bus_driver_id" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.driver_name_en}:" />
+                        <p:outputLabel value="#{msgs.driver_name_en}:" for="bus_driver_name_en" />
                         <p:inputText id="bus_driver_name_en"
                                      value="#{addEditBusBean.driverNameEn}"
                                      style="width:350px"
@@ -90,9 +88,9 @@
                                      maxlength="512"
                                      requiredMessage="#{msgs.driver_name_en}">
                         </p:inputText>
-                        <h:message for="driver_name_en" styleClass="errorMsg"/>
+                        <h:message for="bus_driver_name_en" styleClass="errorMsg"/>
                         
-                        <p:outputLabel value="#{msgs.driver_name_ar}:" />
+                        <p:outputLabel value="#{msgs.driver_name_ar}:" for="bus_driver_name_ar" />
                         <p:inputText id="bus_driver_name_ar"
                                      value="#{addEditBusBean.driverNameAr}"
                                      style="width:350px"
@@ -100,7 +98,7 @@
                                      maxlength="512"
                                      requiredMessage="#{msgs.driver_name_ar}">
                         </p:inputText>
-                        <h:message for="driver_name_en" styleClass="errorMsg"/>                                
+                        <h:message for="bus_driver_name_ar" styleClass="errorMsg"/>                                
 
                                                
                     </h:panelGrid>

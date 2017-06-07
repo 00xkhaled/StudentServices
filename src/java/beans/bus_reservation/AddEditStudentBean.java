@@ -1,9 +1,7 @@
 package beans.bus_reservation;
 
-import daos.bus_reservation.StudentInformationDao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -30,7 +28,7 @@ public class AddEditStudentBean implements Serializable {
     private String student_fname_ar;
     private String student_lname_ar;
     private int phone;
-    private int seat_pre_res;
+    private String seat_pre_res;
     private String address_ar;
     private String address_en;
 
@@ -111,11 +109,11 @@ public class AddEditStudentBean implements Serializable {
         this.phone = phone;
     }
 
-    public int getSeatPreRes() {
+    public String getSeatPreRes() {
         return this.seat_pre_res;
     }
 
-    public void setSeatPreRes(int seat_pre_res) {
+    public void setSeatPreRes(String seat_pre_res) {
         this.seat_pre_res = seat_pre_res;
     }
 
@@ -139,7 +137,6 @@ public class AddEditStudentBean implements Serializable {
         try {
             StudentInformation student = new StudentInformation();
 
-            student.setStudentID(student_id);
             student.setStudentFNameEn(student_fname_en);
             student.setStudentFNameAr(student_fname_ar);
             student.setStudentLNameEn(student_lname_en);
@@ -149,7 +146,7 @@ public class AddEditStudentBean implements Serializable {
             student.setSeatPreRes(seat_pre_res);
             student.setPhone(phone);
 
-            if (sessionBean.getSelectedItemId() > 0) {
+            if (sessionBean.getSelectedStudentID() > 0) {
                 studentsDao.updateStudent(student);
             } else {
                 studentsDao.insertStudent(student);
