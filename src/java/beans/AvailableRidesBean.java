@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
-import models.AvailableRides;
+import models.AvailableRide;
 /**
  *
  * @author OthmanKurdi
@@ -26,9 +26,9 @@ public class AvailableRidesBean implements Serializable {
     private String phone;
     private String departure_time;
     
-    private AvailableRides selectedRide;
+    private AvailableRide selectedRide;
     private final AvailableRidesDao ridesdao=new AvailableRidesDao();
-    private ArrayList<AvailableRides> list;
+    private ArrayList<AvailableRide> list;
     
      @Inject
     private SessionBean sessionBean;
@@ -53,10 +53,10 @@ public class AvailableRidesBean implements Serializable {
     public void setRideID(String ride_id){
         this.ride_id=Integer.parseInt(ride_id);
     }
-    public AvailableRides getSelectedRide() {
+    public AvailableRide getSelectedRide() {
         return selectedRide;
     }
-    public void setSelectedRide(AvailableRides selectedRides) {
+    public void setSelectedRide(AvailableRide selectedRides) {
         this.selectedRide = selectedRides;
     } 
     // hay hee elee ma3molelha call bl page
@@ -101,11 +101,11 @@ public class AvailableRidesBean implements Serializable {
         sessionBean.setSelectedItemId(selectedRide.getRideID());
     }
 
-    public ArrayList<AvailableRides> getList() {
+    public ArrayList<AvailableRide> getList() {
         return list;
     }
 
-    public void setList(ArrayList<AvailableRides> list) {
+    public void setList(ArrayList<AvailableRide> list) {
         this.list = list;
     }
      public void deleteSelectedRide(){

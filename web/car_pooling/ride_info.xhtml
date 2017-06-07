@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"       
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>    
+        <link type="text/css" rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+
+
+        <h:outputStylesheet library="css" name="carpooling.css"/>    
+        <h:outputStylesheet library="css" name="app_style.css"/>  
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
+    </h:head>
+
+
+    <!-- TODO: CONVERT TO JSF -->
+
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml">
+            <h:panelGrid id="view_details"
+                         style="float: #{langBean.styleFloat};"  
+                         columns="3"     width="400px"                         
+                         dir="#{langBean.dir}">
+                
+                
+                <p:panel header="Destination" style="height: 160px;">
+                    <h:panelGrid id="ride_destination"
+                                 style="float: #{langBean.styleFloat};"  
+                                 columns="2"     width="400px"                         
+                                 dir="#{langBean.dir}">
+                        <h:outputText value="#{msgs.start}"/>
+                        <h:outputText value="#{addEditRidesBean.rideFrom}"/>
+                        <h:outputText value="#{msgs.end}"/>
+                        <h:outputText value="#{addEditRidesBean.rideTo}"/>
+                        <h:outputLabel value="#{msgs.departure_time}"/>
+                        <h:outputLabel value="#{addEditRidesBean.departureTime}"/>
+                    </h:panelGrid>
+                </p:panel>
+            <p:panel header="Personal Details" style="height: 160px;">
+
+                <h:panelGrid id="post_ride"
+                             style="float: #{langBean.styleFloat};" 
+                             columns="2"     width="400px"                         
+                             dir="#{langBean.dir}">
+                    <h:outputText value="#{msgs.student_id}"/>       
+                    <h:outputText value="#{addEditRidesBean.studentId}"/>
+                    <h:outputText value="#{msgs.driver_name}"/> 
+                    <h:outputText value="#{addEditRidesBean.name}"/>
+                    <h:outputText value="#{msgs.phone}"/> 
+                    <h:outputText value="#{addEditRidesBean.phone}"/>
+                    <h:outputText value="#{msgs.gender}"/> 
+                    <h:outputText value="#{addEditRidesBean.gender}"/>
+
+
+                </h:panelGrid>
+            </p:panel>
+
+
+            <p:panel header="Car Details" style="height: 160px;">
+                <h:panelGrid id="car"
+                             style="float: #{langBean.styleFloat};" 
+                             columns="2" width="400px"                              
+                             dir="#{langBean.dir}">
+                    <h:outputText value="#{msgs.plate_num}"/>
+                    <h:outputText value="#{addEditRidesBean.carPlateNumber}"/>
+                    <h:outputText value="#{msgs.car_make}"/>
+                    <h:outputText value="#{addEditRidesBean.carMake}"/>
+                    <h:outputText value="#{msgs.car_model}"/>
+                    <h:outputText value="#{addEditRidesBean.carModel}"/>
+                    <h:outputText value="#{msgs.year_of_make}"/>
+                    <h:outputText value="#{addEditRidesBean.yearOfMake}"/>
+                    <h:outputText value="#{msgs.car_color}"/>
+                    <h:outputText value="#{addEditRidesBean.carColor}"/>
+
+                </h:panelGrid>
+
+            </p:panel> 
+            </h:panelGrid>
+            
+            <p:commandButton value="#{msgs.back}"
+                             styleClass="commandButton"
+                             icon="ui-icon-arrowreturnthick-1-n"
+                             iconPos="left"
+                             style=""                                                                   
+                             action="available_rides" />
+
+        </ui:decorate>
+    </h:body> 
+</html>

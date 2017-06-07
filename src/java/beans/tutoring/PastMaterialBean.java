@@ -3,24 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beans;
+package beans.tutoring;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import models.Lecture;
-
-import models.LectureDocument;
+import models.tutoring.Lecture;
+import models.tutoring.Lecturer;
 
 /**
  *
  * @author Ursina
  */
-@Named(value = "pastMaterialOverviewBean")
+@Named(value = "pastMaterialBean")
 @ViewScoped
-public class PastMaterialOverviewBean implements Serializable{
+public class PastMaterialBean implements Serializable{
+    private Lecturer lecturer;
     private Lecture lecture;
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }  
 
     public Lecture getLecture() {
         return lecture;
@@ -29,7 +35,7 @@ public class PastMaterialOverviewBean implements Serializable{
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
     }
-        
-    public PastMaterialOverviewBean(){     
+    
+    public PastMaterialBean(){     
     }
 }
