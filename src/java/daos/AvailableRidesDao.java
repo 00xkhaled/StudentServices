@@ -30,7 +30,7 @@ public class AvailableRidesDao extends ConnectionDao {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateRide2(rs));
+                list.add(populateRide(rs));
             }
             
             rs.close();
@@ -41,45 +41,16 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-
-    private AvailableRide populateRide(ResultSet rs) throws SQLException {
-        AvailableRide ride = new AvailableRide();
-        
-        ride.setRideID(rs.getInt("RIDE_ID"));
-        ride.setStudentId(rs.getInt("STUDENT_ID"));
-        ride.setName(rs.getString("DRIVER_NAME"));
-        ride.setPhone(rs.getString("DRIVER_PHONE"));
-        ride.setGender(rs.getString("GENDER"));
-        
-        ride.setRideFrom(rs.getString("RIDE_FROM"));
-        ride.setRideTo(rs.getString("RIDE_TO"));
-        ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
-        
-        ride.setCarPlateNumber(rs.getInt("CAR_PLATE_NUMBER"));
-        ride.setCarMake(rs.getString("CAR_MAKE"));
-        ride.setCarModel(rs.getString("CAR_MODEL"));
-        ride.setYearOfMake(rs.getString("YEAR_OF_MAKE"));
-        ride.setCarColor(rs.getString("CAR_COLOR"));
-        
-        return ride;
-    }
     //it will cooperate with the getRide() methode so that it will seperate the 
     //returned data before return it again.
-   private AvailableRide populateRide2(ResultSet rs) throws SQLException {
+   private AvailableRide populateRide(ResultSet rs) throws SQLException {
         AvailableRide ride = new AvailableRide();
-        
-        
         
         ride.setName(rs.getString("STUDENT_NAME"));
         ride.setPhone(rs.getString("PHONE"));
-        ride.setGender(rs.getString("GENDER"));
-        
         ride.setRideFrom(rs.getString("RIDE_FROM"));
         ride.setRideTo(rs.getString("RIDE_TO"));
         ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
-        
-        
-        
         return ride;
     }
     
