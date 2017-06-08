@@ -63,7 +63,10 @@ public class AddEditRequestBean implements Serializable
 
     private String rideto;
 
-    private TIMESTAMP time;
+    private String time;
+    
+    
+    
 
     private Date date;
     
@@ -83,16 +86,16 @@ public class AddEditRequestBean implements Serializable
                 
               firstname=request.getFirstname();
             lastname=request.getLastname();
-            age=request.getAge();
              city=request.getCity();
              street=request.getStreet();
-             postalCode=request.getPostalCode();
             email=request.getEmail();
            phone=request.getPhone();
           gender= request.getGender();
             ridefrom=request.getRidefrom();
              rideto=request.getRideto();
              info=request.getInfo();
+           time=request.getTime();
+
                 
                 
             }
@@ -205,11 +208,11 @@ public class AddEditRequestBean implements Serializable
         this.rideto = rideto;
     }
 
-    public TIMESTAMP getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(TIMESTAMP time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -298,7 +301,7 @@ private Request user = new Request();
     
      @Inject
       
-     public void add_request()
+     public void add_requests()
     {
          try 
          { 
@@ -307,9 +310,9 @@ private Request user = new Request();
         
         insertRequest.setFirstname(firstname);
             insertRequest.setLastname(lastname);
-            insertRequest.setAge(age);
             insertRequest.setCity(city);
             insertRequest.setStreet(street);
+            insertRequest.setTime(time);
             insertRequest.setPostalCode(postalCode);
             insertRequest.setInfo(info);
             insertRequest.setEmail(email);
@@ -317,6 +320,8 @@ private Request user = new Request();
             insertRequest.setGender(gender);
             insertRequest.setRidefrom(ridefrom);
             insertRequest.setRideto(rideto);
+                        insertRequest.setRidefrom(ridefrom);
+
             insertRequest.setInfo(info);
         
         
@@ -331,7 +336,6 @@ private Request user = new Request();
             Logger.getLogger(AvailableRequestsBean.class.getName()).log(Level.SEVERE, null, ex);
         }
          
-        sessionBean.navigate("view_requests");
        
     }
 }

@@ -17,10 +17,8 @@ public class RequestDao extends ConnectionDao // extend the connection dao
 
         request.setFirstname(rs.getString("FIRST_NAME"));
         request.setLastname(rs.getString("LAST_NAME"));
-        request.setAge(rs.getInt("AGE"));
         request.setCity(rs.getString("CITY"));
         request.setStreet(rs.getString("STREET"));
-        request.setPostalCode(rs.getString("POSTAL_CODE"));
         request.setEmail(rs.getString("EMAIL"));
         request.setPhone(rs.getString("PHONE"));
         request.setGender(rs.getString("GENDER"));
@@ -39,35 +37,35 @@ public class RequestDao extends ConnectionDao // extend the connection dao
             Connection conn = getConnection();
 
             String sql
-                    = "INSERT INTO AVALIABLE_REQUESTS "
-                    + "( FIRST_NAME,"
-                    + " LAST_NAME,"
-                    + " AGE,"
-                    + " CITY,"
-                    + " STREET,"
-                    + " POSTAL_CODE,"
+                    = "INSERT INTO AVAILABLE_REQUESTS "
+                    + "(REQUEST_ID,"
+                    + "FIRST_NAME,"
+                    + "LAST_NAME,"
+                    + "CITY,"
+                    + "TIME,"
+                    + "STREET,"
                     + "EMAIL,"
                     + "PHONE,"
                     + "GENDER,"
                     + "RIDE_FROM,"
                     + "RIDE_TO,"
                     + "INFO)"
-                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, request.getFirstname());
             ps.setString(2, request.getLastname());
-            ps.setInt(3, request.getAge());
-            ps.setString(4, request.getCity());
-            ps.setString(5, request.getStreet());
-            ps.setString(6, request.getPostalCode());
-            ps.setString(7, request.getEmail());
-            ps.setString(8, request.getPhone());
-            ps.setString(9, request.getGender());
-            ps.setString(10, request.getRidefrom());
-            ps.setString(11, request.getRideto());
-            ps.setString(12, request.getInfo());
+            ps.setString(3, request.getCity());
+            ps.setString(4, request.getStreet());
+            ps.setString(5, request.getEmail());
+            ps.setString(6, request.getPhone());
+            ps.setString(7, request.getGender());
+            ps.setString(8, request.getRidefrom());
+            ps.setString(9, request.getRideto());
+            ps.setString(10, request.getInfo());
+            ps.setString(11, request.getTime());
+
 
             ps.executeUpdate();
 
@@ -102,21 +100,19 @@ public class RequestDao extends ConnectionDao // extend the connection dao
             Request request = null;
             Connection conn = getConnection();
             
-            String sql = "SELECT AVALIABLE_REQUESTS.*, "
+            String sql = "SELECT AVAILABLE_REQUESTS.*, "
                   
                     + "( FIRST_NAME,"
                     + " LAST_NAME,"
-                    + " AGE,"
                     + " CITY,"
                     + " STREET,"
-                    + " POSTAL_CODE,"
                     + "EMAIL,"
                     + "PHONE,"
                     + "GENDER,"
                     + "RIDE_FROM,"
                     + "RIDE_TO,"
                     + "INFO,"
-                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?)";
+                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?)";
             
             
             
@@ -147,34 +143,31 @@ public class RequestDao extends ConnectionDao // extend the connection dao
             Connection conn = getConnection();
 
             String sql =
-                    "UPDATE AVALIABLE_REQUESTS "
+                    "UPDATE AVAILABLE_REQUESTS "
                     + "( FIRST_NAME,"
                     + "LAST_NAME,"
-                    + "AGE,"
+                
                     + " CITY,"
                     + " STREET,"
-                    + " POSTAL_CODE,"
                     + "EMAIL,"
                     + "PHONE,"
                     + "GENDER,"
                     + "RIDE_FROM,"
                     + "RIDE_TO,"
                     + "INFO)"
-                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
 
              ps.setString(1, request.getFirstname());
             ps.setString(2, request.getLastname());
-              ps.setInt(3, request.getAge());
-            ps.setString(4, request.getCity());
-            ps.setString(5, request.getStreet());
-            ps.setString(6, request.getPostalCode());
-            ps.setString(7, request.getEmail());
-            ps.setString(8, request.getPhone());
-            ps.setString(9, request.getGender());
-            ps.setString(10, request.getRidefrom());
-            ps.setString(11, request.getRideto());
-            ps.setString(12, request.getInfo());
+            ps.setString(3, request.getCity());
+            ps.setString(4, request.getStreet());
+            ps.setString(5, request.getEmail());
+            ps.setString(6, request.getPhone());
+            ps.setString(7, request.getGender());
+            ps.setString(8, request.getRidefrom());
+            ps.setString(9, request.getRideto());
+            ps.setString(10, request.getInfo());
 
             ps.executeUpdate();
 

@@ -35,7 +35,7 @@ public class Request implements Serializable {
 
     private String rideto;
 
-    private TIMESTAMP time;
+    private String time;
 
     private Date date;
 
@@ -64,11 +64,11 @@ public class Request implements Serializable {
         this.rideto = rideto;
     }
 
-    public TIMESTAMP getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(TIMESTAMP time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

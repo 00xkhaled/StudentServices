@@ -13,83 +13,58 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                         
           
-          <h:form>
+ <h:form>
                  
     <p:growl id="growl" sticky="true" showDetail="true"/>
  
-    <p:wizard flowListener="#{addEditRequestBean.onFlowProcess}">
-        <p:tab id="personal" title="Personal Information">
+    <p:wizard flowListener="#{userWizard.onFlowProcess}">
+        <p:tab id="personal" title="Personal">
             <p:panel header="Personal Details">
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Firstname: *" />
-                    <p:inputText value="#{addEditRequestBean.user.firstname}" required="true" label="Firstname"/>
+                    <p:inputText value="#{addEditRequestBean.firstname}" required="true" label="Firstname"/>
  
                     <h:outputText value="Lastname: *" />
-                    <p:inputText value="#{addEditRequestBean.user.lastname}" required="true" label="Lastname"/>
+                    <p:inputText value="#{addEditRequestBean.lastname}" required="true" label="Lastname"/>
+                    
+                    <h:outputText value="gender *" />
+                    <p:inputText value="#{addEditRequestBean.gender}" required="true" label="gender"/>
  
                     <h:outputText value="Age: " />
-                    <p:inputText value="#{addEditRequestBean.user.age}" />
+                    <p:inputText value="#{addEditRequestBean.age}" />
                     
-            <p:outputLabel for="console" value="Gender" />
-
-         <p:selectOneRadio id="console" required="true"  value="#{addEditRequestBean.user.gender}">
-            <f:selectItem itemLabel="Male" itemValue=" male" />
-            <f:selectItem itemLabel="Female" itemValue="female" />
-        </p:selectOneRadio>
-  
+                    <h:outputText value="Street: " />
+                    <p:inputText value="#{addEditRequestBean.street}" />
+                    
+                    <h:outputText value="city " />
+                    <p:inputText value="#{addEditRequestBean.city}" />
+                    
+                   
+ 
+                    <h:outputText value="Skip to last: " />
+                    <h:selectBooleanCheckbox value="#{addEditRequestBean.skip}" />
                 </h:panelGrid>
             </p:panel>
         </p:tab>
  
-        <p:tab id="address" title="Ride Information">
+        <p:tab id="address" title="Address">
             <p:panel header="Address Details">
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
-                    <h:outputText value="Ride From " />
-                    <p:inputText value="#{addEditRequestBean.user.ridefrom}" required="true" />
+                    <h:outputText value="ride from " />
+                    <p:inputText value="#{addEditRequestBean.ridefrom}" />
  
-                    <h:outputText value="Ride To " />
-                    <p:inputText value="#{addEditRequestBean.user.rideto}" required="true"/>
  
-                 
+                    <h:outputText value="rideto " />
+                    <p:inputText value="#{addEditRequestBean.rideto}" />
                     
-     <h:form id="form">
-    <p:growl id="msgs" showDetail="true" />
- 
-    <h:panelGrid columns="2" cellpadding="5">
- 
-        <p:outputLabel for="datetime" value="Datetime:" />
-        <p:calendar id="datetime" value="#{addEditRequestBean.user.date}" pattern="MM/dd/yyyy HH:mm:ss" />
- 
-    </h:panelGrid>
-  
-    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-        <p:panelGrid id="display" columns="2" columnClasses="label,value">
-           
-            <h:outputText value="Datetime:" />
-            <h:outputText value="#{addEditRequestBean.user.date}">
-                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-            </h:outputText>
-  
-            
-            <!--
-            <p:gmap center="-16.1985, -48.7056"
-zoom="12"
-type="ROADMAP" 
-style="width:600px;height:400px"
-widgetVar="gmap"
-fitBounds="true"
-/>
- 
-           !-->
-          
-        </p:panelGrid>
-    </p:dialog>
-</h:form>
-
                     
+                     <h:outputText value="time " />
+                    <p:inputText value="#{addEditRequestBean.time}" />
  
+                    <h:outputText value="Skip to last: " />
+                    <h:selectBooleanCheckbox value="#{addEditRequestBean.skip}" />
                 </h:panelGrid>
             </p:panel>
         </p:tab>
@@ -110,8 +85,6 @@ fitBounds="true"
             </p:panel>
         </p:tab>
  
-        
-        <!-- confirm the data-->
         <p:tab id="confirm" title="Confirmation">
             <p:panel header="Confirmation">
                 <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
@@ -121,20 +94,31 @@ fitBounds="true"
  
                         <h:outputText value="Lastname: " />
                         <h:outputText value="#{addEditRequestBean.lastname}" styleClass="outputLabel"/>
- 
+                        
+                              <h:outputText value="gender " />
+                        <h:outputText value="#{addEditRequestBean.gender}" styleClass="outputLabel"/>
+                        
+                         <h:outputText value="street " />
+                         <h:outputText value="#{addEditRequestBean.street}" styleClass="outputLabel"/>
+                        
+                           
+                          <h:outputText value="city " />
+                         <h:outputText value="#{addEditRequestBean.city}" styleClass="outputLabel"/>
+                         
+                         
                         <h:outputText value="Age: " />
                         <h:outputText value="#{addEditRequestBean.age}" styleClass="outputLabel"/>
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Street: " />
-                        <h:outputText value="#{addEditRequestBean.street}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Postal: " />
-                        <h:outputText value="#{addEditRequestBean.postalCode}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="City: " />
-                        <h:outputText value="#{addEditRequestBean.city}" styleClass="outputLabel"/>
+                        <h:outputText value="Ride from " />
+                        <h:outputText value="#{addEditRequestBean.ridefrom}" styleClass="outputLabel"/>
+  
+                        <h:outputText value="Ride to " />
+                        <h:outputText value="#{addEditRequestBean.rideto}" styleClass="outputLabel"/>
+                        
+                          <h:outputText value="time" />
+                        <h:outputText value="#{addEditRequestBean.time}" styleClass="outputLabel"/>
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -152,14 +136,13 @@ fitBounds="true"
                     </h:panelGrid>
                 </h:panelGrid>
  
-                <p:commandButton value="Submit" actionListener="#{addEditRequestBean.saveEvent()}" update="growl" process="@this"/>
-                                                 
-
+                <p:commandButton value="Submit" actionListener="#{addEditRequestBean.add_requests()}" update="growl" process="@this"/>
             </p:panel>
         </p:tab>
     </p:wizard>
  
-</h:form>  
+</h:form>
+ 
                     
 
             
