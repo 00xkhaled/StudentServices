@@ -70,7 +70,7 @@ public class AddEditRidesDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "INSERT INTO STUDENTS_CARPOOLING VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING)+1,?,?,?,?)";
+            String sql = " INSERT INTO STUDENTS_CARPOOLING(RIDE_ID, STUDENT_ID, STUDENT_NAME, PHONE, GENDER) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING)+1,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, ride.getStudentId());
             ps.setString(2, ride.getName());
@@ -78,7 +78,7 @@ public class AddEditRidesDao extends ConnectionDao {
             ps.setString(4, ride.getGender());
             ps.executeUpdate();
             
-            sql = "INSERT INTO CARS VALUES((select max(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?,?,?)";
+            sql = "INSERT INTO CARS(RIDE_ID, CAR_PLATE_NUMBER, MAKE, MODEL,YEAR_OF_MAKE, COLOR) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, ride.getCarPlateNumber());
             ps.setString(2, ride.getCarMake());
@@ -87,7 +87,7 @@ public class AddEditRidesDao extends ConnectionDao {
             ps.setString(5, ride.getCarColor());
             ps.executeUpdate();
             
-            sql = "INSERT INTO DESTINATIONS VALUES((select max(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?)";
+            sql = "INSERT INTO DESTINATIONS(RIDE_ID, RIDE_FROM, RIDE_TO, DEPARTURE_TIME) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, ride.getRideFrom());
             ps.setString(2, ride.getRideTo());
