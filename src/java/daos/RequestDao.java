@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.AvailableRequests;
-import models.Event;
 import models.Request;
 
 public class RequestDao extends ConnectionDao // extend the connection dao
@@ -53,8 +51,8 @@ public class RequestDao extends ConnectionDao // extend the connection dao
                     + "GENDER,"
                     + "RIDE_FROM,"
                     + "RIDE_TO,"
-                    + "INFO,"
-                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?)";
+                    + "INFO)"
+                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -161,8 +159,8 @@ public class RequestDao extends ConnectionDao // extend the connection dao
                     + "GENDER,"
                     + "RIDE_FROM,"
                     + "RIDE_TO,"
-                    + "INFO,"
-                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?)";
+                    + "INFO)"
+                    + " VALUES ((select max(REQUEST_ID) from AVAILABLE_REQUESTS)+1,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
 
              ps.setString(1, request.getFirstname());

@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import models.AvailableRequests;
 import org.primefaces.event.FlowEvent;
 import models.Request;
 
@@ -296,40 +297,41 @@ private Request user = new Request();
     
     
      @Inject
+      
+     public void add_request()
+    {
+         try 
+         { 
+             
+        Request insertRequest = new Request();
         
-    public void saveEvent() {
-        try {
-            
-            
-            Request request = new Request();
-            
-            
-            
-            request.setFirstname(firstname);
-            request.setLastname(lastname);
-            request.setAge(age);
-            request.setCity(city);
-            request.setStreet(street);
-            request.setPostalCode(postalCode);
-            request.setInfo(info);
-            request.setEmail(email);
-            request.setPhone(phone);
-            request.setGender(gender);
-            request.setRidefrom(ridefrom);
-            request.setRideto(rideto);
-            request.setInfo(info);
-            
+        insertRequest.setFirstname(firstname);
+            insertRequest.setLastname(lastname);
+            insertRequest.setAge(age);
+            insertRequest.setCity(city);
+            insertRequest.setStreet(street);
+            insertRequest.setPostalCode(postalCode);
+            insertRequest.setInfo(info);
+            insertRequest.setEmail(email);
+            insertRequest.setPhone(phone);
+            insertRequest.setGender(gender);
+            insertRequest.setRidefrom(ridefrom);
+            insertRequest.setRideto(rideto);
+            insertRequest.setInfo(info);
         
-            
-            if (sessionBean.getSelectedItemId() > 0) {
-                requestdao.updaterequest(request);
-            } else {
-                requestdao.updaterequest(request);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AddEditRequestBean.class.getName()).log(Level.SEVERE, null, ex);
+        
+        System.out.print("reachecd Available Requests Bean requestsDao()");
+        
+        requestdao.insertrequest(insertRequest);    
+        
+        } 
+         
+         catch (Exception ex)
+         {
+            Logger.getLogger(AvailableRequestsBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+         
         sessionBean.navigate("view_requests");
+       
     }
 }
