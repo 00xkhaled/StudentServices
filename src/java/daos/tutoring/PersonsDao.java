@@ -45,6 +45,31 @@ public class PersonsDao extends ConnectionDao{
             throw new SQLException(e.getMessage());
         }
     }
+    
+       public HashMap<Integer, Person> buildPersonsMap(HashMap <Integer, Major> majors) throws Exception {
+        HashMap<Integer, Person> map = new HashMap<>();
+        Connection conn = getConnection();     
+        
+         try {            
+            String sql = "SELECT * FROM PERSONS ORDER BY P_PERSON_ID";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
+
+            ResultSet rs = ps.executeQuery();           
+
+            while (rs.next()) {
+                Person person = populatePersonWithType(rs, majors);
+                map.put(person.getPersonId(), person);
+            }
+            
+            rs.close();
+            ps.close();
+
+            return map;
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
+
+   }
 
     private Person populatePersonWithType(ResultSet rs, HashMap<Integer, Major> majors) 
             throws SQLException {
@@ -84,39 +109,6 @@ public class PersonsDao extends ConnectionDao{
         return person;
     }
     
-    public void insertPerson(Person person) throws Exception {                
-        try {
-            Connection conn = getConnection();
-            
-            String sql = "INSERT INTO PERSONS (P_PERSON_ID,"
-                    + " FIRST_NAME_EN,"
-                    + " FIRST_NAME_AR,"
-                    + " LAST_NAME_EN,"
-                    + " LAST_NAME_AR,"
-                    + " EMAIL_ADRESS,"
-                    + " PHONE_NUMBER,"
-                    + " CREDIT_SCORE,"
-                    + " F_MAJOR)"
-                    + " VALUES ((select max(P_PERSON_ID) from PERSONS)+1,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql); 
-            
-            ps.setString(1, person.getFirstNameEn());
-            ps.setString(2, person.getFirstNameAr());
-            ps.setString(3, person.getLastNameEn());
-            ps.setString(4, person.getLastNameAr());
-            ps.setString(5, person.getEmailAddress());
-            ps.setString(5, person.getPhoneNumber());
-            ps.setInt(6, person.getCreditScore());
-            ps.setInt(7, person.getMajor().getMajorId());
-            
-            ps.executeUpdate();
-            
-            ps.close();
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
-    
     public void updatePerson(Person person) throws Exception {
         try {
             Connection conn = getConnection();
@@ -150,30 +142,17 @@ public class PersonsDao extends ConnectionDao{
         }
     }
     
-    public void deletePerson(int personId) throws Exception {
-        Connection conn = getConnection();
-        
-        try {
-            String sql = "DELETE FROM PERSONS WHERE P_PERSON_ID=?";                               
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, personId);
-            
-            ps.executeUpdate();
-
-            ps.close();
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
-    
     public Person getPerson(int personId) throws Exception {
         try {   
             Person person = null;
             Connection conn = getConnection();
             
             String sql = "SELECT PERSONS.*, "
+                    + " MAJORS.MAJOR_NAME_EN as MAJ_N_E"
+                    + " MAJORS.MAJOR_NAME_AR as MAJ_N_A" 
                     + " FROM PERSONS "
-                    + " WHERE P_PERSON_ID=?";                        
+                    + " WHERE PERSONS.F_MAJOR=MAJORS.P_MAJOR_ID AND"
+                    + " P_PERSON_ID=?";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
             ps.setInt(1, personId);
             
@@ -181,6 +160,8 @@ public class PersonsDao extends ConnectionDao{
 
             while (rs.next()) {
                 person = populatePerson(rs);
+                person.getMajor().setNameEn(rs.getString("MAJ_N_E"));
+                person.getMajor().setNameAr(rs.getString("MAJ_N_A"));
             }
 
             rs.close();

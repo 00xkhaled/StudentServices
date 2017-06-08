@@ -73,7 +73,7 @@ try {
         school.setSchoolId(rs.getInt("P_SCHOOL_ID"));
         school.setNameEn(rs.getString("NAME_EN"));
         school.setNameAr(rs.getString("NAME_AR"));
-       /* school.setMajors(rs.getArrayList<Major>("MAJORS");*/
+
         return school;
     } 
    

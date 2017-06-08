@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.tutoring.Lecture;
 import models.tutoring.Major;
 
@@ -21,7 +23,7 @@ import models.tutoring.Major;
  * @author Abdalla
  */
 public class LecturesDao extends ConnectionDao {
-      public ArrayList<Lecture> buildLecturess(HashMap<Integer, Major> majors) 
+      public ArrayList<Lecture> buildLectures(HashMap<Integer, Major> majors) 
             throws Exception {
         ArrayList<Lecture> list = new ArrayList<>();
         
@@ -54,12 +56,10 @@ public class LecturesDao extends ConnectionDao {
         lecture.setLectureCode(rs.getString("LECTURE_ID"));
         lecture.setLectureNameEn(rs.getString("LECTURE_NAME_EN"));
         lecture.setLectureNameAr(rs.getString("LECTURE_NAME_AR"));
-        lecture.setMajor(rs.getMajor("F_MAJOR")); //see timeStamp in event's Dao & model//
+        lecture.setMajor(majors.get(rs.getInt("F_MAJOR"))); 
         
-        //lecture.setPosts(rs.getString("PLACE_EN"));
-        
-        Major majorType = majors.get(rs.getInt("P_MAJOR_ID"));        
-        lecture.setMajor(majorType);            //treating major as an object    
+        Major major = majors.get(rs.getInt("P_MAJOR_ID"));        
+        lecture.setMajor(major);               
         
         return lecture;
     }
@@ -73,61 +73,50 @@ public class LecturesDao extends ConnectionDao {
         lecture.setLectureNameAr(rs.getString("LECTURE_NAME_AR"));
         lecture.setLectureId(rs.getInt("F_MAJOR"));               
         
-        Major majorType = new Major();
-        majorType.setMajor(rs.getInt("P_MAJOR_ID"));        
-        lecture.setMajor(majorType);
+        Major major = new Major();
+        major.setMajorId(rs.getInt("F_MAJOR"));        
+        lecture.setMajor(major);
         
         return lecture;
     }   
-     
-     public void insertLecture(Lecture lecture) throws Exception {                
-        try {
-            Connection conn = getConnection();
-            
-            String sql = "INSERT INTO LECTURES (P_LECTURE_ID,"
-                    + " LECTURE_ID,"
-                    + " LECTURE_NAME_EN,"
-                    + " LECTURE_NAME_AR,"
-                    + " F_MAJOR," 
-                    + " VALUES ((select max(P_LECTURE_ID) from LECTURES)+1,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql); 
-            
-            ps.setString(1, lecture.getLectureCode());
-            ps.setString(2, lecture.getLectureNameEn());
-            ps.setString(3, lecture.getLectureNameAr());
-            ps.setMajor(4, lecture.getMajor());
-            
-            ps.executeUpdate();
-            
-            ps.close();
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
-     
-     
-      public void updateLecture(Lecture lecture) throws Exception {
-        try {
-            Connection conn = getConnection();
 
-            String sql = "UPDATE LECTURES SET LECTURE_ID=?,"
-                    + " LECTURE_NAME_EN=?,"
-                    + " LECTURE_NAME_AR=?,"
-                    + " F_MAJOR=?,"
-                    + " WHERE P_LECTURE_ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
+    public Lecture getLecture(int lectureId) throws Exception {
+        try {   
+            Lecture lecture = null;
+            Connection conn = getConnection();
             
-            ps.setString(1, lecture.getLectureCode());
-            ps.setString(2, lecture.getLectureNameEn());
-            ps.setString(3, lecture.getLectureNameAr());
-            ps.setMajor(4, lecture.getMajor());
+            String sql = "SELECT LECTURES.*, "
+                    + " MAJORS.MAJOR_NAME_EN as MAJ_N_E"
+                    + " MAJORS.MAJOR_NAME_AR as MAJ_N_A"                   
+                    + " FROM LECTURES, MAJORS "
+                    + " WHERE LECTURES.F_MAJOR=MAJORS.P_MAJOR_ID AND"
+                    + " P_LECTURE_ID=?";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
+            ps.setInt(1, lectureId);
             
-            ps.executeUpdate();
-            
+            ResultSet rs = ps.executeQuery();           
+
+            while (rs.next()) {
+                lecture = populateLecture(rs);
+                lecture.getMajor().setNameEn("MAJ_N_E");
+                lecture.getMajor().setNameAr("MAJ_N_A");                
+            }
+
+            rs.close();
             ps.close();
+            
+            return lecture;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-            
+     
+        public static void main(String [] args){        
+        try {
+            LecturesDao dao = new LecturesDao();                
+            //ArrayList<Event> events = dao.buildEvents();
+        } catch (Exception ex) {
+            Logger.getLogger(PersonsDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
