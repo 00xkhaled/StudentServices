@@ -60,7 +60,8 @@ public class AvailableRequestsBean implements Serializable {
     
     
  
-    public void add_request(){
+    public void add_request()
+    {
          try 
          { 
              
