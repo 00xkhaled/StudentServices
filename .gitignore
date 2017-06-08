@@ -9,3 +9,5 @@ nbproject/genfiles.properties
 nbproject/build-impl.xml
 nbproject/project.xml
 nbproject/faces-config.NavData
+lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar
+nbproject/project.properties
