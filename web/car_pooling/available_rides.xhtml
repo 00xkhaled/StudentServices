@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
        <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="add_ride">               
+            <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable"
                              value="#{availableRidesBean.list}"                    
@@ -19,7 +19,7 @@
                              rowKey="#{list.rideID}"                    
                              var="list"   
                              rows="2"     
-                             rowsPerPageTemplate="1,2,3"
+                             rowsPerPageTemplate="1,2,3,4"
                              dir="#{langBean.dir}"
                              emptyMessage="#{msgs.no_rides}"
                              paginator="true"
