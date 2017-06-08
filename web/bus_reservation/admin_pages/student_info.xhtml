@@ -10,13 +10,13 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form id="manage_events_form">
-                <p:dataTable id="manage_events_tbl"
+            <h:form id="students_form">
+                <p:dataTable id="students_tbl"
                              class="dataTable"
-                             value="#{studentInformationBean.list}"
+                             value="#{studentInformationBean.students}"
                              selection="#{studentInformationBean.selectedStudent}"
-                             rowKey="#{list.studentID}"                    
-                             var="list"   
+                             rowKey="#{student.studentId}"                    
+                             var="student"   
                              rows="4"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
@@ -27,7 +27,7 @@
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":manage_events_form:manage_events_tbl"/>
+                            update=":student_form:student_tbl"/>
 
                     <f:facet name="header" id="header">
                         #{msgs.student_info}
@@ -36,34 +36,34 @@
                     <p:column selectionMode="single" style="width:5%"/>
                     <p:column headerText="#{msgs.student_name}"
                               style="width:10%"
-                              filterBy="#{list.studentFNameEn}"
+                              filterBy="#{student.studentFNameEn}"
                               filterMatchMode="contains"
-                              sortBy="#{list.studentFNameEn}"> 
-                        <h:outputText value="#{list.studentFNameEn}"/>
+                              sortBy="#{student.studentID}"> 
+                        <h:outputText value="#{student.studentID}"/>
                     </p:column>
 
                     <p:column headerText="#{msgs.student_id}"
                               style="width:10%"
-                              filterBy="#{list.studentID}"
+                              filterBy="#{student.studentId}"
                               filterMatchMode="contains"
-                              sortBy="#{list.studentID}"> 
-                        <h:outputText value="#{list.studentID}"/>  
+                              sortBy="#{student.studentID}"> 
+                        <h:outputText value="#{student.studentID}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.phone}"
                               style="width:10%"
-                              filterBy="#{list.phone}"
+                              filterBy="#{student.phone}"
                               filterMatchMode="contains"
-                              sortBy="#{list.phone}">  
-                        <h:outputText value="#{list.phone}"/>  
+                              sortBy="#{student.studentID}">  
+                        <h:outputText value="#{student.studentID}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.seats_pre_res}"
                               style="width:10%"
-                              filterBy="#{list.seatPreRes}"
+                              filterBy="#{student.seatPreRes}"
                               filterMatchMode="contains"
-                              sortBy="#{list.seatPreRes}"> 
-                        <h:outputText value="#{list.seatPreRes}"/>  
+                              sortBy="#{student.studentID}"> 
+                        <h:outputText value="#{student.studentID}"/>  
                     </p:column>
 
                     <f:facet name="footer">
@@ -97,6 +97,7 @@
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}"
+                                 actionListener="#{sessionBean.setSelectedStudentID(-1)}"
                                  action="add_edit_student"/>      
             </h:form>        
         </ui:decorate>
