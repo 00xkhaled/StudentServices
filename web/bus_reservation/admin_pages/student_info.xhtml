@@ -27,7 +27,7 @@
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":student_form:student_tbl"/>
+                            update=":students_form:students_tbl"/>
 
                     <f:facet name="header" id="header">
                         #{msgs.student_info}
@@ -36,34 +36,34 @@
                     <p:column selectionMode="single" style="width:5%"/>
                     <p:column headerText="#{msgs.student_name}"
                               style="width:10%"
-                              filterBy="#{student.studentFNameEn}"
+                              filterBy="#{student.studentFnameEn}"
                               filterMatchMode="contains"
-                              sortBy="#{student.studentID}"> 
-                        <h:outputText value="#{student.studentID}"/>
+                              sortBy="#{student.studentId}"> 
+                        <h:outputText value="#{student.studentId}"/>
                     </p:column>
 
                     <p:column headerText="#{msgs.student_id}"
                               style="width:10%"
                               filterBy="#{student.studentId}"
                               filterMatchMode="contains"
-                              sortBy="#{student.studentID}"> 
-                        <h:outputText value="#{student.studentID}"/>  
+                              sortBy="#{student.studentId}"> 
+                        <h:outputText value="#{student.studentId}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.phone}"
                               style="width:10%"
                               filterBy="#{student.phone}"
                               filterMatchMode="contains"
-                              sortBy="#{student.studentID}">  
-                        <h:outputText value="#{student.studentID}"/>  
+                              sortBy="#{student.studentId}">  
+                        <h:outputText value="#{student.studentId}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.seats_pre_res}"
                               style="width:10%"
                               filterBy="#{student.seatPreRes}"
                               filterMatchMode="contains"
-                              sortBy="#{student.studentID}"> 
-                        <h:outputText value="#{student.studentID}"/>  
+                              sortBy="#{student.studentId}"> 
+                        <h:outputText value="#{student.studentId}"/>  
                     </p:column>
 
                     <f:facet name="footer">
@@ -84,7 +84,7 @@
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}" 
                                                  disabled="#{studentInformationBean.selectedStudent==null}"
-                                                 actionListener="#{studentInformationBean.saveSelectedStudentID()}"
+                                                 actionListener="#{studentInformationBean.saveSelectedStudentId()}"
                                                  action="add_edit_student"
                                                  />
                             </p:toolbarGroup>
