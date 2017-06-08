@@ -6,7 +6,6 @@
 package models.tutoring;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +17,7 @@ public class Lecture implements Serializable{
     private String lectureNameEn;
     private String lectureNameAr;
     //the following attribute was of type Major:
-    private String major;
+    private Major major;
 
     public Lecture(){}
     
@@ -58,11 +57,11 @@ public class Lecture implements Serializable{
         this.lectureNameAr = lectureNameAr;
     }
 
-    public String getMajor() {
+    public Major getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
+    public void setMajor(Major major) {
         this.major = major;
     }    
 }

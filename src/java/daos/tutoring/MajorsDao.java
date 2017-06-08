@@ -13,13 +13,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import models.tutoring.Major;
+import models.tutoring.School;
 
 /**
  *
  * @author Abdalla
  */
 public class MajorsDao extends ConnectionDao  {
-        public ArrayList<Major> buildMajors() throws Exception {
+        public ArrayList<Major> buildMajors(HashMap <Integer, School> schools) throws Exception {
         ArrayList<Major> list = new ArrayList<>();
         Connection conn = getConnection();
         
@@ -30,7 +31,7 @@ try {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateMajor(rs));
+                list.add(populateMajorWithSchool(rs, schools));
             }
             
             rs.close();
@@ -42,7 +43,7 @@ try {
         }
     }
 
-   public HashMap<Integer, Major> buildMajorsMap() throws Exception {
+   public HashMap<Integer, Major> buildMajorsMap(HashMap <Integer, School> schools) throws Exception {
         HashMap<Integer, Major> map = new HashMap<>();
         Connection conn = getConnection();     
         
@@ -53,7 +54,7 @@ try {
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                Major major = populateMajor(rs);
+                Major major = populateMajorWithSchool(rs, schools);
                 map.put(major.getMajorId(), major);
             }
             
@@ -67,15 +68,16 @@ try {
 
    }
    
-       private Major populateMajor(ResultSet rs) throws SQLException {
+       private Major populateMajorWithSchool(ResultSet rs, HashMap <Integer, School> schools) throws SQLException {
         Major major = new Major();
         
         major.setMajorId(rs.getInt("P_MAJOR_ID"));
         major.setNameAr(rs.getString("MAJOR_NAME_EN"));
         major.setNameEn(rs.getString("MAJOR_NAME_AR"));
-        major.setMajorId(rs.getInt("F_SCHOOL"));
-
-       /* school.setMajors(rs.getArrayList<Major>("MAJORS");*/
+        
+        School school = schools.get(rs.getInt("F_SCHOOL"));
+        major.setSchool(school);
+        
         return major;
     } 
    

@@ -10,7 +10,9 @@ package beans.tutoring;
  * @author Ursina
  */
 import beans.SessionBean;
+import daos.tutoring.MajorsDao;
 import daos.tutoring.PersonsDao;
+import daos.tutoring.SchoolsDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -33,6 +35,8 @@ public class ProfileBean implements Serializable{
     private Person student;
     private PersonsDao personsDao;
     private ArrayList<Person> people;
+    private MajorsDao majorDao;
+    private SchoolsDao schoolsDao;
     
     @Inject
     private SessionBean sessionBean;
@@ -40,15 +44,15 @@ public class ProfileBean implements Serializable{
     public ProfileBean() {        
     }
     
-    /*@PostConstruct
+    @PostConstruct
     public void init(){
         try {            
             //needs a HashMap<Integer, Major> (theoretisch aus majorDao)
-            people = personsDao.buildPersons();            
+            people = personsDao.buildPersons(majorDao.buildMajorsMap(schoolsDao.buildSchoolsMap()));            
         } catch (Exception ex) {
             Logger.getLogger(ProfileBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
 
     public Person getStudent() {
         return student;

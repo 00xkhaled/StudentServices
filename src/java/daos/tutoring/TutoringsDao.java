@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.EventType;
 import models.tutoring.Major;
 import models.tutoring.Person;
 import models.tutoring.Tutoring;
@@ -149,7 +148,7 @@ public class TutoringsDao extends ConnectionDao{
                     + " MAJORS.MAJOR_NAME_AR as MAJ_N_A"                   
                     + " FROM TUTORINGS, PERSONS, MAJORS "
                     + " WHERE TUTORINGS.F_TUTOR=PERSONS.P_PERSON_ID AND"
-                    + " PERSONS.F_MAJOR=MAJORS.P_MAJOR_ID"
+                    + " PERSONS.F_MAJOR=MAJORS.P_MAJOR_ID AND"
                     + " P_TUTORING_ID=?";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
             ps.setInt(1, tutoringId);

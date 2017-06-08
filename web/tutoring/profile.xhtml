@@ -16,27 +16,22 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">      
-            <h2>#{langBean.isEnglish?contentProfileBean.firstName:contentProfileBean.firstNameAr} 
-                #{langBean.isEnglish?contentProfileBean.lastName:contentProfileBean.lastNameAr}</h2>      
-            <p>#{msgs.major}: #{contentProfileBean.major}</p>
-            <p>--#{msgs.credit_score}: #{contentProfileBean.creditScore}</p>
-            <p>#{msgs.mobile}: #{contentProfileBean.phoneNumber}</p>
-            <p>#{msgs.email}: #{contentProfileBean.emailAddress}</p>
-            
-            <p:commandButton  value="#{msgs.change_data}" 
-                                      styleClass="commandButton" 
-                                      style="float:#{langBean.styleFloat};"                                      
-                                      action="/tutoring/course_wall.xhtml">
-            </p:commandButton>
+            <h2>#{langBean.isEnglish?profileBean.student.firstNameEn:profileBean.student.firstNameAr} 
+                #{langBean.isEnglish?profileBean.student.lastNameEn: profileBean.student.lastNameAr}</h2>      
+            <p>#{msgs.major}: #{profileBean.student.major}</p>
+            <p>--#{msgs.credit_score}: #{profileBean.student.creditScore}</p>
+profileBean.student            <p>#{msgsprofileBean.studentemail}: #{contentProfileBean.emailAddress}</p>
+
+
             <p:commandButton  value="#{msgs.see_offered_courses}" 
                                       styleClass="commandButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/tutoring/course_wall.xhtml">
+                                      action="/tutoring/search_results.xhtml">
             </p:commandButton>
             <p:commandButton  value="#{msgs.message}" 
                                       styleClass="commandButton" 
                                       style="float:#{langBean.styleFloat};"                                      
-                                      action="/tutoring/course_wall.xhtml">
+                                      action="mailto:#{profileBean.student.emailAddress}">
             </p:commandButton>
         </ui:decorate>
     </h:body>

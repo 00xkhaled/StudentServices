@@ -1,7 +1,6 @@
 package models.tutoring;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -11,6 +10,7 @@ public class Major implements Serializable {
     private int majorId;
     private String nameEn;
     private String nameAr;
+    private School school;
     
    /*constructor 1*/ 
    public Major(){}
@@ -46,5 +46,12 @@ public class Major implements Serializable {
         this.nameAr = nameAr;
     }
 
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
 }
         
