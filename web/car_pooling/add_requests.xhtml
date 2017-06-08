@@ -17,23 +17,23 @@
                  
     <p:growl id="growl" sticky="true" showDetail="true"/>
  
-    <p:wizard flowListener="#{userWizard.onFlowProcess}">
+    <p:wizard flowListener="#{addEditRequestBean.onFlowProcess}">
         <p:tab id="personal" title="Personal Information">
             <p:panel header="Personal Details">
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Firstname: *" />
-                    <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+                    <p:inputText value="#{addEditRequestBean.user.firstname}" required="true" label="Firstname"/>
  
                     <h:outputText value="Lastname: *" />
-                    <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+                    <p:inputText value="#{addEditRequestBean.user.lastname}" required="true" label="Lastname"/>
  
                     <h:outputText value="Age: " />
-                    <p:inputText value="#{userWizard.user.age}" />
+                    <p:inputText value="#{addEditRequestBean.user.age}" />
                     
             <p:outputLabel for="console" value="Gender" />
 
-         <p:selectOneRadio id="console" required="true"  value="#{userWizard.user.gender}">
+         <p:selectOneRadio id="console" required="true"  value="#{addEditRequestBean.user.gender}">
             <f:selectItem itemLabel="Male" itemValue=" male" />
             <f:selectItem itemLabel="Female" itemValue="female" />
         </p:selectOneRadio>
@@ -47,10 +47,10 @@
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Ride From " />
-                    <p:inputText value="#{userWizard.user.ridefrom}" required="true" />
+                    <p:inputText value="#{addEditRequestBean.user.ridefrom}" required="true" />
  
                     <h:outputText value="Ride To " />
-                    <p:inputText value="#{userWizard.user.rideto}" required="true"/>
+                    <p:inputText value="#{addEditRequestBean.user.rideto}" required="true"/>
  
                  
                     
@@ -60,7 +60,7 @@
     <h:panelGrid columns="2" cellpadding="5">
  
         <p:outputLabel for="datetime" value="Datetime:" />
-        <p:calendar id="datetime" value="#{userWizard.user.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+        <p:calendar id="datetime" value="#{addEditRequestBean.user.date}" pattern="MM/dd/yyyy HH:mm:ss" />
  
     </h:panelGrid>
   
@@ -68,7 +68,7 @@
         <p:panelGrid id="display" columns="2" columnClasses="label,value">
            
             <h:outputText value="Datetime:" />
-            <h:outputText value="#{userWizard.user.date}">
+            <h:outputText value="#{addEditRequestBean.user.date}">
                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
             </h:outputText>
  
@@ -88,13 +88,13 @@
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Email: *" />
-                    <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
+                    <p:inputText value="#{addEditRequestBean.user.email}" required="true" label="Email"/>
  
                     <h:outputText value="Phone: " />
-                    <p:inputText value="#{userWizard.user.phone}"/>
+                    <p:inputText value="#{addEditRequestBean.user.phone}"/>
  
                     <h:outputText value="Additional Info: " />
-                    <p:inputText value="#{userWizard.user.info}"/>
+                    <p:inputText value="#{addEditRequestBean.user.info}"/>
                 </h:panelGrid>
             </p:panel>
         </p:tab>
@@ -106,42 +106,42 @@
                 <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Firstname: " />
-                        <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.firstname}" styleClass="outputLabel"/>
  
                         <h:outputText value="Lastname: " />
-                        <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.lastname}" styleClass="outputLabel"/>
  
                         <h:outputText value="Age: " />
-                        <h:outputText value="#{userWizard.user.age}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.age}" styleClass="outputLabel"/>
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Street: " />
-                        <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.street}" styleClass="outputLabel"/>
  
                         <h:outputText value="Postal: " />
-                        <h:outputText value="#{userWizard.user.postalCode}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.postalCode}" styleClass="outputLabel"/>
  
                         <h:outputText value="City: " />
-                        <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.city}" styleClass="outputLabel"/>
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Email: " />
-                        <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.email}" styleClass="outputLabel"/>
  
                         <h:outputText value="Phone " />
-                        <h:outputText value="#{userWizard.user.phone}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.phone}" styleClass="outputLabel"/>
  
                         <h:outputText value="Info: " />
-                        <h:outputText value="#{userWizard.user.info}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.info}" styleClass="outputLabel"/>
  
                         <h:outputText />
                         <h:outputText />
                     </h:panelGrid>
                 </h:panelGrid>
  
-                <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+                <p:commandButton value="Submit" actionListener="#{addEditRequestBean.save}" update="growl" process="@this"/>
             </p:panel>
         </p:tab>
     </p:wizard>

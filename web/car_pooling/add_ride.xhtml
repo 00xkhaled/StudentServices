@@ -22,6 +22,7 @@
     
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">  
+<<<<<<< HEAD
             
           
                
@@ -30,6 +31,11 @@
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                 
             <h:panelGrid id="post_ride"
+=======
+                    <form id="add_ride_ba6a6a">
+
+            <h:panelGrid id="add_ride"
+>>>>>>> origin/master
                          style="float: #{langBean.styleFloat};" 
                          columns="2"     width="400px"                         
                          dir="#{langBean.dir}">
@@ -79,6 +85,7 @@
                 <p:inputText value=""/>
                 
                 </h:panelGrid>
+<<<<<<< HEAD
             </p:panel>
             
              <p:panel header="#{msgs.add_ride}"                            
@@ -129,6 +136,29 @@
                                  style=""                                                                   
                                  action="available_rides" />
                 
+=======
+                
+
+                <div id="panel">
+                    <div id="map-canvas"></div>
+                </div>
+               
+            </p:fieldset>
+            <p:commandButton value="#{msgs.save}"
+                             styleClass="commandButton"
+                             icon="ui-icon-disk"
+                             iconPos=""
+                             style=""                                                                   
+                             actionListener="#{addEditRidesBean.addRide()}"/>
+            <p:commandButton value="#{msgs.cancel}"
+                             styleClass="commandButton"
+                             icon="ui-icon-cancel"
+                             iconPos=""
+                             style=""                                                                   
+                             action="available_rides" />
+                        </form>
+
+>>>>>>> origin/master
         </ui:decorate>
     </h:body> 
 </html>

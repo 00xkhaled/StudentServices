@@ -21,7 +21,7 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">  
             
-            
+            <h:form id="add_request">   
                 <p:panel header="#{msgs.add_ride}"                            
                   style="min-height:400px; 
                   direction:#{langBean.dir};margin-top:10px; font-size:10pt">
@@ -56,16 +56,11 @@
                          style="float: #{langBean.styleFloat};" 
                          columns="2"                              
                          dir="#{langBean.dir}">
+
                 
-           
-           
             <h:outputText value="#{msgs.passenger_name}"/>       
             <p:inputText value="#{availableRequestsBean.name}"/>
             
- 
-            <h:outputText value="#{msgs.location}"/> 
-            <p:inputText value=""/>
-      
             <h:outputText value="#{msgs.passenger_phone}"/> 
             <p:inputText value="#{availableRequestsBean.phone}"/>
              
@@ -74,7 +69,7 @@
             <p:inputText value="#{availableRequestsBean.phone}"/>
     
             
-            
+             
             
             <p:commandButton value="#{msgs.save}"
                                  styleClass="commandButton"
@@ -92,6 +87,8 @@
             </h:panelGrid>
         
             </p:panel>
+         </h:form >   
+
             
             
                 
