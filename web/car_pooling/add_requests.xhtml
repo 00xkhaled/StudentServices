@@ -59,6 +59,40 @@
                     <h:outputText value="rideto " />
                     <p:inputText value="#{addEditRequestBean.rideto}" />
                     
+<<<<<<< HEAD
+=======
+                    <h:form id="form">
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <h:panelGrid columns="2" cellpadding="5">
+ 
+        <p:outputLabel for="datetime" value="Datetime:" />
+        <p:calendar id="datetime" value="#{addEditRequestBean.user.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+ 
+    </h:panelGrid>
+  
+    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+           
+            <h:outputText value="Datetime:" />
+            <h:outputText value="#{addEditRequestBean.user.date}">
+                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+            </h:outputText>
+            
+            <p:gmap center="-16.1985, -48.7056"
+zoom="12"
+type="ROADMAP" 
+style="width:600px;height:400px"
+widgetVar="gmap"
+fitBounds="true"
+/>
+ 
+          
+        </p:panelGrid>
+    </p:dialog>
+</h:form>
+
+>>>>>>> b9c03a1e851ff82d02eee099906604be74998cd6
                     
                      <h:outputText value="time " />
                     <p:inputText value="#{addEditRequestBean.time}" />
@@ -74,13 +108,13 @@
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Email: *" />
-                    <p:inputText value="#{addEditRequestBean.email}" required="true" label="Email"/>
+                    <p:inputText value="#{addEditRequestBean.user.email}" required="true" label="Email"/>
  
                     <h:outputText value="Phone: " />
-                    <p:inputText value="#{addEditRequestBean.phone}"/>
+                    <p:inputText value="#{addEditRequestBean.user.phone}"/>
  
                     <h:outputText value="Additional Info: " />
-                    <p:inputText value="#{addEditRequestBean.info}"/>
+                    <p:inputText value="#{addEditRequestBean.user.info}"/>
                 </h:panelGrid>
             </p:panel>
         </p:tab>
@@ -90,9 +124,10 @@
                 <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Firstname: " />
-                        <h:outputText value="#{addEditRequestBean.firstname}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.firstname}" styleClass="outputLabel"/>
  
                         <h:outputText value="Lastname: " />
+<<<<<<< HEAD
                         <h:outputText value="#{addEditRequestBean.lastname}" styleClass="outputLabel"/>
                         
                               <h:outputText value="gender " />
@@ -106,11 +141,16 @@
                          <h:outputText value="#{addEditRequestBean.city}" styleClass="outputLabel"/>
                          
                          
+=======
+                        <h:outputText value="#{addEditRequestBean.user.lastname}" styleClass="outputLabel"/>
+ 
+>>>>>>> b9c03a1e851ff82d02eee099906604be74998cd6
                         <h:outputText value="Age: " />
-                        <h:outputText value="#{addEditRequestBean.age}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.age}" styleClass="outputLabel"/>
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
+<<<<<<< HEAD
                         <h:outputText value="Ride from " />
                         <h:outputText value="#{addEditRequestBean.ridefrom}" styleClass="outputLabel"/>
   
@@ -119,24 +159,38 @@
                         
                           <h:outputText value="time" />
                         <h:outputText value="#{addEditRequestBean.time}" styleClass="outputLabel"/>
+=======
+                        <h:outputText value="Street: " />
+                        <h:outputText value="#{addEditRequestBean.user.street}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Postal: " />
+                        <h:outputText value="#{addEditRequestBean.user.postalCode}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="City: " />
+                        <h:outputText value="#{addEditRequestBean.user.city}" styleClass="outputLabel"/>
+>>>>>>> b9c03a1e851ff82d02eee099906604be74998cd6
                     </h:panelGrid>
  
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Email: " />
-                        <h:outputText value="#{addEditRequestBean.email}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.email}" styleClass="outputLabel"/>
  
                         <h:outputText value="Phone " />
-                        <h:outputText value="#{addEditRequestBean.phone}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.phone}" styleClass="outputLabel"/>
  
                         <h:outputText value="Info: " />
-                        <h:outputText value="#{addEditRequestBean.info}" styleClass="outputLabel"/>
+                        <h:outputText value="#{addEditRequestBean.user.info}" styleClass="outputLabel"/>
  
                         <h:outputText />
                         <h:outputText />
                     </h:panelGrid>
                 </h:panelGrid>
  
+<<<<<<< HEAD
                 <p:commandButton value="Submit" actionListener="#{addEditRequestBean.add_requests()}" update="growl" process="@this"/>
+=======
+                <p:commandButton value="Submit" actionListener="#{addEditRequestBean.save}" update="growl" process="@this"/>
+>>>>>>> b9c03a1e851ff82d02eee099906604be74998cd6
             </p:panel>
         </p:tab>
     </p:wizard>
