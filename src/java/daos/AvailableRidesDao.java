@@ -24,17 +24,14 @@ public class AvailableRidesDao extends ConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT DESTINATIONS.RIDE_FROM, DESTINATIONS.RIDE_TO, STUDENTS_CARPOOLING.STUDENT_NAME, STUDENTS_CARPOOLING.PHONE,DESTINATIONS.DEPARTURE_TIME  FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID;";                     
-            PreparedStatement ps = conn.prepareStatement(sql);            
-
-            ResultSet rs = ps.executeQuery();           
-
-            while (rs.next()) {
-                list.add(populateRide2(rs));
+            String sql = "SELECT * FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID JOIN CARS ON STUDENTS_CARPOOLING.RIDE_ID=CARS.RIDE_ID;";                     
+            try (PreparedStatement ps = conn.prepareStatement(sql);) {
+                 ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(populateRide(rs));
+                }
+                
             }
-            
-            rs.close();
-            ps.close();
             
             return list;            
         } catch (SQLException e) {
@@ -47,8 +44,8 @@ public class AvailableRidesDao extends ConnectionDao {
         
         ride.setRideID(rs.getInt("RIDE_ID"));
         ride.setStudentId(rs.getInt("STUDENT_ID"));
-        ride.setName(rs.getString("DRIVER_NAME"));
-        ride.setPhone(rs.getString("DRIVER_PHONE"));
+        ride.setName(rs.getString("STUDENT_NAME"));
+        ride.setPhone(rs.getString("PHONE"));
         ride.setGender(rs.getString("GENDER"));
         
         ride.setRideFrom(rs.getString("RIDE_FROM"));
@@ -56,10 +53,10 @@ public class AvailableRidesDao extends ConnectionDao {
         ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
         
         ride.setCarPlateNumber(rs.getInt("CAR_PLATE_NUMBER"));
-        ride.setCarMake(rs.getString("CAR_MAKE"));
-        ride.setCarModel(rs.getString("CAR_MODEL"));
+        ride.setCarMake(rs.getString("MAKE"));
+        ride.setCarModel(rs.getString("MODEL"));
         ride.setYearOfMake(rs.getString("YEAR_OF_MAKE"));
-        ride.setCarColor(rs.getString("CAR_COLOR"));
+        ride.setCarColor(rs.getString("COLOR"));
         
         return ride;
     }
@@ -72,7 +69,7 @@ public class AvailableRidesDao extends ConnectionDao {
         
         ride.setName(rs.getString("STUDENT_NAME"));
         ride.setPhone(rs.getString("PHONE"));
-        ride.setGender(rs.getString("GENDER"));
+        //ride.setGender(rs.getString("GENDER"));
         
         ride.setRideFrom(rs.getString("RIDE_FROM"));
         ride.setRideTo(rs.getString("RIDE_TO"));
@@ -89,12 +86,11 @@ public class AvailableRidesDao extends ConnectionDao {
         
         try {
             String sql = "DELETE FROM STUDENTS_CARPOOLING, CARS, DESTINATION WHERE RIDE_ID=?";                               
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, RideID);
-            
-            ps.executeUpdate();
-
-            ps.close();
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, RideID);
+                
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
