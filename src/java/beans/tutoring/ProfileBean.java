@@ -48,7 +48,8 @@ public class ProfileBean implements Serializable{
     public void init(){
         try {            
             //needs a HashMap<Integer, Major> (theoretisch aus majorDao)
-            people = personsDao.buildPersons(majorDao.buildMajorsMap(schoolsDao.buildSchoolsMap()));            
+            people = personsDao.buildPersons(majorDao.buildMajorsMap(schoolsDao.buildSchoolsMap())); 
+            student = people.get(0);
         } catch (Exception ex) {
             Logger.getLogger(ProfileBean.class.getName()).log(Level.SEVERE, null, ex);
         }

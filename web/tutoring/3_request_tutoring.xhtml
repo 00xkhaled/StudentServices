@@ -25,16 +25,15 @@
 <!-- Select Day-->
 
                <p:outputLabel value="#{msgs.day}:" for="day"/>
-                        <p:selectOneMenu value="#{addEditEventBean.eventTypeId}"
+                        <p:selectOneMenu value="#{RequestTutoringBean.day}"
                                          id="day"
                                          required="true"                                                                                  
                                          requiredMessage=" #{msgs.required_msg}">
                             <f:selectItem itemLabel="#{msgs.select_one}"
                                           itemValue=""/>
-                            <f:selectItems var="type"
-                                           value="#{addEditEventBean.eventTypes}" 
+                            <f:selectItems var="type" 
                                            itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
-                                           itemValue="#{type.typeId}"
+                                           
                                            />
                             
                         </p:selectOneMenu>
@@ -44,7 +43,7 @@
 <p:outputLabel value="#{msgs.time}:" for="time"/>
                         <p:inputText id="time"
                                      style="width:600px"
-                                     value="#{addEditEventBean.nameEn}"                                      
+                                     value="#{RequestTutoringBean.time}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -56,7 +55,7 @@
 <p:outputLabel value="#{msgs.place}:" for="place"/>
                         <p:inputText id="place"
                                      style="width:600px"
-                                     value="#{addEditEventBean.nameEn}"                                      
+                                     value="#{RequestTutoringBean.place}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
@@ -70,7 +69,7 @@
                                  styleClass="commandButton"
                                  iconPos="#{langBean.styleFloat}"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 action="#{requestTutoringBean.saveRequest()}" />
+                                 action="/tutoring/3a_tutoring_offers.xhtml" />
           </h:form>
        </ui:decorate>
     </h:body>

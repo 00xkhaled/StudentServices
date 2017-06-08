@@ -72,14 +72,14 @@
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.request_this_course}"
+                                <p:commandButton value="#{msgs.tutor_request}"
                                                  icon="ui-icon-minus"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{tutoringOffersBean.selectedTutoring==null}"
                                                  actionListener="#{tutoringOffersBean.requestThisCourse()}"
-                                                 action="request_tutoring" />
+                                                  />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>

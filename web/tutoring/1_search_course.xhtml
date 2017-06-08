@@ -24,14 +24,13 @@
               
 <!-- Select School-->
                <p:outputLabel value="#{msgs.school}:" for="select_school"/>
-                        <p:selectOneMenu value="#{addEditEventBean.eventTypeId}"
+                        <p:selectOneMenu value="#{SearchCourseBean.schools}"
                                          id="select_school"
                                          required="true"                                                                                  
                                          requiredMessage=" #{msgs.required_msg}">
                             <f:selectItem itemLabel="#{msgs.select_school}"
                                           itemValue=""/>
                             <f:selectItems var="type"
-                                           value="#{addEditEventBean.eventTypes}" 
                                            itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
                                            itemValue="#{type.typeId}"/>                             
                         </p:selectOneMenu>
@@ -41,16 +40,17 @@
 <!--Select Major-->          
                       
                        <p:outputLabel value="#{msgs.major}:" for="select_major"/>
-                        <p:selectOneMenu value="#{addEditEventBean.eventTypeId}"
+                        <p:selectOneMenu value="#{SearchCourseBean.majors}"
                                          id="select_major"
                                          required="true"                                                                                  
                                          requiredMessage=" #{msgs.required_msg}">
                             <f:selectItem itemLabel="#{msgs.select_major}"
                                           itemValue=""/>
                             <f:selectItems var="type"
-                                           value="#{addEditEventBean.eventTypes}" 
+                                           value="#{SearchCourseBean.schools}" 
                                            itemLabel="#{langBean.isEnglish?type.nameEn:type.nameAr}"
-                                           itemValue="#{type.typeId}"/>                             
+                                           itemValue="#{type.typeId}"/> 
+                                           
                         </p:selectOneMenu>
                         <h:message for="select_major" styleClass="errorMsg"/> 
                         
@@ -67,7 +67,7 @@
                                  styleClass="commandButton"
                                  iconPos="#{langBean.styleFloat}"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 action="search_results"/>
+                                 action="/tutoring/2_search_results.xhtml"/>
           </h:form>
        </ui:decorate>
     </h:body>

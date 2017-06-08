@@ -61,7 +61,7 @@
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{searchResultsBean.selectedLecture==null}"
-                                                 action="tutoring_offers" />
+                                                 action="/tutoring/3_request_tutoring.xhtml" />
                                 <p:commandButton value="#{msgs.offer_course}"
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
@@ -69,7 +69,7 @@
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{searchResultsBean.selectedLecture==null}"
                                                  actionListener="#{searchResultsBean}"
-                                                 action="request_tutoring" />
+                                                 action="/tutoring/4_offer_tutoring.xhtml" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>
