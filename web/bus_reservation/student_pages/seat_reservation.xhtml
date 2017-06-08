@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>#{msgs.app_title}</title>
     </h:head>
@@ -59,6 +60,79 @@
    <h:outputLabel id="seat41" value = "41" />
    
 </h:panelGrid>
+            
+            <h:form id="add_res">            
+                <p:messages id="msgs" closable="true" globalOnly="true"/>
+
+                <p:panel header="#{msgs.seat_res}"                            
+                         style="min-height:400px; 
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                    <h:panelGrid id="add_res"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="3"                              
+                                 dir="#{langBean.dir}">
+
+                        <p:outputLabel value="#{msgs.bus_number}:" for="bus_number"/>
+                        <p:inputText id="bus_number"
+                                     value="#{addEditSeatResBean.busNumber}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="bus_number" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.studentId}:" for="studentId" />
+                        <p:inputText id="bus_type_en"
+                                     value="#{addEditSeatResBean.studentId}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="studentId" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.seatId}:" for="seatId" />
+                        <p:inputText id="SEAT_ID"
+                                     value="#{addEditBusBean.seatId}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.seatId}">
+                        </p:inputText>
+                        <h:message for="seatId" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.bus_time}:" for="bus_time" />
+                        <h:selectOneMenu id="ResTime"
+                                     value="#{addEditSeatResBean.busTime}"
+                                     style="width:350px"
+                                     required="true"
+                                     requiredMessage="#{msgs.bus_time}">
+                            <f:selectItem itemValue="7" itemLabel="7AM" />
+                            <f:selectItem itemValue="8" itemLabel="8AM" />
+                            <f:selectItem itemValue="10" itemLabel="10AM" />
+                        </h:selectOneMenu>
+                        <h:message for="bus_time" styleClass="errorMsg"/>                         
+
+                                               
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:commandButton value="#{msgs.save}"
+                                 styleClass="commandButton"
+                                 icon="ui-icon-disk"
+                                 iconPos="#{langBean.styleFloat}"
+                                 style="float:#{langBean.styleFloat}"
+                                 actionListener="#{addEditSeatResBean.saveSeatRes()}"/>
+                <p:commandButton value="#{msgs.cancel}"
+                                 icon="ui-icon-cancel"  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 immediate="true" 
+                                 style="float:#{langBean.styleFloat}" 
+                                 actionListener="#{sessionBean.setSelectedBusID(-1)}"
+                                 action="seat_res"/>                                   
+            </h:form>
             <h:form>
                 <h:outputLabel>Please Enter Bus no:</h:outputLabel>
          <h:selectOneMenu>
