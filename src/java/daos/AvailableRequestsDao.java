@@ -31,9 +31,15 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
 
         try {
             Connection conn = getConnection();
+<<<<<<< HEAD
+            
+            String sql =
+                      "INSERT INTO AVALIABLE_REQUESTS "
+=======
 
             String sql
                     = "INSERT INTO AV_REQ  "
+>>>>>>> origin/master
                     + "( REQUEST_ID,"
                     + " REQUEST_FROM,"
                     + " REQUEST_TO,"
@@ -93,6 +99,31 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
     public void deleteEvent(int PASSENGER_ID) throws Exception {
 
         Connection conn = getConnection();
+<<<<<<< HEAD
+        
+        try 
+        {
+                String sql = "DELETE FROM AVAILABLE_REQUESTS WHERE REQUEST_ID=?";                               
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, PASSENGER_ID);
+
+                ps.executeUpdate();
+
+                ps.close();
+          } 
+       
+                catch (SQLException e) 
+             {
+                throw new SQLException(e.getMessage());
+             }
+        }   
+   
+   
+     public void updateevent(AvailableRequests event) throws Exception 
+     {
+        try 
+        {
+=======
 
         try {
             String sql = "DELETE FROM AV_REQ  WHERE REQUEST_ID=?";
@@ -109,9 +140,10 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
 
     public void updaterequest(AvailableRequests request) throws Exception {
         try {
+>>>>>>> origin/master
             Connection conn = getConnection();
 
-            String sql = "UPDATE AV_REQ SET "
+            String sql = "UPDATE AVAILABLE_REQUESTS SET "
                     + "(REQUEST_FROM=?,"
                     + " REQUEST_TO=?,"
                     + " PASSENGER_NAME=?,"
@@ -141,8 +173,13 @@ public class AvailableRequestsDao extends ConnectionDao // extend the connection
         ArrayList<AvailableRequests> list = new ArrayList<>();
         try {
             Connection conn = getConnection();
+<<<<<<< HEAD
+            
+            String sql = "SELECT * FROM AVAILABLE_REQUESTS";          // select all avaliable requests               
+=======
 
             String sql = "SELECT * FROM AV_REQ";          // select all avaliable requests               
+>>>>>>> origin/master
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
 

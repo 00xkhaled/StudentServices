@@ -10,109 +10,88 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form id="buses_form">
-                <p:dataTable id="buses_table"
-                             class="dataTable"
-                             value="#{busInformationBean.list}"
-                             selection="#{busInformationBean.selectedBus}"
-                             rowKey="#{bus.busID}"                    
-                             var="bus"   
-                             rows="5"     
-                             rowsPerPageTemplate="1,3,5,7,9"
-                             dir="#{langBean.dir}"
-                             emptyMessage="No Bus Found"
-                             paginator="true"
-                             paginatorPosition="top" 
-                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                             >
+        <h:form id="manage_events_form">
+            <p:dataTable id="manage_events_tbl"
+                         class="dataTable"
+                         value="#{busInformationBean.list}"
+                         selection="#{busInformationBean.selectedBus}"
+                         rowKey="#{list.busID}"                    
+                         var="list"   
+                         rows="4"     
+                         rowsPerPageTemplate="1,2,3"
+                         dir="#{langBean.dir}"
+                         emptyMessage="No Bus Found"
+                         paginator="true"
+                         paginatorPosition="top" 
+                         paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                         >
 
-                    <p:ajax event="rowSelectRadio"
-                            update=":buses_form:buses_table"/>
+                <p:ajax event="rowSelectRadio"
+                        update=":manage_events_form:manage_events_tbl"/>
+                
+                <f:facet name="header" id="header">
+                    #{msgs.bus_info}
+                </f:facet>
 
-                    <f:facet name="header" id="header">
-                        #{msgs.bus_info}
-                    </f:facet>
+                <p:column selectionMode="single" style="width:5%"/>
+                <p:column headerText="#{msgs.bus_id}"
+                          style="width:10%"
+                          filterBy="#{list.busID}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.busID}"> 
+                    <h:outputText value="#{list.plateNo}"/>
+                </p:column>
 
-                    <p:column selectionMode="single" style="width:5%"/>
-                    <p:column headerText="#{msgs.bus_id}"
-                              style="width:10%"
-                              filterBy="#{bus.busID}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}"> 
-                        <h:outputText value="#{bus.busID}"/>
-                    </p:column>
+                <p:column headerText="#{msgs.bus_number}"
+                          style="width:10%"
+                          filterBy="#{list.busNumber}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.busNumber}"> 
+                    <h:outputText value="#{list.busNumber}"/>  
+                </p:column>
+                    
+                <p:column headerText="#{msgs.bus_type_en}"
+                          style="width:10%"
+                          filterBy="#{list.busTypeEn}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.busTypeEn}">  
+                    <h:outputText value="#{list.busTypeEn}"/>  
+                </p:column>
+                    
 
-                    <p:column headerText="#{msgs.bus_number}"
-                              style="width:10%"
-                              filterBy="#{bus.busNumber}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}"> 
-                        <h:outputText value="#{bus.busNumber}"/>  
-                    </p:column>
-
-                    <p:column headerText="#{msgs.bus_type_en}"
-                              style="width:10%"
-                              filterBy="#{bus.busTypeEn}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}">  
-                        <h:outputText value="#{bus.busTypeEn}"/>
-                    </p:column>
-                    <p:column headerText="#{msgs.bus_type_ar}"
-                              style="width:10%"
-                              filterBy="#{bus.busTypeAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}">  
-                        <h:outputText value="#{bus.busTypeAr}"/>  
-                    </p:column>
-                    <p:column headerText="#{msgs.driver_name_en}"
-                              style="width:10%"
-                              filterBy="#{bus.driverNameEn}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}">  
-                        <h:outputText value="#{bus.driverNameEn}"/>
-                    </p:column>
-                    <p:column headerText="#{msgs.driver_name_ar}"
-                              style="width:10%"
-                              filterBy="#{bus.driverNameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{bus.busID}">  
-                        <h:outputText value="#{bus.driverNameAr}"/>  
-                    </p:column>
-
-                    <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.delete}"
-                                                 icon="ui-icon-minus"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                 disabled="#{busInformationBean.selectedBus==null}"
-                                                 onclick="return confirm('#{msgs.confirm_delete_event}?');"
-                                                 actionListener="#{busInformationBean.deleteSelectedBus()}"
-                                                 action="bus_info" />
-                                <p:commandButton value="#{msgs.edit}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                 disabled="#{busInformationBean.selectedBus==null}"
-                                                 actionListener="#{busInformationBean.saveSelectedBusID()}"
-                                                 action="add_edit_bus"
-                                                 />
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
+            <f:facet name="footer">
+                    <p:toolbar style="border: none">
+                        <p:toolbarGroup align="#{languageBean.screenLeft}">
+                            <p:commandButton value="#{msgs.delete}"
+                                             icon="ui-icon-minus"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{busInformationBean.selectedBus==null}"
+                                             onclick="return confirm('#{msgs.confirm_delete_event}?');"
+                                             actionListener="#{busInformationBean.deleteSelectedBus()}"
+                                             action="bus_info" />
+                            <p:commandButton value="#{msgs.edit}"
+                                             icon="ui-icon-pencil"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{busInformationBean.selectedBus==null}"
+                                             actionListener="#{busInformationBean.saveSelectedBusID()}"
+                                             action="add_edit_bus"
+                                                />
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </f:facet>
                 </p:dataTable>
-
+            
                 <p:commandButton value="#{msgs.add}"
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedBusID(-1)}"
                                  action="add_edit_bus"/>      
-            </h:form>        
+        </h:form>        
         </ui:decorate>
 
     </h:body>

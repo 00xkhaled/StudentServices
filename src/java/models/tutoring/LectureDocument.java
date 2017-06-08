@@ -14,16 +14,22 @@ import java.time.LocalDateTime;
  * @author Ursina
  */
 public class LectureDocument implements Serializable{
+    private int lectureDocumentId;
     private String path;
     private String documentName;
     private Lecturer lecturer;
     private Timestamp lastUpdated;
     
-    public LectureDocument(String path, String documentName, Lecturer lecturer){
-        this.path = path;
-        this.documentName = documentName;
-        this.lecturer = lecturer;
+    public LectureDocument(){
         this.lastUpdated = Timestamp.valueOf(LocalDateTime.now());
+    }
+
+    public int getLectureDocumentId() {
+        return lectureDocumentId;
+    }
+
+    public void setLectureDocumentId(int lectureDocumentId) {
+        this.lectureDocumentId = lectureDocumentId;
     }
 
     public String getPath() {
@@ -54,4 +60,7 @@ public class LectureDocument implements Serializable{
         return lastUpdated;
     }
     
+    public void setLastUpdated(Timestamp lastUpdated){
+        this.lastUpdated = lastUpdated;
+    }
 }

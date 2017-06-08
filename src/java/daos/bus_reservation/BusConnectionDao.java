@@ -26,6 +26,7 @@ public class BusConnectionDao implements Serializable {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
         if (!useConnectionPool) {
+            //oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
             oracleUrl = "jdbc:oracle:thin:@192.168.120.213:1521:xe";
             databaseUsername = "STD_SRVCS";
             databasePassword = "CE471_second_2017";

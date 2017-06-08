@@ -2,6 +2,9 @@ package beans.bus_reservation;
 
 import daos.bus_reservation.BusInformationDao;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -36,6 +39,7 @@ public class AddEditBusBean implements Serializable{
     public void init(){                
         try {
             bus_id = sessionBean.getSelectedItemId();
+                      
             if(bus_id > 0){
             BusInformation bus = new BusInformation();
            bus.getBusID();
@@ -52,7 +56,7 @@ public class AddEditBusBean implements Serializable{
             Logger.getLogger(AddEditBusBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public int getBusID(){
         return this.bus_id;
     }
@@ -112,11 +116,10 @@ public class AddEditBusBean implements Serializable{
             this.driver_name_ar=DriverNameAr;
     }
         
-    public void saveBusInfo() {
+    public void saveBus() {
         try {
            BusInformation bus = new BusInformation();
-           
-          
+            
            bus.setBusNumber(bus_number);
            bus.setDriverNameEn(driver_name_en);
            bus.setDriverNameAr(driver_name_ar);
@@ -126,7 +129,7 @@ public class AddEditBusBean implements Serializable{
            bus.setDriverID(driver_id);
            bus.setPlateNo(plate_no);
             
-            if (sessionBean.getSelectedBusID() > 0) {
+            if (sessionBean.getSelectedItemId() > 0) {
                 BusInformationDao.updateBus(bus);
             } else {
                 BusInformationDao.insertBus(bus);

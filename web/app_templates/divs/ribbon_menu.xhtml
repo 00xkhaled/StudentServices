@@ -28,11 +28,11 @@
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.filter}" 
+                    <p:commandButton  value="#{msgs.check_information}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};" 
                                       actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/car_pooling/filter.xhtml">                       
+                                      action="/car_pooling/check_information.xhtml">                       
                     </p:commandButton> 
                 </p:ribbonGroup>                
             </p:tab>
@@ -67,8 +67,7 @@
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
                                       action="#{sessionBean.bus_checkin()}">                        
-                    </p:commandButton>   
-                    
+                    </p:commandButton>                                         
                 </p:ribbonGroup>
                 <p:ribbonGroup styleClass="ribbonGroup"
                                label="#{msgs.driver}"
@@ -110,21 +109,7 @@
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
                                       action="#{sessionBean.bus_admin_position()}">                        
                     </p:commandButton>                    
-                </p:ribbonGroup>  
-                
-                 <p:ribbonGroup styleClass="ribbonGroup"
-                               label="Contact us"
-                               style="float:#{langBean.styleFloat};">
-                     
-                    <p:commandButton  value="facebook" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"  
-                                      actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="#{sessionBean.Contact_us()}">                        
-                    </p:commandButton> 
-                     
-                                     </p:ribbonGroup>  
-
+                </p:ribbonGroup>                
             </p:tab>
 
             <p:tab title="#{msgs.tutoring}" >  
@@ -139,10 +124,10 @@
                 </p:ribbonGroup>                 
             </p:tab>
 
-            <p:tab title="#{msgs.book_store}">  
+            <p:tab title="#{msgs.library}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.book_store}" 
+                    <p:commandButton  value="#{msgs.library}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(3)}"

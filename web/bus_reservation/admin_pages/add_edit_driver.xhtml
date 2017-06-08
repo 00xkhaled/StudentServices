@@ -16,80 +16,56 @@
 
                 <p:panel header="#{msgs.driver_info}"                            
                          style="min-height:400px; 
-                         direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-                    <h:panelGrid id="add_driver"
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                    <h:panelGrid id="add"
                                  style="float: #{langBean.styleFloat};" 
                                  columns="3"                              
                                  dir="#{langBean.dir}">
-
-                        <p:outputLabel value="#{msgs.driver_name_en}:" for="driver_name_en" />
-                        <p:inputText id="driver_name_en"
-
+                        
+                        <p:outputLabel value="#{msgs.driver_name}:" />
+                        <p:inputText id="driver_name"
                                      style="width:350px"
-                                     value="#{addEditDriverBean.driverNameEn}"                                      
+                                     value="#{add_driver.driver_name}"                                      
                                      required="true"
                                      maxlength="512"
                                      requiredMessage="#{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="driver_name_en" styleClass="errorMsg"/>
+                        <h:message for="driver_name" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.driver_name_ar}:" for="driver_name_ar" />
-                        <p:inputText id="driver_name_ar"
-                                     style="width:350px"
-                                     value="#{addEditDriverBean.driverNameAr}"                                      
-                                     required="true"
-                                     maxlength="512"
-                                     requiredMessage="#{msgs.required_msg}">
-                        </p:inputText>
-                        <h:message for="driver_name_ar" styleClass="errorMsg"/>
-
-                        <p:outputLabel value="#{msgs.driver_add_en}:" for="driver_add_en" />
-                        <p:inputText id="driver_add_en"
-                                     style="width:350px"
-                                     value="#{addEditDriverBean.driverAddressEn}"                                      
-                                     required="true"
-                                     maxlength="512"
-                                     requiredMessage="#{msgs.required_msg}">
-                        </p:inputText>
-                        <h:message for="driver_add_en" styleClass="errorMsg"/>
-
-
-                        <p:outputLabel value="#{msgs.driver_add_ar}:" for="driver_add_ar" />
-                        <p:inputText id="driver_add_ar"
-                                     style="width:350px"
-                                     value="#{addEditDriverBean.driverAddressAr}"                                      
-                                     required="true"
-                                     maxlength="512"
-                                     requiredMessage="#{msgs.required_msg}">
-                        </p:inputText>
-                        <h:message for="driver_add_ar" styleClass="errorMsg"/>
-
-
-
-                        <p:outputLabel value="License Number:" for="driver_license_no" />
-                        <p:inputText id="driver_license_no"
-                                     value="#{addEditDriverBean.driverLicenseNo}"
+                        <p:outputLabel value="#{msgs.driver_id}:"/>
+                        <p:inputText id="driver_id"
+                                     value="#{add_driver.driver_id}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
                                      requiredMessage=" #{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="driver_license_no" styleClass="errorMsg"/>
+                        <h:message for="driver_id" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.driver_phone}:" for="driver_phone" />
+                        <p:outputLabel value="#{msgs.driver_add}:" />
+                        <p:inputText id="driver_add"
+                                     value="#{add_driver.driver_add}"
+                                     style="width:350px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="driver_add" styleClass="errorMsg"/>
+                        
+                        <p:outputLabel value="#{msgs.driver_phone}:" />
                         <p:inputText id="driver_phone"
-                                     value="#{addEditDriverBean.driverLicenseNo}"
+                                     value="#{add_driver.driver_phone}"
                                      style="width:350px"
                                      required="true"
                                      maxlength="512"
                                      requiredMessage=" #{msgs.required_msg}">
                         </p:inputText>
                         <h:message for="driver_phone" styleClass="errorMsg"/>
+                        
 
+                                                             
 
-
-
-
+                                               
                     </h:panelGrid>
                 </p:panel>
 
@@ -97,15 +73,13 @@
                                  styleClass="commandButton"
                                  icon="ui-icon-disk"
                                  iconPos="#{langBean.styleFloat}"
-                                 style="float:#{langBean.styleFloat}"
-                                 actionListener="#{addEditDriverBean.saveDriver()}" />
+                                 style="float:#{langBean.styleFloat}"/>
                 <p:commandButton value="#{msgs.cancel}"
                                  icon="ui-icon-cancel"  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  immediate="true" 
-                                 style="float:#{langBean.styleFloat}"  
-                                 actionListener="#{sessionBean.setSelectedDriverID(-1)}"
+                                 style="float:#{langBean.styleFloat}"                                 
                                  action="driver_info"  />                                   
             </h:form>
         </ui:decorate>

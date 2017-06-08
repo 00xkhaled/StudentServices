@@ -1,5 +1,6 @@
-package beans;
+package java.beans;
 
+import beans.SessionBean;
 import daos.EventTypesDao;
 import daos.EventsDao;
 import java.io.Serializable;

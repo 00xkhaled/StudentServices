@@ -10,96 +10,96 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">                                            
-            <h:form id="students_form">
-                <p:dataTable id="students_tbl"
-                             class="dataTable"
-                             value="#{studentInformationBean.students}"
-                             selection="#{studentInformationBean.selectedStudent}"
-                             rowKey="#{student.studentId}"                    
-                             var="student"   
-                             rows="4"     
-                             rowsPerPageTemplate="1,2,3"
-                             dir="#{langBean.dir}"
-                             emptyMessage="no Student found"
-                             paginator="true"
-                             paginatorPosition="top" 
-                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                             >
+        <h:form id="manage_events_form">
+            <p:dataTable id="manage_events_tbl"
+                         class="dataTable"
+                         value="#{studentInformationBean.list}"
+                         selection="#{studentInformationBean.selectedStudent}"
+                         rowKey="#{list.studentID}"                    
+                         var="list"   
+                         rows="4"     
+                         rowsPerPageTemplate="1,2,3"
+                         dir="#{langBean.dir}"
+                         emptyMessage="no student found"
+                         paginator="true"
+                         paginatorPosition="top" 
+                         paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                         >
 
-                    <p:ajax event="rowSelectRadio"
-                            update=":students_form:students_tbl"/>
+                <p:ajax event="rowSelectRadio"
+                        update=":manage_events_form:manage_events_tbl"/>
+                
+                <f:facet name="header" id="header">
+                    #{msgs.student_info}
+                </f:facet>
 
-                    <f:facet name="header" id="header">
-                        #{msgs.student_info}
-                    </f:facet>
+                <p:column selectionMode="single" style="width:5%"/>
+                <p:column headerText="#{msgs.student_name}"
+                          style="width:10%"
+                          filterBy="#{list.studentFNameEn}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.studentFNameEn}"> 
+                    <h:outputText value="#{list.studentFNameEn}"/>
+                </p:column>
 
-                    <p:column selectionMode="single" style="width:5%"/>
-                    <p:column headerText="#{msgs.student_name}"
-                              style="width:10%"
-                              filterBy="#{student.studentFnameEn}"
-                              filterMatchMode="contains"
-                              sortBy="#{student.studentId}"> 
-                        <h:outputText value="#{student.studentId}"/>
-                    </p:column>
+                <p:column headerText="#{msgs.student_id}"
+                          style="width:10%"
+                          filterBy="#{list.studentID}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.studentID}"> 
+                    <h:outputText value="#{list.studentID}"/>  
+                </p:column>
+                    
+                <p:column headerText="#{msgs.phone}"
+                          style="width:10%"
+                          filterBy="#{list.phone}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.phone}">  
+                    <h:outputText value="#{list.phone}"/>  
+                </p:column>
+                    
+                <p:column headerText="#{msgs.seats_pre_res}"
+                          style="width:10%"
+                          filterBy="#{list.seatPreRes}"
+                          filterMatchMode="contains"
+                          sortBy="#{list.seatPreRes}"> 
+                    <h:outputText value="#{list.seatPreRes}"/>  
+                </p:column>
 
-                    <p:column headerText="#{msgs.student_id}"
-                              style="width:10%"
-                              filterBy="#{student.studentId}"
-                              filterMatchMode="contains"
-                              sortBy="#{student.studentId}"> 
-                        <h:outputText value="#{student.studentId}"/>  
-                    </p:column>
-
-                    <p:column headerText="#{msgs.phone}"
-                              style="width:10%"
-                              filterBy="#{student.phone}"
-                              filterMatchMode="contains"
-                              sortBy="#{student.studentId}">  
-                        <h:outputText value="#{student.studentId}"/>  
-                    </p:column>
-
-                    <p:column headerText="#{msgs.seats_pre_res}"
-                              style="width:10%"
-                              filterBy="#{student.seatPreRes}"
-                              filterMatchMode="contains"
-                              sortBy="#{student.studentId}"> 
-                        <h:outputText value="#{student.studentId}"/>  
-                    </p:column>
-
-                    <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.delete}"
-                                                 icon="ui-icon-minus"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                 disabled="#{studentInformationBean.selectedStudent==null}"
-                                                 onclick="return confirm('#{msgs.confirm_delete_student}?');"
-                                                 actionListener="#{studentInformationBean.deleteSelectedStudent()}"
-                                                 action="student_info" />
-                                <p:commandButton value="#{msgs.edit}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}" 
-                                                 disabled="#{studentInformationBean.selectedStudent==null}"
-                                                 actionListener="#{studentInformationBean.saveSelectedStudentId()}"
-                                                 action="add_edit_student"
-                                                 />
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
+            <f:facet name="footer">
+                    <p:toolbar style="border: none">
+                        <p:toolbarGroup align="#{languageBean.screenLeft}">
+                            <p:commandButton value="#{msgs.delete}"
+                                             icon="ui-icon-minus"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{studentInformationBean.selectedStudent==null}"
+                                             onclick="return confirm('#{msgs.confirm_delete_student}?');"
+                                             actionListener="#{studentInformationBean.deleteSelectedStudent()}"
+                                             action="manage_student" />
+                            <p:commandButton value="#{msgs.edit}"
+                                             icon="ui-icon-pencil"                                  
+                                             iconPos="#{langBean.styleFloat}"
+                                             styleClass="commandButton"
+                                             style="float:#{langBean.styleFloat}" 
+                                             disabled="#{studentInformationBean.selectedStudent==null}"
+                                             actionListener="#{addEditStudentBean.saveStudent()}"
+                                             action="add_edit_student"
+                                                />
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </f:facet>
                 </p:dataTable>
-
+            
                 <p:commandButton value="#{msgs.add}"
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  style="float:#{langBean.styleFloat}"
-                                 actionListener="#{sessionBean.setSelectedStudentID(-1)}"
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
                                  action="add_edit_student"/>      
-            </h:form>        
+        </h:form>        
         </ui:decorate>
 
     </h:body>

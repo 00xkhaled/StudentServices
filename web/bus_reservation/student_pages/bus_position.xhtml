@@ -9,17 +9,17 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
     </h:head>
     <h:body>
-    <ui:decorate template="/app_templates/app_template.xhtml"> 
-    <p:gmap 
-       id="gmap"    
-       center="31.777067, 35.802555"
-       zoom="14"
-       type="hybrid"
-       style="width:1300px;height:500px"
-       model="#{busmapBean.model}"/>
-    <h:form>
-    <p:poll interval="10" listener="#{busmapBean.update}" update="gmap"  />
-    </h:form>
-    </ui:decorate>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <p:gmap 
+                id="gmap"    
+                center="31.777067, 35.802555"
+                zoom="14"
+                type="hybrid"
+                style="width:1300px;height:500px"
+                model="#{BmapBean.model}"/>
+            <h:form>
+                <p:poll interval="10" listener="#{BmapBean.update}" update="gmap"  />
+            </h:form>
+        </ui:decorate>
     </h:body>
 </html>

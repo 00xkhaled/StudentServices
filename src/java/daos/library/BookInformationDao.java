@@ -27,37 +27,37 @@ import java.util.logging.Logger;
 import models.library.Book;
 import models.library.Authors;
 
+
 /**
  *
  * @author tarekashi
  */
 public class BookInformationDao extends LibraryConnectionDao {
-
     public ArrayList<Book> buildEvents(HashMap<Integer, Authors> authors) throws Exception {
-
+                
         ArrayList<Book> list = new ArrayList<>();
-        try {
+        try {   
             Connection conn = getConnection();
+            
+            String sql = "SELECT * FROM BOOKS";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
 
-            String sql = "SELECT * FROM BOOKS";
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
                 list.add(populateBookwithAuthors(rs, authors));
             }
             rs.close();
             ps.close();
-            return list;
+            return list;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-
-    private Book populateBookwithAuthors(ResultSet rs, HashMap<Integer, Authors> authors) throws SQLException {
+    
+     private Book populateBookwithAuthors(ResultSet rs, HashMap <Integer, Authors> authors) throws SQLException {
         Book book = new Book();
-
+        
         book.setBookId(rs.getInt("BOOK_ID"));
         book.setBooktitleEn(rs.getString("TITLE_EN"));
         book.setBooktitleAr(rs.getString("TITLE_AR"));
@@ -73,10 +73,9 @@ public class BookInformationDao extends LibraryConnectionDao {
         book.setAuthor(author);
         return book;
     }
-
-    private Book populateBook(ResultSet rs) throws SQLException {
+      private Book populateBook(ResultSet rs) throws SQLException {
         Book book = new Book();
-
+        
         book.setBookId(rs.getInt("BOOK_ID"));
         book.setBooktitleEn(rs.getString("TITLE_EN"));
         book.setBooktitleAr(rs.getString("TITLE_AR"));
@@ -88,18 +87,18 @@ public class BookInformationDao extends LibraryConnectionDao {
         book.setPriceday(rs.getInt("PRICE_DAY"));
         book.setStatus(rs.getString("STATUS"));
         book.setOwnername(rs.getString("OWNER_NAME"));
-
+        
         Authors authors = new Authors();
-        authors.setAuthorId(rs.getInt("AUTHOR_ID"));
-        book.setAuthor(authors);
-
+        authors.setAuthorId(rs.getInt("AUTHOR_ID"));        
+        book.setAuthor(authors);                
+        
         return book;
     }
-
-    public void insertBook(Book event) throws Exception {
+      
+      public void insertBook(Book event) throws Exception {                
         try {
             Connection conn = getConnection();
-
+            
             String sql = "INSERT INTO BOOKS (BOOK_ID,"
                     + " TITLE_EN,"
                     + " TITLE_AR,"
@@ -112,9 +111,9 @@ public class BookInformationDao extends LibraryConnectionDao {
                     + " STATUS,"
                     + " OWNER_NAME,"
                     + "AUTHOR_ID)"
-                    + " VALUES ((select max(BOOK_ID) from BOOKS)+1,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-
+                    + " VALUES ((select max(BOOK_ID) from BOOKS)+1,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql); 
+            
             ps.setInt(1, event.getBookId());
             ps.setString(2, event.getBooktitleEn());
             ps.setString(3, event.getBooktitleAr());
@@ -128,46 +127,80 @@ public class BookInformationDao extends LibraryConnectionDao {
             ps.setString(11, event.getOwnername());
             ps.setInt(7, event.getAuthor().getAuthorId());
             ps.executeUpdate();
-
+            
             ps.close();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-    // hamza
-
-    public void BuyBook(Book book) throws Exception {
-        Connection conn = getConnection();
-
+      // hamza
+                public void BuyBook(Book event) throws Exception {
+         Connection conn = getConnection();
+        
         try {
-            String sql = "UPDATE BOOKS SET OWNER_NAME=?,"
+             String sql = "UPDATE BOOKS SET TITLE_EN=?,"
+                    + " TITLE_AR=?,"
+                    + " GENERE=?,"
+                    + " PUBLISH_YEAR=?,"
+                    + " VERSION=?,"
+                    + " PAGE_NUMBERS=?,"
+                    + " PRICE=?,"
+                    + " PRICE_DAY=?,"
                     + " STATUS=?,"
-                    + " WHERE BOOK_ID=?";
+                    + " OWNER_NAME=?," 
+                    + " WHERE BOOK_ID=?";                      
             PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, event.getBooktitleEn());
+            ps.setString(2, event.getBooktitleAr());
+            ps.setString(3, event.getGenre());
+            ps.setInt(4, event.getPublishyear());
+            ps.setString(5, event.getVersion());
+            ps.setInt(6, event.getNumofpages());
+            ps.setInt(7, event.getPrice());
+            ps.setInt(8, event.getPriceday());
+            ps.setString(9, event.getStatus());
+            ps.setString(10, "hamza");          
+            ps.setInt(11, event.getBookId());
 
-            ps.setString(1, book.getOwnername());
-            ps.setString(2, book.getStatus());
-            ps.setInt(3, book.getBookId());
+
             ps.executeUpdate();
 
             ps.close();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
-    }
-
-    public void borrowBook(Book book) throws Exception {
-        Connection conn = getConnection();
-
+    } 
+      
+   public void borrowBook(Book event) throws Exception {
+         Connection conn = getConnection();
+        
         try {
-            String sql = "UPDATE BOOKS SET RETURN_DATE=?,"
+             String sql = "UPDATE BOOKS SET TITLE_EN=?,"
+                    + " TITLE_AR=?,"
+                    + " GENERE=?,"
+                    + " PUBLISH_YEAR=?,"
+                    + " VERSION=?,"
+                    + " PAGE_NUMBERS=?,"
+                    + " PRICE=?,"
+                    + " PRICE_DAY=?,"
                     + " STATUS=?,"
-                    + " WHERE BOOK_ID=?";
+                    + " OWNER_NAME=?," 
+                    + " WHERE BOOK_ID=?";                      
             PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, event.getBooktitleEn());
+            ps.setString(2, event.getBooktitleAr());
+            ps.setString(3, event.getGenre());
+            ps.setInt(4, event.getPublishyear());
+            ps.setString(5, event.getVersion());
+            ps.setInt(6, event.getNumofpages());
+            ps.setInt(7, event.getPrice());
+            ps.setInt(8, event.getPriceday());
+            ps.setString(9, event.getStatus());
+            ps.setString(10, event.getOwnername());          
+            ps.setInt(11, event.getBookId());
 
-            ps.setTimestamp(1, book.getReturnDate());
-            ps.setString(2, book.getStatus());
-            ps.setInt(3, book.getBookId());
 
             ps.executeUpdate();
 
@@ -175,24 +208,24 @@ public class BookInformationDao extends LibraryConnectionDao {
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
-    }
-// hamza 
-
-    public Book getBook(int bookId) throws Exception {
-        try {
+    }  
+     // hamza 
+  
+       public Book getBook(int bookId) throws Exception {
+        try {   
             Book book = null;
             Connection conn = getConnection();
-
+            
             String sql = "SELECT BOOKS.*, "
                     + " AUTHORS.AUTHOR_NAME_EN as AUTHOR_EN,"
                     + " AUTHORS.AUTHOR_NAME_AR as AUTHOR_AR "
                     + " FROM BOOKS, AUTHORS "
                     + " WHERE BOOKS.AUTHOR_ID=AUTHORS.AUTHOR_ID AND"
-                    + " BOOK_ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
+                    + " BOOK_ID=?";                        
+            PreparedStatement ps = conn.prepareStatement(sql);            
             ps.setInt(1, bookId);
-
-            ResultSet rs = ps.executeQuery();
+            
+            ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
                 book = populateBook(rs);
@@ -202,16 +235,15 @@ public class BookInformationDao extends LibraryConnectionDao {
 
             rs.close();
             ps.close();
-
-            return book;
+            
+            return book;            
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-
-    public static void main(String[] args) {
+      public static void main(String [] args){        
         try {
-            BookInformationDao dao = new BookInformationDao();
+            BookInformationDao dao = new BookInformationDao();                
             //ArrayList<Event> events = dao.buildEvents();
         } catch (Exception ex) {
             Logger.getLogger(BookInformationDao.class.getName()).log(Level.SEVERE, null, ex);

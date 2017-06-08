@@ -8,97 +8,93 @@
     <h:head>
         <title>#{msgs.app_title}</title>
     </h:head>
-    <h:body>
-        <ui:decorate template="/app_templates/app_template.xhtml">                                            
-        <h:form id="driver_form">
-            <p:dataTable id="driver_tbl"
+    <h:body> <ui:decorate template="/app_templates/app_template.xhtml">                                            
+            <h:form id="manage_events_form">
+                  <p:dataTable id="manage_events_tbl"
                          class="dataTable"
-                         value="#{driverInformationBean.list}"
-                         selection="#{driverInformationBean.selectedDriver}"
-                         rowKey="#{driver.driverID}"                    
-                         var="driver"   
+                         value="#{DriverInformationBean.list}"
+                         selection="#{DriverInformationBean.selectedDriver}"
+                         rowKey="#{list.driverID}"                    
+                         var="list"   
                          rows="4"     
                          rowsPerPageTemplate="1,2,3"
-                         dir="#{langBean.dir}"
+                        dir="#{langBean.dir}"
                          emptyMessage="no Driver found"
                          paginator="true"
                          paginatorPosition="top" 
                          paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
                          >
+                    <p:ajax event="rowSelectRadio"/>
 
-                <p:ajax event="rowSelectRadio"
-                        update=":driver_form:driver_tbl"/>
-                
-                <f:facet name="header" id="header">
-                    Driver Information
-                </f:facet>
+                    <f:facet name="header" id="header">
+                        #{msgs.driver_info}
+                    </f:facet>
 
-                <p:column selectionMode="single" style="width:5%"/>
-                <p:column headerText="#{msgs.driver_name}"
-                          style="width:10%"
-                          filterBy="#{driver.driverNameEn}"
-                          filterMatchMode="contains"
-                          sortBy="#{driver.driverID}"> 
-                    <h:outputText value="#{driver.driverNameEn}"/>
-                </p:column>
+                    <p:column selectionMode="single" style="width:5%"/>
 
-                <p:column headerText="#{msgs.driver_id}"
-                          style="width:10%"
-                          filterBy="#{driver.driverID}"
-                          filterMatchMode="contains"
-                          sortBy="#{driver.driverID}"> 
-                    <h:outputText value="#{driver.driverID}"/>  
-                </p:column>
+                    <p:column headerText="#{msgs.driver_name}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?driver_info.driver_name.nameEn:driver_info.driver_name.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?driver_info.driver_name.nameEn:driver_info.driver_name.nameAr}">                    
+                        <h:outputText value="#{list.driverNameEn}"/>
+
+                    </p:column>
+
+                    <p:column headerText="#{msgs.driver_id}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?driver_info.driver_id.nameEn:driver_info.driver_id.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?driver_info.driver_id.nameEn:driver_info.driver_id.nameAr}">                    
+                        <h:outputText value="#{list.driverID}"/>
+
+                    </p:column>
                     
-                <p:column headerText="#{msgs.driver_add}"
-                          style="width:10%"
-                          filterBy="#{driver.driverAddressEn}"
-                          filterMatchMode="contains"
-                          sortBy="#{driver.driverID}">  
-                    <h:outputText value="#{driver.driverAddressEn}"/>  
-                </p:column>
-                    
-                <p:column headerText="#{msgs.phone}"
-                          style="width:10%"
-                          filterBy="#{driver.phone}"
-                          filterMatchMode="contains"
-                          sortBy="#{driver.driverID}"> 
-                    <h:outputText value="#{driver.phone}"/>  
-                </p:column>
+                    <p:column headerText="#{msgs.driver_add}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?driver_info.driver_add.nameEn:driver_info.driver_add.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?driver_info.driver_add.nameEn:driver_info.driver_add.nameAr}">                    
+                        <h:outputText value="#{list.driverAddressEn}"/>
 
-            <f:facet name="footer">
-                    <p:toolbar style="border: none">
-                        <p:toolbarGroup align="#{languageBean.screenLeft}">
-                            <p:commandButton value="#{msgs.delete}"
-                                             icon="ui-icon-minus"                                  
-                                             iconPos="#{langBean.styleFloat}"
-                                             styleClass="commandButton"
-                                             style="float:#{langBean.styleFloat}" 
-                                             disabled="#{driverInformationBean.selectedDriver==null}"
-                                             onclick="return confirm('#{msgs.confirm_delete_driver}?');"
-                                             actionListener="#{driverInformationBean.deleteSelectedDriver()}"
-                                             action="driver_info" />
-                            <p:commandButton value="#{msgs.edit}"
-                                             icon="ui-icon-pencil"                                  
-                                             iconPos="#{langBean.styleFloat}"
-                                             styleClass="commandButton"
-                                             style="float:#{langBean.styleFloat}" 
-                                             disabled="#{driverInformationBean.selectedDriver==null}"
-                                             actionListener="#{driverInformationBean.saveSelectedDriverID()}"
-                                             action="add_edit_driver"
-                                                />
-                        </p:toolbarGroup>
-                    </p:toolbar>
-                </f:facet>
+                    </p:column>
+                    
+                    <p:column headerText="#{msgs.driver_phone}"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?driver_info.driver_phone.nameEn:driver_info.driver_phone.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?driver_info.driver_phone.nameEn:driver_info.driver_phone.nameAr}">                    
+                        <h:outputText value="#{list.phone}"/>
+
+                    </p:column>
+
+           <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                                <p:commandButton value="#{msgs.delete}"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 action="manage_driver" />
+                                <p:commandButton value="#{msgs.edit}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 />
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
                 </p:dataTable>
-            
                 <p:commandButton value="#{msgs.add}"
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}"
-                                 action="add_edit_driver"/>      
-        </h:form>        
+                                 style="float:#{langBean.styleFloat}" 
+                                 action="add_edit_driver" 
+                                 />      
+            </h:form>        
         </ui:decorate>
 
     </h:body>

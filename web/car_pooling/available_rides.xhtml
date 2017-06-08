@@ -76,22 +76,6 @@
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.details}"
-                                                 icon="ui-icon-info"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{availableRidesBean.selectedRide==null}"                                                 
-                                                 actionListener="#{availableRidesBean.saveSelectedItemId()}"
-                                                 action="ride_info" />
-                                <p:commandButton value="#{msgs.edit}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{availableRidesBean.selectedRide==null}"                                                 
-                                                 actionListener="#{availableRidesBean.saveSelectedItemId()}"
-                                                 action="add_ride" />
                                 <p:commandButton value="#{msgs.delete}"
                                                  icon="ui-icon-minus"                                  
                                                  iconPos="#{langBean.styleFloat}"
@@ -101,6 +85,14 @@
                                                  onclick="return confirm('#{msgs.confirm_delete_ride}?');"
                                                  actionListener="#{availableRidesBean.deleteSelectedRide()}"
                                                  action="available_rides" />
+                                <p:commandButton value="#{msgs.edit}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{addEditRidesBean.selectedRide=null}"                                                 
+                                                 actionListener="#{addEditRidesBean.saveSelectedItemId()}"
+                                                 action="add_ride" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>

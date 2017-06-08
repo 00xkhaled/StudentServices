@@ -1,16 +1,17 @@
 package beans.bus_reservation;
 
-import beans.SessionBean;
-import daos.bus_reservation.BusInformationDao;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.inject.Inject;
+import models.bus_reservation.BusInformation;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import beans.SessionBean;
+import daos.bus_reservation.BusInformationDao;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-import models.bus_reservation.BusInformation;
 
 @Named("busInformationBean")
 @ViewScoped
@@ -34,7 +35,6 @@ public class BusInformationBean implements Serializable {
     private SessionBean sessionBean;
 
     public BusInformationBean() {
-        init();
 
     }
 
@@ -43,7 +43,7 @@ public class BusInformationBean implements Serializable {
         try {
             list = bus.buildBus();
         } catch (Exception ex) {
-            Logger.getLogger(BusInformationBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentInformationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

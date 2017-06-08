@@ -1,146 +1,99 @@
+
 package models.bus_reservation;
 
 import java.io.Serializable;
-
-/**
+ /*
  * @author Kamal Jabari
  */
-public class StudentInformation implements Serializable {
+public class StudentInformation implements Serializable{
 
-    private int studentId;
-    private String studentFnameEn;
-    private String studentLnameEn;
-    private String studentFnameAr;
-    private String studentLnameAr;
-    private int phone;
-    private String seatPreRes;
-    private String addressAr;
-    private String addressEn;
+    
+    private int student_id;
+    private String student_fname_en;
+    private String student_lname_en;
+    private String student_fname_ar;
+    private String student_lname_ar;
+    private int    phone;
+    private int    seat_pre_res;
+    private String address_ar;
+    private String address_en;
+    
+   
+    
+    
+    public int getStudentID(){
+        return this.student_id;
+    }
+    public void setStudentID(int student_id){
+        this.student_id=student_id;
+    }
+    
+     public String getStudentFNameEn(){
+        return this.student_fname_en;
+    }
+     
+    public void setStudentFNameEn(String student_fname_en){
+        this.student_fname_en=student_fname_en;
+    }
+    
+    public String getStudentFNameAr(){
+        return this.student_fname_ar;
+    }
+    
+    public void setStudentFNameAr(String student_fname_ar){
+        this.student_fname_ar=student_fname_ar;
+    }    
 
-    /**
-     * @return the studentId
-     */
-    public int getStudentId() {
-        return studentId;
+     public String getStudentLNameEn(){
+        return this.student_lname_en;
+    }
+     
+    public void setStudentLNameEn(String student_lname_en){
+        this.student_lname_en=student_lname_en;
+    }
+    public String getStudentLNameAr(){
+        return this.student_lname_ar;
+    }
+    
+    public void setStudentLNameAr(String student_lname_ar){
+        this.student_lname_ar=student_lname_ar;
+    }
+    
+    public int getPhone(){
+        return this.phone;
+    }
+    
+    public void setPhone(int phone){
+        this.phone=phone;
+    }
+    
+    public int getSeatPreRes(){
+        return this.seat_pre_res;
+    }
+     
+    public void setSeatPreRes(int seat_pre_res){
+        this.seat_pre_res=seat_pre_res;
+    }
+    
+    public String getStudentAddressAr(){
+        return this.address_ar;
+    }
+    
+    public void setStudentAddressAr(String address_ar){
+    this.address_ar=address_ar;
+    }
+    
+    public String getStudentAddressEn(){
+        return this.address_en;
+    }
+    
+    public void setStudentAddressEn(String address_en){
+    this.address_en=address_en;
     }
 
-    /**
-     * @param studentId the studentId to set
-     */
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    /**
-     * @return the studentFnameEn
-     */
-    public String getStudentFnameEn() {
-        return studentFnameEn;
-    }
-
-    /**
-     * @param studentFnameEn the studentFnameEn to set
-     */
-    public void setStudentFnameEn(String studentFnameEn) {
-        this.studentFnameEn = studentFnameEn;
-    }
-
-    /**
-     * @return the studentLnameEn
-     */
-    public String getStudentLnameEn() {
-        return studentLnameEn;
-    }
-
-    /**
-     * @param studentLnameEn the studentLnameEn to set
-     */
-    public void setStudentLnameEn(String studentLnameEn) {
-        this.studentLnameEn = studentLnameEn;
-    }
-
-    /**
-     * @return the studentFnameAr
-     */
-    public String getStudentFnameAr() {
-        return studentFnameAr;
-    }
-
-    /**
-     * @param studentFnameAr the studentFnameAr to set
-     */
-    public void setStudentFnameAr(String studentFnameAr) {
-        this.studentFnameAr = studentFnameAr;
-    }
-
-    /**
-     * @return the studentLnameAr
-     */
-    public String getStudentLnameAr() {
-        return studentLnameAr;
-    }
-
-    /**
-     * @param studentLnameAr the studentLnameAr to set
-     */
-    public void setStudentLnameAr(String studentLnameAr) {
-        this.studentLnameAr = studentLnameAr;
-    }
-
-    /**
-     * @return the phone
-     */
-    public int getPhone() {
-        return phone;
-    }
-
-    /**
-     * @param phone the phone to set
-     */
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * @return the seatPreRes
-     */
-    public String getSeatPreRes() {
-        return seatPreRes;
-    }
-
-    /**
-     * @param seatPreRes the seatPreRes to set
-     */
-    public void setSeatPreRes(String seatPreRes) {
-        this.seatPreRes = seatPreRes;
-    }
-
-    /**
-     * @return the addressAr
-     */
-    public String getAddressAr() {
-        return addressAr;
-    }
-
-    /**
-     * @param addressAr the addressAr to set
-     */
-    public void setAddressAr(String addressAr) {
-        this.addressAr = addressAr;
-    }
-
-    /**
-     * @return the addressEn
-     */
-    public String getAddressEn() {
-        return addressEn;
-    }
-
-    /**
-     * @param addressEn the addressEn to set
-     */
-    public void setAddressEn(String addressEn) {
-        this.addressEn = addressEn;
-    }
-
+    
+    
+    
 }
+
+
