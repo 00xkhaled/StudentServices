@@ -13,24 +13,12 @@ import java.util.UUID;
  * @author Ursina
  */
 public class Comment implements Serializable{
-    private int commentId;
     private Person author;
-    private String content;
-    private Post post;
+    private String conntent;
     
-    public Comment(){}
-    
-    public Comment(Person author, String content){
+    public Comment(Person author, String conntent){
         this.author = author;
-        this.content = content;   
-    }
-
-    public int getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+        this.conntent = conntent;   
     }
 
     public Person getAuthor() {
@@ -41,19 +29,13 @@ public class Comment implements Serializable{
         this.author = author;
     }
 
-    public String getContent() {
-        return content;
+    public String getConntent() {
+        return conntent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setConntent(String conntent) {
+        this.conntent = conntent;
     }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
+    
+    
 }

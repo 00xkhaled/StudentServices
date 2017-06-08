@@ -25,12 +25,6 @@ and open the template in the editor.
                                  style="float: #{langBean.styleFloat};" 
                                  columns="2"                              
                                  dir="#{langBean.dir}">
-                          <p:outputLabel value="#{msgs.book_Id}:" for="bookId"/>
-                        <p:inputText id="bookId"
-                                     style="width:400px"
-                                     value="#{addbookBean.bookId}"                                      
-                                     maxlength="512">
-                        </p:inputText>
                            <p:outputLabel value="#{msgs.book_title_en}" for="book_title_en"/>
                         <p:inputText id="book_title_en"
                                      style="width:400px"
@@ -127,7 +121,7 @@ and open the template in the editor.
                                  icon="ui-icon-disk"
                                  iconPos="#{langBean.styleFloat}"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 actionListener="#{AddBookBean.saveBook()}" 
+                                 actionListener="#{addbookBean.saveBook()}" 
                                  action="library"/>
                               <p:commandButton value="#{msgs.cancel}"
                                  icon="ui-icon-cancel"  

@@ -12,31 +12,18 @@ import java.io.Serializable;
  * @author Ursina
  */
 public class Person implements Serializable{
-    private int personId;
     private String firstNameEn;
     private String firstNameAr;
     private String lastNameEn;
     private String lastNameAr;
     private String emailAddress;
     private String phoneNumber;
-    private Major major;
-    private int creditScore;
     
     public Person(String firstNameEn, String lastNameEn, String emailAddress, String phoneNumber){
         this.firstNameEn = firstNameEn;
         this.lastNameEn = lastNameEn;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-    }
-    
-    public Person(){}
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
     }
 
     public String getFirstNameEn() {
@@ -85,21 +72,5 @@ public class Person implements Serializable{
 
     public void setLastNameAr(String lastNameAr) {
         this.lastNameAr = lastNameAr;
-    }
-
-    public Major getMajor() {
-        return major;
-    }
-
-    public void setMajor(Major major) {
-        this.major = major;
-    }
-
-    public int getCreditScore() {
-        return creditScore;
-    }
-
-    public void setCreditScore(int creditScore) {
-        this.creditScore = creditScore;
     }
 }

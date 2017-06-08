@@ -6,15 +6,15 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.library}</title>
+        <title>#{msgs.book_store}</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="manage_books_form">
-                <p:dataTable id="manage_events_tbl"
+                <p:dataTable id="manage_books_tbl"
                              class="dataTable"
-                             value="#{BookBean.list}"                    
-                             selection="#{BookBean.selectedBook}"
+                             value="#{bookBean.list}"                    
+                             selection="#{bookBean.selectedBook}"
                              rowKey="#{list.bookId}"                    
                              var="list"   
                              rows="2"     
@@ -30,122 +30,62 @@
                     <f:facet name="header" id="header">
                         #{msgs.books}
                     </f:facet>
-                    <p:column selectionMode="single" style="width:2em"/>
-                    <p:column headerText="#{msgs.book_Id}"
-                              style="width:5%"
-                              filterStyle="width=16px"
-                              filterBy="#{list.bookId}"
-                              filterMatchMode="contains"
-                              sortBy="#{list.bookId}">                    
-                        <h:outputText value="#{list.bookId}"/>  
-                    </p:column>
+                    <p:column selectionMode="single" style="width:5%"/>
+
                     <p:column headerText="#{msgs.book_title}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{langBean.isEnglish?list.booktitleEn:booktitleAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?list.booktitleEn:booktitleAr}">                    
                         <h:outputText value="#{langBean.isEnglish?list.booktitleEn:booktitleAr}"/>  
                     </p:column>
                     <p:column headerText="#{msgs.authors_name}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{langBean.isEnglish?authorList.authornameEn:authornameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?authorList.authornameEn:authornameAr}">
                         <h:outputText value="#{langBean.isEnglish?authorList.authornameEn:authornameAr}"/>
                     </p:column>
                     <p:column headerText="#{msgs.genre}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{list.genre}"
                               filterMatchMode="contains"
                               sortBy="#{list.genre}">
                         <h:outputText value="#{list.genre}"/>
-
-                    </p:column>
-                    <p:column headerText="#{msgs.publish_year}"
-                              style="width:5%"
-                              filterBy="#{list.publishyear}"
-                              filterMatchMode="contains"
-                              sortBy="#{list.publishyear}">                    
-                        <h:outputText value="#{list.publishyear}"/>
-                    </p:column>
-                    <p:column headerText="#{msgs.version}"
-                              style="width:5%"
-                              filterBy="#{list.version}"
-                              filterMatchMode="contains"
-                              sortBy="#{list.version}">                    
-                        <h:outputText value="#{list.version}"/>
-                    </p:column>
-                    <p:column headerText="#{msgs.page_no}"
-                              style="width:5%"
-                              filterBy="#{list.numofpages}"
-                              filterMatchMode="contains"
-                              sortBy="#{list.numofpages}">                    
-                        <h:outputText value="#{list.numofpages}"/>
-                    </p:column>
+                             </p:column>
+                    
                     <p:column headerText="#{msgs.price}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{list.price}"
                               filterMatchMode="contains"
                               sortBy="#{list.price}">                    
                         <h:outputText value="#{list.price}"/>
                     </p:column>
                     <p:column headerText="#{msgs.price_day}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{list.priceday}"
                               filterMatchMode="contains"
                               sortBy="#{list.priceday}">                    
                         <h:outputText value="#{list.priceday}"/>
                     </p:column>
                     <p:column headerText="#{msgs.status}"
-                              style="width:5%"
+                              style="width:10%"
                               filterBy="#{list.status}"
                               filterMatchMode="contains"
                               sortBy="#{list.status}">                    
                         <h:outputText value="#{list.status}"/>
                     </p:column>
-                    <p:column headerText="#{msgs.owner_name}"
-                              style="width:5%"
-                              filterBy="#{list.ownername}"
-                              filterMatchMode="contains"
-                              sortBy="#{list.ownername}">                    
-                        <h:outputText value="#{list.ownername}"/>
-                    </p:column> 
-                      <!--
-Hamza ( buy & borrow ).
--->                   
+           
+                    <p:column headerText="#{msgs.option}"
+                              style ="Width:10%">
+                        <h:commandLink value="#{msgs.detail}" actionListener ="#{bookBean.saveSelectedBookID()}" action="book_detail">
+                        </h:commandLink>        
+                    </p:column>
 
-                       <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                           
-                                <p:commandButton value="#{msgs.buy_book}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{BookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_Buy_book}');"
-                                                 actionListener="#{BookBean.BuySelectedBook()}"
-                                                 action="library" />
-                                
-                                <p:commandButton value="#{msgs.borrow_book}"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{BookBean.selectedBook==null}"
-                                                 onclick="return confirm('#{msgs.confirm_borrow_book}');"
-                                                 actionListener="#{BookBean.borrowSelectedBook()}"
-                                                 action="library" />
-                               
-
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
- <!--
-Hamza ( buy & borrow ).
--->                
+              
                 </p:dataTable>
+                
+                
                 
                 <p:commandButton value="#{msgs.add_book}"
                                  icon="ui-icon-plus"                                  
@@ -154,25 +94,46 @@ Hamza ( buy & borrow ).
                                  style="float:#{langBean.styleFloat}" 
                                  ajax="false" 
                                  actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action ="addbook" /> 
-                <!-- skdhajsdhasjhd
-                <p:commandButton value="#{msgs.buy_book}"                                  
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action="buybook" /> 
-                <p:commandButton value="#{msgs.borrow_book}"
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action="borrowbook" />
-                -->
-                <p:commandButton value="#{msgs.view_transactions}"
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 action ="viewtransactions" /> 
+                                 action ="add_book" />
+                <!--
+Hamza ( buy & borrow ).
+-->                   
+                           
+                                <p:commandButton value="#{msgs.buy_book}"
+                                                 icon="ui-icon-cart"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 onclick="return confirm('#{msgs.confirm_Buy_book}');"
+                                                 actionListener="#{sessionBean.setSelectedItemId(bookBean.selectedBook.bookId)}"
+                                                 action="buy_book" />
+                                
+                                <p:commandButton value="#{msgs.borrow_book}"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                          
+                                                 onclick="return confirm('#{msgs.confirm_borrow_book}');"
+                                                 actionListener="#{sessionBean.setSelectedItemId(bookBean.selectedBook.bookId)}"
+                                                 action="borrow_book" />
+ <!--
+Hamza ( buy & borrow ).
+-->    
                 
+                <p:commandButton value="#{msgs.purchase_transactions}"                                  
+                                 styleClass="commandButton"
+                                 style="float:#{langBean.styleFloat};
+                                  padding-bottom: 3em !important;"
+                                 ajax="false" 
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                 action ="purchase_transactions" />
+                <p:commandButton value="#{msgs.rent_transactions}"
+                                 styleClass="commandButton"
+                                 style="float:#{langBean.styleFloat}"
+                                 ajax="false" 
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                 action ="rent_transactions" /> 
+                
+               
             </h:form>
         </ui:decorate>
     </h:body>     

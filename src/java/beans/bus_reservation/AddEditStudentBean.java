@@ -1,9 +1,5 @@
 package beans.bus_reservation;
 
-import daos.bus_reservation.StudentInformationDao;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -13,26 +9,27 @@ import javax.inject.Inject;
 import models.bus_reservation.StudentInformation;
 import daos.bus_reservation.StudentInformationDao;
 import beans.SessionBean;
+import java.io.Serializable;
 
 /**
  *
  * @author Kamal Jabari
  *
  */
-@Named(value = "addEditStudentBean")
+@Named("addEditStudentBean")
 @ViewScoped
 public class AddEditStudentBean implements Serializable {
 
     private final StudentInformationDao studentsDao = new StudentInformationDao();
-    private int student_id;
-    private String student_fname_en;
-    private String student_lname_en;
-    private String student_fname_ar;
-    private String student_lname_ar;
+    private int studentId;
+    private String studentFnameEn;
+    private String studentLnameEn;
+    private String studentFnameAr;
+    private String studentLnameAr;
     private int phone;
-    private int seat_pre_res;
-    private String address_ar;
-    private String address_en;
+    private String seatPreRes;
+    private String addressAr;
+    private String addressEn;
 
     @Inject
     private SessionBean sessionBean;
@@ -43,18 +40,19 @@ public class AddEditStudentBean implements Serializable {
     @PostConstruct
     public void init() {
         try {
-            student_id = sessionBean.getSelectedItemId();
+            studentId = sessionBean.getSelectedStudentID();
 
-            // eventTypes = eventTypesDao.buildEventTypes();
-            if (student_id > 0) {
+            if (studentId > 0) {
+
                 StudentInformation student = new StudentInformation();
-                student_fname_en = student.getStudentFNameEn();
-                student_fname_ar = student.getStudentFNameAr();
-                student_lname_en = student.getStudentLNameEn();
-                student_lname_ar = student.getStudentLNameAr();
-                address_en = student.getStudentAddressEn();
-                address_ar = student.getStudentAddressAr();
-                seat_pre_res = student.getSeatPreRes();
+                studentId = student.getStudentId();
+                studentFnameEn = student.getStudentFnameEn();
+                studentFnameAr = student.getStudentFnameAr();
+                studentLnameEn = student.getStudentLnameEn();
+                studentLnameAr = student.getStudentLnameAr();
+                addressEn = student.getAddressEn();
+                addressAr = student.getAddressAr();
+                seatPreRes = student.getSeatPreRes();
                 phone = student.getPhone();
 
             }
@@ -63,44 +61,44 @@ public class AddEditStudentBean implements Serializable {
         }
     }
 
-    public int getStudentID() {
-        return this.student_id;
+    public int getStudentId() {
+        return this.studentId;
     }
 
-    public void setStudentID(int student_id) {
-        this.student_id = student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public String getStudentFNameEn() {
-        return this.student_fname_en;
+    public String getStudentFnameEn() {
+        return this.studentFnameEn;
     }
 
-    public void setStudentFNameEn(String student_fname_en) {
-        this.student_fname_en = student_fname_en;
+    public void setStudentFnameEn(String studentFnameEn) {
+        this.studentFnameEn = studentFnameEn;
     }
 
-    public String getStudentFNameAr() {
-        return this.student_fname_ar;
+    public String getStudentFnameAr() {
+        return this.studentFnameAr;
     }
 
-    public void setStudentFNameAr(String student_fname_ar) {
-        this.student_fname_ar = student_fname_ar;
+    public void setStudentFnameAr(String studentFnameAr) {
+        this.studentFnameAr = studentFnameAr;
     }
 
-    public String getStudentLNameEn() {
-        return this.student_lname_en;
+    public String getStudentLnameEn() {
+        return this.studentLnameEn;
     }
 
-    public void setStudentLNameEn(String student_lname_en) {
-        this.student_lname_en = student_lname_en;
+    public void setStudentLnameEn(String studentLnameEn) {
+        this.studentLnameEn = studentLnameEn;
     }
 
-    public String getStudentLNameAr() {
-        return this.student_lname_ar;
+    public String getStudentLnameAr() {
+        return this.studentLnameAr;
     }
 
-    public void setStudentLNameAr(String student_lname_ar) {
-        this.student_lname_ar = student_lname_ar;
+    public void setStudentLnameAr(String studentLnameAr) {
+        this.studentLnameAr = studentLnameAr;
     }
 
     public int getPhone() {
@@ -111,45 +109,44 @@ public class AddEditStudentBean implements Serializable {
         this.phone = phone;
     }
 
-    public int getSeatPreRes() {
-        return this.seat_pre_res;
+    public String getSeatPreRes() {
+        return this.seatPreRes;
     }
 
-    public void setSeatPreRes(int seat_pre_res) {
-        this.seat_pre_res = seat_pre_res;
+    public void setSeatPreRes(String seatPreRes) {
+        this.seatPreRes = seatPreRes;
     }
 
-    public String getStudentAddressAr() {
-        return this.address_ar;
+    public String getAddressAr() {
+        return this.addressAr;
     }
 
-    public void setStudentAddressAr(String address_ar) {
-        this.address_ar = address_ar;
+    public void setAddressAr(String addressAr) {
+        this.addressAr = addressAr;
     }
 
-    public String getStudentAddressEn() {
-        return this.address_en;
+    public String getAddressEn() {
+        return this.addressEn;
     }
 
-    public void setStudentAddressEn(String address_en) {
-        this.address_en = address_en;
+    public void setAddressEn(String addressEn) {
+        this.addressEn = addressEn;
     }
 
     public void saveStudent() {
         try {
             StudentInformation student = new StudentInformation();
-
-            student.setStudentID(student_id);
-            student.setStudentFNameEn(student_fname_en);
-            student.setStudentFNameAr(student_fname_ar);
-            student.setStudentLNameEn(student_lname_en);
-            student.setStudentLNameEn(student_lname_ar);
-            student.setStudentAddressEn(address_en);
-            student.setStudentAddressAr(address_ar);
-            student.setSeatPreRes(seat_pre_res);
+            student.setStudentId(studentId);
+            student.setStudentFnameEn(studentFnameEn);
+            student.setStudentFnameAr(studentFnameAr);
+            student.setStudentLnameEn(studentLnameEn);
+            student.setStudentLnameEn(studentLnameAr);
+            student.setAddressEn(addressEn);
+            student.setAddressAr(addressAr);
+            student.setSeatPreRes(seatPreRes);
             student.setPhone(phone);
 
-            if (sessionBean.getSelectedItemId() > 0) {
+            if (sessionBean.getSelectedStudentID() > 0) {
                 studentsDao.updateStudent(student);
             } else {
                 studentsDao.insertStudent(student);

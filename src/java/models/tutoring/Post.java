@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author Ursina
  */
 public class Post implements Serializable{
-    private int postId;
     private Person author;
     private String conntent;
     private ArrayList <Comment> comments;
@@ -21,16 +20,6 @@ public class Post implements Serializable{
     public Post (Person author, String conntent){
         this. author = author;
         this.conntent = conntent;
-    }
-    
-    public Post(){}
-
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
     }
 
     public Person getAuthor() {

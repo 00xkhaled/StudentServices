@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.AvailableRides;
+import models.AvailableRide;
 
 
 /**
@@ -18,19 +18,19 @@ import models.AvailableRides;
 public class AvailableRidesDao extends ConnectionDao {    
     
     //it will be used by the AvailableRidesBean to flush the data into the tabel;(working)
-    public ArrayList<AvailableRides> getRides() throws Exception {
+    public ArrayList<AvailableRide> getRides() throws Exception {
                 
-        ArrayList<AvailableRides> list = new ArrayList<>();
+        ArrayList<AvailableRide> list = new ArrayList<>();
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT * FROM AVAILABLE_RIDES";                        
+            String sql = "SELECT DESTINATIONS.RIDE_FROM, DESTINATIONS.RIDE_TO, STUDENTS_CARPOOLING.STUDENT_NAME, STUDENTS_CARPOOLING.PHONE,DESTINATIONS.DEPARTURE_TIME  FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID";                     
             PreparedStatement ps = conn.prepareStatement(sql);            
 
             ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(populateRide(rs));
+                list.add(populateRide2(rs));
             }
             
             rs.close();
@@ -42,81 +42,53 @@ public class AvailableRidesDao extends ConnectionDao {
         }
     }
 
-   
-    //it will cooperate with the getRide() methode so that it will seperate the 
-    //returned data before return it again.
-    private AvailableRides populateRide(ResultSet rs) throws SQLException {
-        AvailableRides ride = new AvailableRides();
+    private AvailableRide populateRide(ResultSet rs) throws SQLException {
+        AvailableRide ride = new AvailableRide();
         
-         ride.setRideID(rs.getInt("RIDE_ID"));
-        ride.setRideFrom(rs.getString("RIDE_FROM"));
-        ride.setRideTo(rs.getString("RIDE_TO"));
+        ride.setRideID(rs.getInt("RIDE_ID"));
+        ride.setStudentId(rs.getInt("STUDENT_ID"));
         ride.setName(rs.getString("DRIVER_NAME"));
         ride.setPhone(rs.getString("DRIVER_PHONE"));
+        ride.setGender(rs.getString("GENDER"));
+        
+        ride.setRideFrom(rs.getString("RIDE_FROM"));
+        ride.setRideTo(rs.getString("RIDE_TO"));
         ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
+        
+        ride.setCarPlateNumber(rs.getInt("CAR_PLATE_NUMBER"));
+        ride.setCarMake(rs.getString("CAR_MAKE"));
+        ride.setCarModel(rs.getString("CAR_MODEL"));
+        ride.setYearOfMake(rs.getString("YEAR_OF_MAKE"));
+        ride.setCarColor(rs.getString("CAR_COLOR"));
+        
         return ride;
     }
-    //not working
-    public void insertRide(AvailableRides ride) throws Exception {                
-        System.out.println("reached dao...");
-        try {
-            Connection conn = getConnection();
-            
-            String sql = "INSERT INTO AVAILABLE_RIDES "
-                    + "( RIDE_ID,"
-                    + " RIDE_FROM,"
-                    + " RIDE_TO,"
-                    + " DRIVER_NAME,"
-                    + " DRIVER_PHONE,"
-                    + " DEPARTURE_TIME"
-                    + " VALUES ((select max(RIDE_ID) from AVAILABLE_RIDES)+1,?,?,?,?,?)";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, ride.getRideFrom());
-                ps.setString(2, ride.getRideTo());
-                ps.setString(3, ride.getName());
-                ps.setString(4, ride.getPhone());
-                ps.setString(5, ride.getDepartureTime());
-                
-                ps.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
+    //it will cooperate with the getRide() methode so that it will seperate the 
+    //returned data before return it again.
+   private AvailableRide populateRide2(ResultSet rs) throws SQLException {
+        AvailableRide ride = new AvailableRide();
+        
+        
+        
+        ride.setName(rs.getString("STUDENT_NAME"));
+        ride.setPhone(rs.getString("PHONE"));
+        ride.setGender(rs.getString("GENDER"));
+        
+        ride.setRideFrom(rs.getString("RIDE_FROM"));
+        ride.setRideTo(rs.getString("RIDE_TO"));
+        ride.setDepartureTime(rs.getString("DEPARTURE_TIME"));
+        
+        
+        
+        return ride;
     }
-    //updating(not working)
-    public void updateRide(AvailableRides ride) throws Exception {
-        try {
-            Connection conn = getConnection();
-
-            String sql = "UPDATE AVAILABLE_RIDES SET "
-                    + "(RIDE_FROM=?,"
-                    + " RIDE_TO=?,"
-                    + " DRIVER_NAME=?,"
-                    + " DRIVER_PHONE=?,"
-                    + " DEPARTURE_TIME=?"
-                    + " WHERE RIDE_ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-           ps.setString(1, ride.getRideFrom());
-            ps.setString(2, ride.getRideTo());
-            ps.setString(3, ride.getName());
-            ps.setString(4, ride.getPhone());
-            ps.setString(5, ride.getDepartureTime());            
-            ps.setInt(6, ride.getRideID());
-
-            ps.executeUpdate();
-            
-            ps.close();
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
+    
     //to delete the selected ride.(working)
     public void deleteRide(int RideID) throws Exception {
         Connection conn = getConnection();
         
         try {
-            String sql = "DELETE FROM AVAILABLE_RIDES WHERE RIDE_ID=?";                               
+            String sql = "DELETE FROM STUDENTS_CARPOOLING, CARS, DESTINATION WHERE RIDE_ID=?";                               
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, RideID);
             
@@ -127,30 +99,7 @@ public class AvailableRidesDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    //this methode is to get only one ride by id;
-         public AvailableRides getRide(int ride_id) throws Exception {
-        try {   
-            AvailableRides ride=null;
-            Connection conn = getConnection();
-            
-            String sql = "SELECT AVAILABLE_RIDES.* WHERE RIDE_ID=?";                        
-            PreparedStatement ps = conn.prepareStatement(sql);            
-            ps.setInt(1, ride_id);
-            
-            ResultSet rs = ps.executeQuery();           
-
-            while (rs.next()) {
-                ride = populateRide(rs);
-            }
-
-            rs.close();
-            ps.close();
-            
-            return ride;            
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
-    }
+        
     public static void main(String [] args){        
         try {
             AvailableRidesDao dao = new AvailableRidesDao();                

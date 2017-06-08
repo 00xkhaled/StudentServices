@@ -3,142 +3,119 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"       
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>    
         <link type="text/css" rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
-        
-    
-       <h:outputStylesheet library="css" name="carpooling.css"/>    
-       <h:outputStylesheet library="css" name="app_style.css"/>    
-       <h:outputStylesheet library="css" name="font-awesome.css"/>  
-       
-       <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
-     </h:head>
-    
-    
+              href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+
+
+        <h:outputStylesheet library="css" name="carpooling.css"/>    
+        <h:outputStylesheet library="css" name="app_style.css"/>  
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
+    </h:head>
+
+
     <!-- TODO: CONVERT TO JSF -->
-    
+
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml">  
-<<<<<<< HEAD
-            
-          
-               
-            <p:panel header="#{msgs.driver_information}"                            
-                  style="min-height:200px; width: 1340px;
-                  direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-                
-            <h:panelGrid id="post_ride"
-=======
-                    <form id="add_ride_ba6a6a">
 
             <h:panelGrid id="add_ride"
->>>>>>> origin/master
                          style="float: #{langBean.styleFloat};" 
-                         columns="2"     width="400px"                         
+                         columns="2"                         
                          dir="#{langBean.dir}">
-                
-            <h:outputText value="#{msgs.driver_name}"/>       
-            <p:inputText value="#{addEditRidesBean.name}"/>
-            
-            <h:outputText value=""/> 
-            <h:outputText value=""/>
-            <h:outputText value="#{msgs.location}"/> 
-            <p:inputText value=""/>
-             
-            <h:outputText value=""/>
-            <h:outputText value=""/>
-            <h:outputText value="#{msgs.phone}"/> 
-            <p:inputText value="#{addEditRidesBean.phone}"/>
-             
-            <h:outputText value=""/>
-            <h:outputText value=""/>
-            <h:outputText value="#{msgs.departure_time}"/> 
-            <p:inputText value="#{addEditRidesBean.departureTime}"/>
-             
-            <h:outputText value=""/>
-            <h:outputText value=""/>
-            
-            </h:panelGrid>
-        
-            </p:panel>
-            
-            <p:panel header="#{msgs.car_information}"                            
-                  style="min-height:200px; width: 1340px;
-                  direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-                
-                <h:panelGrid id="car"
-                         style="float: #{langBean.styleFloat};" 
-                         columns="2" width="400px"                              
-                         dir="#{langBean.dir}">
-                <h:outputText value="#{msgs.plate_num}"/>
-                <p:inputText value=""/>
-                <h:outputText value="#{msgs.car_make}"/>
-                <p:inputText value=""/>
-                <h:outputText value="#{msgs.car_model}"/>
-                <p:inputText value=""/>
-                <h:outputText value="#{msgs.year_of_make}"/>
-                <p:inputText value=""/>
-                <h:outputText value="#{msgs.car_color}"/>
-                <p:inputText value=""/>
-                
-                </h:panelGrid>
-<<<<<<< HEAD
-            </p:panel>
-            
-             <p:panel header="#{msgs.add_ride}"                            
-                  style="min-height:400px; width: 1340px;
-                  direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-              
-                  <h:panelGrid id="map"
-                         style="float: #{langBean.styleFloat};" 
-                         columns="2" width="400px"                              
-                         dir="#{langBean.dir}">
-                <h:outputText value="#{msgs.start}"/>
-                <p:inputText type="text" id="start" value="#{addEditRidesBean.rideFrom}" placeholder="Start">
-                <p:watermark for="start" value="#{msgs.amman}"/> 
-                </p:inputText>
-                
-		<h:outputText value="#{msgs.end}"/>
-                <p:inputText type="text" id="end" value="#{addEditRidesBean.rideTo}" placeholder="End">
-                <p:watermark for="end" value="#{msgs.gju}"/> 
-                </p:inputText>
-		<p:commandButton value="#{msgs.find_route}"
-                                 styleClass="commandButton"
-                                 icon=""
-                                 iconPos=""
-                                 style=""                                                                   
-                                 />
-                </h:panelGrid>
-                 <div id="panel">
-                 <p:gmap 
-                     id="gmap"    
-                     center="31.777067, 35.802555"
-                     zoom="14"
-                     type="hybrid"
-                     style="width:900px;height:350px"
-                     model="#{BmapBean.model}"/>
-                 </div>
-                <br/><br/>
-         </p:panel>
-         <p:commandButton value="#{msgs.save}"
-                                 styleClass="commandButton"
-                                 icon="ui-icon-disk"
-                                 iconPos=""
-                                 style=""                                                                   
-                                 actionListener="#{addEditRidesBean.addRide()}"/>
-            <p:commandButton value="#{msgs.cancel}"
-                                 styleClass="commandButton"
-                                 icon="ui-icon-cancel"
-                                 iconPos=""
-                                 style=""                                                                   
-                                 action="available_rides" />
-                
-=======
-                
 
+                <p:fieldset legend="#{msgs.driver_information}" style="width: 630px; height: 205px;">
+                    <h:panelGrid id="post_ride"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="2"     width="400px"                         
+                                 dir="#{langBean.dir}">
+
+                        <h:outputText value="#{msgs.student_id}"/>       
+                        <p:inputText value="#{addEditRidesBean.studentId}"/>
+
+
+                        <h:outputText value="#{msgs.driver_name}"/> 
+                        <p:inputText value="#{addEditRidesBean.name}"/>
+
+
+                        <h:outputText value="#{msgs.phone}"/> 
+                        <p:inputText value="#{addEditRidesBean.phone}"/>
+
+
+                        <h:outputText value="#{msgs.gender}"/> 
+                        <p:selectOneMenu id="gender" 
+                                         value="#{addEditRidesBean.gender}" 
+                                         effect="fold" 
+                                         editable="true" 
+                                         style="width: 150px">
+                            <f:selectItem itemLabel="#{msgs.male}" itemValue="#{addEditRidesBean.gender}" />
+                            <f:selectItem itemLabel="#{msgs.female}" itemValue="#{addEditRidesBean.gender}" />
+                        </p:selectOneMenu>
+
+
+
+                    </h:panelGrid>
+                </p:fieldset>   
+
+                <p:fieldset legend="#{msgs.car_information}" style="width: 630px; margin-right: 610px">
+
+                    <h:panelGrid id="car"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="2" width="400px"                              
+                                 dir="#{langBean.dir}">
+                        <h:outputText value="#{msgs.plate_num}"/>
+                        <p:inputText value="#{addEditRidesBean.carPlateNumber}"/>
+                        <h:outputText value="#{msgs.car_make}"/>
+                        <p:inputText value="#{addEditRidesBean.carMake}"/>
+                        <h:outputText value="#{msgs.car_model}"/>
+                        <p:inputText value="#{addEditRidesBean.carModel}"/>
+                        <h:outputText value="#{msgs.year_of_make}"/>
+                        <p:inputText value="#{addEditRidesBean.yearOfMake}"/>
+                        <h:outputText value="#{msgs.car_color}"/>
+                        <p:inputText value="#{addEditRidesBean.carColor}"/>
+
+                    </h:panelGrid>
+                </p:fieldset>
+            </h:panelGrid>
+
+            <p:fieldset legend="#{msgs.location}" >
+
+                <h:panelGrid id="map"
+                             style="float: #{langBean.styleFloat};" 
+                             columns="2" width="400px"                              
+                             dir="#{langBean.dir}">
+                    <h:outputText value="#{msgs.start}"/>
+                    <p:inputText type="text" id="start" value="#{addEditRidesBean.rideFrom}" placeholder="start">
+                        <p:watermark for="start" value="#{msgs.amman}"/> 
+                    </p:inputText>
+
+                    <h:outputText value="#{msgs.end}"/>
+                    <p:inputText type="text" id="end" value="#{addEditRidesBean.rideTo}" placeholder="end">
+                        <p:watermark for="end" value="#{msgs.gju}"/> 
+                    </p:inputText>
+                    <p:commandButton id="submit"
+                        value="#{msgs.find_route}"
+                                     styleClass="commandButton"
+                                     icon="ui-icon-transferthick-e-w"
+                                     iconPos=""
+                                     style="width: 150px; font-size: 13px"                                                                   
+                                     />
+
+                    <h:outputLabel value=""/>
+
+
+                    <h:panelGrid columns="2" cellpadding="5" style="width: 320px;">
+
+                        <p:outputLabel for="datetime" value="#{msgs.departure_time}:" />
+                        <p:calendar id="datetime" value="#{userWizard.user.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                    </h:panelGrid>
+
+                </h:panelGrid>
                 <div id="panel">
                     <div id="map-canvas"></div>
                 </div>
@@ -156,9 +133,60 @@
                              iconPos=""
                              style=""                                                                   
                              action="available_rides" />
-                        </form>
 
->>>>>>> origin/master
         </ui:decorate>
     </h:body> 
+      <h:outputScript  library="js" name="carpooling_map.js"/>   
+
+<script src="https://use.fontawesome.com/e69fe8f165.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxSXYuxe8qaKgA1r5WVodcUkP7MhvOvnA">
+      
+</script>
+  
+  
+  <script id="map-canvas">
+      
+  
+var directionDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
+  $(function(){
+	$('#submit').click(function(){
+		calcRoute();
+	});
+   calcRoute();
+	initialize();
+  });
+  // initialize the Google Map API.
+  function initialize() {
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    var Amman = new google.maps.LatLng(31.95638607801807, 35.94535052776337);
+    var mapOptions = {
+      zoom:15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: Amman
+    }
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    directionsDisplay.setMap(map);
+  }
+
+  //Find the Start and End Destination on google Map
+  function calcRoute() {
+    var start = document.getElementById('start').value;
+    var end = document.getElementById('end').value;
+    var request = {
+        origin:start,
+        destination:end,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
+  }
+  </script>
+
 </html>

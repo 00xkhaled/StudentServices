@@ -33,6 +33,7 @@ and open the template in the editor.
                 </c:forEach>
             </div>
             <div columns="1" align="#{langBean.styleFloat == right? left: right}">
+            <div columns="1" align="#{langBean.styleFloat == right? left: right}">
                 <p:commandButton  value="#{msgs.offer_course}" 
                                       styleClass="commandButton" 
                                       style="float:#{langBean.styleFloat == right? left: right}"                                      
@@ -47,6 +48,10 @@ and open the template in the editor.
             <div columns="1" align="#{langBean.styleFloat == right? left: right}">
                 <!-- hier kommen die tutoren & ihre angebote hin -->
                 <a href="url">#{msgs.all_course_offers}</a>
+            </div>
+            <div columns="1" align="#{langBean.styleFloat == right? left: right}">
+                <a href="url">#{msgs.past_documents}</a>
+            </div>
             </div>
         </ui:decorate>
     </h:body>
