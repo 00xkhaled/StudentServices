@@ -24,7 +24,7 @@ public class AddEditRidesDao extends ConnectionDao {
         try {   
             Connection conn = getConnection();
             
-            String sql = "SELECT STUDENTS_CARPOOLING.STUDENT_ID, STUDENTS_CARPOOLING.STUDENT_NAME, STUDENTS_CARPOOLING.PHONE, STUDENTS_CARPOOLING.GENDER, DESTINATIONS.RIDE_FROM, DESTINATIONS.RIDE_TO, DESTINATIONS.DEPARTURE_TIME,CARS.CAR_PLATE_NUMBER, CARS.MAKE, CARS.MODEL, CARS.YEAR_OF_MAKE, CARS.COLOR FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID JOIN CARS ON STUDENTS_CARPOOLING.RIDE_ID=CARS.RIDE_ID";
+            String sql = "SELECT * FROM STUDENTS_CARPOOLING JOIN DESTINATIONS ON STUDENTS_CARPOOLING.RIDE_ID=DESTINATIONS.RIDE_ID JOIN CARS ON STUDENTS_CARPOOLING.RIDE_ID=CARS.RIDE_ID";
             PreparedStatement ps = conn.prepareStatement(sql);            
             ps.setInt(1, rideId);
             ResultSet rs = ps.executeQuery();
@@ -46,10 +46,10 @@ public class AddEditRidesDao extends ConnectionDao {
     private AvailableRide populateRide(ResultSet rs) throws SQLException {
         AvailableRide ride = new AvailableRide();
         
-        ride.setRideID(rs.getInt("RIDE_ID"));
+       ride.setRideID(rs.getInt("RIDE_ID"));
         ride.setStudentId(rs.getInt("STUDENT_ID"));
-        ride.setName(rs.getString("DRIVER_NAME"));
-        ride.setPhone(rs.getString("DRIVER_PHONE"));
+        ride.setName(rs.getString("STUDENT_NAME"));
+        ride.setPhone(rs.getString("PHONE"));
         ride.setGender(rs.getString("GENDER"));
         
         ride.setRideFrom(rs.getString("RIDE_FROM"));
@@ -70,28 +70,34 @@ public class AddEditRidesDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "INSERT INTO STUDENTS_CARPOOLING VALUES((SELECT MAX(RIDE_ID) FROM AVAILABLE_RIDES)+1,?,?,?,?)";
+            String sql = " INSERT INTO STUDENTS_CARPOOLING(RIDE_ID, STUDENT_ID, STUDENT_NAME, PHONE, GENDER) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING)+1,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
+            
             ps.setInt(1, ride.getStudentId());
             ps.setString(2, ride.getName());
             ps.setString(3, ride.getPhone());
             ps.setString(4, ride.getGender());
+            
             ps.executeUpdate();
             
-            sql = "INSERT INTO CARS VALUES((select max(RIDE_ID) FROM STUDENTS_CARPOOLING)+1,?,?,?,?,?)";
+            sql = "INSERT INTO CARS(RIDE_ID, CAR_PLATE_NUMBER, MAKE, MODEL,YEAR_OF_MAKE, COLOR) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
+            
             ps.setInt(1, ride.getCarPlateNumber());
             ps.setString(2, ride.getCarMake());
             ps.setString(3, ride.getCarModel());
             ps.setString(4, ride.getYearOfMake());
             ps.setString(5, ride.getCarColor());
+            
             ps.executeUpdate();
             
-            sql = "INSERT INTO DESTINATIONS VALUES((select max(RIDE_ID) FROM STUDENTS_CARPOOLING)+1,?,?,?)";
+            sql = "INSERT INTO DESTINATIONS(RIDE_ID, RIDE_FROM, RIDE_TO, DEPARTURE_TIME) VALUES((SELECT MAX(RIDE_ID) FROM STUDENTS_CARPOOLING),?,?,?)";
             ps = conn.prepareStatement(sql);
+            
             ps.setString(1, ride.getRideFrom());
             ps.setString(2, ride.getRideTo());
             ps.setString(3, ride.getDepartureTime());
+            
             ps.executeUpdate();
             
             ps.close();

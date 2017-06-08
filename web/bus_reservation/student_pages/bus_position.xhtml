@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>GJU Map</title>
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBZOv1lsxpln_a88Wx20uzgJo8iRy5w-WU"></script>
+    </h:head>
+    <h:body>
+    <ui:decorate template="/app_templates/app_template.xhtml"> 
+    <p:gmap 
+       id="gmap"    
+       center="31.777067, 35.802555"
+       zoom="14"
+       type="hybrid"
+       style="width:1300px;height:500px"
+       model="#{busmapBean.model}"/>
+    <h:form>
+    <p:poll interval="10" listener="#{busmapBean.update}" update="gmap"  />
+    </h:form>
+    </ui:decorate>
+    </h:body>
+</html>
