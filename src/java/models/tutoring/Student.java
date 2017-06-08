@@ -11,12 +11,11 @@ import java.io.Serializable;
  *
  * @author Ursina
  */
-public class Student extends Person implements Serializable{
+public class Student implements Serializable{
     private String major;
     private int creditScore;
     
     public Student(String firstName, String lastName, String major, String emailAddress, String phoneNumber){
-        super(firstName, lastName, emailAddress, phoneNumber);
         this.major = major;
         creditScore = 25; 
     }

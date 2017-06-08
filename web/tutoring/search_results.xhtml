@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.tutoring}</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <h:form id="search_results_form">               
+                <p:dataTable id="search_results_tbl"
+                             class="dataTable"
+                             value="#{searchResultsBean.lectures}"                    
+                             selection="#{searchResultsBean.selectedLecture}"
+                             rowKey="#{lect.lectureId}"                    
+                             var="lect"   
+                             rows="2"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="#{msgs.no_lectures}"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
+                    <p:ajax event="rowSelectRadio"
+                            update=":search_results_form:search_results_tbl"/>
+
+                    <f:facet name="header" id="header">
+                        #{msgs.lectures}
+                    </f:facet>
+
+                    <p:column selectionMode="single" style="width:5%"/>
+
+                    <p:column headerText="#{msgs.course_name}"
+                              style="width:20%"
+                              filterBy="#{langBean.isEnglish? lect.lectureNameEn: lect.lectureNameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish? lect.lectureNameEn: lect.lectureNameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish? lect.lectureNameEn: lect.lectureNameAr}"/>  
+                    </p:column>
+
+                    <p:column headerText="#{msgs.course_id}"
+                              style="width:20%"
+                              filterBy="#{lect.lectureCode}"
+                              filterMatchMode="contains"
+                              sortBy="#{lect.lectureCode}">                    
+                        <h:outputText value="#{lect.lectureCode}"/>  
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                                <p:commandButton value="#{msgs.request_course}"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{searchResultsBean.selectedLecture==null}"
+                                                 action="tutoring_offers" />
+                                <p:commandButton value="#{msgs.offer_course}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{searchResultsBean.selectedLecture==null}"                                                 
+                                                 action="request_tutoring" />
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
+                </p:dataTable>               
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+

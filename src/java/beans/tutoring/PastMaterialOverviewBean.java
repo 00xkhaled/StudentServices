@@ -5,12 +5,9 @@
  */
 package beans.tutoring;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import models.tutoring.Lecture;
-import models.tutoring.LectureDocument;
 
 /**
  *

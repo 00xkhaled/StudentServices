@@ -13,33 +13,40 @@ import java.util.ArrayList;
  * @author Ursina
  */
 public class Lecture implements Serializable{
-    private ArrayList <Lecturer> lecturers;
+    private int lectureId;
+    private String lectureCode;
     private String lectureNameEn;
     private String lectureNameAr;
     //the following attribute was of type Major:
     private String major;
     private ArrayList <Post> posts;
-    private ArrayList <LectureDocument> documents;
 
 
-    public Lecture(String lectureNameEn, ArrayList <Lecturer> lecturers, ArrayList<Post> posts, ArrayList <LectureDocument> documents){
+    public Lecture(String lectureNameEn, ArrayList<Post> posts){
         this.lectureNameEn = lectureNameEn;
-        this.lecturers = lecturers;
         this.posts = posts;
-        this.documents = documents;
     }
     
-    public Lecture (String lectureNameEn, ArrayList <Lecturer> lecturers){
+    public Lecture(){}
+    
+    public Lecture (String lectureNameEn){
         this.lectureNameEn = lectureNameEn;
-        this.lecturers = lecturers;
-    }
-    
-    public ArrayList<Lecturer> getLecturers() {
-        return lecturers;
     }
 
-    public void setLecturers(ArrayList<Lecturer> lecturers) {
-        this.lecturers = lecturers;
+    public int getLectureId() {
+        return lectureId;
+    }
+
+    public void setLectureId(int lectureId) {
+        this.lectureId = lectureId;
+    }
+
+    public String getLectureCode() {
+        return lectureCode;
+    }
+
+    public void setLectureCode(String lectureCode) {
+        this.lectureCode = lectureCode;
     }
 
     public String getLectureNameEn() {
@@ -56,14 +63,6 @@ public class Lecture implements Serializable{
 
     public void setPosts(ArrayList<Post> posts) {
         this.posts = posts;
-    }
-
-    public ArrayList<LectureDocument> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(ArrayList<LectureDocument> documents) {
-        this.documents = documents;
     }
 
     public String getLectureNameAr() {

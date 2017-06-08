@@ -10,10 +10,16 @@ package beans.tutoring;
  * @author Ursina
  */
 import beans.SessionBean;
+import daos.tutoring.PersonsDao;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import models.tutoring.Person;
 
 /**
  *
@@ -23,83 +29,35 @@ import javax.inject.Inject;
 @Named(value = "profileBean")
 @ViewScoped
 public class ProfileBean implements Serializable{
-    private String firstName;
-    private String firstNameAr;
-    private String lastName;
-    private String lastNameAr;
-    private String major;
-    private String emailAddress;
-    private String phoneNumber;
-    private int creditScore;
+    
+    private Person student;
+    private PersonsDao personsDao;
+    private ArrayList<Person> people;
     
     @Inject
     private SessionBean sessionBean;
     
     public ProfileBean() {        
     }
+    
+    /*@PostConstruct
+    public void init(){
+        try {            
+            //needs a HashMap<Integer, Major> (theoretisch aus majorDao)
+            people = personsDao.buildPersons();            
+        } catch (Exception ex) {
+            Logger.getLogger(ProfileBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 
-    public String getFirstName() {
-        return firstName;
+    public Person getStudent() {
+        return student;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setStudent(Person student) {
+        this.student = student;
     }
     
-    public String getMajor(){
-        return major;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public int getCreditScore() {
-        return creditScore;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
     
-    public void setMajor(String major){
-        this.major = major;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setCreditScore(int creditScore) {
-        this.creditScore = creditScore;
-    }
-    
-        public String getFirstNameAr() {
-        return firstNameAr;
-    }
-
-    public void setFirstNameAr(String firstNameAr) {
-        this.firstNameAr = firstNameAr;
-    }
-
-    public String getLastNameAr() {
-        return lastNameAr;
-    }
-
-    public void setLastNameAr(String lastNameAr) {
-        this.lastNameAr = lastNameAr;
-    }
 }
 
